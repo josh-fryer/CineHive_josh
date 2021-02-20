@@ -1,0 +1,15 @@
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\HiveServices.dll.config
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\HiveServices.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\HiveServices.pdb
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\EntityFramework.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\HiveData.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\HiveData.pdb
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\HiveData.dll.config
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\EntityFramework.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.csprojAssemblyReference.cache
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.csproj.CoreCompileInputs.cache
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.csproj.CopyComplete
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.pdb
