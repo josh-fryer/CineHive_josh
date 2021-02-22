@@ -28,3 +28,7 @@ C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveServices\obj\Debu
 C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.csproj.CopyComplete
 C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.dll
 C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.pdb
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

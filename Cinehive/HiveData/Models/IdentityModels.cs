@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using HiveData.Models.Domain;
 
 namespace Cinehive.Models
 {
@@ -20,8 +21,15 @@ namespace Cinehive.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Follower> Followers { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<PostComment> PostComments { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Request> Requests { get; set; }
+
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("HiveContext", throwIfV1Schema: false)
         {
         }
 
