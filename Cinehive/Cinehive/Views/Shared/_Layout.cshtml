@@ -28,12 +28,19 @@
                         <li>@Html.ActionLink("Test", "Test", "Test")</li>
 
                     }
+                    @if (HttpContext.Current.User.IsInRole("AdminUser"))
+                    {
+                        <li>@Html.ActionLink("Search", "Search", "Search")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Admin Panel", "Admin", "Admin")</li>
+
+                    }
                     else
                     {
                         <li>@Html.ActionLink("Search", "Search", "Search")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
-                    }                  
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

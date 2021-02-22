@@ -73,6 +73,8 @@ namespace Cinehive.Migrations
             new UserProfile { UserId = 5, Firstname = "Berry", Lastname = "Woman", DateOfBirth = new DateTime(1996, 12, 09), Gender = "Female", FollowerCount = 422, FollowingCount = 104, AboutMe = "Follow me for some great movie reviews!" }
             );
 
+           
+
         }
     }
 }
