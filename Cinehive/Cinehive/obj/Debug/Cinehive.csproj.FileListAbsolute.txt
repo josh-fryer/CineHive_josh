@@ -345,3 +345,4 @@ C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\Cinehive\obj\Debug\Ci
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\Cinehive\obj\Debug\Cinehive.Migrations.newinitialise.resources
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\Cinehive\obj\Debug\Cinehive.Migrations.initialiseThree.resources
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\Cinehive\obj\Debug\Cinehive.Migrations.populate.resources
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\Cinehive\obj\Debug\Cinehive.Migrations.addmigratonuserRole.resources

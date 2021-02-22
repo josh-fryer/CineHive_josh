@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Cinehive.Models;
 using HiveData.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Cinehive.Controllers
 {
@@ -156,6 +157,11 @@ namespace Cinehive.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    await roleManager.CreateAsync(new IdentityRole("BasicUser"));
+                    await UserManager.AddToRoleAsync(user.Id, "BasicUser");
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
