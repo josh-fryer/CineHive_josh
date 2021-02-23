@@ -52,13 +52,6 @@ namespace Cinehive.Migrations
             new PostComment { UserId = 5, PostId = 4, DateCommented = (DateTime.Now), CommentContent = "Its about time!" }
             );
 
-            context.Posts.AddOrUpdate(
-            new Post { DatePosted = (DateTime.Now), UserId = 1, PostContent = "Everyone needs to go a watch Sunset Boulevard - Absolute classic!" },
-            new Post { DatePosted = (DateTime.Now), UserId = 2, PostContent = "Great trip to the cinema to see Once upon a time in Hollywood, Leo is great in it" },
-            new Post { DatePosted = (DateTime.Now), UserId = 3, PostContent = "Just finished all The Lord of the rings movies... Extended" },
-            new Post { DatePosted = (DateTime.Now), UserId = 4, PostContent = "Bingewatching The Witcher" }
-            );
-
             context.Requests.AddOrUpdate(
             new Request() { ReqDateSent = DateTime.Now, ReqRecipientId = 1, ReqSenderId = 2, ReqStatus = 0 },
             new Request() { ReqDateSent = DateTime.Now, ReqRecipientId = 3, ReqSenderId = 4, ReqStatus = 0 },

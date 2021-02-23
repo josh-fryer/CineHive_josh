@@ -15,14 +15,7 @@ namespace Cinehive.Migrations
             UserProfile userProfile3 = new UserProfile() { UserId = 3, Firstname = "Grape", Lastname = "Woman", DateOfBirth = new DateTime(1983, 07, 29), Gender = "Female", FollowerCount = 98, FollowingCount = 29, AboutMe = "All I do all day is watch tv series... I may have a problem" };
             UserProfile userProfile4 = new UserProfile() { UserId = 4, Firstname = "Melon", Lastname = "Man", DateOfBirth = new DateTime(1979, 01, 04), Gender = "Male", FollowerCount = 221, FollowingCount = 301, AboutMe = "Recommend me some good movies, £10 to anyone who can recommend one I haven't seen" };
             UserProfile userProfile5 = new UserProfile() { UserId = 5, Firstname = "Berry", Lastname = "Woman", DateOfBirth = new DateTime(1996, 12, 09), Gender = "Female", FollowerCount = 422, FollowingCount = 104, AboutMe = "Follow me for some great movie reviews!" };
-            
-            
-
-            Post post1 = new Post() { DatePosted = (DateTime.Now), UserId = 1, PostContent = "Everyone needs to go a watch Sunset Boulevard - Absolute classic!" };
-            Post post2 = new Post() { DatePosted = (DateTime.Now), UserId = 2, PostContent = "Great trip to the cinema to see Once upon a time in Hollywood, Leo is great in it" };
-            Post post3 = new Post() { DatePosted = (DateTime.Now), UserId = 3, PostContent = "Just finished all The Lord of the rings movies... Extended" };
-            Post post4 = new Post() { DatePosted = (DateTime.Now), UserId = 4, PostContent = "Bingewatching The Witcher" };
-            
+      
 
             PostComment postComment1 = new PostComment() { UserId = 2, PostId = 1, DateCommented = (DateTime.Now), CommentContent = "Such a great movie!" };
             PostComment postComment2 = new PostComment() { UserId = 4, PostId = 1, DateCommented = (DateTime.Now), CommentContent = "Is it on Netflix?" };

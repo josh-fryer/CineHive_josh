@@ -75,6 +75,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\PostDAO.cs" />
+    <Compile Include="IDAO\IPostDAO.cs" />
     <Compile Include="Models\Follower.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Message.cs" />
@@ -88,5 +90,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

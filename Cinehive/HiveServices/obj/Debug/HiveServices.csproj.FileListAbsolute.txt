@@ -32,3 +32,22 @@ C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debu
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\HiveServices.dll.config
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\HiveServices.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\HiveServices.pdb
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\EntityFramework.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\EntityFramework.SqlServer.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\HiveData.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\HiveData.pdb
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\HiveData.dll.config
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\EntityFramework.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\EntityFramework.SqlServer.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.csprojAssemblyReference.cache
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.csproj.CoreCompileInputs.cache
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.csproj.CopyComplete
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.pdb
