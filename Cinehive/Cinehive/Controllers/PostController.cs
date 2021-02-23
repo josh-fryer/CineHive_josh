@@ -1,4 +1,5 @@
 ﻿using HiveData.Models.Domain;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,8 @@ namespace Cinehive.Controllers
         public ActionResult Create(Post post)
         {
             try
-            {
+            {              
+                User.Identity.GetUserId()
                 postService.CreatePost
 
                 return RedirectToAction("Index");

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace HiveServices.IService
 {
-    interface IPostService
+    public interface IPostService
     {
+
     }
 }
