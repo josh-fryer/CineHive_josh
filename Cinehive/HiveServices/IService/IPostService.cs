@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cinehive.Models;
+using HiveData.Models.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +10,6 @@ namespace HiveServices.IService
 {
     public interface IPostService
     {
-
+        void CreatePost(Post post, ApplicationUser userId);
     }
 }

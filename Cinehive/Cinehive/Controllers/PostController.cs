@@ -1,4 +1,7 @@
-﻿using HiveData.Models.Domain;
+﻿using Cinehive.Models;
+using HiveData.Models.Domain;
+using HiveServices.IService;
+using HiveServices.Service;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -10,6 +13,12 @@ namespace Cinehive.Controllers
 {
     public class PostController : Controller
     {
+        IPostService postService;
+
+        public PostController()
+        {
+            postService = new PostService();
+        }
 
         // GET: Posts/Create
         public ActionResult Create()
@@ -22,9 +31,9 @@ namespace Cinehive.Controllers
         public ActionResult Create(Post post)
         {
             try
-            {              
-                User.Identity.GetUserId()
-                postService.CreatePost
+            {
+                //ApplicationUser userId = User.Identity.GetUserId();
+                //spostService.CreatePost(post, userId);
 
                 return RedirectToAction("Index");
             }
