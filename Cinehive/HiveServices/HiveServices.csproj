@@ -55,8 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IService\IPostService.cs" />
+    <Compile Include="IService\IProfileService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\PostService.cs" />
+    <Compile Include="Service\ProfileService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using Cinehive.Models;
 
 namespace HiveData.Models.Domain
 {
@@ -11,8 +13,11 @@ namespace HiveData.Models.Domain
         [Key]
         public int CommentId { get; set; }
         public int PostId { get; set; }
-        public int UserId { get; set; }
+        [ForeignKey("User")]
+        public string UserID { get; set; }
+        public virtual ApplicationUser User { get; set; }
         public string CommentContent { get; set; }
         public DateTime DateCommented { get; set; }
+        public int Awards { get; set; }
     }
 }

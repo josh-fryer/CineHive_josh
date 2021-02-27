@@ -10,6 +10,6 @@ namespace HiveServices.IService
 {
     public interface IPostService
     {
-        void CreatePost(Post post, ApplicationUser userId);
+        void CreatePost(Post post, string userId);
     }
 }

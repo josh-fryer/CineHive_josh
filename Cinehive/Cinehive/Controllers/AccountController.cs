@@ -17,6 +17,7 @@ namespace Cinehive.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        readonly ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -161,11 +162,24 @@ namespace Cinehive.Controllers
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
                     await roleManager.CreateAsync(new IdentityRole("BasicUser"));
                     await UserManager.AddToRoleAsync(user.Id, "BasicUser");
+                    
+                    
 
+                    
+
+                    
+                    //To sign up as admin ---------------------------------------------------
                     //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
                     //var roleManager = new RoleManager<IdentityRole>(roleStore);
                     //await roleManager.CreateAsync(new IdentityRole("AdminUser"));
                     //await UserManager.AddToRoleAsync(user.Id, "AdminUser");
+
+                    //implement profile creation on register?? ---------------------------------------------------
+                    //HiveData.Models.Domain.UserProfile userProfile = new HiveData.Models.Domain.UserProfile { UserId = user.Id, DateOfBirth = DateTime.Now };
+                    //db.UserProfiles.Add(userProfile);
+                    //db.SaveChanges();
+
+
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     

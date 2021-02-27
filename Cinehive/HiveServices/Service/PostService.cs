@@ -20,11 +20,11 @@ namespace HiveServices.Service
             postDAO = new PostDAO();
         }
 
-        public void CreatePost(Post post, ApplicationUser userId)
+        public void CreatePost(Post post, string userId)
         {
             Post newPost = new Post()
             {
-                UserId = userId,
+                
                 PostContent = post.PostContent,
                 DatePosted = DateTime.Now
             };

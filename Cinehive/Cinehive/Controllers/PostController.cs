@@ -32,10 +32,10 @@ namespace Cinehive.Controllers
         {
             try
             {
-                //ApplicationUser userId = User.Identity.GetUserId();
-                //spostService.CreatePost(post, userId);
+                string userId = User.Identity.GetUserId();
+                postService.CreatePost(post, userId);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             catch
             {

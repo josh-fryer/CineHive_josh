@@ -171,32 +171,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102221250568_initialdatamodel.cs" />
-    <Compile Include="Migrations\202102221250568_initialdatamodel.Designer.cs">
-      <DependentUpon>202102221250568_initialdatamodel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102221331014_newinitialise.cs" />
-    <Compile Include="Migrations\202102221331014_newinitialise.Designer.cs">
-      <DependentUpon>202102221331014_newinitialise.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102221343181_initialiseThree.cs" />
-    <Compile Include="Migrations\202102221343181_initialiseThree.Designer.cs">
-      <DependentUpon>202102221343181_initialiseThree.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102221352290_populate.cs" />
-    <Compile Include="Migrations\202102221352290_populate.Designer.cs">
-      <DependentUpon>202102221352290_populate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102221514092_add-migraton userRole.cs" />
-    <Compile Include="Migrations\202102221514092_add-migraton userRole.Designer.cs">
-      <DependentUpon>202102221514092_add-migraton userRole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102231255372_alterposttable.cs" />
-    <Compile Include="Migrations\202102231255372_alterposttable.Designer.cs">
-      <DependentUpon>202102231255372_alterposttable.cs</DependentUpon>
+    <Compile Include="Migrations\202102272028231_newInitial.cs" />
+    <Compile Include="Migrations\202102272028231_newInitial.Designer.cs">
+      <DependentUpon>202102272028231_newInitial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -262,6 +243,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Post\Create.cshtml" />
+    <Content Include="Views\Profile\Create.cshtml" />
+    <Content Include="Views\Profile\MyProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -291,23 +274,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102221250568_initialdatamodel.resx">
-      <DependentUpon>202102221250568_initialdatamodel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102221331014_newinitialise.resx">
-      <DependentUpon>202102221331014_newinitialise.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102221343181_initialiseThree.resx">
-      <DependentUpon>202102221343181_initialiseThree.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102221352290_populate.resx">
-      <DependentUpon>202102221352290_populate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102221514092_add-migraton userRole.resx">
-      <DependentUpon>202102221514092_add-migraton userRole.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102231255372_alterposttable.resx">
-      <DependentUpon>202102231255372_alterposttable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102272028231_newInitial.resx">
+      <DependentUpon>202102272028231_newInitial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

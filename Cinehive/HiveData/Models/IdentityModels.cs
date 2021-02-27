@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using HiveData.Models.Domain;
+using HiveData.Models;
 
 namespace Cinehive.Models
 {
@@ -26,7 +27,9 @@ namespace Cinehive.Models
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostComment> PostComments { get; set; }
         public DbSet<Message> Messages { get; set; }
-        public DbSet<Request> Requests { get; set; }
+        public DbSet<FriendRequest> Requests { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Friend> Friends { get; set; }
 
         public ApplicationDbContext()
             : base("HiveContext", throwIfV1Schema: false)

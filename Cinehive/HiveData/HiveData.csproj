@@ -78,11 +78,13 @@
     <Compile Include="DAO\PostDAO.cs" />
     <Compile Include="IDAO\IPostDAO.cs" />
     <Compile Include="Models\Follower.cs" />
+    <Compile Include="Models\Friend.cs" />
+    <Compile Include="Models\FriendRequest.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\PostComment.cs" />
-    <Compile Include="Models\Request.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
