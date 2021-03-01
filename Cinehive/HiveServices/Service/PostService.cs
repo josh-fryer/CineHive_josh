@@ -31,6 +31,7 @@ namespace HiveServices.Service
             using (var context = new ApplicationDbContext())
             {
                 postDAO.CreatePost(newPost, context);
+                
             }
         }
     }

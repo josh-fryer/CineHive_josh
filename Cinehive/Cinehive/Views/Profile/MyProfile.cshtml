@@ -4,10 +4,10 @@
     ViewBag.Title = "MyProfile";
 }
 
-<h2>MyProfile</h2>
+<h2>@Model.Firstname's profile</h2>
 
 <div>
-    <h4>UserProfile</h4>
+    <h4>Your Cinehive Profile</h4>
     <hr />
     <dl class="dl-horizontal">
         
@@ -54,6 +54,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProfileId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit Profile", "Edit", new { id = Model.ProfileId }) |   
 </p>

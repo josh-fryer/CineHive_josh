@@ -33,6 +33,7 @@ namespace Cinehive.Controllers
             try
             {
                 string userId = User.Identity.GetUserId();
+                post.UserId = userId;
                 postService.CreatePost(post, userId);
 
                 return RedirectToAction("Index", "Home");

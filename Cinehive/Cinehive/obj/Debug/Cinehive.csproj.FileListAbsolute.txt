@@ -461,5 +461,3 @@ C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\Cinehive\obj\Debug\Ci
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\Cinehive\obj\Debug\Cinehive.csproj.CopyComplete
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\Cinehive\obj\Debug\Cinehive.dll
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\Cinehive\obj\Debug\Cinehive.pdb
-C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\Cinehive\obj\Debug\Cinehive.Migrations.newInitial.resources
-C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\Cinehive\obj\Debug\Cinehive.csproj.GenerateResource.cache

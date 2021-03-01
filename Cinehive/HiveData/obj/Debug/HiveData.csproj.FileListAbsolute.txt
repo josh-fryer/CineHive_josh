@@ -68,3 +68,11 @@ C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Hi
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.csproj.CopyComplete
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.dll
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.pdb
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.Migrations.newInitial.resources
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.Migrations.changedatetimetonullable.resources
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.csproj.GenerateResource.cache
+C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.dll
+C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.dll
+C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveData\bin\Debug\Owin.dll
+C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.xml
+C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.xml
