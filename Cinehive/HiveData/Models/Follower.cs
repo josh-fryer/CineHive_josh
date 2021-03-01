@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HiveData.Models.Domain
+namespace HiveData.Models
 {
     public class Follower
     {

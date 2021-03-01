@@ -4,9 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using Cinehive.HiveData.Repository;
 using Cinehive.Models;
 
-namespace HiveData.Models.Domain
+namespace HiveData.Models
 {
     public class UserProfile
     {
@@ -21,8 +22,5 @@ namespace HiveData.Models.Domain
         public ICollection<Post> Posts { get; set; }
         public ICollection<Friend> Friends { get; set; }
         public virtual ApplicationUser User { get; set; }
-
-
-
     }
 }

@@ -1,7 +1,8 @@
-﻿using Cinehive.Models;
+﻿using Cinehive.HiveData.Repository;
+using Cinehive.Models;
 using HiveData.DAO;
 using HiveData.IDAO;
-using HiveData.Models.Domain;
+using HiveData.Models;
 using HiveServices.IService;
 using System;
 using System.Collections.Generic;
@@ -28,11 +29,19 @@ namespace HiveServices.Service
                 PostContent = post.PostContent,
                 DatePosted = DateTime.Now
             };
-            using (var context = new ApplicationDbContext())
+            using (var context = new CineHiveContext())
             {
-                postDAO.CreatePost(newPost, context);
-                
+                postDAO.CreatePost(newPost, context);             
             }
+        }
+
+        public Post GetPost(int id)
+        {
+            using (var context = new CineHiveContext())
+            {
+                return postDAO.GetPost(id, context);
+            }
+                
         }
     }
 }

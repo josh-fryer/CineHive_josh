@@ -1,5 +1,6 @@
-﻿using Cinehive.Models;
-using HiveData.Models.Domain;
+﻿using Cinehive.HiveData.Repository;
+using Cinehive.Models;
+using HiveData.Models;
 using HiveServices.IService;
 using HiveServices.Service;
 using Microsoft.AspNet.Identity;
@@ -17,7 +18,7 @@ namespace Cinehive.Controllers
     public class ProfileController : Controller
     {
         IProfileService profileService;
-        private readonly ApplicationDbContext context = new ApplicationDbContext();
+        private readonly CineHiveContext context = new CineHiveContext();
         public ProfileController()
         {
             profileService = new ProfileService();

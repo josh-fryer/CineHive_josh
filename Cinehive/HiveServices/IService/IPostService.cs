@@ -1,4 +1,5 @@
-﻿using HiveData.Models.Domain;
+﻿using Cinehive.HiveData.Repository;
+using HiveData.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace HiveServices.IService
     public interface IPostService
     {
         void CreatePost(Post post, string userId);
+        Post GetPost(int id); 
     }
 }

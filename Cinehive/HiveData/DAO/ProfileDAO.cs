@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HiveData.IDAO;
-using HiveData.Models.Domain;
+using HiveData.Models;
 using Cinehive.Models;
+using Cinehive.HiveData.Repository;
 
 namespace HiveData.DAO
 {
     public class ProfileDAO : IProfileDAO
     {
-        ApplicationDbContext Context = new ApplicationDbContext();
-        public void CreateProfile(UserProfile userProfile, ApplicationDbContext context)
+        CineHiveContext Context = new CineHiveContext();
+        public void CreateProfile(UserProfile userProfile, CineHiveContext context)
         {
             context.UserProfiles.Add(userProfile);
         }
@@ -20,6 +21,5 @@ namespace HiveData.DAO
         {
             return Context.UserProfiles.Find(id);
         }
-        
     }
 }

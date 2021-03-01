@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-using Cinehive.Models;
+using Cinehive.HiveData.Repository;
 
-namespace HiveData.Models.Domain
+namespace HiveData.Models
 {
     public class Post
     {

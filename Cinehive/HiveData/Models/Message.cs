@@ -5,8 +5,9 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using Cinehive.Models;
 using System.ComponentModel.DataAnnotations.Schema;
+using Cinehive.HiveData.Repository;
 
-namespace HiveData.Models.Domain
+namespace HiveData.Models
 {
     public class Message
     {

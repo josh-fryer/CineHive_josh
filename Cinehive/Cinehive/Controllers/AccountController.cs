@@ -11,13 +11,14 @@ using Microsoft.Owin.Security;
 using Cinehive.Models;
 using HiveData.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Cinehive.HiveData.Repository;
 
 namespace Cinehive.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        readonly ApplicationDbContext db = new ApplicationDbContext();
+        readonly CineHiveContext db = new CineHiveContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -158,7 +159,7 @@ namespace Cinehive.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
                     await roleManager.CreateAsync(new IdentityRole("BasicUser"));
                     await UserManager.AddToRoleAsync(user.Id, "BasicUser");

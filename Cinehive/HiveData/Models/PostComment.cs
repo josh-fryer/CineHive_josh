@@ -4,9 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using Cinehive.HiveData.Repository;
 using Cinehive.Models;
 
-namespace HiveData.Models.Domain
+namespace HiveData.Models
 {
     public class PostComment
     {

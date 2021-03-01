@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cinehive.HiveData.Repository;
 using Cinehive.Models;
 using HiveData.DAO;
 using HiveData.IDAO;
-using HiveData.Models.Domain;
+using HiveData.Models;
 using HiveServices.IService;
 
 namespace HiveServices.Service
@@ -29,7 +30,7 @@ namespace HiveServices.Service
                 AboutMe = userProfile.AboutMe
 
             };
-            using (var context = new ApplicationDbContext())
+            using (var context = new CineHiveContext())
             {
                 profileDAO.CreateProfile(userProfile, context);
                 context.SaveChanges();

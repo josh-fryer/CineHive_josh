@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cinehive.HiveData.Repository;
 using Cinehive.Models;
 
 namespace HiveData.Models

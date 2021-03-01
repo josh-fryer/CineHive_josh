@@ -1,4 +1,4 @@
-namespace Cinehive.Migrations
+namespace Cinehive.HiveData.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

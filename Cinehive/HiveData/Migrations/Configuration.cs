@@ -1,19 +1,19 @@
-namespace Cinehive.Migrations
+namespace Cinehive.HiveData.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using HiveData.Models.Domain;
+    using Cinehive.HiveData.Repository;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Cinehive.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<CineHiveContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Models.ApplicationDbContext context)
+        protected override void Seed(CineHiveContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -1,5 +1,5 @@
 ﻿using Cinehive.Models;
-using HiveData.Models.Domain;
+using HiveData.Models;
 using HiveServices.IService;
 using HiveServices.Service;
 using Microsoft.AspNet.Identity;
@@ -65,16 +65,17 @@ namespace Cinehive.Controllers
                 return View();
             }
         }
-
+        
+        
         // GET: Posts/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeletePost(int id)
         {
-            return View();
+            return View(postService.GetPost(id));
         }
 
         // POST: Posts/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult DeletePost(Post post)
         {
             try
             {
