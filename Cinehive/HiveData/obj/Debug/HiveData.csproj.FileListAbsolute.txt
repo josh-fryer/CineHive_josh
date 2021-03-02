@@ -83,3 +83,40 @@ E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\HiveData.csproj.CopyComplete
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\HiveData.dll
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\HiveData.pdb
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\HiveData.dll.config
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\HiveData.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\HiveData.pdb
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\EntityFramework.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\Microsoft.Owin.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\Owin.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\System.Web.Helpers.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\System.Web.Mvc.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\System.Web.Razor.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\System.Web.WebPages.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\EntityFramework.xml
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\Microsoft.Owin.xml
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.xml
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\System.Web.Helpers.xml
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\System.Web.Mvc.xml
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\System.Web.Razor.xml
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\System.Web.WebPages.xml
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\obj\Debug\HiveData.csprojAssemblyReference.cache
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.newInitial.resources
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.changedatetimetonullable.resources
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\obj\Debug\HiveData.csproj.GenerateResource.cache
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\obj\Debug\HiveData.csproj.CoreCompileInputs.cache
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\obj\Debug\HiveData.csproj.CopyComplete
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\obj\Debug\HiveData.dll
+C:\Users\Joe\Documents\Testhub\Test\Cinehive\HiveData\obj\Debug\HiveData.pdb
