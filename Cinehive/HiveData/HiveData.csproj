@@ -88,13 +88,13 @@
     <Compile Include="DAO\ProfileDAO.cs" />
     <Compile Include="IDAO\IPostDAO.cs" />
     <Compile Include="IDAO\IProfileDAO.cs" />
-    <Compile Include="Migrations\202102272028231_newInitial.cs" />
-    <Compile Include="Migrations\202102272028231_newInitial.Designer.cs">
-      <DependentUpon>202102272028231_newInitial.cs</DependentUpon>
+    <Compile Include="Migrations\202103021951156_initial.cs" />
+    <Compile Include="Migrations\202103021951156_initial.Designer.cs">
+      <DependentUpon>202103021951156_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102281548467_changedatetimetonullable.cs" />
-    <Compile Include="Migrations\202102281548467_changedatetimetonullable.Designer.cs">
-      <DependentUpon>202102281548467_changedatetimetonullable.cs</DependentUpon>
+    <Compile Include="Migrations\202103021954030_test.cs" />
+    <Compile Include="Migrations\202103021954030_test.Designer.cs">
+      <DependentUpon>202103021954030_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -115,11 +115,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102272028231_newInitial.resx">
-      <DependentUpon>202102272028231_newInitial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102281548467_changedatetimetonullable.resx">
-      <DependentUpon>202102281548467_changedatetimetonullable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103021951156_initial.resx">
+      <DependentUpon>202103021951156_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

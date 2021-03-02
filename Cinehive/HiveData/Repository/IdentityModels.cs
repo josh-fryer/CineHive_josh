@@ -31,7 +31,7 @@ namespace HiveData.Repository
         public DbSet<Friend> Friends { get; set; }
 
         public CineHiveContext() 
-            : base("HiveContext", throwIfV1Schema: false)
+            : base("CineHiveContext", throwIfV1Schema: false)
         {
         }
 
