@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using Cinehive.Models;
 using System.ComponentModel.DataAnnotations.Schema;
-using Cinehive.HiveData.Repository;
+using HiveData.Repository;
 
 namespace HiveData.Models
 {

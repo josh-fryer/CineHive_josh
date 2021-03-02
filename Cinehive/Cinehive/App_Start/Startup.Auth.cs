@@ -6,7 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Cinehive.Models;
-using Cinehive.HiveData.Repository;
+using HiveData.Repository;
 
 namespace Cinehive
 {

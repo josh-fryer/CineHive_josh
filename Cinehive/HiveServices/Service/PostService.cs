@@ -1,8 +1,8 @@
-﻿using Cinehive.HiveData.Repository;
-using Cinehive.Models;
+﻿using Cinehive.Models;
 using HiveData.DAO;
 using HiveData.IDAO;
 using HiveData.Models;
+using HiveData.Repository;
 using HiveServices.IService;
 using System;
 using System.Collections.Generic;
@@ -35,13 +35,30 @@ namespace HiveServices.Service
             }
         }
 
+        public void DeletePost(int id)
+        {
+            using(var context = new CineHiveContext())
+            {
+                Post post = postDAO.GetPost(id, context);
+                postDAO.DeletePost(post, context);
+            }
+        }
+
         public Post GetPost(int id)
         {
             using (var context = new CineHiveContext())
             {
                 return postDAO.GetPost(id, context);
-            }
-                
+            }            
         }
+
+        //public IList<Post> GetPosts(string id)
+        //{
+        //    using (var context = new CineHiveContext())
+        //    {
+        //        return postDAO.GetPosts(id, context);
+        //    }
+        //}
+
     }
 }

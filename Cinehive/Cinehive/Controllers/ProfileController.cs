@@ -1,4 +1,4 @@
-﻿using Cinehive.HiveData.Repository;
+﻿using HiveData.Repository;
 using Cinehive.Models;
 using HiveData.Models;
 using HiveServices.IService;

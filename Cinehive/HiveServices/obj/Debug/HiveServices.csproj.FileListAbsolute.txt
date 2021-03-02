@@ -46,10 +46,10 @@ C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveServices\bin\Debu
 C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveServices\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveServices\bin\Debug\System.Web.Razor.xml
 C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveServices\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\EntityFramework.dll
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\HiveServices.dll.config
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\HiveServices.dll
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\HiveServices.pdb
-E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\EntityFramework.dll
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\EntityFramework.SqlServer.dll
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\HiveData.dll
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.AspNet.Identity.Core.dll

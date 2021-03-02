@@ -1,5 +1,5 @@
-﻿using Cinehive.Models;
-using HiveData.Models;
+﻿using HiveData.Models;
+using HiveData.Repository;
 using HiveServices.IService;
 using HiveServices.Service;
 using Microsoft.AspNet.Identity;
@@ -80,7 +80,7 @@ namespace Cinehive.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                postService.DeletePost(post.PostId);
                 return RedirectToAction("Index");
             }
             catch

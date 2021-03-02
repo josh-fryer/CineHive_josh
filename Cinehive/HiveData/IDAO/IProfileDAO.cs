@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Cinehive.HiveData.Repository;
+using HiveData.Repository;
 using Cinehive.Models;
 using HiveData.Models;
 

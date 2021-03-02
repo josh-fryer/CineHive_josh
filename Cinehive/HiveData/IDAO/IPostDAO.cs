@@ -1,4 +1,4 @@
-﻿using Cinehive.HiveData.Repository;
+﻿using HiveData.Repository;
 using Cinehive.Models;
 using HiveData.Models;
 using System;
@@ -12,7 +12,9 @@ namespace HiveData.IDAO
     public interface IPostDAO
     {
         void CreatePost(Post post, CineHiveContext context);
+        void DeletePost(Post post, CineHiveContext context);
         Post GetPost(int id, CineHiveContext context);
+        //IList<Post> GetPosts(string id, CineHiveContext context);
 
     }
 }

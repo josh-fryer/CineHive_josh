@@ -11,7 +11,7 @@ using Microsoft.Owin.Security;
 using Cinehive.Models;
 using HiveData.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Cinehive.HiveData.Repository;
+using HiveData.Repository;
 
 namespace Cinehive.Controllers
 {

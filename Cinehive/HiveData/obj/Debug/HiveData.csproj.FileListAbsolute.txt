@@ -76,7 +76,6 @@ E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\System.Web.WebPages.xml
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\System.Web.WebPages.Razor.xml
-E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\HiveData.csprojAssemblyReference.cache
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.newInitial.resources
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.changedatetimetonullable.resources
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\HiveData.csproj.GenerateResource.cache

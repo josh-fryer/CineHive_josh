@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using HiveData.IDAO;
 using HiveData.Models;
 using Cinehive.Models;
-using Cinehive.HiveData.Repository;
+using HiveData.Repository;
 
 namespace HiveData.DAO
 {
