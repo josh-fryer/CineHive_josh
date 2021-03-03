@@ -59,6 +59,16 @@ namespace Cinehive.Controllers
             if (ModelState.IsValid)
             {
                 string userid = User.Identity.GetUserId();
+                string filename = string.Empty;
+                string extension = Path.GetExtension(userProfile.ProfilePicture.FileName);
+
+                if (userProfile.ProfilePicture != null)
+                {
+                    filename = userid + DateTime.Now.ToString("dd-MM-yyyy--HH-mm-ss") + extension;
+                    string imagePath = Server.MapPath("~/Content/Img/ProfileImages/");
+                    userProfile.ImagePath = "Content/Img/ProfileImages/" + filename;
+                    userProfile.ProfilePicture.SaveAs(Path.Combine(imagePath, filename));
+                }
                 userProfile.UserId = userid;
                 profileService.CreateProfile(userProfile, userid);
                 return RedirectToAction("MyProfile", "Profile");

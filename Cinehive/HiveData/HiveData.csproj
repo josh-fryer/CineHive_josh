@@ -58,6 +58,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -88,13 +90,9 @@
     <Compile Include="DAO\ProfileDAO.cs" />
     <Compile Include="IDAO\IPostDAO.cs" />
     <Compile Include="IDAO\IProfileDAO.cs" />
-    <Compile Include="Migrations\202103021951156_initial.cs" />
-    <Compile Include="Migrations\202103021951156_initial.Designer.cs">
-      <DependentUpon>202103021951156_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103021954030_test.cs" />
-    <Compile Include="Migrations\202103021954030_test.Designer.cs">
-      <DependentUpon>202103021954030_test.cs</DependentUpon>
+    <Compile Include="Migrations\202103031708562_initial.cs" />
+    <Compile Include="Migrations\202103031708562_initial.Designer.cs">
+      <DependentUpon>202103031708562_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -115,8 +113,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202103021951156_initial.resx">
-      <DependentUpon>202103021951156_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103031708562_initial.resx">
+      <DependentUpon>202103031708562_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

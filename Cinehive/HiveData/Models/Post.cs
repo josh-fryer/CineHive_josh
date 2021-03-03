@@ -11,8 +11,7 @@ namespace HiveData.Models
     public class Post
     {
         [Key]
-        public int PostId { get; set; }
-        [ForeignKey("User")]
+        public int PostId { get; set; }       
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
         public string PostContent { get; set; }

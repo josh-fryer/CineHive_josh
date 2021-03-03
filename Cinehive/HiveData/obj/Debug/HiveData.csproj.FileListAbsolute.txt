@@ -142,5 +142,5 @@ C:\Users\Joe\Documents\Github\Cinehive\Cinehive\HiveData\bin\Debug\System.Web.Ra
 C:\Users\Joe\Documents\Github\Cinehive\Cinehive\HiveData\bin\Debug\System.Web.WebPages.xml
 C:\Users\Joe\Documents\Github\Cinehive\Cinehive\HiveData\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\Joe\Documents\Github\Cinehive\Cinehive\HiveData\bin\Debug\System.Web.WebPages.Razor.xml
-C:\Users\Joe\Documents\Github\Cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.initial.resources
-C:\Users\Joe\Documents\Github\Cinehive\Cinehive\HiveData\obj\Debug\HiveData.csproj.GenerateResource.cache
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.initial.resources
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.csproj.GenerateResource.cache
