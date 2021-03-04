@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using System.Web;
 
 namespace HiveData.DAO
 {
@@ -29,10 +32,13 @@ namespace HiveData.DAO
             return context.Posts.Find(id);
         }
 
-        //public IList<Post> GetPosts(string id, CineHiveContext context)
-        //{
-        //    //UserProfile user = GetUser(id);
-        //    //return user.Posts.ToList();
-        //}
+        public IList<Post> GetCurrUserPosts(CineHiveContext context)
+        {
+            // gets current user id
+            string userid = HttpContext.Current.User.Identity.GetUserId();
+            //UserProfile user = context.UserProfiles.First(x => x.UserId == userid);
+            //return user.Posts.Where(p => p.UserId == userid).ToList();
+            return context.Posts.Where(p => p.UserId == userid).ToList();
+        }
     }
 }

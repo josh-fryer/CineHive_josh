@@ -10,9 +10,9 @@ namespace HiveServices.IService
 {
     public interface IPostService
     {
-        void CreatePost(Post post, string userId);
+        void CreatePost(Post post);
         void DeletePost(int id);
         Post GetPost(int id);
-        //IList<Post> GetPosts(string id);
+        IList<Post> GetCurrUserPosts();
     }
 }

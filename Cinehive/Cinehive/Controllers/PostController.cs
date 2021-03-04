@@ -32,9 +32,10 @@ namespace Cinehive.Controllers
         {
             try
             {
-                string userId = User.Identity.GetUserId();
-                post.UserId = userId;
-                postService.CreatePost(post, userId);
+                // gets logged in user i
+                //string userId = User.Identity.GetUserId();
+                //post.UserId = userId;
+                postService.CreatePost(post);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -65,8 +66,7 @@ namespace Cinehive.Controllers
                 return View();
             }
         }
-        
-        
+             
         // GET: Posts/Delete/5
         public ActionResult DeletePost(int id)
         {
@@ -87,6 +87,34 @@ namespace Cinehive.Controllers
             {
                 return View();
             }
+        }
+
+        // GET: Posts/Edit/5
+        public ActionResult ViewPosts(int id)
+        {
+            return View();
+        }
+
+        // POST: Posts/Edit/5
+        [HttpPost]
+        public ActionResult ViewPosts(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // get posts for userId
+        public ActionResult GetCurrUserPosts()
+        {
+            return View(postService.GetCurrUserPosts());
         }
     }
 }

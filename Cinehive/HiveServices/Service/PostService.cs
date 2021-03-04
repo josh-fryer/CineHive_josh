@@ -9,6 +9,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using System.Security.Claims;
+using System.Web.Mvc;
+using System.Web;
 
 namespace HiveServices.Service
 {
@@ -21,11 +25,12 @@ namespace HiveServices.Service
             postDAO = new PostDAO();
         }
 
-        public void CreatePost(Post post, string userId)
+        public void CreatePost(Post post)
         {
+            string userId = HttpContext.Current.User.Identity.GetUserId();
             Post newPost = new Post()
             {
-                
+                UserId = userId,
                 PostContent = post.PostContent,
                 DatePosted = DateTime.Now
             };
@@ -52,13 +57,13 @@ namespace HiveServices.Service
             }            
         }
 
-        //public IList<Post> GetPosts(string id)
-        //{
-        //    using (var context = new CineHiveContext())
-        //    {
-        //        return postDAO.GetPosts(id, context);
-        //    }
-        //}
+        public IList<Post> GetCurrUserPosts()
+        {
+            using (var context = new CineHiveContext())
+            {
+                return postDAO.GetCurrUserPosts(context);
+            }
+        }
 
     }
 }

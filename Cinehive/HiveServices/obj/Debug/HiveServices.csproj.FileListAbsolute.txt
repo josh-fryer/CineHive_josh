@@ -130,3 +130,17 @@ C:\Users\Joe\Documents\Github\Cinehive\Cinehive\HiveServices\bin\Debug\System.We
 C:\Users\Joe\Documents\Github\Cinehive\Cinehive\HiveServices\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\Joe\Documents\Github\Cinehive\Cinehive\HiveServices\bin\Debug\System.Web.Razor.xml
 C:\Users\Joe\Documents\Github\Cinehive\Cinehive\HiveServices\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.Owin.Security.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Newtonsoft.Json.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\System.Web.Helpers.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\System.Web.Providers.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.Owin.Security.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\Newtonsoft.Json.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\System.Web.Helpers.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\System.Web.Providers.xml
