@@ -18,7 +18,7 @@ namespace Cinehive.Controllers
     public class ProfileController : Controller
     {
         IProfileService profileService;
-        
+
         private readonly CineHiveContext context = new CineHiveContext();
 
         public ProfileController()
@@ -26,7 +26,6 @@ namespace Cinehive.Controllers
             profileService = new ProfileService();
 
         }
-        // GET: Profile
         [Authorize]
         public ActionResult Index()
         {
@@ -59,15 +58,10 @@ namespace Cinehive.Controllers
             if (ModelState.IsValid)
             {
                 string userid = User.Identity.GetUserId();
-                string filename = string.Empty;
-                string extension = Path.GetExtension(userProfile.ProfilePicture.FileName);
 
                 if (userProfile.ProfilePicture != null)
                 {
-                    filename = userid + DateTime.Now.ToString("dd-MM-yyyy--HH-mm-ss") + extension;
-                    string imagePath = Server.MapPath("~/Content/Img/ProfileImages/");
-                    userProfile.ImagePath = "Content/Img/ProfileImages/" + filename;
-                    userProfile.ProfilePicture.SaveAs(Path.Combine(imagePath, filename));
+                    profileService.UploadService(userProfile);
                 }
                 userProfile.UserId = userid;
                 profileService.CreateProfile(userProfile, userid);
@@ -107,16 +101,26 @@ namespace Cinehive.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Firstname,Lastname,Gender,DateOfBirth,AboutMe")] UserProfile userProfile)
+        public ActionResult Edit([Bind(Include = "Firstname, Lastname, Gender, DateOfBirth, AboutMe, ProfilePicture, ImagePath")] UserProfile userProfile)
         {
             string userid = User.Identity.GetUserId();
             var GetProfile = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
             int id = GetProfile;
             if (ModelState.IsValid)
             {
+
+                if (userProfile.ProfilePicture != null)
+                {
+                    profileService.UploadService(userProfile);
+                }
+
                 userProfile.UserId = userid;
                 userProfile.ProfileId = id;
                 context.Entry(userProfile).State = EntityState.Modified;
+                if (userProfile.ProfilePicture == null)
+                {
+                    context.Entry(userProfile).Property(x => x.ImagePath).IsModified = false;
+                }
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -11,7 +11,7 @@ namespace HiveServices.IService
     public interface IProfileService
     {
         void CreateProfile(UserProfile userProfile, string id);
-
         UserProfile ViewProfile(int? id);
+        void UploadService(UserProfile userProfile);
     }
 }

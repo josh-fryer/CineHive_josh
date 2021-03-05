@@ -9,6 +9,13 @@ using HiveData.DAO;
 using HiveData.IDAO;
 using HiveData.Models;
 using HiveServices.IService;
+using System.IO;
+using Microsoft.AspNet.Identity;
+using HiveServices.Service;
+using System.Data.Entity;
+using System.Net;
+using System.Web;
+
 
 namespace HiveServices.Service
 {
@@ -41,5 +48,17 @@ namespace HiveServices.Service
             profileDAO = new ProfileDAO();
             return profileDAO.ViewProfile(id);
         }
+
+        public void UploadService(UserProfile userProfile)
+        {
+            string userid = HttpContext.Current.User.Identity.GetUserId();
+            string extension = Path.GetExtension(userProfile.ProfilePicture.FileName);
+            string filename = string.Empty;
+            filename = userid + DateTime.Now.ToString("dd-MM-yyyy--HH-mm-ss") + extension;
+            string imagePath = System.Web.HttpContext.Current.Server.MapPath("~/Content/Img/ProfileImages/");
+            userProfile.ImagePath = "Content/Img/ProfileImages/" + filename;
+            userProfile.ProfilePicture.SaveAs(Path.Combine(imagePath, filename));
+        }
+
     }
 }

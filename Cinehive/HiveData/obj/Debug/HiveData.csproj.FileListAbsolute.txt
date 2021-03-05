@@ -39,8 +39,6 @@ C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Hi
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.csproj.CopyComplete
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.dll
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.pdb
-C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.Migrations.newInitial.resources
-C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.Migrations.changedatetimetonullable.resources
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.csproj.GenerateResource.cache
 C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.dll
 C:\Users\joewi\OneDrive\Documents\GitHub\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.dll
@@ -152,3 +150,12 @@ E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Newtonsoft.Json.xml
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Newtonsoft.Json.dll
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Newtonsoft.Json.xml
+C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.initial.resources
