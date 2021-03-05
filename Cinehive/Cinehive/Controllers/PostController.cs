@@ -13,7 +13,7 @@ namespace Cinehive.Controllers
 {
     public class PostController : Controller
     {
-        IPostService postService;
+        private IPostService postService;
 
         public PostController()
         {
@@ -66,44 +66,19 @@ namespace Cinehive.Controllers
                 return View();
             }
         }
-             
-        // GET: Posts/Delete/5
+        
         public ActionResult DeletePost(int id)
         {
             return View(postService.GetPost(id));
         }
 
-        // POST: Posts/Delete/5
         [HttpPost]
         public ActionResult DeletePost(Post post)
         {
             try
             {
-                // TODO: Add delete logic here
                 postService.DeletePost(post.PostId);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Posts/Edit/5
-        public ActionResult ViewPosts(int id)
-        {
-            return View();
-        }
-
-        // POST: Posts/Edit/5
-        [HttpPost]
-        public ActionResult ViewPosts(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                return RedirectToAction("GetCurrUserPosts");
             }
             catch
             {

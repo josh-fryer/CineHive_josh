@@ -240,9 +240,9 @@
     <Content Include="Views\Profile\Create.cshtml" />
     <Content Include="Views\Profile\MyProfile.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
-    <Content Include="Views\Post\DeletePost.cshtml" />
     <Content Include="Views\Profile\ViewProfile.cshtml" />
     <Content Include="Views\Post\GetCurrUserPosts.cshtml" />
+    <Content Include="Views\Post\DeletePost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
