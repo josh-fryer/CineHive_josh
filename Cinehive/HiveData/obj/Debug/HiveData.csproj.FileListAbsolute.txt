@@ -115,3 +115,15 @@ C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Mi
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Newtonsoft.Json.xml
 C:\Users\joewi\OneDrive\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.initial.resources
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.imageadd.resources
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.stringlist.resources
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.nahman.resources
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.cmonmanimagesnthat.resources

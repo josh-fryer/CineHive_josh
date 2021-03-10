@@ -1,24 +1,20 @@
-﻿using Cinehive.Models;
-using HiveData.Models;
+﻿using HiveData.Models;
 using HiveServices.IService;
 using HiveServices.Service;
 using Microsoft.AspNet.Identity;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using HiveData.Repository;
+using System.Threading.Tasks;
 
 namespace Cinehive.Controllers
 {
     public class ProfileController : Controller
     {
         IProfileService profileService;
-
         private readonly CineHiveContext context = new CineHiveContext();
 
         public ProfileController()
@@ -53,43 +49,46 @@ namespace Cinehive.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UserProfile userProfile)
+        public ActionResult Create(UserProfile userProfile, Image image)
         {
-            if (ModelState.IsValid)
+            try
             {
-                string userid = User.Identity.GetUserId();
-
-                if (userProfile.ProfilePicture != null)
+                if (ModelState.IsValid)
                 {
-                    profileService.UploadService(userProfile);
-                }
-                userProfile.UserId = userid;
-                profileService.CreateProfile(userProfile, userid);
-                return RedirectToAction("MyProfile", "Profile");
-            }
+                    string userid = User.Identity.GetUserId();
 
-            return View(userProfile);
+                    if (userProfile.ProfilePicture != null)
+                    {
+                        profileService.UploadService(userProfile, image);
+                    }
+                    userProfile.UserId = userid;
+                    profileService.CreateProfile(userProfile, userid);
+                    return RedirectToAction("MyProfile", "Profile");
+                }
+
+                return View(userProfile);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         [Authorize]
         public ActionResult MyProfile(int? id)
         {
-            string userid = User.Identity.GetUserId();
-            var GetProfile = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
-            id = GetProfile;
+            profileService.GetUserProfile(id);
 
-            profileService.ViewProfile(id);
-            if (profileService.ViewProfile(id) == null)
+            if (profileService.GetUserProfile(id) == null)
             {
                 return HttpNotFound();
             }
-            return View(profileService.ViewProfile(id));
+            return View(profileService.GetUserProfile(id));
         }
         [Authorize]
         public ActionResult Edit(int? id)
         {
-            string userid = User.Identity.GetUserId();
-            var GetProfile = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
-            id = GetProfile;
+            profileService.GetUserProfile(id);
 
             UserProfile userProfile = context.UserProfiles.Find(id);
             if (userProfile == null)
@@ -101,7 +100,7 @@ namespace Cinehive.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Firstname, Lastname, Gender, DateOfBirth, AboutMe, ProfilePicture, ImagePath")] UserProfile userProfile)
+        public ActionResult Edit(UserProfile userProfile, Image image) //todo: add to service and data
         {
             string userid = User.Identity.GetUserId();
             var GetProfile = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
@@ -109,18 +108,21 @@ namespace Cinehive.Controllers
             if (ModelState.IsValid)
             {
 
-                if (userProfile.ProfilePicture != null)
+                if (userProfile.ProfilePicture != null) 
                 {
-                    profileService.UploadService(userProfile);
+                    profileService.UploadService(userProfile, image);
                 }
 
                 userProfile.UserId = userid;
                 userProfile.ProfileId = id;
+
                 context.Entry(userProfile).State = EntityState.Modified;
+
                 if (userProfile.ProfilePicture == null)
                 {
                     context.Entry(userProfile).Property(x => x.ImagePath).IsModified = false;
                 }
+
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -141,6 +143,34 @@ namespace Cinehive.Controllers
             return View(profileService.ViewProfile(id));
 
         }
+        [Authorize]
+        public async Task<ActionResult> Album() //todo: add to service and data
+        {
+            string userid = User.Identity.GetUserId();
+            var images = from m in context.Images
+                         select m;
 
+            images = images.Where(s => s.UserId == userid);
+
+            return View(await images.ToListAsync());
+
+        }
+        [Authorize]
+        public ActionResult MakeProfilePicture(Image image) //todo: add to service and data
+        {
+            string userid = User.Identity.GetUserId();
+            var GetProfile = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
+            int id = GetProfile;
+
+            UserProfile userProfile = context.UserProfiles.Find(id);
+
+
+            userProfile.ImagePath = image.ImagePath;
+            
+            context.Entry(userProfile).State = EntityState.Modified;
+            context.SaveChanges();
+
+            return RedirectToAction("MyProfile");
+        }
     }
 }

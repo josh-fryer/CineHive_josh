@@ -13,5 +13,6 @@ namespace HiveData.IDAO
     {
         void CreateProfile(UserProfile userProfile, CineHiveContext context);
         UserProfile ViewProfile(int? id);
+        UserProfile GetUserProfile(int? id);
     }
 }

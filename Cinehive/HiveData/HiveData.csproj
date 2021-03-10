@@ -106,11 +106,28 @@
     <Compile Include="Migrations\202103031708562_initial.Designer.cs">
       <DependentUpon>202103031708562_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103091443016_imageadd.cs" />
+    <Compile Include="Migrations\202103091443016_imageadd.Designer.cs">
+      <DependentUpon>202103091443016_imageadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103091712038_stringlist.cs" />
+    <Compile Include="Migrations\202103091712038_stringlist.Designer.cs">
+      <DependentUpon>202103091712038_stringlist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103091722369_nahman.cs" />
+    <Compile Include="Migrations\202103091722369_nahman.Designer.cs">
+      <DependentUpon>202103091722369_nahman.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103091901136_cmonmanimagesnthat.cs" />
+    <Compile Include="Migrations\202103091901136_cmonmanimagesnthat.Designer.cs">
+      <DependentUpon>202103091901136_cmonmanimagesnthat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Follower.cs" />
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\FriendRequest.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Repository\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
@@ -119,6 +136,7 @@
     <Compile Include="Models\PostComment.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\DisplayImagesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -127,6 +145,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202103031708562_initial.resx">
       <DependentUpon>202103031708562_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103091443016_imageadd.resx">
+      <DependentUpon>202103091443016_imageadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103091712038_stringlist.resx">
+      <DependentUpon>202103091712038_stringlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103091722369_nahman.resx">
+      <DependentUpon>202103091722369_nahman.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103091901136_cmonmanimagesnthat.resx">
+      <DependentUpon>202103091901136_cmonmanimagesnthat.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,6 +7,9 @@ using HiveData.IDAO;
 using HiveData.Models;
 using Cinehive.Models;
 using HiveData.Repository;
+using System.Web;
+using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 
 namespace HiveData.DAO
 {
@@ -21,5 +24,13 @@ namespace HiveData.DAO
         {
             return Context.UserProfiles.Find(id);
         }
+        public UserProfile GetUserProfile(int? id)
+        {
+            string userid = HttpContext.Current.User.Identity.GetUserId();
+            var GetProfile = Context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
+            id = GetProfile;
+            return Context.UserProfiles.Find(id);
+        }
+
     }
 }

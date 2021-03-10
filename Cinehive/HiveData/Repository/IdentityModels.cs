@@ -29,6 +29,7 @@ namespace HiveData.Repository
         public DbSet<FriendRequest> Requests { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Friend> Friends { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         public CineHiveContext() 
             : base("CineHiveContext", throwIfV1Schema: false)
