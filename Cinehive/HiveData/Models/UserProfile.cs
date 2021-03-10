@@ -22,6 +22,7 @@ namespace HiveData.Models
         public string AboutMe { get; set; }
         public ICollection<Post> Posts { get; set; }
         public ICollection<Friend> Friends { get; set; }
+        public ICollection<FaveGenre> FavouriteGenres { get; set; }
         public virtual ApplicationUser User { get; set; }
         [NotMapped]
         public HttpPostedFileBase ProfilePicture { get; set; }

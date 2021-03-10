@@ -1,5 +1,4 @@
-﻿using Cinehive.Models;
-using HiveData.DAO;
+﻿using HiveData.DAO;
 using HiveData.IDAO;
 using HiveData.Models;
 using HiveData.Repository;

@@ -118,15 +118,17 @@
     <Compile Include="Migrations\202103091722369_nahman.Designer.cs">
       <DependentUpon>202103091722369_nahman.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202103091901136_cmonmanimagesnthat.cs" />
-    <Compile Include="Migrations\202103091901136_cmonmanimagesnthat.Designer.cs">
-      <DependentUpon>202103091901136_cmonmanimagesnthat.cs</DependentUpon>
+    <Compile Include="Migrations\202103102324377_AddFilmGenre.cs" />
+    <Compile Include="Migrations\202103102324377_AddFilmGenre.Designer.cs">
+      <DependentUpon>202103102324377_AddFilmGenre.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FaveGenre.cs" />
     <Compile Include="Models\Follower.cs" />
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\FriendRequest.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Repository\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -155,8 +157,8 @@
     <EmbeddedResource Include="Migrations\202103091722369_nahman.resx">
       <DependentUpon>202103091722369_nahman.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103091901136_cmonmanimagesnthat.resx">
-      <DependentUpon>202103091901136_cmonmanimagesnthat.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103102324377_AddFilmGenre.resx">
+      <DependentUpon>202103102324377_AddFilmGenre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
