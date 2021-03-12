@@ -95,6 +95,14 @@ namespace Cinehive.Controllers
             {
                 return HttpNotFound();
             }
+            //#### my test imp ######           
+            //var genreList = context.Genres.Select(x => new SelectListItem()
+            //{
+            //    Text = x.Name,
+            //    Value = x.ID.ToString()
+            //}).ToList();
+            //userProfile.Genres = genreList;
+            //#########################
             return View(userProfile);
         }
 
@@ -105,7 +113,7 @@ namespace Cinehive.Controllers
             string userid = User.Identity.GetUserId();
             var GetProfile = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
             int id = GetProfile;
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // if there are no form errors
             {
 
                 if (userProfile.ProfilePicture != null) 

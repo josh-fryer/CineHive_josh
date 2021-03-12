@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using HiveData.Repository;
 using Cinehive.Models;
+using System.Web.Mvc;
 
 namespace HiveData.Models
 {
@@ -26,5 +27,9 @@ namespace HiveData.Models
         public virtual ApplicationUser User { get; set; }
         [NotMapped]
         public HttpPostedFileBase ProfilePicture { get; set; }
+
+        // for checkbox list of favourite genres:
+        [NotMapped]
+        public IList<SelectListItem> Genres { get; set; }
     }
 }

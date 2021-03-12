@@ -122,6 +122,10 @@
     <Compile Include="Migrations\202103102324377_AddFilmGenre.Designer.cs">
       <DependentUpon>202103102324377_AddFilmGenre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103122021583_EditUserProfile.cs" />
+    <Compile Include="Migrations\202103122021583_EditUserProfile.Designer.cs">
+      <DependentUpon>202103122021583_EditUserProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FaveGenre.cs" />
@@ -159,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103102324377_AddFilmGenre.resx">
       <DependentUpon>202103102324377_AddFilmGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103122021583_EditUserProfile.resx">
+      <DependentUpon>202103122021583_EditUserProfile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
