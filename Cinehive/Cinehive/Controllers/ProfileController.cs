@@ -25,7 +25,7 @@ namespace Cinehive.Controllers
         [Authorize]
         public ActionResult Index()
         {
-
+            
             string userid = User.Identity.GetUserId();
 
             if (!context.UserProfiles.Any(x => x.UserId == userid))
@@ -163,7 +163,6 @@ namespace Cinehive.Controllers
             int id = GetProfile;
 
             UserProfile userProfile = context.UserProfiles.Find(id);
-
 
             userProfile.ImagePath = image.ImagePath;
             
