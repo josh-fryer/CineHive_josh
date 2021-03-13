@@ -574,3 +574,9 @@ C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\Cinehive\bin\PagedList.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\Cinehive\bin\PagedList.Mvc.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\Cinehive\bin\PagedList.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\Cinehive\bin\PagedList.Mvc.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\Cinehive\bin\AutoMapper.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\Cinehive\bin\PagedList.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\Cinehive\bin\PagedList.Mvc.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\Cinehive\bin\AutoMapper.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\Cinehive\bin\PagedList.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\Cinehive\bin\PagedList.Mvc.xml

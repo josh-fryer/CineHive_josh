@@ -20,10 +20,12 @@ namespace HiveData.DAO
         {
             context.UserProfiles.Add(userProfile);
         }
+
         public UserProfile ViewProfile(int? id)
         {
             return Context.UserProfiles.Find(id);
         }
+
         public UserProfile GetUserProfile(int? id)
         {
             string userid = HttpContext.Current.User.Identity.GetUserId();
@@ -32,5 +34,23 @@ namespace HiveData.DAO
             return Context.UserProfiles.Find(id);
         }
 
+        public void ClearFaveGenres(string userId, CineHiveContext context)
+        {
+            IList<FaveGenre> faveGenres = 
+                context.FaveGenres.Where(x => x.UserId == userId).ToList();
+            context.FaveGenres.RemoveRange(faveGenres);
+            context.SaveChanges();
+        }
+
+        public void AddFaveGenre(int genreId, string userId, CineHiveContext context)
+        {
+            FaveGenre newFaveGenre = new FaveGenre()
+            {
+                UserId = userId,
+                GenreId = genreId
+            };
+            context.FaveGenres.Add(newFaveGenre);
+            context.SaveChanges();
+        }
     }
 }

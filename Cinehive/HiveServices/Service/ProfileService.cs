@@ -8,7 +8,6 @@ using System.IO;
 using Microsoft.AspNet.Identity;
 using System.Web;
 
-
 namespace HiveServices.Service
 {
     public class ProfileService : IProfileService
@@ -68,7 +67,23 @@ namespace HiveServices.Service
         {
             profileDAO = new ProfileDAO();
             return profileDAO.GetUserProfile(id);
+        }
 
+        public void ClearFaveGenres(string userId)
+        {
+            // clear all favourite genres
+            using (var context = new CineHiveContext())
+            {
+                profileDAO.ClearFaveGenres(userId, context);
+            }
+        }
+
+        public void AddFaveGenre(int genreId, string userId)
+        {
+            using (var context = new CineHiveContext())
+            {
+                profileDAO.AddFaveGenre(genreId, userId, context);
+            }
         }
 
     }

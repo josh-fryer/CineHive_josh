@@ -74,6 +74,7 @@ namespace Cinehive.Controllers
                 throw;
             }
         }
+
         [Authorize]
         public ActionResult MyProfile(int? id)
         {
@@ -85,6 +86,7 @@ namespace Cinehive.Controllers
             }
             return View(profileService.GetUserProfile(id));
         }
+
         [Authorize]
         public ActionResult Edit(int? id)
         {
@@ -95,13 +97,13 @@ namespace Cinehive.Controllers
             {
                 return HttpNotFound();
             }
-            //#### my test imp ######           
-            //var genreList = context.Genres.Select(x => new SelectListItem()
-            //{
-            //    Text = x.Name,
-            //    Value = x.ID.ToString()
-            //}).ToList();
-            //userProfile.Genres = genreList;
+            //#### my test genres to checkbox list: ######           
+            var genreList = context.Genres.Select(x => new SelectListItem()
+            {
+                Text = x.Name,
+                Value = x.ID.ToString()
+            }).ToList();
+            userProfile.Genres = genreList;
             //#########################
             return View(userProfile);
         }
@@ -115,7 +117,6 @@ namespace Cinehive.Controllers
             int id = GetProfile;
             if (ModelState.IsValid) // if there are no form errors
             {
-
                 if (userProfile.ProfilePicture != null) 
                 {
                     profileService.UploadService(userProfile, image);
@@ -129,6 +130,19 @@ namespace Cinehive.Controllers
                 if (userProfile.ProfilePicture == null)
                 {
                     context.Entry(userProfile).Property(x => x.ImagePath).IsModified = false;
+                }
+
+                // CLEAR fave genres then add back. ensures no duplicates or more than limit.
+                // probably a better way to do this.
+                profileService.ClearFaveGenres(userid);
+                // check which genres are selected:
+                foreach (var g in userProfile.Genres)
+                {
+                    if(g.Selected)
+                    {                     
+                        // add selected genre to FaveGenre table
+                        profileService.AddFaveGenre(int.Parse(g.Value), userid);
+                    }
                 }
 
                 context.SaveChanges();
@@ -151,6 +165,7 @@ namespace Cinehive.Controllers
             return View(profileService.ViewProfile(id));
 
         }
+
         [Authorize]
         public async Task<ActionResult> Album() //todo: add to service and data
         {

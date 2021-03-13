@@ -93,3 +93,5 @@ C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.cspr
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.csproj.CopyComplete
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.pdb
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\HiveData.csprojAssemblyReference.cache
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.EditUserProfile.resources

@@ -28,6 +28,7 @@ namespace Cinehive.Controllers
 
             return View(Posts.ToPagedList(pageNumber, pageSize));
         }
+
         public ActionResult GiveAward(int id)
         {
             Post post = context.Posts.Find(id);
