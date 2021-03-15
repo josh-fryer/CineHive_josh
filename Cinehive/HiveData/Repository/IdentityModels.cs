@@ -32,6 +32,7 @@ namespace HiveData.Repository
         public DbSet<Image> Images { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<FaveGenre> FaveGenres { get; set; }
+        public DbSet<Like> Likes { get; set; }
 
         public CineHiveContext() 
             : base("CineHiveContext", throwIfV1Schema: false)

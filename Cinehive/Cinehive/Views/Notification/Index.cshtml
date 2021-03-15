@@ -1,0 +1,44 @@
+﻿@model IEnumerable<HiveData.Models.Notification>
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Index";
+    var userid = User.Identity.GetUserId();
+}
+
+<h2>Notifications</h2>
+<hr />
+<br />
+@if (Model.Any(i => i != null))
+{
+    foreach (var item in Model)
+    {
+        <div class="container">
+            <div class="well">
+                <div class="media">
+                    <div class="media-body">
+                        <h4 class="media-heading">@item.SenderId</h4>
+                        <p>
+                            @item.Message
+                        </p>
+                        <ul class="list-inline list-unstyled">
+                            <li> @item.DateReceived </li>
+                        </ul>
+                        <ul class="list-inline list-unstyled">
+                            <li>@Html.ActionLink("Delete", "DeleteNotification", new { Id = item.Id })</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+}
+else
+{
+    <p>No new notifications</p>
+
+}
+         
+

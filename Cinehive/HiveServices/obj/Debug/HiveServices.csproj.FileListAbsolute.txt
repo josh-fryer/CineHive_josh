@@ -61,6 +61,8 @@ C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Microsoft
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.Web.Infrastructure.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Owin.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\PagedList.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\PagedList.Mvc.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\System.Web.Helpers.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\System.Web.Mvc.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\System.Web.Providers.dll
@@ -80,6 +82,8 @@ C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Microsoft
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\PagedList.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\PagedList.Mvc.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\System.Web.Helpers.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\System.Web.Mvc.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\bin\Debug\System.Web.Providers.xml

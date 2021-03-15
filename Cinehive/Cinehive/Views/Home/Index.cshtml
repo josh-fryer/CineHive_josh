@@ -1,48 +1,83 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@model HiveData.ViewModels.PostFeedViewModel
+@using Microsoft.AspNet.Identity;
+@using PagedList.Mvc;
+@using HiveData.Repository;
+    @{
+        ViewBag.Title = "Home Page";
+        string userid = User.Identity.GetUserId();
+        int postid = 0;
+    }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-@if (HttpContext.Current.User.IsInRole("BasicUser"))
-{
- <table class="table">
-        <tr>
-            <th>
-                Test Buttons/Links
-            </th>
-        </tr>   
-        <tr>
-            <td>
-                @Html.ActionLink("Create Post", "Create", "Post")
-            </td>
-            <td>
-                @Html.ActionLink("Get Current Users Posts", "GetCurrUserPosts", "Post")
-            </td>
-        </tr>
- </table>
-}
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+    @if (HttpContext.Current.User.IsInRole("BasicUser"))
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    Test Buttons/Links
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.ActionLink("Create Post", "Create", "Post")
+                </td>
+                <td>
+                    @Html.ActionLink("Get Current Users Posts", "GetCurrUserPosts", "Post")
+                </td>
+                <td>
+                    @Html.ActionLink("Send Notification to self", "TestSendNotification", "Notification")
+                </td>
+            </tr>
+        </table>
+    }
+
+    <h2>Home Feed</h2>
+
+    @foreach (var item in Model.PostList)
+    {
+
+        <div class="container">
+            <div class="well">
+                <div class="media">
+                    <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = item.ProfileId })" )">
+                        <img src="~/@Model.GetUserPicture(postid = item.ProfileId)" width="140" height="140" />
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">@Html.ActionLink(@Model.GetFirstName(postid = item.ProfileId) + " " + Model.GetLastName(postid = item.ProfileId), "ViewProfile", "Profile", new { id = item.ProfileId }, new { })</h4>
+                        <p>
+                            @item.PostContent
+                        </p>
+                        <ul class="list-inline list-unstyled">
+                            <li> @item.DatePosted </li>
+                            <li>|</li>
+                            @if (item.Awards < 2)
+                            {
+                                <li> @item.Awards Award</li>
+                            }
+                            else
+                            {
+                                <li> @item.Awards Awards</li>
+                            }
+                        </ul>
+                        <ul class="list-inline list-unstyled">
+                            <li>@Html.ActionLink("Award", "GiveAward","Post", new { Id = item.PostId },new { })</li>
+                            <li>|</li>
+                            <li>@Html.ActionLink("Comment", "")
+                            <li>|</li>
+                            <li>@Html.ActionLink("Share", "")</li>
+                            <li>|</li>
+                            @if (userid == item.UserId)
+                            {
+                                <li>@Html.ActionLink("Remove", "DeletePost", "Post", new { id = item.PostId })</li>
+                                <li>|</li>
+                                <li>@Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId })</li>
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+    Page @(Model.PostList.PageCount < Model.PostList.PageNumber ? 0 : Model.PostList.PageNumber) of @Model.PostList.PageCount
+    @Html.PagedListPager(Model.PostList, page => Url.Action("Index", new { page }))

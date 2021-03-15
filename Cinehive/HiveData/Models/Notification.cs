@@ -18,6 +18,7 @@ namespace HiveData.Models
         public string ReceiverId { get; set; }
         public DateTime DateReceived { get; set; }
         public bool IsRead { get; set; }
+        public string Message { get; set; }
         public virtual ApplicationUser User { get; set; }
         public virtual ApplicationUser UserTwo { get; set; }
 

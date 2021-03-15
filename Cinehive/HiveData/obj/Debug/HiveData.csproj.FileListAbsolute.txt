@@ -45,6 +45,8 @@ E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\HiveData.dll
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\HiveData.pdb
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.AddFilmGenre.resources
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\HiveData.csprojAssemblyReference.cache
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.EditUserProfile.resources
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\HiveData.dll.config
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\HiveData.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\HiveData.pdb
@@ -53,13 +55,23 @@ C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\EntityFramewo
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.Cookies.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.TeamFoundation.Common.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.VisualStudio.Services.Common.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.VisualStudio.Services.WebApi.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Web.Infrastructure.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Owin.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\PagedList.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\PagedList.Mvc.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\System.Net.Http.Formatting.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\System.Web.Helpers.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\System.Web.Mvc.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\System.Web.Razor.dll
@@ -71,17 +83,66 @@ C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\EntityFramewo
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.IdentityModel.Tokens.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.TeamFoundation.Common.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.VisualStudio.Services.Common.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Microsoft.VisualStudio.Services.WebApi.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\PagedList.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\PagedList.Mvc.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\System.Web.Helpers.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\System.Web.Mvc.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\System.Web.Razor.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\System.Web.WebPages.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\cs\Microsoft.TeamFoundation.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\de\Microsoft.TeamFoundation.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\es\Microsoft.TeamFoundation.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\fr\Microsoft.TeamFoundation.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\it\Microsoft.TeamFoundation.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\ja\Microsoft.TeamFoundation.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\ko\Microsoft.TeamFoundation.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\pl\Microsoft.TeamFoundation.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\pt-BR\Microsoft.TeamFoundation.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\ru\Microsoft.TeamFoundation.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\tr\Microsoft.TeamFoundation.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\zh-Hans\Microsoft.TeamFoundation.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\zh-Hant\Microsoft.TeamFoundation.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\cs\Microsoft.VisualStudio.Services.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\de\Microsoft.VisualStudio.Services.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\es\Microsoft.VisualStudio.Services.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\fr\Microsoft.VisualStudio.Services.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\it\Microsoft.VisualStudio.Services.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\ja\Microsoft.VisualStudio.Services.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\ko\Microsoft.VisualStudio.Services.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\pl\Microsoft.VisualStudio.Services.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\pt-BR\Microsoft.VisualStudio.Services.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\ru\Microsoft.VisualStudio.Services.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\tr\Microsoft.VisualStudio.Services.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\zh-Hans\Microsoft.VisualStudio.Services.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\zh-Hant\Microsoft.VisualStudio.Services.Common.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\cs\Microsoft.VisualStudio.Services.WebApi.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\de\Microsoft.VisualStudio.Services.WebApi.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\es\Microsoft.VisualStudio.Services.WebApi.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\fr\Microsoft.VisualStudio.Services.WebApi.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\it\Microsoft.VisualStudio.Services.WebApi.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\ja\Microsoft.VisualStudio.Services.WebApi.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\ko\Microsoft.VisualStudio.Services.WebApi.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\pl\Microsoft.VisualStudio.Services.WebApi.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\pt-BR\Microsoft.VisualStudio.Services.WebApi.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\ru\Microsoft.VisualStudio.Services.WebApi.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\tr\Microsoft.VisualStudio.Services.WebApi.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\zh-Hans\Microsoft.VisualStudio.Services.WebApi.resources.dll
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\zh-Hant\Microsoft.VisualStudio.Services.WebApi.resources.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.csprojAssemblyReference.cache
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.initial.resources
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.imageadd.resources
@@ -93,5 +154,5 @@ C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.cspr
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.csproj.CopyComplete
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.pdb
-E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\HiveData.csprojAssemblyReference.cache
-E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.EditUserProfile.resources
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.profiletopost.resources
+C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.addlike.resources

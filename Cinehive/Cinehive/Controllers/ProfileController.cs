@@ -14,7 +14,7 @@ namespace Cinehive.Controllers
 {
     public class ProfileController : Controller
     {
-        IProfileService profileService;
+        private IProfileService profileService;
         private readonly CineHiveContext context = new CineHiveContext();
 
         public ProfileController()

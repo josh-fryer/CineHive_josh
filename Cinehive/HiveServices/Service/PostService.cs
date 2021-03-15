@@ -26,16 +26,20 @@ namespace HiveServices.Service
 
         public void CreatePost(Post post)
         {
-            string userId = HttpContext.Current.User.Identity.GetUserId();
-            Post newPost = new Post()
-            {
-                UserId = userId,
-                PostContent = post.PostContent,
-                DatePosted = DateTime.Now
-            };
             using (var context = new CineHiveContext())
             {
-                postDAO.CreatePost(newPost, context);             
+                string userId = HttpContext.Current.User.Identity.GetUserId();
+                var GetProfile = context.UserProfiles.Where(x => x.UserId == userId).Select(c => c.ProfileId).FirstOrDefault();
+                int id = GetProfile;
+                Post newPost = new Post()
+                {
+                    UserId = userId,
+                    ProfileId = id,
+                    PostContent = post.PostContent,
+                    DatePosted = DateTime.Now
+                };
+
+                postDAO.CreatePost(newPost, context);
             }
         }
 

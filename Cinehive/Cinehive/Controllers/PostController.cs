@@ -14,6 +14,7 @@ namespace Cinehive.Controllers
     public class PostController : Controller
     {
         private IPostService postService;
+        private CineHiveContext context = new CineHiveContext();
 
         public PostController()
         {
@@ -90,6 +91,26 @@ namespace Cinehive.Controllers
         public ActionResult GetCurrUserPosts()
         {
             return View(postService.GetCurrUserPosts());
+        }
+
+        public ActionResult GiveAward(int id)
+        {
+            Post post = context.Posts.Find(id);
+            string userid = User.Identity.GetUserId().ToString();
+
+            Like like = new Like()
+            {
+                PostId = id,
+                UserId = userid
+            };
+
+            context.Likes.Add(like);
+
+            post.Awards++;
+
+            context.SaveChanges();
+
+            return RedirectToAction("Index","Home");
         }
     }
 }
