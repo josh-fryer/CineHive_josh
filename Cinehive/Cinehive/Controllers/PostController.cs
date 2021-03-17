@@ -49,7 +49,6 @@ namespace Cinehive.Controllers
             try
             {
                 // TODO: Add update logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -58,16 +57,16 @@ namespace Cinehive.Controllers
             }
         }
         
+        //public ActionResult DeletePost(int id)
+        //{
+        //    return View(postService.GetPost(id));
+        //}
+
+        //[HttpPost]
         public ActionResult DeletePost(int id)
         {
-            return View(postService.GetPost(id));
-        }
-
-        [HttpPost]
-        public ActionResult DeletePost(int id, Post post)
-        {
             postService.DeletePost(id);
-            return RedirectToAction("GetCurrUserPosts");
+            return RedirectToAction("Index", "Home");
         }
 
         // get posts for userId
@@ -88,11 +87,8 @@ namespace Cinehive.Controllers
             };
 
             context.Likes.Add(like);
-
             post.Awards++;
-
             context.SaveChanges();
-
             return RedirectToAction("Index","Home");
         }
     }

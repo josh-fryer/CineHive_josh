@@ -37,9 +37,9 @@
                         <li>|</li>
                         @if (userid == item.UserId)
                         {
-                            <li>@Html.ActionLink("Remove", "DeletePost", "Post", new { id = item.PostId })</li>
+                            <li>@Html.ActionLink("Remove", "DeletePost", "Post", new { id = item.PostId }, null)</li>
                             <li>|</li>
-                            <li>@Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId })</li>
+                            <li>@Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId }, null)</li>
                         }
                     </ul>
 
