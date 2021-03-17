@@ -31,19 +31,9 @@ namespace Cinehive.Controllers
         [HttpPost]
         public ActionResult Create(Post post)
         {
-            try
-            {
-                // gets logged in user i
-                //string userId = User.Identity.GetUserId();
-                //post.UserId = userId;
                 postService.CreatePost(post);
 
-                return RedirectToAction("Index", "Home");
-            }
-            catch
-            {
-                return View();
-            }
+                return RedirectToAction("Index", "Home"); 
         }
 
         // GET: Posts/Edit/5
@@ -74,17 +64,10 @@ namespace Cinehive.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeletePost(Post post)
+        public ActionResult DeletePost(int id, Post post)
         {
-            try
-            {
-                postService.DeletePost(post.PostId);
-                return RedirectToAction("GetCurrUserPosts");
-            }
-            catch
-            {
-                return View();
-            }
+            postService.DeletePost(id);
+            return RedirectToAction("GetCurrUserPosts");
         }
 
         // get posts for userId

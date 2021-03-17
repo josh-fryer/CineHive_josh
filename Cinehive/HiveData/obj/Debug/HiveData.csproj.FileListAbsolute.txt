@@ -46,7 +46,6 @@ E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\HiveData.pdb
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.AddFilmGenre.resources
 E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\HiveData.csprojAssemblyReference.cache
-E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.EditUserProfile.resources
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\HiveData.dll.config
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\HiveData.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\bin\Debug\HiveData.pdb
@@ -156,3 +155,64 @@ C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\HiveData.pdb
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.profiletopost.resources
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.addlike.resources
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.IdentityModel.Logging.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.TeamFoundation.Common.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.VisualStudio.Services.Common.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.VisualStudio.Services.WebApi.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\PagedList.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\PagedList.Mvc.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\System.Net.Http.Formatting.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.IdentityModel.Logging.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.TeamFoundation.Common.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.VisualStudio.Services.Common.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\Microsoft.VisualStudio.Services.WebApi.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\PagedList.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\PagedList.Mvc.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\System.Net.Http.Formatting.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\cs\Microsoft.TeamFoundation.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\de\Microsoft.TeamFoundation.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\es\Microsoft.TeamFoundation.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\fr\Microsoft.TeamFoundation.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\it\Microsoft.TeamFoundation.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\ja\Microsoft.TeamFoundation.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\ko\Microsoft.TeamFoundation.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\pl\Microsoft.TeamFoundation.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\pt-BR\Microsoft.TeamFoundation.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\ru\Microsoft.TeamFoundation.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\tr\Microsoft.TeamFoundation.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\zh-Hans\Microsoft.TeamFoundation.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\zh-Hant\Microsoft.TeamFoundation.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\cs\Microsoft.VisualStudio.Services.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\de\Microsoft.VisualStudio.Services.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\es\Microsoft.VisualStudio.Services.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\fr\Microsoft.VisualStudio.Services.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\it\Microsoft.VisualStudio.Services.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\ja\Microsoft.VisualStudio.Services.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\ko\Microsoft.VisualStudio.Services.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\pl\Microsoft.VisualStudio.Services.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\pt-BR\Microsoft.VisualStudio.Services.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\ru\Microsoft.VisualStudio.Services.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\tr\Microsoft.VisualStudio.Services.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\zh-Hans\Microsoft.VisualStudio.Services.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\zh-Hant\Microsoft.VisualStudio.Services.Common.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\cs\Microsoft.VisualStudio.Services.WebApi.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\de\Microsoft.VisualStudio.Services.WebApi.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\es\Microsoft.VisualStudio.Services.WebApi.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\fr\Microsoft.VisualStudio.Services.WebApi.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\it\Microsoft.VisualStudio.Services.WebApi.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\ja\Microsoft.VisualStudio.Services.WebApi.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\ko\Microsoft.VisualStudio.Services.WebApi.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\pl\Microsoft.VisualStudio.Services.WebApi.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\pt-BR\Microsoft.VisualStudio.Services.WebApi.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\ru\Microsoft.VisualStudio.Services.WebApi.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\tr\Microsoft.VisualStudio.Services.WebApi.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\zh-Hans\Microsoft.VisualStudio.Services.WebApi.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\bin\Debug\zh-Hant\Microsoft.VisualStudio.Services.WebApi.resources.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.profiletopost.resources
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveData\obj\Debug\Cinehive.HiveData.Migrations.addlike.resources

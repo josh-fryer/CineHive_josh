@@ -96,3 +96,7 @@ C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\obj\Debug\HiveServi
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.csproj.CopyComplete
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.dll
 C:\Users\Joe\Documents\GitHub\cinehive\Cinehive\HiveServices\obj\Debug\HiveServices.pdb
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\PagedList.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\PagedList.Mvc.dll
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\PagedList.xml
+E:\Josh\Documents\Education\University\Post Graduate\Computer Programming\Repos\Cinehive\Cinehive\HiveServices\bin\Debug\PagedList.Mvc.xml
