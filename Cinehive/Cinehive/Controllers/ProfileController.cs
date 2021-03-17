@@ -89,15 +89,14 @@ namespace Cinehive.Controllers
 
         [Authorize]
         public ActionResult Edit(int? id)
-        {
-            profileService.GetUserProfile(id);
-
-            UserProfile userProfile = context.UserProfiles.Find(id);
+        {            
+            //UserProfile userProfile = context.UserProfiles.Find(id);
+            UserProfile userProfile = profileService.GetUserProfile(id);
             if (userProfile == null)
             {
                 return HttpNotFound();
             }
-            //#### my test genres to checkbox list: ######           
+            //#### Genres to checkbox list: ######           
             var genreList = context.Genres.Select(x => new SelectListItem()
             {
                 Text = x.Name,
