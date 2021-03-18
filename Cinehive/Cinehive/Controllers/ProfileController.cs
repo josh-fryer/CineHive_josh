@@ -9,6 +9,7 @@ using System.Net;
 using System.Web.Mvc;
 using HiveData.Repository;
 using System.Threading.Tasks;
+using HiveData.ViewModels;
 
 namespace Cinehive.Controllers
 {
@@ -78,13 +79,21 @@ namespace Cinehive.Controllers
         [Authorize]
         public ActionResult MyProfile(int? id)
         {
+            var userid = User.Identity.GetUserId();
             profileService.GetUserProfile(id);
 
             if (profileService.GetUserProfile(id) == null)
             {
                 return HttpNotFound();
             }
-            return View(profileService.GetUserProfile(id));
+
+            ProfilePostsViewModel profilePostsViewModel = new ProfilePostsViewModel
+            {
+                userProfile = profileService.GetUserProfile(id),
+                Posts = context.Posts.Where(c => c.UserId == userid).OrderByDescending(j => j.DatePosted).ToList()
+            };
+
+            return View(profilePostsViewModel);
         }
 
         [Authorize]
@@ -166,7 +175,7 @@ namespace Cinehive.Controllers
         }
 
         [Authorize]
-        public async Task<ActionResult> Album() //todo: add to service and data
+        public async Task<ActionResult> Album() //Temporary action
         {
             string userid = User.Identity.GetUserId();
             var images = from m in context.Images
@@ -178,7 +187,7 @@ namespace Cinehive.Controllers
 
         }
         [Authorize]
-        public ActionResult MakeProfilePicture(Image image) //todo: add to service and data
+        public ActionResult MakeProfilePicture(Image image) //Temporary action
         {
             string userid = User.Identity.GetUserId();
             var GetProfile = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();

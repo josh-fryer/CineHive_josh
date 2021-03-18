@@ -18,7 +18,7 @@ namespace Cinehive.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                var Posts = context.Posts.Select(c => c);
+                var Posts = context.Posts.Select(c => c); 
                 Posts = context.Posts.OrderByDescending(c => c.DatePosted);
                 string userid = User.Identity.GetUserId();
 

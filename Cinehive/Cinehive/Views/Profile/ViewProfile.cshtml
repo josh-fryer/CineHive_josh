@@ -11,23 +11,19 @@
     <hr />
     @if (Model.ImagePath == null)
     {
-        <div class="row">
-            <div class="col-md-4">
-                <img src="~/Content/Img/profile-image-placeholder.png" alt="Placeholder image" class="img-thumbnail">
-
-
-            </div>
-        </div>
+<div class="row">
+    <a class="pull-left" href="">
+        <img src= "~/Content/Img/profile-image-placeholder.png" width="340" height="340" />
+    </a>
+</div>
 
     }
     else
     {
         <div class="row">
-            <div class="col-md-4">
-                <img src="~/@Model.ImagePath" alt="Unable to load image" class="img-thumbnail">
-
-
-            </div>
+            <a class="pull-left" href="">
+                <img src="~/@Model.ImagePath" width="340" height="340" />
+            </a>
         </div>
 
     }

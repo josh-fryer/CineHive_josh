@@ -28,6 +28,7 @@ namespace Cinehive.Controllers
         }
 
         // POST: Posts/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Post post)
         {
@@ -70,11 +71,12 @@ namespace Cinehive.Controllers
         }
 
         // get posts for userId
+        [Authorize]
         public ActionResult GetCurrUserPosts()
         {
             return View(postService.GetCurrUserPosts());
         }
-
+        [Authorize]
         public ActionResult GiveAward(int id)
         {
             Post post = context.Posts.Find(id);

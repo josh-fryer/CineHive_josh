@@ -1,14 +1,15 @@
-﻿@model HiveData.Models.UserProfile
-
+﻿@model HiveData.ViewModels.ProfilePostsViewModel
+@using Microsoft.AspNet.Identity;
 @{
     ViewBag.Title = "MyProfile";
+    var userid = User.Identity.GetUserId();
 }
 
-<h2>@Model.Firstname's profile</h2> 
+<h2>@Model.userProfile.Firstname's profile</h2>
 <div>
     <h4>Your Cinehive Profile</h4>
     <hr />
-    @if (Model.ImagePath == null)
+    @if (Model.userProfile.ImagePath == null)
     {
         <div class="row">
             <div class="col-md-4">
@@ -24,7 +25,7 @@
         <div class="row">
             <div class="col-md-4">
                 <a class="pull-left" href="#">
-                    <img src="~/@Model.ImagePath" width="340" height="340" />
+                    <img src="~/@Model.userProfile.ImagePath" width="340" height="340" />
                 </a>
             </div>
         </div>
@@ -34,48 +35,94 @@
     <dl class="dl-horizontal">
 
         <dt>
-            @Html.DisplayNameFor(model => model.Firstname)
+            @Html.DisplayNameFor(model => model.userProfile.Firstname)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Firstname)
+            @Html.DisplayFor(model => model.userProfile.Firstname)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Lastname)
+            @Html.DisplayNameFor(model => model.userProfile.Lastname)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Lastname)
+            @Html.DisplayFor(model => model.userProfile.Lastname)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Gender)
+            @Html.DisplayNameFor(model => model.userProfile.Gender)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Gender)
+            @Html.DisplayFor(model => model.userProfile.Gender)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
+            @Html.DisplayNameFor(model => model.userProfile.DateOfBirth)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DateOfBirth)
+            @Html.DisplayFor(model => model.userProfile.DateOfBirth)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AboutMe)
+            @Html.DisplayNameFor(model => model.userProfile.AboutMe)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AboutMe)
+            @Html.DisplayFor(model => model.userProfile.AboutMe)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit Profile", "Edit", new { id = Model.ProfileId }) |
+    @Html.ActionLink("Edit Profile", "") |
     @Html.ActionLink("My Image Album", "Album")
 </p>
+
+@foreach (var item in Model.Posts)
+{
+    <div class="container">
+        <div class="well">
+            <div class="media">
+                <a class="pull-left" href="">
+                    <img src="~/@Model.userProfile.ImagePath" width="140" height="140" />
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">@Model.userProfile.Firstname @Model.userProfile.Lastname</h4>
+                    <p>
+                        @item.PostContent
+                    </p>
+                    <ul class="list-inline list-unstyled">
+                        <li> @item.DatePosted </li>
+                        <li>|</li>
+                        @if (item.Awards < 2)
+                        {
+                            <li> @item.Awards Award</li>
+                        }
+                        else
+                        {
+                            <li> @item.Awards Awards</li>
+                        }
+                    </ul>
+                    <ul class="list-inline list-unstyled">
+                        <li>@Html.ActionLink("Award", "")</li>
+                        <li>|</li>
+                        <li>@Html.ActionLink("Comment", "")
+                        <li>|</li>
+                        <li>@Html.ActionLink("Share", "")</li>
+                        <li>|</li>
+                        @if (userid == item.UserId)
+                        {
+                            <li>@Html.ActionLink("Remove", "")</li>
+                            <li>|</li>
+                            <li>@Html.ActionLink("Edit", "")</li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

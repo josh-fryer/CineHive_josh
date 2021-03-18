@@ -282,8 +282,6 @@
     <Content Include="Views\Profile\Album.cshtml" />
     <Content Include="Views\Notification\Index.cshtml" />
     <Content Include="Views\Notification\TestSendNotification.cshtml" />
-    <Content Include="Views\Feed\Redun.cshtml" />
-    <Content Include="Views\Feed\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

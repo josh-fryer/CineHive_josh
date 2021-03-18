@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Welcome";
 }
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 
 
-<p>Sign Up now</p>
+<p>@Html.ActionLink("Sign Up", "Register", "Account") now or @Html.ActionLink("Login", "Login", "Account")</p>

@@ -6,9 +6,10 @@
         ViewBag.Title = "Home Page";
         string userid = User.Identity.GetUserId();
         int postid = 0;
+        int id = 0;
     }
 
-    @if (HttpContext.Current.User.IsInRole("BasicUser"))
+    @if (User.Identity.IsAuthenticated)
     {
         <table class="table">
             <tr>
@@ -58,8 +59,8 @@
                                 <li> @item.Awards Awards</li>
                             }
                         </ul>
-                        <ul class="list-inline list-unstyled">
-                            <li>@Html.ActionLink("Award", "GiveAward","Post", new { Id = item.PostId },new { })</li>
+                        <ul class="list-inline list-unstyled"> 
+                            <li>@Html.ActionLink("Award", "GiveAward", "Post", new { Id = item.PostId }, new { })</li>                          
                             <li>|</li>
                             <li>@Html.ActionLink("Comment", "")
                             <li>|</li>
