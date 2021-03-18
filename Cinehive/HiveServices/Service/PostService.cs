@@ -45,7 +45,7 @@ namespace HiveServices.Service
 
         public void DeletePost(int id)
         {
-            using(var context = new CineHiveContext())
+            using (var context = new CineHiveContext())
             {
                 Post post = postDAO.GetPost(id, context);
                 postDAO.DeletePost(post, context);
@@ -57,7 +57,7 @@ namespace HiveServices.Service
             using (var context = new CineHiveContext())
             {
                 return postDAO.GetPost(id, context);
-            }            
+            }
         }
 
         public IList<Post> GetCurrUserPosts()
@@ -68,5 +68,12 @@ namespace HiveServices.Service
             }
         }
 
+        public void EditPost(Post post)
+        {
+            using (var context = new CineHiveContext())
+            {
+                postDAO.EditPost(post, context);
+            }
+        }
     }
 }

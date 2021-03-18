@@ -33,37 +33,22 @@ namespace Cinehive.Controllers
         public ActionResult Create(Post post)
         {
                 postService.CreatePost(post);
-
                 return RedirectToAction("Index", "Home"); 
         }
 
-        // GET: Posts/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
+        public ActionResult EditPost(int id)
+        {           
+            return View(postService.GetPost(id));
         }
 
         // POST: Posts/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditPost(int id, Post post)
         {
-            try
-            {
-                // TODO: Add update logic here
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            postService.EditPost(post);
+            return RedirectToAction("Index", "Home");
         }
         
-        //public ActionResult DeletePost(int id)
-        //{
-        //    return View(postService.GetPost(id));
-        //}
-
-        //[HttpPost]
         public ActionResult DeletePost(int id)
         {
             postService.DeletePost(id);

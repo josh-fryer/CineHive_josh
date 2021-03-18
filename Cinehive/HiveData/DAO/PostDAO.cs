@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System.Web;
+using System.Data.Entity;
 
 namespace HiveData.DAO
 {
@@ -39,6 +40,13 @@ namespace HiveData.DAO
             //UserProfile user = context.UserProfiles.First(x => x.UserId == userid);
             //return user.Posts.Where(p => p.UserId == userid).ToList();
             return context.Posts.Where(p => p.UserId == userid).ToList();
+        }
+
+        public void EditPost(Post post, CineHiveContext context)
+        {
+            // make db update existing post with changed/new data
+            context.Entry(post).State = EntityState.Modified;
+            context.SaveChanges();
         }
     }
 }

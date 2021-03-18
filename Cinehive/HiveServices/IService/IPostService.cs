@@ -14,5 +14,6 @@ namespace HiveServices.IService
         void DeletePost(int id);
         Post GetPost(int id);
         IList<Post> GetCurrUserPosts();
+        void EditPost(Post post);
     }
 }
