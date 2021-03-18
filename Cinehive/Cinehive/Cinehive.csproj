@@ -282,6 +282,12 @@
     <Content Include="Views\Profile\Album.cshtml" />
     <Content Include="Views\Notification\Index.cshtml" />
     <Content Include="Views\Notification\TestSendNotification.cshtml" />
+<<<<<<< Updated upstream
+=======
+    <Content Include="Views\Feed\Redun.cshtml" />
+    <Content Include="Views\Feed\Index.cshtml" />
+    <Content Include="Views\Post\EditPost.cshtml" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
