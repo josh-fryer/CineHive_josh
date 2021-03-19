@@ -18,7 +18,9 @@ namespace HiveData.DAO
     {
         public void CreatePost(Post post, CineHiveContext context)
         {
-            context.Posts.Add(post);
+            string userid = HttpContext.Current.User.Identity.GetUserId();       
+            // Add post to logged in users posts collection
+            context.UserProfiles.Find(userid).Posts.Add(post);
             context.SaveChanges();
         }
 
@@ -33,14 +35,13 @@ namespace HiveData.DAO
             return context.Posts.Find(id);
         }
 
-        //public IList<Post> GetCurrUserPosts(CineHiveContext context)
-        //{
-        //    // gets current user id
-        //    string userid = HttpContext.Current.User.Identity.GetUserId();
-        //    //UserProfile user = context.UserProfiles.First(x => x.UserId == userid);
-        //    //return user.Posts.Where(p => p.UserId == userid).ToList();
-        //    return context.Posts.Where(p => p == userid).ToList();
-        //}
+        public IList<Post> GetCurrUserPosts(CineHiveContext context)
+        {
+            // gets current user id
+            string userid = HttpContext.Current.User.Identity.GetUserId();
+            UserProfile user = context.UserProfiles.First(x => x.UserId == userid);
+            return user.Posts.ToList(); // return collection of user's posts
+        }
 
         public void EditPost(Post post, CineHiveContext context)
         {

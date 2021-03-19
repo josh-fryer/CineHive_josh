@@ -56,13 +56,13 @@ namespace Cinehive.Controllers
         }
 
         // #### broken with new model changes
-        // get posts for logged in user
-        //[Authorize]
-        //public ActionResult GetCurrUserPosts()
-        //{
-        //    return View(postService.GetCurrUserPosts());
-        //}
-        
+        //get posts for logged in user
+        [Authorize]
+        public ActionResult GetCurrUserPosts()
+        {
+            return View(postService.GetCurrUserPosts());
+        }
+
         //[Authorize]
         //public ActionResult GiveAward(int id)
         //{

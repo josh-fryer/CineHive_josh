@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using Cinehive.Models;
 using HiveData.Repository;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Cinehive
 {
@@ -64,6 +65,11 @@ namespace Cinehive
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            // Used once to create a new role:
+            //var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
+            //var roleManager = new RoleManager<IdentityRole>(roleStore);
+            //roleManager.Create(new IdentityRole("Banned"));
         }
     }
 }

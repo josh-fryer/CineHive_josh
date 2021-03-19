@@ -159,17 +159,11 @@ namespace Cinehive.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-
-                    //var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
-                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    //await roleManager.CreateAsync(new IdentityRole("BasicUser"));
-                    //await UserManager.AddToRoleAsync(user.Id, "BasicUser");
-                    
-                    // ---- Add banned user role: -----------
+                    // ----- Register as a Basic User: --------
                     var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    await roleManager.CreateAsync(new IdentityRole("Banned"));
-                    await UserManager.AddToRoleAsync(user.Id, "Banned");
+                    await roleManager.CreateAsync(new IdentityRole("BasicUser"));
+                    await UserManager.AddToRoleAsync(user.Id, "BasicUser");
 
                     //To sign up as admin ---------------------------------------------------
                     // var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());

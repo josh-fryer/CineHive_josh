@@ -13,12 +13,7 @@ namespace HiveData.DAO
     {
         public void BanUser(string id, CineHiveContext context)
         {
-            //ApplicationUser user = context.Users.Find(id);
-            //context.BannedUsers.      // add user's email address to bannedusers db table
-            //    Add(new BannedUser { EmailAddress = user.Email });
-            //context.Users.Remove(user);
-
-            //context.UserProfiles.Remove();
+            // set users role to banned
         }
     }
 }

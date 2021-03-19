@@ -60,13 +60,13 @@ namespace HiveServices.Service
             }
         }
 
-        //public IList<Post> GetCurrUserPosts()
-        //{
-        //    using (var context = new CineHiveContext())
-        //    {
-        //        return postDAO.GetCurrUserPosts(context);
-        //    }
-        //}
+        public IList<Post> GetCurrUserPosts()
+        {
+            using (var context = new CineHiveContext())
+            {
+                return postDAO.GetCurrUserPosts(context);
+            }
+        }
 
         public void EditPost(Post post)
         {
