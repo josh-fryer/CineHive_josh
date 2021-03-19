@@ -48,33 +48,34 @@ namespace Cinehive.Controllers
             }
             return View();
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(UserProfile userProfile, Image image)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    string userid = User.Identity.GetUserId();
 
-                    if (userProfile.ProfilePicture != null)
-                    {
-                        profileService.UploadService(userProfile, image);
-                    }
-                    userProfile.UserId = userid;
-                    profileService.CreateProfile(userProfile, userid);
-                    return RedirectToAction("MyProfile", "Profile");
-                }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(UserProfile userProfile, Image image)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            string userid = User.Identity.GetUserId();
 
-                return View(userProfile);
+        //            if (userProfile.ProfilePicture != null)
+        //            {
+        //                profileService.UploadService(userProfile, image);
+        //            }
+        //            userProfile.UserId = userid;
+        //            profileService.CreateProfile(userProfile, userid);
+        //            return RedirectToAction("MyProfile", "Profile");
+        //        }
 
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        //        return View(userProfile);
+
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
 
         [Authorize]
         public ActionResult MyProfile(int? id)
@@ -90,7 +91,7 @@ namespace Cinehive.Controllers
             ProfilePostsViewModel profilePostsViewModel = new ProfilePostsViewModel
             {
                 userProfile = profileService.GetUserProfile(id),
-                Posts = context.Posts.Where(c => c.UserId == userid).OrderByDescending(j => j.DatePosted).ToList()
+                //Posts = context.Posts.Where(c => c.UserId == userid).OrderByDescending(j => j.DatePosted).ToList()
             };
 
             return View(profilePostsViewModel);
@@ -116,48 +117,49 @@ namespace Cinehive.Controllers
             return View(userProfile);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(UserProfile userProfile, Image image) //todo: add to service and data
-        {
-            string userid = User.Identity.GetUserId();
-            var GetProfile = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
-            int id = GetProfile;
-            if (ModelState.IsValid) // if there are no form errors
-            {
-                if (userProfile.ProfilePicture != null) 
-                {
-                    profileService.UploadService(userProfile, image);
-                }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(UserProfile userProfile, Image image) //todo: add to service and data
+        //{
+        //    string userid = User.Identity.GetUserId();
+        //    var GetProfile = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
+        //    int id = GetProfile;
+        //    if (ModelState.IsValid) // if there are no form errors
+        //    {
+        //        if (userProfile.ProfilePicture != null) 
+        //        {
+        //            profileService.UploadService(userProfile, image);
+        //        }
 
-                userProfile.UserId = userid;
-                userProfile.ProfileId = id;
+        //        userProfile.UserId = userid;
+        //        userProfile.ProfileId = id;
 
-                context.Entry(userProfile).State = EntityState.Modified;
+        //        context.Entry(userProfile).State = EntityState.Modified;
 
-                if (userProfile.ProfilePicture == null)
-                {
-                    context.Entry(userProfile).Property(x => x.ImagePath).IsModified = false;
-                }
+        //        if (userProfile.ProfilePicture == null)
+        //        {
+        //            context.Entry(userProfile).Property(x => x.ImagePath).IsModified = false;
+        //        }
 
-                // CLEAR fave genres then add back. ensures no duplicates or more than limit.
-                // probably a better way to do this.
-                profileService.ClearFaveGenres(userid);
-                // check which genres are selected:
-                foreach (var g in userProfile.Genres)
-                {
-                    if(g.Selected)
-                    {                     
-                        // add selected genre to FaveGenre table
-                        profileService.AddFaveGenre(int.Parse(g.Value), userid);
-                    }
-                }
+        //        // CLEAR fave genres then add back. ensures no duplicates or more than limit.
+        //        // probably a better way to do this.
+        //        profileService.ClearFaveGenres(userid);
+        //        // check which genres are selected:
+        //        foreach (var g in userProfile.Genres)
+        //        {
+        //            if(g.Selected)
+        //            {                     
+        //                // add selected genre to FaveGenre table
+        //                profileService.AddFaveGenre(int.Parse(g.Value), userid);
+        //            }
+        //        }
 
-                context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(userProfile);
-        }
+        //        context.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(userProfile);
+        //}
+
         public ActionResult ViewProfile(int? id)
         {
             if (id == null)
@@ -181,7 +183,7 @@ namespace Cinehive.Controllers
             var images = from m in context.Images
                          select m;
 
-            images = images.Where(s => s.UserId == userid);
+            //images = images.Where(s => s.UserId == userid); #broken with new models
 
             return View(await images.ToListAsync());
 

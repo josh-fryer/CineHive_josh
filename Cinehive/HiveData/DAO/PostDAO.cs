@@ -33,14 +33,14 @@ namespace HiveData.DAO
             return context.Posts.Find(id);
         }
 
-        public IList<Post> GetCurrUserPosts(CineHiveContext context)
-        {
-            // gets current user id
-            string userid = HttpContext.Current.User.Identity.GetUserId();
-            //UserProfile user = context.UserProfiles.First(x => x.UserId == userid);
-            //return user.Posts.Where(p => p.UserId == userid).ToList();
-            return context.Posts.Where(p => p.UserId == userid).ToList();
-        }
+        //public IList<Post> GetCurrUserPosts(CineHiveContext context)
+        //{
+        //    // gets current user id
+        //    string userid = HttpContext.Current.User.Identity.GetUserId();
+        //    //UserProfile user = context.UserProfiles.First(x => x.UserId == userid);
+        //    //return user.Posts.Where(p => p.UserId == userid).ToList();
+        //    return context.Posts.Where(p => p == userid).ToList();
+        //}
 
         public void EditPost(Post post, CineHiveContext context)
         {

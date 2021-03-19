@@ -13,43 +13,45 @@ namespace Cinehive.Controllers
     {
         private readonly CineHiveContext context = new CineHiveContext();
 
-        [Authorize]
-        public ActionResult Index()
-        {
-            string userid = User.Identity.GetUserId();
+        //[Authorize]
+        //public ActionResult Index()
+        //{
+        //    string userid = User.Identity.GetUserId();
 
-            var UserNotifications = context.Notifications.Where(c => c.ReceiverId == userid).OrderByDescending(c => c.DateReceived);
+        //    var UserNotifications = context.Notifications.Where(c => c.ReceiverId == userid).OrderByDescending(c => c.DateReceived);
 
-            return View(UserNotifications.ToList());
-        }
+        //    return View(UserNotifications.ToList());
+        //}
+
         public ActionResult TestSendNotification()
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult TestSendNotification(Notification notification)
-        {
+
+        //[HttpPost]
+        //public ActionResult TestSendNotification(Notification notification)
+        //{
             
-            string userid = User.Identity.GetUserId();
-            if (ModelState.IsValid)
-            {
-                notification = new Notification()
-                {
-                    SenderId = userid,
-                    ReceiverId = userid,
-                    DateReceived = DateTime.Now,
-                    IsRead = false,
-                    Message = notification.Message,
-                };
+        //    string userid = User.Identity.GetUserId();
+        //    if (ModelState.IsValid)
+        //    {
+        //        notification = new Notification()
+        //        {
+        //            SenderId = userid,
+        //            ReceiverId = userid,
+        //            DateReceived = DateTime.Now,
+        //            IsRead = false,
+        //            Message = notification.Message,
+        //        };
 
-                context.Notifications.Add(notification);
-                context.SaveChanges();
+        //        context.Notifications.Add(notification);
+        //        context.SaveChanges();
 
-            }      
+        //    }      
 
            
-            return RedirectToAction("Index", "Home");
-        }
+        //    return RedirectToAction("Index", "Home");
+        //}
 
         public ActionResult DeleteNotification(int? id)
         {

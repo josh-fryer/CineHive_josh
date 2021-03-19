@@ -10,16 +10,10 @@ using HiveData.Repository;
 namespace HiveData.Models
 {
     public class Message
-    {
-        [Key]     
-        public int MessageId { get; set; }
-        [ForeignKey("User"),Column(Order =0)]
-        public string SenderId { get; set; }
-        [ForeignKey("UserTwo"), Column(Order = 1)]
-        public string RecipientId { get; set; }
+    {    
+        [Key]
+        public int Id { get; set; }
         public string MessageContent { get; set; }
         public DateTime MessageSent { get; set; }
-        public virtual ApplicationUser User { get; set; }
-        public virtual ApplicationUser UserTwo { get; set; }
     }
 }

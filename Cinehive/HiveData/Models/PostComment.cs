@@ -13,10 +13,6 @@ namespace HiveData.Models
     {
         [Key]
         public int CommentId { get; set; }
-        public int PostId { get; set; }
-        [ForeignKey("User")]
-        public string UserID { get; set; }
-        public virtual ApplicationUser User { get; set; }
         public string CommentContent { get; set; }
         public DateTime DateCommented { get; set; }
         public int Awards { get; set; }

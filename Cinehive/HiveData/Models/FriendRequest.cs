@@ -14,14 +14,8 @@ namespace HiveData.Models
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey("User"), Column(Order = 1)]
-        public string SenderId { get; set; }
-        [ForeignKey("UserTwo"), Column(Order = 2)]
-        public string ReceiverId { get; set; }
         public DateTime DateSent { get; set; }
         public bool IsAccepted { get; set; }
-        public virtual ApplicationUser User { get; set; }
-        public virtual ApplicationUser UserTwo { get; set; }
     }
 
 }

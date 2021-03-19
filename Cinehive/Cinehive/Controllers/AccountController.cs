@@ -159,13 +159,20 @@ namespace Cinehive.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+                    //var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("BasicUser"));
+                    //await UserManager.AddToRoleAsync(user.Id, "BasicUser");
+                    
+                    // ---- Add banned user role: -----------
                     var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    await roleManager.CreateAsync(new IdentityRole("BasicUser"));
-                    await UserManager.AddToRoleAsync(user.Id, "BasicUser");
+                    await roleManager.CreateAsync(new IdentityRole("Banned"));
+                    await UserManager.AddToRoleAsync(user.Id, "Banned");
 
                     //To sign up as admin ---------------------------------------------------
-                   // var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
+                    // var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
                     //var roleManager = new RoleManager<IdentityRole>(roleStore);
                     //await roleManager.CreateAsync(new IdentityRole("AdminUser"));
                     //await UserManager.AddToRoleAsync(user.Id, "AdminUser");
@@ -174,7 +181,6 @@ namespace Cinehive.Controllers
                     //HiveData.Models.Domain.UserProfile userProfile = new HiveData.Models.Domain.UserProfile { UserId = user.Id, DateOfBirth = DateTime.Now };
                     //db.UserProfiles.Add(userProfile);
                     //db.SaveChanges();
-
 
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);

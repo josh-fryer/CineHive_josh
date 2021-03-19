@@ -55,28 +55,30 @@ namespace Cinehive.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        // get posts for userId
-        [Authorize]
-        public ActionResult GetCurrUserPosts()
-        {
-            return View(postService.GetCurrUserPosts());
-        }
-        [Authorize]
-        public ActionResult GiveAward(int id)
-        {
-            Post post = context.Posts.Find(id);
-            string userid = User.Identity.GetUserId().ToString();
+        // #### broken with new model changes
+        // get posts for logged in user
+        //[Authorize]
+        //public ActionResult GetCurrUserPosts()
+        //{
+        //    return View(postService.GetCurrUserPosts());
+        //}
+        
+        //[Authorize]
+        //public ActionResult GiveAward(int id)
+        //{
+        //    Post post = context.Posts.Find(id);
+        //    string userid = User.Identity.GetUserId().ToString();
 
-            Like like = new Like()
-            {
-                PostId = id,
-                UserId = userid
-            };
+        //    Like like = new Like()
+        //    {
+        //        PostId = id,
+        //        UserId = userid
+        //    };
 
-            context.Likes.Add(like);
-            post.Awards++;
-            context.SaveChanges();
-            return RedirectToAction("Index","Home");
-        }
+        //    context.Likes.Add(like);
+        //    post.Awards++;
+        //    context.SaveChanges();
+        //    return RedirectToAction("Index","Home");
+        //}
     }
 }

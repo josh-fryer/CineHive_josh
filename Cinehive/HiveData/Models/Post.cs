@@ -12,9 +12,6 @@ namespace HiveData.Models
     {
         [Key]
         public int PostId { get; set; }       
-        public string UserId { get; set; }
-        public int ProfileId { get; set; }
-        public virtual ApplicationUser User { get; set; }
         public string PostContent { get; set; }
         public DateTime DatePosted { get; set; }
         public int Awards { get; set; }

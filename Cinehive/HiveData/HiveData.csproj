@@ -128,8 +128,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\AdminDAO.cs" />
     <Compile Include="DAO\PostDAO.cs" />
     <Compile Include="DAO\ProfileDAO.cs" />
+    <Compile Include="IDAO\IAdminDAO.cs" />
     <Compile Include="IDAO\IPostDAO.cs" />
     <Compile Include="IDAO\IProfileDAO.cs" />
     <Compile Include="Migrations\202103031708562_initial.cs" />
@@ -160,15 +162,18 @@
     <Compile Include="Migrations\202103150022358_addlike.Designer.cs">
       <DependentUpon>202103150022358_addlike.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103191738327_MatchedNewClassDiagram.cs" />
+    <Compile Include="Migrations\202103191738327_MatchedNewClassDiagram.Designer.cs">
+      <DependentUpon>202103191738327_MatchedNewClassDiagram.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Album.cs" />
+    <Compile Include="Models\Award.cs" />
     <Compile Include="Models\FaveGenre.cs" />
-    <Compile Include="Models\Follower.cs" />
-    <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\FriendRequest.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Image.cs" />
-    <Compile Include="Models\Like.cs" />
     <Compile Include="Repository\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
@@ -205,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103150022358_addlike.resx">
       <DependentUpon>202103150022358_addlike.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103191738327_MatchedNewClassDiagram.resx">
+      <DependentUpon>202103191738327_MatchedNewClassDiagram.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

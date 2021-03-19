@@ -22,17 +22,17 @@ namespace HiveData.Repository
     public class CineHiveContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<Follower> Followers { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostComment> PostComments { get; set; }
         public DbSet<Message> Messages { get; set; }
-        public DbSet<FriendRequest> Requests { get; set; }
+        public DbSet<FriendRequest> FriendRequests { get; set; }
         public DbSet<Notification> Notifications { get; set; }
-        public DbSet<Friend> Friends { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<FaveGenre> FaveGenres { get; set; }
-        public DbSet<Like> Likes { get; set; }
+        public DbSet<Award> Awards { get; set; }
+        public DbSet<Album> Albums { get; set; }
+
 
         public CineHiveContext() 
             : base("CineHiveContext", throwIfV1Schema: false)

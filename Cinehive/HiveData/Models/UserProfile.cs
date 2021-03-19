@@ -21,13 +21,27 @@ namespace HiveData.Models
         public string Gender { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public string AboutMe { get; set; }
+
         public ICollection<Post> Posts { get; set; }
-        public ICollection<Friend> Friends { get; set; }
+        public ICollection<UserProfile> Friends { get; set; }
+
+        public ICollection<UserProfile> Followers { get; set; }
+        public ICollection<UserProfile> Following { get; set; }
+
         public ICollection<FaveGenre> FavouriteGenres { get; set; }
-        public virtual ApplicationUser User { get; set; }
+
+        public ICollection<Message> SentMessages { get; set; }
+        public ICollection<Message> ReceivedMessages { get; set; }
+
+        public ICollection<FriendRequest> SentFriendReq { get; set; }
+        public ICollection<FriendRequest> ReceivedFriendReq { get; set; }
+
+        public ICollection<Notification> Notifications { get; set; }
+        public ICollection<Award> Awards  { get; set; }
+
+        public virtual ApplicationUser User { get; set; }       
         [NotMapped]
         public HttpPostedFileBase ProfilePicture { get; set; }
-
         // for checkbox list of favourite genres:
         [NotMapped]
         public IList<SelectListItem> Genres { get; set; }

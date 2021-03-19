@@ -13,7 +13,7 @@ namespace HiveServices.IService
         void CreatePost(Post post);
         void DeletePost(int id);
         Post GetPost(int id);
-        IList<Post> GetCurrUserPosts();
+        //IList<Post> GetCurrUserPosts();
         void EditPost(Post post);
     }
 }
