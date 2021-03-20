@@ -24,17 +24,19 @@ namespace HiveData.ViewModels
 
         public string GetFirstName(int id)
         {
-            string Firstname = context.UserProfiles.Where(c => c.ProfileId == id).Select(j => j.Firstname).FirstOrDefault();
+
+            string Firstname = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.Firstname).FirstOrDefault();
+            
             return (Firstname);
         }
         public string GetLastName(int id)
         {
-            string Lastname = context.UserProfiles.Where(c => c.ProfileId == id).Select(j => j.Lastname).FirstOrDefault();
+            string Lastname = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.Lastname).FirstOrDefault();
             return (Lastname);
         }
         public string GetUserPicture(int id)
         {
-            string userpicture = context.UserProfiles.Where(c => c.ProfileId == id).Select(j => j.ImagePath).FirstOrDefault();
+            string userpicture = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.ImagePath).FirstOrDefault();
             return (userpicture);
         }
         //public bool HasLiked(int id)

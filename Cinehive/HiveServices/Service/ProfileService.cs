@@ -40,29 +40,28 @@ namespace HiveServices.Service
             return profileDAO.ViewProfile(id);
         }
 
-        //public void UploadService(UserProfile userProfile, Image image)
-        //{
-        //    string userid = HttpContext.Current.User.Identity.GetUserId();
-        //    string extension = Path.GetExtension(userProfile.ProfilePicture.FileName);
-        //    string filename = string.Empty;
-        //    filename = userid + DateTime.Now.ToString("dd-MM-yyyy--HH-mm-ss") + extension;
-        //    string imagePath = System.Web.HttpContext.Current.Server.MapPath("~/Content/Img/ProfileImages/");
-        //    string fullPath = "Content/Img/ProfileImages/" + filename;
-        //    userProfile.ImagePath = fullPath;
-        //    userProfile.ProfilePicture.SaveAs(Path.Combine(imagePath, filename));
+        public void UploadService(UserProfile userProfile, Image image)
+        {
+            string userid = HttpContext.Current.User.Identity.GetUserId();
+            string extension = Path.GetExtension(userProfile.ProfilePicture.FileName);
+            string filename = string.Empty;
+            filename = userid + DateTime.Now.ToString("dd-MM-yyyy--HH-mm-ss") + extension;
+            string imagePath = System.Web.HttpContext.Current.Server.MapPath("~/Content/Img/ProfileImages/");
+            string fullPath = "Content/Img/ProfileImages/" + filename;
+            userProfile.ImagePath = fullPath;
+            userProfile.ProfilePicture.SaveAs(Path.Combine(imagePath, filename));
 
-        //    Image image1 = new Image()
-        //    {
-        //        UserId = userid,
-        //        ImagePath = fullPath
-        //    };
-        //    using (var context = new CineHiveContext())
-        //    {
-        //        context.Images.Add(image1);
-        //        context.SaveChanges();
-        //    }
+            Image image1 = new Image()
+            {
+                ImagePath = fullPath
+            };
+            using (var context = new CineHiveContext())
+            {
+                context.Images.Add(image1);
+                context.SaveChanges();
+            }
 
-        //}
+        }
         public UserProfile GetUserProfile(int? id)
         {
             profileDAO = new ProfileDAO();

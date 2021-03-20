@@ -10,7 +10,7 @@ namespace HiveData.ViewModels
     public class ProfilePostsViewModel
     {
         public UserProfile userProfile { get; set; }
-        public ICollection<Post> Posts { get; set; }
+        public IList<Post> Posts { get; set; }
 
     }
 

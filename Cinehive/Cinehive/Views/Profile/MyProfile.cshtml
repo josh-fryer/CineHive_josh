@@ -81,7 +81,7 @@
     @Html.ActionLink("My Image Album", "Album")
 </p>
 
-@*@foreach (var item in Model.Posts)
+@foreach (var item in Model.Posts)
     {
         <div class="container">
             <div class="well">
@@ -113,16 +113,10 @@
                             <li>|</li>
                             <li>@Html.ActionLink("Share", "")</li>
                             <li>|</li>
-                            @if (userid == item.UserId)
-                            {
-                                <li>@Html.ActionLink("Remove", "")</li>
-                                <li>|</li>
-                                <li>@Html.ActionLink("Edit", "")</li>
-                            } 
                     </ul>
 
                 </div>
             </div>
         </div>
-    </div>*@
+    </div>
     }

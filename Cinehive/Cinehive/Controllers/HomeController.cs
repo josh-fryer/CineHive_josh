@@ -22,12 +22,13 @@ namespace Cinehive.Controllers
                 Posts = context.Posts.OrderByDescending(c => c.DatePosted);
                 string userid = User.Identity.GetUserId();
 
+
                 int pageSize = 5;
                 int pageNumber = (page ?? 1);
                 var NewPosts = Posts.ToPagedList(pageNumber, pageSize);
                 PostFeedViewModel postFeedViewModel = new PostFeedViewModel()
                 {
-                    PostList = NewPosts,
+                    PostList = NewPosts
                 };
                 return View(postFeedViewModel);
             }
