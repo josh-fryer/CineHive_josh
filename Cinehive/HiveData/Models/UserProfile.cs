@@ -22,22 +22,22 @@ namespace HiveData.Models
         public DateTime? DateOfBirth { get; set; }
         public string AboutMe { get; set; }
 
-        public ICollection<Post> Posts { get; set; }
-        public ICollection<UserProfile> Friends { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<UserProfile> Friends { get; set; }
 
-        public ICollection<UserProfile> Followers { get; set; }
-        public ICollection<UserProfile> Following { get; set; }
+        public virtual ICollection<UserProfile> Followers { get; set; }
+        public virtual ICollection<UserProfile> Following { get; set; }
 
-        public ICollection<FaveGenre> FavouriteGenres { get; set; }
+        public virtual ICollection<FaveGenre> FavouriteGenres { get; set; }
 
-        public ICollection<Message> SentMessages { get; set; }
-        public ICollection<Message> ReceivedMessages { get; set; }
+        public virtual ICollection<Message> SentMessages { get; set; }
+        public virtual ICollection<Message> ReceivedMessages { get; set; }
 
-        public ICollection<FriendRequest> SentFriendReq { get; set; }
-        public ICollection<FriendRequest> ReceivedFriendReq { get; set; }
+        public virtual ICollection<FriendRequest> SentFriendReq { get; set; }
+        public virtual ICollection<FriendRequest> ReceivedFriendReq { get; set; }
 
-        public ICollection<Notification> Notifications { get; set; }
-        public ICollection<Award> Awards  { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
+        public virtual ICollection<Award> Awards  { get; set; }
 
         public virtual ApplicationUser User { get; set; }       
         [NotMapped]

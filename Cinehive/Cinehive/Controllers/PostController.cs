@@ -55,7 +55,7 @@ namespace Cinehive.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        // #### broken with new model changes
+        
         //get posts for logged in user
         [Authorize]
         public ActionResult GetCurrUserPosts()
@@ -63,6 +63,7 @@ namespace Cinehive.Controllers
             return View(postService.GetCurrUserPosts());
         }
 
+        // #### broken with new model changes
         //[Authorize]
         //public ActionResult GiveAward(int id)
         //{

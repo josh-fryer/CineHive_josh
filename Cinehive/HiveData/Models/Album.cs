@@ -13,6 +13,6 @@ namespace HiveData.Models
         public int AlbumId { get; set; }
         public string AlbumName { get; set; }
         public string AlbumDesc { get; set; }
-        public ICollection<Image> Images { get; set; } 
+        public virtual ICollection<Image> Images { get; set; } 
     }
 }
