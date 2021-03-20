@@ -77,52 +77,52 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit Profile", "") |
+    @Html.ActionLink("Edit Profile", "Edit") |
     @Html.ActionLink("My Image Album", "Album")
 </p>
 
-@foreach (var item in Model.Posts)
-{
-    <div class="container">
-        <div class="well">
-            <div class="media">
-                <a class="pull-left" href="">
-                    <img src="~/@Model.userProfile.ImagePath" width="140" height="140" />
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">@Model.userProfile.Firstname @Model.userProfile.Lastname</h4>
-                    <p>
-                        @item.PostContent
-                    </p>
-                    <ul class="list-inline list-unstyled">
-                        <li> @item.DatePosted </li>
-                        <li>|</li>
-                        @if (item.Awards < 2)
-                        {
-                            <li> @item.Awards Award</li>
-                        }
-                        else
-                        {
-                            <li> @item.Awards Awards</li>
-                        }
-                    </ul>
-                    <ul class="list-inline list-unstyled">
-                        <li>@Html.ActionLink("Award", "")</li>
-                        <li>|</li>
-                        <li>@Html.ActionLink("Comment", "")
-                        <li>|</li>
-                        <li>@Html.ActionLink("Share", "")</li>
-                        <li>|</li>
-                        @if (userid == item.UserId)
-                        {
-                            <li>@Html.ActionLink("Remove", "")</li>
+@*@foreach (var item in Model.Posts)
+    {
+        <div class="container">
+            <div class="well">
+                <div class="media">
+                    <a class="pull-left" href="">
+                        <img src="~/@Model.userProfile.ImagePath" width="140" height="140" />
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">@Model.userProfile.Firstname @Model.userProfile.Lastname</h4>
+                        <p>
+                            @item.PostContent
+                        </p>
+                        <ul class="list-inline list-unstyled">
+                            <li> @item.DatePosted </li>
                             <li>|</li>
-                            <li>@Html.ActionLink("Edit", "")</li>
-                        }
+                            @if (item.Awards < 2)
+                            {
+                                <li> @item.Awards Award</li>
+                            }
+                            else
+                            {
+                                <li> @item.Awards Awards</li>
+                            }
+                        </ul>
+                        <ul class="list-inline list-unstyled">
+                            <li>@Html.ActionLink("Award", "")</li>
+                            <li>|</li>
+                            <li>@Html.ActionLink("Comment", "")
+                            <li>|</li>
+                            <li>@Html.ActionLink("Share", "")</li>
+                            <li>|</li>
+                            @if (userid == item.UserId)
+                            {
+                                <li>@Html.ActionLink("Remove", "")</li>
+                                <li>|</li>
+                                <li>@Html.ActionLink("Edit", "")</li>
+                            } 
                     </ul>
 
                 </div>
             </div>
         </div>
-    </div>
-}
+    </div>*@
+    }

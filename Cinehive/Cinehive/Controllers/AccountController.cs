@@ -21,7 +21,7 @@ namespace Cinehive.Controllers
         readonly CineHiveContext db = new CineHiveContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        
         public AccountController()
         {
         }
@@ -171,10 +171,9 @@ namespace Cinehive.Controllers
                     //await roleManager.CreateAsync(new IdentityRole("AdminUser"));
                     //await UserManager.AddToRoleAsync(user.Id, "AdminUser");
 
-                    //implement profile creation on register ?? ---------------------------------------------------
-                    //HiveData.Models.Domain.UserProfile userProfile = new HiveData.Models.Domain.UserProfile { UserId = user.Id, DateOfBirth = DateTime.Now };
-                    //db.UserProfiles.Add(userProfile);
-                    //db.SaveChanges();
+                    var userProfile = new UserProfile { Firstname = model.Firstname, Lastname = model.Lastname, UserId = user.Id };
+                    var implementProfile = db.UserProfiles.Add(userProfile);
+                    db.SaveChanges();
 
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);

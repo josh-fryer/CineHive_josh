@@ -79,6 +79,12 @@ namespace Cinehive.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        [Display(Name = "First name")]
+        public string Firstname { get; set; }
+        [Required]
+        [Display(Name = "Last name")]
+        public string Lastname { get; set; }
     }
 
     public class ResetPasswordViewModel

@@ -37,45 +37,6 @@ namespace Cinehive.Controllers
 
             return RedirectToAction("MyProfile", "Profile");
         }
-        [Authorize]
-        public ActionResult Create()
-        {
-            string userid = User.Identity.GetUserId();
-            if (context.UserProfiles.Any(x => x.UserId == userid))
-            {
-                return RedirectToAction("MyProfile", "Profile");
-
-            }
-            return View();
-        }
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(UserProfile userProfile, Image image)
-        //{
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            string userid = User.Identity.GetUserId();
-
-        //            if (userProfile.ProfilePicture != null)
-        //            {
-        //                profileService.UploadService(userProfile, image);
-        //            }
-        //            userProfile.UserId = userid;
-        //            profileService.CreateProfile(userProfile, userid);
-        //            return RedirectToAction("MyProfile", "Profile");
-        //        }
-
-        //        return View(userProfile);
-
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //}
 
         [Authorize]
         public ActionResult MyProfile(int? id)
