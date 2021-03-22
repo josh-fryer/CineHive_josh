@@ -28,7 +28,7 @@ namespace HiveData.Models
         public virtual ICollection<UserProfile> Followers { get; set; }
         public virtual ICollection<UserProfile> Following { get; set; }
 
-        public virtual ICollection<FaveGenre> FavouriteGenres { get; set; }
+        public virtual ICollection<Genre> FavouriteGenres { get; set; }
 
         public virtual ICollection<Message> SentMessages { get; set; }
         public virtual ICollection<Message> ReceivedMessages { get; set; }

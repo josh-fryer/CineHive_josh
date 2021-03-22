@@ -17,6 +17,7 @@ namespace HiveServices.Service
         {
             profileDAO = new ProfileDAO();
         }
+
         public void CreateProfile(UserProfile userProfile, string id)
         {
             UserProfile userProfile1 = new UserProfile()
@@ -34,6 +35,7 @@ namespace HiveServices.Service
                 context.SaveChanges();
             }
         }
+
         public UserProfile ViewProfile(int? id)
         {
             profileDAO = new ProfileDAO();

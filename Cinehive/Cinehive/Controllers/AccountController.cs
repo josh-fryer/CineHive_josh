@@ -185,16 +185,17 @@ namespace Cinehive.Controllers
                 if (result.Succeeded)
                 {
                     // ----- Register as a Basic User: --------
+                    //var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("BasicUser"));
+                    //await UserManager.AddToRoleAsync(user.Id, "BasicUser");
+                    //Session.Add("UserId", user.Id); // Place Userid in session
+
+                    //To sign up as admin ---------------------------------------------------
                     var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    await roleManager.CreateAsync(new IdentityRole("BasicUser"));
-                    await UserManager.AddToRoleAsync(user.Id, "BasicUser");
-                    Session.Add("UserId", user.Id); // Place Userid in session
-                    //To sign up as admin ---------------------------------------------------
-                    // var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
-                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    //await roleManager.CreateAsync(new IdentityRole("AdminUser"));
-                    //await UserManager.AddToRoleAsync(user.Id, "AdminUser");
+                    await roleManager.CreateAsync(new IdentityRole("AdminUser"));
+                    await UserManager.AddToRoleAsync(user.Id, "AdminUser");
 
                     var userProfile = new UserProfile { Firstname = model.Firstname, Lastname = model.Lastname, UserId = user.Id };
                     var implementProfile = db.UserProfiles.Add(userProfile);

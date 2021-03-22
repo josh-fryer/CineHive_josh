@@ -35,9 +35,9 @@ namespace HiveData.DAO
 
         //public void ClearFaveGenres(string userId, CineHiveContext context)
         //{
-        //    IList<FaveGenre> faveGenres = 
-        //        context.FaveGenres.Where(x => x.UserId == userId).ToList();
-        //    context.FaveGenres.RemoveRange(faveGenres);
+            
+        //    UserProfile profile = context.UserProfiles.First(x => x.UserId == userId);
+        //    profile.;
         //    context.SaveChanges();
         //}
 

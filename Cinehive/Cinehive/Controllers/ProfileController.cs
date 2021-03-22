@@ -93,15 +93,15 @@ namespace Cinehive.Controllers
                     context.Entry(userProfile).Property(x => x.ImagePath).IsModified = false;
                 }
 
-                //// CLEAR fave genres then add back. ensures no duplicates or more than limit.
-                //// probably a better way to do this.
+                // CLEAR fave genres then add back. ensures no duplicates or more than limit.
+                // probably a better way to do this.
                 //profileService.ClearFaveGenres(userid);
                 //// check which genres are selected:
                 //foreach (var g in userProfile.Genres)
                 //{
                 //    if (g.Selected)
                 //    {
-                //        // add selected genre to FaveGenre table
+                //        // add selected genre to FaveGenre on userprofile
                 //        profileService.AddFaveGenre(int.Parse(g.Value), userid);
                 //    }
                 //}
