@@ -32,7 +32,7 @@ namespace Cinehive.Controllers
         [HttpPost]
         public ActionResult Create(Post post)
         {
-                postService.CreatePost(post);
+            postService.CreatePost(post);
                 return RedirectToAction("Index", "Home"); 
         }
 

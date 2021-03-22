@@ -12,6 +12,7 @@ using Cinehive.Models;
 using HiveData.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using HiveData.Repository;
+using System.Collections.Generic;
 
 namespace Cinehive.Controllers
 {
@@ -83,6 +84,22 @@ namespace Cinehive.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    // find user by email
+                    var user = await UserManager.FindByNameAsync(model.Email);
+                    UserProfile cineUser = new UserProfile()
+                    {
+                        UserId = user.Id,
+                        Firstname = user.UserName
+                    };
+                    Session.Add("UserId", cineUser.UserId); // place UserId in session  
+                    
+                    // store user's roles in session
+                    var um = new UserManager<ApplicationUser>(
+                        new UserStore<ApplicationUser>
+                        (new CineHiveContext()));
+                    IList<string> roles = um.GetRoles(cineUser.UserId);
+                    Session.Add("Roles", roles); // place UserId in session  
+
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -164,7 +181,7 @@ namespace Cinehive.Controllers
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
                     await roleManager.CreateAsync(new IdentityRole("BasicUser"));
                     await UserManager.AddToRoleAsync(user.Id, "BasicUser");
-
+                    Session.Add("UserId", user.Id); // Place Userid in session
                     //To sign up as admin ---------------------------------------------------
                     // var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
                     //var roleManager = new RoleManager<IdentityRole>(roleStore);

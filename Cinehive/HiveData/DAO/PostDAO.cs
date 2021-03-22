@@ -19,10 +19,9 @@ namespace HiveData.DAO
         public void CreatePost(Post post, CineHiveContext context)
         {
             post.DatePosted = DateTime.Now;
-            string userid = HttpContext.Current.User.Identity.GetUserId();
-            
+            string userId = HttpContext.Current.User.Identity.GetUserId();
             // find userprofile by userId then Add post to their posts collection
-            UserProfile profile = context.UserProfiles.First(x => x.UserId == userid);
+            UserProfile profile = context.UserProfiles.First(x => x.UserId == userId);
             profile.Posts.Add(post);
             context.SaveChanges();
         }
