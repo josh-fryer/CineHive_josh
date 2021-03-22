@@ -70,22 +70,22 @@ namespace HiveServices.Service
             return profileDAO.GetUserProfile(id);
         }
 
-        //public void ClearFaveGenres(string userId)
-        //{
-        //    // clear all favourite genres
-        //    using (var context = new CineHiveContext())
-        //    {
-        //        profileDAO.ClearFaveGenres(userId, context);
-        //    }
-        //}
+        public void ClearFaveGenres(string userId)
+        {
+            // clear all favourite genres
+            using (var context = new CineHiveContext())
+            {
+                profileDAO.ClearFaveGenres(userId, context);
+            }
+        }
 
-        //public void AddFaveGenre(int genreId, string userId)
-        //{
-        //    using (var context = new CineHiveContext())
-        //    {
-        //        profileDAO.AddFaveGenre(genreId, userId, context);
-        //    }
-        //}
+        public void AddFaveGenre(int genreId, string userId)
+        {
+            using (var context = new CineHiveContext())
+            {
+                profileDAO.AddFaveGenre(genreId, userId, context);
+            }
+        }
 
     }
 }

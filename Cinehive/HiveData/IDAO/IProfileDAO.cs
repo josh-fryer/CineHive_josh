@@ -14,7 +14,7 @@ namespace HiveData.IDAO
         void CreateProfile(UserProfile userProfile, CineHiveContext context);
         UserProfile ViewProfile(int? id);
         UserProfile GetUserProfile(int? id);
-        //void ClearFaveGenres(string userId, CineHiveContext context);
-        //void AddFaveGenre(int genreId, string userid, CineHiveContext context);
+        void ClearFaveGenres(string userId, CineHiveContext context);
+        void AddFaveGenre(int genreId, string userid, CineHiveContext context);
     }
 }

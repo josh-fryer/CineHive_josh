@@ -14,7 +14,7 @@ namespace HiveServices.IService
         UserProfile ViewProfile(int? id);
         void UploadService(UserProfile userProfile, Image image);
         UserProfile GetUserProfile(int? id);
-        //void ClearFaveGenres(string userId);
-        //void AddFaveGenre(int genreId, string userid);
+        void ClearFaveGenres(string userId);
+        void AddFaveGenre(int genreId, string userid);
     }
 }

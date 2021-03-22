@@ -29,6 +29,7 @@ namespace HiveData.Repository
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<FaveGenre> FaveGenres { get; set; }
         public DbSet<Award> Awards { get; set; }
         public DbSet<Album> Albums { get; set; }
 

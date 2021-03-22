@@ -33,23 +33,24 @@ namespace HiveData.DAO
             return Context.UserProfiles.Find(id);
         }
 
-        //public void ClearFaveGenres(string userId, CineHiveContext context)
-        //{
-            
-        //    UserProfile profile = context.UserProfiles.First(x => x.UserId == userId);
-        //    profile.;
-        //    context.SaveChanges();
-        //}
+        public void ClearFaveGenres(string userId, CineHiveContext context)
+        {
+            UserProfile profile = context.UserProfiles.First(x => x.UserId == userId);
+            profile.FavouriteGenres.Clear();
+            context.SaveChanges();
+        }
 
-        //public void AddFaveGenre(int genreId, string userId, CineHiveContext context)
-        //{
-        //    FaveGenre newFaveGenre = new FaveGenre()
-        //    {
-        //        UserId = userId,
-        //        GenreId = genreId
-        //    };
-        //    context.FaveGenres.Add(newFaveGenre);
-        //    context.SaveChanges();
-        //}
+        public void AddFaveGenre(int genreId, string userId, CineHiveContext context)
+        {
+            FaveGenre newFaveGenre = new FaveGenre()
+            {             
+                GenreId = genreId
+            };
+
+            UserProfile profile = context.UserProfiles.First(x => x.UserId == userId);
+            profile.FavouriteGenres.Add(newFaveGenre);
+
+            context.SaveChanges();
+        }
     }
 }
