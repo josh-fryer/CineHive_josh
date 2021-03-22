@@ -11,9 +11,6 @@ namespace HiveData.DAO
 {
     public class AdminDAO : IAdminDAO
     {
-        public void BanUser(string id, CineHiveContext context)
-        {
-            // set users role to banned
-        }
+        
     }
 }

@@ -98,9 +98,17 @@ namespace Cinehive.Controllers
                         new UserStore<ApplicationUser>
                         (new CineHiveContext()));
                     IList<string> roles = um.GetRoles(cineUser.UserId);
-                    Session.Add("Roles", roles); // place UserId in session  
+                    Session.Add("Roles", roles); // place roles in session  
 
-                    return RedirectToLocal(returnUrl);
+                    if (roles.Contains("Banned"))
+                    {
+                        return RedirectToAction("BannedView");
+                    }
+                    else
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
+                    
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -437,6 +445,11 @@ namespace Cinehive.Controllers
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
+        {
+            return View();
+        }
+
+        public ActionResult BannedView()
         {
             return View();
         }

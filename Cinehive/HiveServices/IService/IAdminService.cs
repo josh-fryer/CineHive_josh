@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HiveData.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace HiveServices.IService
 {
     public interface IAdminService
     {
+        
     }
 }
