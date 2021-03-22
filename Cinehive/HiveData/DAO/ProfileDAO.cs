@@ -29,8 +29,7 @@ namespace HiveData.DAO
         public UserProfile GetUserProfile(int? id)
         {
             string userid = HttpContext.Current.User.Identity.GetUserId();
-            var GetProfile = Context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
-            id = GetProfile;
+            id = Context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
             return Context.UserProfiles.Find(id);
         }
 

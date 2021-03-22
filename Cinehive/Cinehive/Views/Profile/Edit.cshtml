@@ -59,7 +59,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ProfilePicture, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.ProfilePicture, new { type = "file", name = "ProfilePicture" })
+            @Html.ActionLink("Change your profile picture in your album","Index","Album")
         </div>
     </div>
 

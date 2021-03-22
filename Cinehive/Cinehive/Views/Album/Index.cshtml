@@ -1,0 +1,44 @@
+﻿@model IEnumerable<HiveData.Models.Album>
+
+@{
+    ViewBag.Title = "Albums";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+
+@if (Model.Any(i => i != null))
+{
+    <div>
+        @Html.ActionLink("Create a new album", "Create")
+
+    </div>
+    <br />
+    foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="image">
+                <a asp-action="Details" asp-controller="Album" asp-route-id="" href="@Url.Action("ViewAlbum", "Album", new {id = item.AlbumId })">
+                    <img src="~/Content/Img/album-placeholder.jpg" width="340" height="340" />
+                </a>
+            </div>
+            <ul class="list-inline">
+                <li>
+                    @Html.ActionLink(item.AlbumName, "ViewAlbum", "Album", new { id = item.AlbumId }, new { })
+                </li>
+            </ul>
+        </div>
+    }
+}
+else
+{
+    <div>
+        <p>You dont have any albums</p>
+
+        @Html.ActionLink("Create a new album", "Create")
+
+    </div>
+
+
+
+}

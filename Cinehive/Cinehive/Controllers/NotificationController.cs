@@ -6,61 +6,69 @@ using System.Web.Mvc;
 using HiveData.Repository;
 using HiveData.Models;
 using Microsoft.AspNet.Identity;
+using HiveServices.IService;
+using HiveServices.Service;
 
 namespace Cinehive.Controllers
 {
     public class NotificationController : Controller
     {
         private readonly CineHiveContext context = new CineHiveContext();
+        private INotificationService notificationService;
 
-        //[Authorize]
-        //public ActionResult Index()
-        //{
-        //    string userid = User.Identity.GetUserId();
+        public NotificationController()
+        {
+            notificationService = new NotificationService();
+        }
 
-        //    var UserNotifications = context.Notifications.Where(c => c.ReceiverId == userid).OrderByDescending(c => c.DateReceived);
-
-        //    return View(UserNotifications.ToList());
-        //}
+        [Authorize]
+        public ActionResult Index()
+        {
+            return View(notificationService.GetUserNotifications());
+        }
 
         public ActionResult TestSendNotification()
         {
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult TestSendNotification(Notification notification)
-        //{
-            
-        //    string userid = User.Identity.GetUserId();
-        //    if (ModelState.IsValid)
-        //    {
-        //        notification = new Notification()
-        //        {
-        //            SenderId = userid,
-        //            ReceiverId = userid,
-        //            DateReceived = DateTime.Now,
-        //            IsRead = false,
-        //            Message = notification.Message,
-        //        };
+        [HttpPost]
+        public ActionResult TestSendNotification(Notification notification) //Temporary action
+        {         
+            string userid = User.Identity.GetUserId();
 
-        //        context.Notifications.Add(notification);
-        //        context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                UserProfile userProfile = context.UserProfiles.First(c => c.UserId == userid);
+                notification = new Notification()
+                {
+                    DateReceived = DateTime.Now,
+                    IsRead = false,
+                    Message = notification.Message,
+                };
 
-        //    }      
+                userProfile.Notifications.Add(notification);
+                context.SaveChanges();
 
-           
-        //    return RedirectToAction("Index", "Home");
-        //}
+            }
 
-        public ActionResult DeleteNotification(int? id)
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult DeleteNotification(int id)
         {
-            Notification notification = context.Notifications.Find(id);
+            try
+            {
+                notificationService.DeleteNotification(id);
 
-            context.Notifications.Remove(notification);
-            context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
 
-            return RedirectToAction("Index");
+                return RedirectToAction(""); //error page
+            }
+
         }
     }
 }

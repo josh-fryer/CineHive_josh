@@ -1,0 +1,58 @@
+﻿@model HiveData.ViewModels.AlbumImageViewModel
+@{
+    ViewBag.Title = "ViewAlbum";
+}
+
+<h2>@Model.Album.AlbumName</h2>
+<h3>@Model.Album.AlbumDesc</h3>
+<h4>Images in album: @Model.Images.Count()</h4>
+@Html.ActionLink("Delete Album", "DeleteAlbum", "Album", new { id = Model.Album.AlbumId }, new { })
+<hr />
+
+@if (Model.Images.Any(i => i != null))
+{
+    <div>
+        <ul class="list-inline">
+            <li>
+                @Html.ActionLink("Add an Image", "AddImageToAlbum", new { id = Model.Album.AlbumId })
+            </li>
+            <li>
+                @Html.ActionLink("Edit Album", "Edit", new { id = Model.Album.AlbumId })
+            </li>
+        </ul>
+    </div>
+    <br />
+    foreach (var item in Model.Images)
+    {
+        <div class="col-md-4">
+            <div class="image">
+                <a asp-action="Details" asp-controller="Album" asp-route-id="">
+                    <img src="~/@item.ImagePath" width="340" height="340" />
+                </a>
+                <ul class="list-inline">
+                    <li>
+                        @Html.ActionLink("Delete Image", "DeleteImageFromAlbum", new { id = item.ImageId })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Set as Profile Picture", "SetAsProfilePicture", new {Imagepath = item.ImagePath })
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+    <hr />
+}
+else
+{
+    <div>
+        <p>You have no images in this album</p>
+
+        @Html.ActionLink("Add an Image", "AddImageToAlbum", new { id = Model.Album.AlbumId })
+
+    </div>
+}
+
+
+
+
+

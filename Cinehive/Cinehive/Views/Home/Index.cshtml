@@ -38,7 +38,7 @@
         <div class="container">
             <div class="well">
                 <div class="media">
-                    <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = item.PostId })" )">
+                    <a class="pull-left" href="@Url.Action("Index", "Profile", new { id = item.PostId })" )">
                         <img src="~/@Model.GetUserPicture(postid = item.PostId)" width="140" height="140" />
                     </a>
                     <div class="media-body">

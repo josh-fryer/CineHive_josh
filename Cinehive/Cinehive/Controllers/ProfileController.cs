@@ -24,18 +24,7 @@ namespace Cinehive.Controllers
 
         }
         [Authorize]
-        public ActionResult Index()
-        {
-            
-            string userid = User.Identity.GetUserId();
-
-            
-
-            return RedirectToAction("MyProfile", "Profile");
-        }
-
-        [Authorize]
-        public ActionResult MyProfile(int? id)
+        public ActionResult Index(int? id)
         {
             var userid = User.Identity.GetUserId();
             profileService.GetUserProfile(id);
@@ -51,11 +40,12 @@ namespace Cinehive.Controllers
             ProfilePostsViewModel profilePostsViewModel = new ProfilePostsViewModel
             {
                 userProfile = profileService.GetUserProfile(id),
-                
+
                 Posts = userpost.Posts.ToList()
             };
 
             return View(profilePostsViewModel);
+
         }
 
         [Authorize]
@@ -80,13 +70,14 @@ namespace Cinehive.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(UserProfile userProfile, Image image) //todo: add to service and data
+        public ActionResult Edit(UserProfile userProfile, Image image) // To-do: add to service and data layer
         {
             string userid = User.Identity.GetUserId();
-            var GetProfile = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
-            int id = GetProfile;
+            int id = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
+            
             if (ModelState.IsValid) // if there are no form errors
             {
+                
                 if (userProfile.ProfilePicture != null)
                 {
                     profileService.UploadService(userProfile, image);
@@ -137,33 +128,33 @@ namespace Cinehive.Controllers
 
         }
 
-        [Authorize]
-        public async Task<ActionResult> Album() //Temporary action
-        {
-            string userid = User.Identity.GetUserId();
-            var images = from m in context.Images
-                         select m;
+        //[Authorize]
+        //public async Task<ActionResult> Album() //Temporary action
+        //{
+        //    string userid = User.Identity.GetUserId();
+        //    var images = from m in context.Images
+        //                 select m;
 
-            //images = images.Where(s => s.UserId == userid); #broken with new models
+        //    //images = images.Where(s => s.UserId == userid); #broken with new models
 
-            return View(await images.ToListAsync());
+        //    return View(await images.ToListAsync());
 
-        }
-        [Authorize]
-        public ActionResult MakeProfilePicture(Image image) //Temporary action
-        {
-            string userid = User.Identity.GetUserId();
-            var GetProfile = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
-            int id = GetProfile;
+        //}
+        //[Authorize]
+        //public ActionResult MakeProfilePicture(Image image) //Temporary action
+        //{
+        //    string userid = User.Identity.GetUserId();
+        //    var GetProfile = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
+        //    int id = GetProfile;
 
-            UserProfile userProfile = context.UserProfiles.Find(id);
+        //    UserProfile userProfile = context.UserProfiles.Find(id);
 
-            userProfile.ImagePath = image.ImagePath;
+        //    userProfile.ImagePath = image.ImagePath;
             
-            context.Entry(userProfile).State = EntityState.Modified;
-            context.SaveChanges();
+        //    context.Entry(userProfile).State = EntityState.Modified;
+        //    context.SaveChanges();
 
-            return RedirectToAction("MyProfile");
-        }
+        //    return RedirectToAction("Index");
+        //}
     }
 }

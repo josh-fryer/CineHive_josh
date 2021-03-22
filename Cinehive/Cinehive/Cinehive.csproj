@@ -202,6 +202,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
@@ -219,6 +220,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Img\album-placeholder.jpg" />
     <Content Include="Content\Img\profile-image-placeholder.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
@@ -274,7 +276,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Post\Create.cshtml" />
-    <Content Include="Views\Profile\MyProfile.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
     <Content Include="Views\Profile\ViewProfile.cshtml" />
     <Content Include="Views\Post\GetCurrUserPosts.cshtml" />
@@ -283,10 +285,18 @@
     <Content Include="Views\Notification\Index.cshtml" />
     <Content Include="Views\Notification\TestSendNotification.cshtml" />
     <Content Include="Views\Post\EditPost.cshtml" />
+    <Content Include="Views\Album\Index.cshtml" />
+    <Content Include="Views\Album\Create.cshtml" />
+    <Content Include="Views\Album\ViewAlbum.cshtml" />
+    <Content Include="Views\Album\AddImageToAlbum.cshtml" />
+    <Content Include="Views\Album\Edit.cshtml" />
+    <Content Include="Views\Album\DeleteImageFromAlbum.cshtml" />
+    <Content Include="Views\Album\DeleteAlbum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Img\ProfileImages\" />
+    <Folder Include="Content\Img\UserImg\6b81bbd3-a079-4cce-9c9b-477269f4e1e3\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Admin\" />
   </ItemGroup>

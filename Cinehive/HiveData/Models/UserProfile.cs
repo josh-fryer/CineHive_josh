@@ -38,6 +38,7 @@ namespace HiveData.Models
 
         public virtual ICollection<Notification> Notifications { get; set; }
         public virtual ICollection<Award> Awards  { get; set; }
+        public virtual ICollection<Album> Albums { get; set; }
 
         public virtual ApplicationUser User { get; set; }       
         [NotMapped]
