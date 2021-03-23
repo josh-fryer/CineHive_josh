@@ -75,7 +75,18 @@
         </dd>
 
     </dl>
+    <p>
+        <b>Favourite Genres:</b>
+        <ul>
+            @foreach (string genre in ViewBag.GenreNames)
+            {
+                <li>@genre</li>
+            }
+        </ul>
+    </p>
 </div>
+
+
 <p>
     @Html.ActionLink("Edit Profile", "Edit") |
     @Html.ActionLink("My Image Albums", "Index", "Album")

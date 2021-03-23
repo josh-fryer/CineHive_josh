@@ -178,6 +178,10 @@
     <Compile Include="Migrations\202103221725565_addfilenametoimage.Designer.cs">
       <DependentUpon>202103221725565_addfilenametoimage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103231115525_ApiIdFix.cs" />
+    <Compile Include="Migrations\202103231115525_ApiIdFix.Designer.cs">
+      <DependentUpon>202103231115525_ApiIdFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -232,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103221725565_addfilenametoimage.resx">
       <DependentUpon>202103221725565_addfilenametoimage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103231115525_ApiIdFix.resx">
+      <DependentUpon>202103231115525_ApiIdFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

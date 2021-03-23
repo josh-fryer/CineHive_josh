@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using HiveData.Repository;
 using System.Threading.Tasks;
 using HiveData.ViewModels;
+using System.Collections.Generic;
 
 namespace Cinehive.Controllers
 {
@@ -21,8 +22,8 @@ namespace Cinehive.Controllers
         public ProfileController()
         {
             profileService = new ProfileService();
-
         }
+
         [Authorize]
         public ActionResult Index(int? id)
         {
@@ -43,6 +44,16 @@ namespace Cinehive.Controllers
 
                 Posts = userpost.Posts.ToList()
             };
+
+            List<string> genreNames = new List<string>();
+            // match favegenre genreId with Genres ID to get name
+            foreach (var f in userpost.FavouriteGenres.ToList())
+            {
+               string name = context.Genres.Find(f.GenreId).Name;
+               genreNames.Add(name);
+            }
+
+            ViewBag.GenreNames = genreNames;
 
             return View(profilePostsViewModel);
 
@@ -95,16 +106,16 @@ namespace Cinehive.Controllers
 
                 // CLEAR fave genres then add back. ensures no duplicates or more than limit.
                 // probably a better way to do this.
-                //profileService.ClearFaveGenres(userid);
-                //// check which genres are selected:
-                //foreach (var g in userProfile.Genres)
-                //{
-                //    if (g.Selected)
-                //    {
-                //        // add selected genre to FaveGenre on userprofile
-                //        profileService.AddFaveGenre(int.Parse(g.Value), userid);
-                //    }
-                //}
+                profileService.ClearFaveGenres(userid);
+                // check which genres are selected:
+                foreach (var g in userProfile.Genres)
+                {
+                    if (g.Selected)
+                    {
+                        // add selected genre to FaveGenre on userprofile
+                        profileService.AddFaveGenre(int.Parse(g.Value), userid);
+                    }
+                }
 
                 context.SaveChanges();
                 return RedirectToAction("Index");
@@ -125,7 +136,6 @@ namespace Cinehive.Controllers
                 return HttpNotFound();
             }
             return View(profileService.ViewProfile(id));
-
         }
 
         //[Authorize]

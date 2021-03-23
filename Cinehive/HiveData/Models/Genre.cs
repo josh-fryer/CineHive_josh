@@ -11,7 +11,7 @@ namespace HiveData.Models
     {
         [Key]
         public int ID { get; set; }
-        public int ApiId { get; set; }
+        public Int32? ApiId { get; set; }
         public string Name { get; set; }
     }
 }
