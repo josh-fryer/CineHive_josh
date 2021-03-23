@@ -103,6 +103,14 @@ namespace Cinehive.Controllers
                 {
                     context.Entry(userProfile).Property(x => x.ImagePath).IsModified = false;
                 }
+                if (userProfile.DateOfBirth == null)
+                {
+                    context.Entry(userProfile).Property(z => z.DateOfBirth).IsModified = false;
+                }
+                if (userProfile.Gender == null)
+                {
+                    context.Entry(userProfile).Property(v => v.Gender).IsModified = false;
+                }
 
                 // CLEAR fave genres then add back. ensures no duplicates or more than limit.
                 // probably a better way to do this.

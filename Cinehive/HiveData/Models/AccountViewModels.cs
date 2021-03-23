@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Cinehive.Models
@@ -85,6 +86,12 @@ namespace Cinehive.Models
         [Required]
         [Display(Name = "Last name")]
         public string Lastname { get; set; }
+        [Required]
+        [Display(Name = "Date of Birth")]
+        public DateTime DateOfBirth { get; set; }
+        [Required]
+        [Display(Name = "Gender")]
+        public string Gender { get; set; }
     }
 
     public class ResetPasswordViewModel

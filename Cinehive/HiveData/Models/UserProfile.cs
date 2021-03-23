@@ -19,7 +19,10 @@ namespace HiveData.Models
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Gender { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}")]
+        [Display(Name ="Date of Birth")]
         public DateTime? DateOfBirth { get; set; }
+        [Display(Name ="About me")]
         public string AboutMe { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
