@@ -27,6 +27,7 @@ namespace HiveData.Models
 
         public virtual ICollection<Post> Posts { get; set; }
         public virtual ICollection<UserProfile> Friends { get; set; }
+        public virtual ICollection<PostComment> Comments { get; set; }
 
         public virtual ICollection<UserProfile> Followers { get; set; }
         public virtual ICollection<UserProfile> Following { get; set; }

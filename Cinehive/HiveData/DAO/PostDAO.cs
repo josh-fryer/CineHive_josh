@@ -48,6 +48,7 @@ namespace HiveData.DAO
         public void EditPost(Post post, CineHiveContext context)
         {
             // make db update existing post with changed/new data
+            post.Edited = true;
             context.Entry(post).State = EntityState.Modified;
             context.SaveChanges();
         }

@@ -77,7 +77,7 @@ namespace Cinehive.Controllers
             return View(albumImageViewModel);
         }
         [Authorize]
-        public ActionResult AddImageToAlbum(int? id)
+        public ActionResult AddImageToAlbum(int id)
         {
             TempData["id"] = id;
 
@@ -85,7 +85,7 @@ namespace Cinehive.Controllers
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult AddImageToAlbum(Album album, Image image) //add to data and service
+        public ActionResult AddImageToAlbum(Album album) //add to data and service
         {
             try
             {
@@ -129,35 +129,30 @@ namespace Cinehive.Controllers
             }
         }
         [Authorize]
-        public ActionResult DeleteImageFromAlbum(int? id)
+        public ActionResult DeleteImageFromAlbum(int id)
         {
-            var image = context.Images.Find(id);
-
-            return View(image);
+            return View(albumService.GetImage(id));
         }
         [HttpPost]
-        public ActionResult DeleteImageFromAlbum(int id) //add to data and service
+        public ActionResult DeleteImageFromAlbum(int id, Image image) //add to data and service
         {
-            var userid = User.Identity.GetUserId();
-            var image = context.Images.SingleOrDefault(x => x.ImageId == id);
+            try
+            {
+                albumService.DeleteImageFromAlbum(id);
+            }
+            catch
+            {
 
-            string filename = image.Filename;
-            string path = Server.MapPath("~/Content/Img/UserImg/" + userid + "/" + filename);
-            FileInfo file = new FileInfo(path);
-            file.Delete();
-
-
-            context.Images.Remove(image);
-            context.SaveChanges();
+                return View();
+            }
 
             return RedirectToAction("ViewAlbum",new {id = TempData["Page"] });
         }
         [Authorize]
         public ActionResult Edit(int id)
         {
-            var album = context.Albums.Find(id);
 
-            return View(album);
+            return View(albumService.GetAlbum(id));
         }
 
         [HttpPost]
@@ -167,9 +162,7 @@ namespace Cinehive.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    context.Entry(album).State = EntityState.Modified;
-                    context.SaveChanges();
-
+                    albumService.EditAlbum(album);
                 }
 
                 return RedirectToAction("Index");
@@ -182,9 +175,7 @@ namespace Cinehive.Controllers
         [Authorize]
         public ActionResult DeleteAlbum(int id)
         {
-            var album = context.Albums.Find(id);
-
-            return View(album);
+            return View(albumService.GetAlbum(id));
         }
 
         [HttpPost]
@@ -192,12 +183,8 @@ namespace Cinehive.Controllers
         {
             try
             {
-                album = context.Albums.FirstOrDefault(c => c.AlbumId == id);
-                context.Albums.Remove(album);
-                context.SaveChanges();
-
-
-
+                albumService.DeleteAlbum(id);
+           
                 return RedirectToAction("Index");
             }
             catch
@@ -208,18 +195,16 @@ namespace Cinehive.Controllers
         }
 
         [Authorize]
-        public ActionResult SetAsProfilePicture(Image image) //Add to data and service
+        public ActionResult SetAsProfilePicture(Image image)
         {
-            string userid = User.Identity.GetUserId();
-            int id = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
-            
-            UserProfile userProfile = context.UserProfiles.Find(id);
-
-            userProfile.ImagePath = image.ImagePath;
-
-            context.Entry(userProfile).State = EntityState.Modified;
-            context.SaveChanges();
-
+            try
+            {
+                albumService.SetAsProfilePicture(image);
+            }
+            catch
+            {
+                return View();
+            }
             return RedirectToAction("Index", "Profile");
         }
     }

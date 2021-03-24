@@ -12,5 +12,10 @@ namespace HiveServices.IService
         IList<Album> GetAlbums();
         void CreateAlbum(Album album);
         Album GetAlbum(int id);
+        Image GetImage(int id);
+        void EditAlbum(Album album);
+        void DeleteAlbum(int id);
+        void SetAsProfilePicture(Image image);
+        void DeleteImageFromAlbum(int id);
     }
 }

@@ -29,6 +29,7 @@ namespace Cinehive.Controllers
                 PostFeedViewModel postFeedViewModel = new PostFeedViewModel()
                 {
                     PostList = NewPosts
+                    
                 };
                 return View(postFeedViewModel);
             }

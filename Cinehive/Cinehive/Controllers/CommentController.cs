@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using HiveData.Models;
 using HiveData.Repository;
+using Microsoft.AspNet.Identity;
+using HiveServices.Service;
+using HiveServices.IService;
 
 namespace Cinehive.Controllers
 {
@@ -12,21 +15,42 @@ namespace Cinehive.Controllers
     {
         private CineHiveContext context = new CineHiveContext();
 
-        // GET: Comment/Create
-        public ActionResult Create()
+        private ICommentService commentService;
+
+        public CommentController()
         {
+            commentService = new CommentService();
+        }
+
+        public ActionResult Create(int id)
+        {
+            TempData["postid"] = id;
             return View();
         }
 
-        // POST: Comment/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(PostComment comment, int id)
         {
+            id = Convert.ToInt32(TempData["postid"]);
+            var userid = User.Identity.GetUserId();
             try
             {
-                // TODO: Add insert logic here
+                UserProfile userProfile = context.UserProfiles.First(c => c.UserId == userid);
+                Post post = context.Posts.First(c => c.PostId == id);
 
-                return RedirectToAction("Index");
+                comment = new PostComment
+                {
+                    CommentContent = comment.CommentContent,
+                    DateCommented = DateTime.Now,
+                    Awards = 0
+                    
+                };
+
+                userProfile.Comments.Add(comment);
+                post.PostComments.Add(comment);
+                context.SaveChanges();
+
+                return RedirectToAction("ViewPostComments", "Post", new{ id = id });
             }
             catch
             {
@@ -34,21 +58,25 @@ namespace Cinehive.Controllers
             }
         }
 
-        // GET: Comment/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, int postid)
         {
-            return View();
+            TempData["SecPostid"] = postid;
+
+            return View(commentService.GetComment(id));
         }
 
-        // POST: Comment/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(PostComment postComment)
         {
+            int id = Convert.ToInt32(TempData["SecPostid"]);
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    commentService.EditComment(postComment);
 
-                return RedirectToAction("Index");
+                }
+                return RedirectToAction("ViewPostComments", "Post", new { id = id });
             }
             catch
             {
@@ -56,21 +84,23 @@ namespace Cinehive.Controllers
             }
         }
 
-        // GET: Comment/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, int postid)
         {
-            return View();
+            TempData["ThirdPostid"] = postid;
+
+            return View(commentService.GetComment(id));
         }
 
-        // POST: Comment/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, PostComment postComment)
         {
             try
             {
-                // TODO: Add delete logic here
+                int postid = Convert.ToInt32(TempData["ThirdPostid"]);
 
-                return RedirectToAction("Index");
+                commentService.DeleteComment(id);
+
+                return RedirectToAction("ViewPostComments", "Post", new { id = postid });
             }
             catch
             {

@@ -8,6 +8,8 @@ using HiveData.IDAO;
 using HiveData.DAO;
 using HiveData.Models;
 using HiveData.Repository;
+using System.Web;
+using Microsoft.AspNet.Identity;
 
 namespace HiveServices.Service
 {
@@ -38,6 +40,43 @@ namespace HiveServices.Service
             using (var context = new CineHiveContext())
             {
                 return albumDAO.GetAlbum(id, context);
+            }
+        }
+        public Image GetImage(int id)
+        {
+            using (var context = new CineHiveContext())
+            {
+                return albumDAO.GetImage(id, context);
+            }
+        }
+        public void EditAlbum(Album album)
+        {
+            using (var context = new CineHiveContext())
+            {
+                albumDAO.EditAlbum(album, context);
+            }
+        }
+        public void DeleteAlbum(int id)
+        {
+            using (var context = new CineHiveContext())
+            {
+                Album album = albumDAO.GetAlbum(id, context);
+                albumDAO.DeleteAlbum(album, context);
+            }
+        }
+        public void SetAsProfilePicture(Image image)
+        {
+            using (var context = new CineHiveContext())
+            {
+                albumDAO.SetAsProfilePicture(image, context);
+            }
+        }
+        public void DeleteImageFromAlbum(int id)
+        {
+            using (var context = new CineHiveContext())
+            {
+                Image image = albumDAO.GetImage(id, context);
+                albumDAO.DeleteImageFromAlbum(image, context);
             }
         }
     }

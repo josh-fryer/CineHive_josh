@@ -282,7 +282,6 @@
     <Content Include="Views\Profile\ViewProfile.cshtml" />
     <Content Include="Views\Post\GetCurrUserPosts.cshtml" />
     <Content Include="Views\Post\DeletePost.cshtml" />
-    <Content Include="Views\Profile\Album.cshtml" />
     <Content Include="Views\Notification\Index.cshtml" />
     <Content Include="Views\Notification\TestSendNotification.cshtml" />
     <Content Include="Views\Post\EditPost.cshtml" />
@@ -293,6 +292,10 @@
     <Content Include="Views\Album\Edit.cshtml" />
     <Content Include="Views\Album\DeleteImageFromAlbum.cshtml" />
     <Content Include="Views\Album\DeleteAlbum.cshtml" />
+    <Content Include="Views\Comment\Create.cshtml" />
+    <Content Include="Views\Post\ViewPostComments.cshtml" />
+    <Content Include="Views\Comment\Edit.cshtml" />
+    <Content Include="Views\Comment\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,7 +303,6 @@
     <Folder Include="Content\Img\UserImg\6b81bbd3-a079-4cce-9c9b-477269f4e1e3\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

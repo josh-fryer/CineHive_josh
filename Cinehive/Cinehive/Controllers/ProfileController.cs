@@ -41,8 +41,7 @@ namespace Cinehive.Controllers
             ProfilePostsViewModel profilePostsViewModel = new ProfilePostsViewModel
             {
                 userProfile = profileService.GetUserProfile(id),
-
-                Posts = userpost.Posts.ToList()
+                Posts = userpost.Posts.ToList(),
             };
 
             List<string> genreNames = new List<string>();

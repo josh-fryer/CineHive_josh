@@ -13,8 +13,11 @@ namespace HiveData.Models
     {
         [Key]
         public int CommentId { get; set; }
+        [Display(Name = "Comment Content")]
         public string CommentContent { get; set; }
+        [Display(Name ="Date Commented")]
         public DateTime DateCommented { get; set; }
         public int Awards { get; set; }
+        public bool Edited { get; set; }
     }
 }

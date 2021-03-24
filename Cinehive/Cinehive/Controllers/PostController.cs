@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HiveData.ViewModels;
 
 namespace Cinehive.Controllers
 {
@@ -81,5 +82,20 @@ namespace Cinehive.Controllers
         //    context.SaveChanges();
         //    return RedirectToAction("Index","Home");
         //}
+        public ActionResult ViewPostComments(int id)
+        {
+            var comments = context.Posts.Find(id).PostComments.ToList();
+            string OriginalPost = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(x => x.PostId == id).FirstOrDefault())).Select(c => c.UserId).FirstOrDefault();
+
+
+            PostCommentUserViewModel postCommentUserViewModel = new PostCommentUserViewModel
+            {
+                UserProfile = context.UserProfiles.Where(c => c.UserId == OriginalPost).FirstOrDefault(),
+                CommentList = comments,
+                Post = context.Posts.Find(id)
+            };
+
+            return View(postCommentUserViewModel);
+        }
     }
 }

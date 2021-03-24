@@ -19,6 +19,9 @@ namespace HiveData.ViewModels
         public UserProfile UserProfile { get; set; }
         public IPagedList<Post> PostList { get; set; }
         //public Like like { get; set; }
+        public Post Post { get; set; }
+        public PostComment PostComment { get; set; }
+        public IList<PostComment> CommentList { get; set; }
 
 
 
