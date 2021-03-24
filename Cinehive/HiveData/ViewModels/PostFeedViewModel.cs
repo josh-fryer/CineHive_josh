@@ -18,7 +18,6 @@ namespace HiveData.ViewModels
 
         public UserProfile UserProfile { get; set; }
         public IPagedList<Post> PostList { get; set; }
-        //public Like like { get; set; }
         public Post Post { get; set; }
         public PostComment PostComment { get; set; }
         public IList<PostComment> CommentList { get; set; }
@@ -42,21 +41,11 @@ namespace HiveData.ViewModels
             string userpicture = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.ImagePath).FirstOrDefault();
             return (userpicture);
         }
-        //public bool HasLiked(int id)
-        //{
-        //    string userid = HttpContext.Current.User.Identity.GetUserId();
-
-        //    //var check = context.Likes.Where(c => c.UserId == userid && c.PostId == id).Select(j => j.LikeId);
-
-        //    //if (check == null)
-        //    //{
-        //    //    return false;
-        //    //}
-        //    //else
-        //    //{
-        //    //    return true;
-        //    //}
-            
-        //}
+        public int GetProfileId(int id)
+        {
+            var profileid = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.ProfileId).FirstOrDefault();
+            return (profileid);
+        }
+     
     }
 }
