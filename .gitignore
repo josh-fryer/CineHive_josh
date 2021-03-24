@@ -3,3 +3,5 @@ applicationhost.config
 *.txt
 *.cache
 *.log
+*.dll
+*.pdb

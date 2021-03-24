@@ -34,7 +34,7 @@ namespace Cinehive.Controllers
         public ActionResult Create(Post post)
         {
             postService.CreatePost(post);
-                return RedirectToAction("Index", "Home"); 
+            return RedirectToAction("Index", "Home"); 
         }
 
         public ActionResult EditPost(int id)

@@ -110,6 +110,7 @@
     <Compile Include="IService\IAlbumService.cs" />
     <Compile Include="IService\ICommentService.cs" />
     <Compile Include="IService\IFeedService.cs" />
+    <Compile Include="IService\IFriendService.cs" />
     <Compile Include="IService\INotificationService.cs" />
     <Compile Include="IService\IPostService.cs" />
     <Compile Include="IService\IProfileService.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Service\AdminService.cs" />
     <Compile Include="Service\AlbumService.cs" />
     <Compile Include="Service\CommentService.cs" />
+    <Compile Include="Service\FriendService.cs" />
     <Compile Include="Service\NotificationService.cs" />
     <Compile Include="Service\PostService.cs" />
     <Compile Include="Service\ProfileService.cs" />

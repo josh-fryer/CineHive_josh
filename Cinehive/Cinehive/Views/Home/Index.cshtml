@@ -7,7 +7,6 @@
     string userid = User.Identity.GetUserId();
     int postid = 0;
     int id = 0;
-   
 }
 
 @if (User.Identity.IsAuthenticated)
@@ -77,6 +76,7 @@
 
                         @if (Model.IsUserPost(id = item.PostId) == true)
                         {
+                            <li>|</li>
                             <li> @Html.ActionLink("Remove", "DeletePost", "Post", new { id = item.PostId }, null) </li>
                             <li>|</li>
                             <li> @Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId }, null) </li>

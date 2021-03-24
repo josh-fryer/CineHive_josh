@@ -131,12 +131,14 @@
     <Compile Include="DAO\AdminDAO.cs" />
     <Compile Include="DAO\AlbumDAO.cs" />
     <Compile Include="DAO\CommentDAO.cs" />
+    <Compile Include="DAO\FriendDAO.cs" />
     <Compile Include="DAO\NotificationDAO.cs" />
     <Compile Include="DAO\PostDAO.cs" />
     <Compile Include="DAO\ProfileDAO.cs" />
     <Compile Include="IDAO\IAdminDAO.cs" />
     <Compile Include="IDAO\IAlbumDAO.cs" />
     <Compile Include="IDAO\ICommentDAO.cs" />
+    <Compile Include="IDAO\IFriendDAO.cs" />
     <Compile Include="IDAO\INotificationDAO.cs" />
     <Compile Include="IDAO\IPostDAO.cs" />
     <Compile Include="IDAO\IProfileDAO.cs" />
