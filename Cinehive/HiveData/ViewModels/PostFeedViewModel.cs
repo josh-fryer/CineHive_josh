@@ -46,6 +46,19 @@ namespace HiveData.ViewModels
             var profileid = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.ProfileId).FirstOrDefault();
             return (profileid);
         }
+        public bool IsUserPost(int id)
+        {
+            string userid = HttpContext.Current.User.Identity.GetUserId();
+            var profileid = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.UserId).FirstOrDefault();
+            if (userid == profileid)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
      
     }
 }

@@ -7,6 +7,7 @@
     string userid = User.Identity.GetUserId();
     int postid = 0;
     int id = 0;
+   
 }
 
 @if (User.Identity.IsAuthenticated)
@@ -66,12 +67,13 @@
                         <li>@Html.ActionLink("Share", "")</li>
                         <li>|</li>
                         <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
-                        @* @if (userid == item.UserId)
-                            {
-                                <li>@Html.ActionLink("Remove", "DeletePost", "Post", new { id = item.PostId }, null)</li>
-                                <li>|</li>
-                                <li>@Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId }, null)</li>
-                            } *@
+                        
+                        @if (Model.IsUserPost(id = item.PostId) == true)
+                        {
+                             <li> @Html.ActionLink("Remove", "DeletePost", "Post", new {id = item.PostId }, null) </li>
+                             <li>|</li>
+                             <li> @Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId }, null) </li>
+                        }
                     </ul>
 
                 </div>

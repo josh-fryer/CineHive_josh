@@ -28,12 +28,6 @@ namespace Cinehive.Controllers
         public ActionResult Index(int? id)
         {
             var userid = User.Identity.GetUserId();
-            profileService.GetUserProfile(id);
-
-            if (profileService.GetUserProfile(id) == null)
-            {
-                return HttpNotFound();
-            }
 
             var userpost = context.UserProfiles.Where(c => c.UserId == userid).FirstOrDefault();
 
