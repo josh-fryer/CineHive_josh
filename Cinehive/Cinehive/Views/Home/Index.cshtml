@@ -60,19 +60,26 @@
                         }
                     </ul>
                     <ul class="list-inline list-unstyled">
-                        <li>@Html.ActionLink("Award", "GiveAward", "Post", new { Id = item.PostId }, new { })</li>
+                        @if (Model.AwardGiven(postid = item.PostId) == true)
+                        {
+                            <li><strong>Awarded</strong></li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Award", "GiveAward", "Post", new { id = item.PostId }, new { })</li>
+                        }
                         <li>|</li>
                         <li>@Html.ActionLink("Comment", "Create", "Comment", new { id = item.PostId }, new { })</li>
                         <li>|</li>
                         <li>@Html.ActionLink("Share", "")</li>
                         <li>|</li>
                         <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
-                        
+
                         @if (Model.IsUserPost(id = item.PostId) == true)
                         {
-                             <li> @Html.ActionLink("Remove", "DeletePost", "Post", new {id = item.PostId }, null) </li>
-                             <li>|</li>
-                             <li> @Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId }, null) </li>
+                            <li> @Html.ActionLink("Remove", "DeletePost", "Post", new { id = item.PostId }, null) </li>
+                            <li>|</li>
+                            <li> @Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId }, null) </li>
                         }
                     </ul>
 

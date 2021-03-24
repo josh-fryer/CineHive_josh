@@ -55,7 +55,6 @@ namespace Cinehive.Controllers
         [Authorize]
         public ActionResult Edit(int? id)
         {            
-            //UserProfile userProfile = context.UserProfiles.Find(id);
             UserProfile userProfile = profileService.GetUserProfile(id);
             if (userProfile == null)
             {
@@ -139,33 +138,6 @@ namespace Cinehive.Controllers
             return View(profileService.ViewProfile(id));
         }
 
-        //[Authorize]
-        //public async Task<ActionResult> Album() //Temporary action
-        //{
-        //    string userid = User.Identity.GetUserId();
-        //    var images = from m in context.Images
-        //                 select m;
-
-        //    //images = images.Where(s => s.UserId == userid); #broken with new models
-
-        //    return View(await images.ToListAsync());
-
-        //}
-        //[Authorize]
-        //public ActionResult MakeProfilePicture(Image image) //Temporary action
-        //{
-        //    string userid = User.Identity.GetUserId();
-        //    var GetProfile = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
-        //    int id = GetProfile;
-
-        //    UserProfile userProfile = context.UserProfiles.Find(id);
-
-        //    userProfile.ImagePath = image.ImagePath;
-            
-        //    context.Entry(userProfile).State = EntityState.Modified;
-        //    context.SaveChanges();
-
-        //    return RedirectToAction("Index");
-        //}
+       
     }
 }

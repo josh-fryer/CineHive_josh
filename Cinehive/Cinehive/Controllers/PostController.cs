@@ -52,8 +52,18 @@ namespace Cinehive.Controllers
         
         public ActionResult DeletePost(int id)
         {
+            var comments = context.Posts.Find(id).PostComments.ToList();
+            foreach (var item in comments)
+            {
+                context.PostComments.Remove(item);
+            }
+            context.SaveChanges();
+            
             postService.DeletePost(id);
+
+
             return RedirectToAction("Index", "Home");
+
         }
 
         
@@ -64,24 +74,6 @@ namespace Cinehive.Controllers
             return View(postService.GetCurrUserPosts());
         }
 
-        // #### broken with new model changes
-        //[Authorize]
-        //public ActionResult GiveAward(int id)
-        //{
-        //    Post post = context.Posts.Find(id);
-        //    string userid = User.Identity.GetUserId().ToString();
-
-        //    Like like = new Like()
-        //    {
-        //        PostId = id,
-        //        UserId = userid
-        //    };
-
-        //    context.Likes.Add(like);
-        //    post.Awards++;
-        //    context.SaveChanges();
-        //    return RedirectToAction("Index","Home");
-        //}
         public ActionResult ViewPostComments(int id)
         {
             var comments = context.Posts.Find(id).PostComments.ToList();
@@ -96,6 +88,25 @@ namespace Cinehive.Controllers
             };
 
             return View(postCommentUserViewModel);
+        }
+
+        public ActionResult GiveAward(int id)
+        {
+            var userid = User.Identity.GetUserId();
+            UserProfile profile = context.UserProfiles.First(x => x.UserId == userid);
+            Post post = context.Posts.Find(id);
+
+            Award award = new Award
+            {
+                PostId = id
+            };
+            post.Awards++;
+
+            profile.Awards.Add(award);
+            context.SaveChanges();
+
+
+            return RedirectToAction("Index","Home");
         }
     }
 }
