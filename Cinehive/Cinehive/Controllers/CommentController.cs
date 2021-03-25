@@ -48,6 +48,10 @@ namespace Cinehive.Controllers
 
                 userProfile.Comments.Add(comment);
                 post.PostComments.Add(comment);
+                if (post.PostComments.Count >= 8)
+                {
+                    post.Trending = true;
+                }
                 context.SaveChanges();
 
                 return RedirectToAction("ViewPostComments", "Post", new{ id = id });

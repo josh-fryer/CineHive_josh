@@ -64,5 +64,27 @@ namespace HiveServices.Service
                 postDAO.EditPost(post, context);
             }
         }
+        public void GiveAward(int id)
+        {
+            using (var context = new CineHiveContext())
+            {
+                postDAO.GiveAward(id, context);
+            }
+        }
+        public Award FindAward(int id)
+        {
+            using (var context = new CineHiveContext())
+            {
+               return postDAO.FindAward(id, context);
+            }
+        }
+        public void DeleteAssociatedComments(int id)
+        {
+            using (var context = new CineHiveContext())
+            {
+                postDAO.DeleteAssociatedComments(id, context);
+
+            }
+        }
     }
 }

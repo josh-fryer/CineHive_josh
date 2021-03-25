@@ -15,5 +15,8 @@ namespace HiveServices.IService
         Post GetPost(int id);
         IList<Post> GetCurrUserPosts();
         void EditPost(Post post);
+        void GiveAward(int id);
+        void DeleteAssociatedComments(int id);
+        Award FindAward(int id);
     }
 }

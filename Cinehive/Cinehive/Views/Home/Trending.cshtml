@@ -1,0 +1,94 @@
+﻿@model HiveData.ViewModels.PostFeedViewModel
+@using Microsoft.AspNet.Identity;
+@using PagedList.Mvc;
+@using HiveData.Repository;
+@{
+    ViewBag.Title = "Trending";
+    string userid = User.Identity.GetUserId();
+    int postid = 0;
+    int id = 0;
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <table class="table">
+        <tr>
+            <th>
+                Test Buttons/Links
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Create Post", "Create", "Post")
+            </td>
+            <td>
+                @Html.ActionLink("Get Current Users Posts", "GetCurrUserPosts", "Post")
+            </td>
+            <td>
+                @Html.ActionLink("Send Notification to self", "TestSendNotification", "Notification")
+            </td>
+        </tr>
+    </table>
+}
+
+<h2>Trending</h2>
+
+@foreach (var item in Model.PostList)
+{
+    <div class="container">
+        <div class="well">
+            <div class="media">
+                <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) })" )">
+                    <img src="~/@Model.GetUserPicture(postid = item.PostId)" width="140" height="140" />
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">@Html.ActionLink(@Model.GetFirstName(postid = item.PostId) + " " + Model.GetLastName(postid = item.PostId), "ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) }, new { })</h4>
+                    <p>
+                        @item.PostContent
+                    </p>
+                    <ul class="list-inline list-unstyled">
+                        <li> @item.DatePosted </li>
+                        <li>|</li>
+                        @if (item.Awards < 2)
+                        {
+                            <li> @item.Awards Award</li>
+                        }
+                        else
+                        {
+                            <li> @item.Awards Awards</li>
+                        }
+                    </ul>
+                    <ul class="list-inline list-unstyled">
+                        @if (Model.AwardGiven(postid = item.PostId) == true)
+                        {
+                            <li><strong>@Html.ActionLink("Revoke", "RevokeAward", "Post", new { id = item.PostId }, new { })</strong></li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Award", "GiveAward", "Post", new { id = item.PostId }, new { })</li>
+                        }
+                        <li>|</li>
+                        <li>@Html.ActionLink("Comment", "Create", "Comment", new { id = item.PostId }, new { })</li>
+                        <li>|</li>
+                        <li>@Html.ActionLink("Share", "")</li>
+                        <li>|</li>
+                        <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
+
+                        @if (Model.IsUserPost(id = item.PostId) == true)
+                        {
+                            <li>|</li>
+                            <li> @Html.ActionLink("Remove", "DeletePost", "Post", new { id = item.PostId }, null) </li>
+                            <li>|</li>
+                            <li> @Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId }, null) </li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+    Page @(Model.PostList.PageCount < Model.PostList.PageNumber ? 0 : Model.PostList.PageNumber) of @Model.PostList.PageCount
+    @Html.PagedListPager(Model.PostList, page => Url.Action("Index", new { page }))
+

@@ -16,6 +16,7 @@ namespace HiveData.Models
         public DateTime DatePosted { get; set; }
         public int Awards { get; set; }
         public bool Edited { get; set; }
+        public bool Trending { get; set; }
         public virtual ICollection<PostComment> PostComments { get; set; }
     }
 }

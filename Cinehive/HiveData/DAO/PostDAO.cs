@@ -19,6 +19,7 @@ namespace HiveData.DAO
         public void CreatePost(Post post, CineHiveContext context)
         {
             post.DatePosted = DateTime.Now;
+            post.Trending = false;
             string userId = HttpContext.Current.User.Identity.GetUserId();
             // find userprofile by userId then Add post to their posts collection
             UserProfile profile = context.UserProfiles.First(x => x.UserId == userId);
@@ -51,6 +52,39 @@ namespace HiveData.DAO
             // make db update existing post with changed/new data
             post.Edited = true;
             context.Entry(post).State = EntityState.Modified;
+            context.SaveChanges();
+        }
+        public void GiveAward(int id, CineHiveContext context)
+        {
+            var userid = HttpContext.Current.User.Identity.GetUserId();
+            UserProfile profile = context.UserProfiles.First(x => x.UserId == userid);
+            Post post = context.Posts.Find(id);
+
+            Award award = new Award
+            {
+                PostId = id
+            };
+            post.Awards++;
+
+            if (post.Awards >= 30)
+            {
+                post.Trending = true;
+            }
+
+            profile.Awards.Add(award);
+            context.SaveChanges();
+        }
+        public Award FindAward(int id, CineHiveContext context)
+        {
+            return context.Awards.Find(id);
+        }
+        public void DeleteAssociatedComments(int id, CineHiveContext context)
+        {
+            var comments = context.Posts.Find(id).PostComments.ToList();
+            foreach (var item in comments)
+            {
+                context.PostComments.Remove(item);
+            }
             context.SaveChanges();
         }
     }

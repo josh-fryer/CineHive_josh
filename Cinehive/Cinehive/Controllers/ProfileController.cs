@@ -78,7 +78,7 @@ namespace Cinehive.Controllers
             string userid = User.Identity.GetUserId();
             int id = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
             
-            if (ModelState.IsValid) // if there are no form errors
+            if (ModelState.IsValid) 
             {
                 
                 if (userProfile.ProfilePicture != null)

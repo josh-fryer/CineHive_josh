@@ -194,6 +194,10 @@
     <Compile Include="Migrations\202103241302311_addeditedtocommentandpost.Designer.cs">
       <DependentUpon>202103241302311_addeditedtocommentandpost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103251343070_addedtrendingtopost.cs" />
+    <Compile Include="Migrations\202103251343070_addedtrendingtopost.Designer.cs">
+      <DependentUpon>202103251343070_addedtrendingtopost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -258,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103241302311_addeditedtocommentandpost.resx">
       <DependentUpon>202103241302311_addeditedtocommentandpost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103251343070_addedtrendingtopost.resx">
+      <DependentUpon>202103251343070_addedtrendingtopost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

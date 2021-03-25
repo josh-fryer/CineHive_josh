@@ -52,13 +52,8 @@ namespace Cinehive.Controllers
         
         public ActionResult DeletePost(int id)
         {
-            var comments = context.Posts.Find(id).PostComments.ToList();
-            foreach (var item in comments)
-            {
-                context.PostComments.Remove(item);
-            }
-            context.SaveChanges();
-            
+            postService.DeleteAssociatedComments(id);
+
             postService.DeletePost(id);
 
 
@@ -92,21 +87,26 @@ namespace Cinehive.Controllers
 
         public ActionResult GiveAward(int id)
         {
+            postService.GiveAward(id);
+
+            return RedirectToAction("Index","Home");
+        }
+        public ActionResult RevokeAward(int id, Award award)
+        {
+
             var userid = User.Identity.GetUserId();
             UserProfile profile = context.UserProfiles.First(x => x.UserId == userid);
             Post post = context.Posts.Find(id);
+            award = profile.Awards.Where(x => x.PostId == id).FirstOrDefault();
+            
 
-            Award award = new Award
-            {
-                PostId = id
-            };
-            post.Awards++;
+            post.Awards--;
 
-            profile.Awards.Add(award);
+            profile.Awards.Remove(award);
+            context.Awards.Remove(award);
             context.SaveChanges();
 
-
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
