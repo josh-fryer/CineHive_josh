@@ -129,12 +129,14 @@ namespace Cinehive.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            profileService.ViewProfile(id);
 
             if (profileService.ViewProfile(id) == null)
             {
                 return HttpNotFound();
             }
+
+            // check friend request status
+
             return View(profileService.ViewProfile(id));
         }
 

@@ -9,6 +9,7 @@ namespace HiveData.IDAO
 {
     public interface IFriendDAO
     {
-        void AddFriend(string friendUserId, CineHiveContext context);
+        void AddFriend(string friendId, CineHiveContext context);
+        void SendFriendReq(string friendId, CineHiveContext context);
     }
 }

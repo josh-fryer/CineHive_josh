@@ -17,11 +17,21 @@ namespace Cinehive.Controllers
             friendService = new FriendService();
         }
 
-        public ActionResult AddFriend(string userId)
+        public ActionResult AddFriend(string friendId)
         {
-            // add friend to current users friends collection
-            return View();
+            friendService.AddFriend(friendId);
+            // redirect to notifications
+            return RedirectToAction("Index", "Notification");
         }
+
+        public ActionResult SendFriendReq(int friendProfileId,string friendUserId)
+        {
+            friendService.SendFriendReq(friendUserId);
+            // redirect to same friend profile
+            return RedirectToAction("ViewProfile", "Profile", new { id = friendProfileId });
+        }
+
+
 
         public ActionResult RemoveFriend()
         {

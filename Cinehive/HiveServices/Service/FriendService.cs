@@ -19,11 +19,19 @@ namespace HiveServices.Service
             friendDAO = new FriendDAO();
         }
 
-        public void AddFriend(string friendUserId)
+        public void AddFriend(string friendId)
         {
             using (var context = new CineHiveContext())
             {
-                friendDAO.AddFriend(friendUserId, context);
+                friendDAO.AddFriend(friendId, context);
+            }
+        }
+
+        public void SendFriendReq(string friendId)
+        {
+            using (var context = new CineHiveContext())
+            {
+                friendDAO.SendFriendReq(friendId, context);
             }
         }
     }

@@ -47,6 +47,7 @@ namespace Cinehive.Controllers
 
             return RedirectToAction("Welcome");
         }
+
         public ActionResult Popular(int? page = 1)
         {
             var PopularPosts = context.Posts.Where(c => c.Popular == true).ToList();

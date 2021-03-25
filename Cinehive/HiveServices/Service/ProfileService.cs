@@ -38,7 +38,6 @@ namespace HiveServices.Service
 
         public UserProfile ViewProfile(int? id)
         {
-            profileDAO = new ProfileDAO();
             return profileDAO.ViewProfile(id);
         }
 

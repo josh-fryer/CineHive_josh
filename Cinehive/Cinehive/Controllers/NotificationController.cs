@@ -22,7 +22,7 @@ namespace Cinehive.Controllers
         }
 
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index() // returns view of all notifications
         {
             return View(notificationService.GetUserNotifications());
         }
