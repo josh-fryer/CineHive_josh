@@ -50,7 +50,7 @@ namespace Cinehive.Controllers
                 post.PostComments.Add(comment);
                 if (post.PostComments.Count >= 8)
                 {
-                    post.Trending = true;
+                    post.Popular = true;
                 }
                 context.SaveChanges();
 

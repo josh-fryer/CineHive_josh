@@ -19,7 +19,7 @@ namespace HiveData.DAO
         public void CreatePost(Post post, CineHiveContext context)
         {
             post.DatePosted = DateTime.Now;
-            post.Trending = false;
+            post.Popular = false;
             string userId = HttpContext.Current.User.Identity.GetUserId();
             // find userprofile by userId then Add post to their posts collection
             UserProfile profile = context.UserProfiles.First(x => x.UserId == userId);
@@ -68,7 +68,7 @@ namespace HiveData.DAO
 
             if (post.Awards >= 30)
             {
-                post.Trending = true;
+                post.Popular = true;
             }
 
             profile.Awards.Add(award);

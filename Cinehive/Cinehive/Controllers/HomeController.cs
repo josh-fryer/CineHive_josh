@@ -47,14 +47,14 @@ namespace Cinehive.Controllers
 
             return RedirectToAction("Welcome");
         }
-        public ActionResult Trending(int? page = 1)
+        public ActionResult Popular(int? page = 1)
         {
-            var TrendingPosts = context.Posts.Where(c => c.Trending == true).ToList();
+            var PopularPosts = context.Posts.Where(c => c.Popular == true).ToList();
             string userid = User.Identity.GetUserId();
 
             int pageSize = 7;
             int pageNumber = (page ?? 1);
-            var NewPosts = TrendingPosts.ToPagedList(pageNumber, pageSize);
+            var NewPosts = PopularPosts.ToPagedList(pageNumber, pageSize);
             PostFeedViewModel postFeedViewModel = new PostFeedViewModel()
             {
                 UserProfile = profileService.GetUserProfile(0),

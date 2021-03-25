@@ -33,6 +33,10 @@
 
 <h2>Home Feed</h2>
 
+<ul class="list-unstyled">
+    <li>@Html.ActionLink("What's Popular","Popular")</li>
+</ul>
+
 @foreach (var item in Model.PostList)
 {
     <div class="container">
@@ -57,9 +61,9 @@
                         {
                             <li> @item.Awards Awards</li>
                         }
-                        @if (item.Trending == true)
+                        @if (item.Popular == true)
                         {
-                            <li><strong>Trending</strong></li>
+                            <li><strong>Popular</strong></li>
                         }
                     </ul>
                     <ul class="list-inline list-unstyled">
