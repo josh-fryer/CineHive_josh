@@ -13,13 +13,13 @@ namespace HiveData.DAO
 {
     public class FriendDAO : IFriendDAO
     {
-        public void AddFriend(string friendId, CineHiveContext context)
+        public void AddFriend(string userId, string friendId, CineHiveContext context)
         {
-            string userid = HttpContext.Current.User.Identity.GetUserId();
+            //string userid = HttpContext.Current.User.Identity.GetUserId();
             // find friend UserProfile
             var friend = context.UserProfiles.First(u => u.UserId == friendId);
             // find User's Userprofile
-            var user = context.UserProfiles.First(u => u.UserId == userid);
+            var user = context.UserProfiles.First(u => u.UserId == userId);
 
 
             // Add friend UserProfile to current user's friends collection
@@ -27,17 +27,24 @@ namespace HiveData.DAO
             // add current User to Friend's friends collection
             friend.Friends.Add(user);
 
-            // remove friend request from 
-
-            // ## send notification ## 
-            context.SaveChanges();
+            // remove friend request from both collections
+            foreach(var req in user.ReceivedFriendReq)
+            {
+                int reqID = req.Id;
+                foreach(var fReq in friend.SentFriendReq)
+                {
+                    if (reqID == fReq.Id)
+                    {
+                        context.FriendRequests.Remove(context.FriendRequests.Find(reqID));                       
+                    }
+                }               
+            }      
         }
 
-        public void SendFriendReq(string friendId, CineHiveContext context)
+        public void SendFriendReq(string userId, string friendId, CineHiveContext context)
         {
             var friend = context.UserProfiles.First(u => u.UserId == friendId);
-            string userid = HttpContext.Current.User.Identity.GetUserId();
-            var user = context.UserProfiles.First(u => u.UserId == userid);
+            var user = context.UserProfiles.First(u => u.UserId == userId);
             // create request
             DateTime date = DateTime.Now;
             FriendRequest request = new FriendRequest()
@@ -47,12 +54,11 @@ namespace HiveData.DAO
             };
 
             friend.ReceivedFriendReq.Add(request);           
-            context.SaveChanges();
+            context.SaveChanges(); // add request to db
             // add friend req to users sent collection
             user.SentFriendReq.Add(friend.ReceivedFriendReq.First(x => x.DateSent == date));
-            context.SaveChanges();
-            // ## send notification ## 
         }
+
 
     }
 }

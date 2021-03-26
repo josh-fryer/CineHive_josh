@@ -55,7 +55,7 @@ namespace Cinehive.Controllers
             {
                 _userManager = value;
             }
-        }
+        }        
 
         //
         // GET: /Account/Login
@@ -97,7 +97,7 @@ namespace Cinehive.Controllers
                     var um = new UserManager<ApplicationUser>(
                         new UserStore<ApplicationUser>
                         (new CineHiveContext()));
-                    IList<string> roles = um.GetRoles(cineUser.UserId);
+                    IList<string> roles = UserManager.GetRoles(cineUser.UserId);
                     Session.Add("Roles", roles); // place roles in session  
 
                     if (roles.Contains("Banned"))

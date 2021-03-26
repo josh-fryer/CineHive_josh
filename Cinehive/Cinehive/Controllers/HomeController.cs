@@ -16,11 +16,13 @@ namespace Cinehive.Controllers
     public class HomeController : Controller
     {
         private IProfileService profileService;
+        private Helper helper;
         private readonly CineHiveContext context = new CineHiveContext();
 
         public HomeController()
         {
             profileService = new ProfileService();
+            helper = new Helper();
         }
 
         
@@ -28,6 +30,9 @@ namespace Cinehive.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                // check if user session variables are filled or fill them for returning user
+                helper.CheckSession();
+
                 var Posts = context.Posts.Select(c => c); 
                 Posts = context.Posts.OrderByDescending(c => c.DatePosted);
                 string userid = User.Identity.GetUserId();
@@ -38,7 +43,7 @@ namespace Cinehive.Controllers
                 var NewPosts = Posts.ToPagedList(pageNumber, pageSize);
                 PostFeedViewModel postFeedViewModel = new PostFeedViewModel()
                 {
-                    UserProfile = profileService.GetUserProfile(0),
+                    UserProfile = profileService.GetUserProfile(userid),
                     PostList = NewPosts
                     
                 };
@@ -58,7 +63,7 @@ namespace Cinehive.Controllers
             var NewPosts = PopularPosts.ToPagedList(pageNumber, pageSize);
             PostFeedViewModel postFeedViewModel = new PostFeedViewModel()
             {
-                UserProfile = profileService.GetUserProfile(0),
+                UserProfile = profileService.GetUserProfile(userid),
                 PostList = NewPosts
             };
 

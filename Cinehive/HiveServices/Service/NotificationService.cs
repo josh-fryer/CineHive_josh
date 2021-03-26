@@ -19,6 +19,23 @@ namespace HiveServices.Service
         {
             notificationDAO = new NotificationDAO();
         }
+
+        public void CreateNotification(string type, string msgDetail)
+        {
+            using (var context = new CineHiveContext())
+            {
+                notificationDAO.CreateNotification(type, msgDetail, context);
+            }
+        }
+
+        public void AddNotificationToColl(string userId, Notification n)
+        {
+            using (var context = new CineHiveContext())
+            {
+                notificationDAO.AddNotificationToColl(userId, n, context);
+            }
+        }
+
         public Notification GetNotification(int id)
         {
             using (var context = new CineHiveContext())

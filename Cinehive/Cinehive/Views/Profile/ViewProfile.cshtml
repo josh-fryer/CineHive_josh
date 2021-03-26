@@ -16,7 +16,6 @@
                 <img src="~/Content/Img/profile-image-placeholder.png" width="340" height="340" />
             </a>
         </div>
-
     }
     else
     {
@@ -25,7 +24,6 @@
                 <img src="~/@Model.ImagePath" width="340" height="340" />
             </a>
         </div>
-
     }
     <div class="col-md-6">
         <dl class="dl-horizontal">
@@ -55,13 +53,23 @@
         </dl>
     </div>
     <div class="col-md-4">
-        @if (Session["UserId"] != null)
+        @if (User.Identity.IsAuthenticated)
         {
-           
-            @Html.ActionLink("Add Friend", "SendFriendReq", "Friend",
-           new {
-               friendProfileId = Model.ProfileId,
-               friendUserId = Model.UserId}, new { @class = "btn btn-success" })
+            if (!ViewBag.IsFriend && !ViewBag.SentFriendReq)
+            {
+                @Html.ActionLink("Send Friend Request", "SendFriendReq", "Friend",
+                         new
+                              {
+                                  friendProfileId = Model.ProfileId,
+                             friendUserId = Model.UserId
+                              }, new { @class = "btn btn-success" })
+            }
+            else if (ViewBag.ReceivedFriendReq)
+            {
+                @Html.ActionLink("Accept Friend Request", "AddFriend", "Friend",
+                         new { friendId = Model.UserId }, new { @class = "btn btn-success" })
+            }
+            @*Something here to show user and this profile are friends*@
         }
     </div>
  </div>

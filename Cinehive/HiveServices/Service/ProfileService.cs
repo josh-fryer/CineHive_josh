@@ -63,10 +63,12 @@ namespace HiveServices.Service
             }
 
         }
-        public UserProfile GetUserProfile(int? id)
+        public UserProfile GetUserProfile(string userId)
         {
-            profileDAO = new ProfileDAO();
-            return profileDAO.GetUserProfile(id);
+            using (var context = new CineHiveContext())
+            {
+                return profileDAO.GetUserProfile(userId, context);
+            }
         }
 
         public void ClearFaveGenres(string userId)

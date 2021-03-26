@@ -1,5 +1,6 @@
 ﻿using HiveServices.IService;
 using HiveServices.Service;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,26 +12,27 @@ namespace Cinehive.Controllers
     public class FriendController : Controller
     {
         private IFriendService friendService;
+        private INotificationService notificationService;
 
         public FriendController()
         {
             friendService = new FriendService();
+            notificationService = new NotificationService();
         }
 
         public ActionResult AddFriend(string friendId)
         {
-            friendService.AddFriend(friendId);
+            friendService.AddFriend(User.Identity.GetUserId(), friendId);
             // redirect to notifications
             return RedirectToAction("Index", "Notification");
         }
 
-        public ActionResult SendFriendReq(int friendProfileId,string friendUserId)
+        public ActionResult SendFriendReq(int friendProfileId, string friendUserId)
         {
-            friendService.SendFriendReq(friendUserId);
+            friendService.SendFriendReq(User.Identity.GetUserId(), friendUserId);
             // redirect to same friend profile
             return RedirectToAction("ViewProfile", "Profile", new { id = friendProfileId });
         }
-
 
 
         public ActionResult RemoveFriend()

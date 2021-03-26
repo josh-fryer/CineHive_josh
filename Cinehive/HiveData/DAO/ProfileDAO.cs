@@ -26,11 +26,9 @@ namespace HiveData.DAO
             return Context.UserProfiles.Find(id);
         }
 
-        public UserProfile GetUserProfile(int? id)
-        {
-            string userid = HttpContext.Current.User.Identity.GetUserId();
-            id = Context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
-            return Context.UserProfiles.Find(id);
+        public UserProfile GetUserProfile(string userId, CineHiveContext context)
+        {           
+            return context.UserProfiles.First(u=>u.UserId == userId);
         }
 
         public void ClearFaveGenres(string userId, CineHiveContext context)

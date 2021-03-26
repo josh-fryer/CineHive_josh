@@ -13,7 +13,7 @@ namespace HiveServices.IService
         void CreateProfile(UserProfile userProfile, string id);
         UserProfile ViewProfile(int? id);
         void UploadService(UserProfile userProfile, Image image);
-        UserProfile GetUserProfile(int? id);
+        UserProfile GetUserProfile(string userId);
         void ClearFaveGenres(string userId);
         void AddFaveGenre(int genreId, string userid);
     }

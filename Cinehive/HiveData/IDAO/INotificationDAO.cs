@@ -14,6 +14,9 @@ namespace HiveData.IDAO
         Notification GetNotification(int id, CineHiveContext context);
         IList<Notification> GetUserNotifications(CineHiveContext context);
         void DeleteNotification(Notification notification, CineHiveContext context);
-        
+        Notification CreateNotification(string type, string msgDetail, CineHiveContext context);
+        void AddNotificationToColl(string userId, Notification n, CineHiveContext context);
+
+
     }
 }

@@ -8,7 +8,7 @@ namespace HiveServices.IService
 {
     public interface IFriendService
     {
-        void AddFriend(string friendId);
-        void SendFriendReq(string friendId);
+        void AddFriend(string userId, string friendId);
+        void SendFriendReq(string userId, string friendId);
     }
 }

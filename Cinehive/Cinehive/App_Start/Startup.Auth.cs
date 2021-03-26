@@ -49,7 +49,7 @@ namespace Cinehive
             // Once you check this option, your second step of verification during the login process will be remembered on the device where you logged in from.
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
-
+            
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",
@@ -70,11 +70,11 @@ namespace Cinehive
             //});
 
             //############ My Code ######################
-            var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
-            var roleManager = new RoleManager<IdentityRole>(roleStore);
-            var userStore = new UserStore<ApplicationUser>(new CineHiveContext()); 
-            var userManager = new UserManager<ApplicationUser>(userStore);
-
+            //var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
+            //var roleManager = new RoleManager<IdentityRole>(roleStore);
+            //var userStore = new UserStore<ApplicationUser>(new CineHiveContext()); 
+            //var userManager = new UserManager<ApplicationUser>(userStore);
+            
             //roleManager.Create(new IdentityRole("Banned"));
 
             // reset user Dummy Guy role

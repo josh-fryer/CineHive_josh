@@ -17,11 +17,12 @@ namespace Cinehive.Controllers
     public class ProfileController : Controller
     {
         private IProfileService profileService;
-        private readonly CineHiveContext context = new CineHiveContext();
+        private readonly CineHiveContext context;
 
         public ProfileController()
         {
             profileService = new ProfileService();
+            context = new CineHiveContext();
         }
 
         [Authorize]
@@ -34,7 +35,7 @@ namespace Cinehive.Controllers
 
             ProfilePostsViewModel profilePostsViewModel = new ProfilePostsViewModel
             {
-                userProfile = profileService.GetUserProfile(id),
+                userProfile = profileService.GetUserProfile(userid),
                 Posts = userpost.Posts.ToList()
             };
 
@@ -54,8 +55,9 @@ namespace Cinehive.Controllers
 
         [Authorize]
         public ActionResult Edit(int? id)
-        {            
-            UserProfile userProfile = profileService.GetUserProfile(id);
+        {
+            var userid = User.Identity.GetUserId();
+            UserProfile userProfile = profileService.GetUserProfile(userid);
             if (userProfile == null)
             {
                 return HttpNotFound();
@@ -135,8 +137,43 @@ namespace Cinehive.Controllers
                 return HttpNotFound();
             }
 
-            // check friend request status
+            // ----- check if User is friends with this profile ------
+            UserProfile profileUser = context.UserProfiles.Find(id);
+            string userid = User.Identity.GetUserId();
+            UserProfile userProfile = context.UserProfiles.First(x=> x.UserId == userid);
+            ViewBag.IsFriend = false;
+            ViewBag.SentFriendReq = false;
+            ViewBag.ReceivedFriendReq = false;
 
+            foreach (var f in userProfile.Friends)
+            {
+                if (f.ProfileId == id)
+                {
+                    ViewBag.IsFriend = true;
+                    return View(profileService.ViewProfile(id));
+                }
+            }           
+
+            // check if user has sent friend request
+            foreach (var i in userProfile.SentFriendReq)
+            {               
+                if (profileUser.ReceivedFriendReq.Contains(i))
+                {
+                    ViewBag.SentFriendReq = true;
+                    break;
+                }
+            }
+            
+            // check if user has received friend request from profile
+            foreach (var i in userProfile.ReceivedFriendReq)
+            {
+                if (profileUser.SentFriendReq.Contains(i))
+                {
+                    ViewBag.ReceivedFriendReq = true;
+                    break;
+                }
+            }
+            
             return View(profileService.ViewProfile(id));
         }
 
