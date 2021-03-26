@@ -55,7 +55,13 @@
     <div class="col-md-4">
         @if (User.Identity.IsAuthenticated)
         {
-            if (!ViewBag.IsFriend && !ViewBag.SentFriendReq)
+
+            if (ViewBag.ReceivedFriendReq)
+            {
+                @Html.ActionLink("Accept Friend Request", "AddFriend", "Friend",
+                         new { friendId = Model.UserId }, new { @class = "btn btn-success" })
+            }
+            else if (!ViewBag.IsFriend && !ViewBag.SentFriendReq)
             {
                 @Html.ActionLink("Send Friend Request", "SendFriendReq", "Friend",
                          new
@@ -64,11 +70,7 @@
                              friendUserId = Model.UserId
                               }, new { @class = "btn btn-success" })
             }
-            else if (ViewBag.ReceivedFriendReq)
-            {
-                @Html.ActionLink("Accept Friend Request", "AddFriend", "Friend",
-                         new { friendId = Model.UserId }, new { @class = "btn btn-success" })
-            }
+            
             @*Something here to show user and this profile are friends*@
         }
     </div>
