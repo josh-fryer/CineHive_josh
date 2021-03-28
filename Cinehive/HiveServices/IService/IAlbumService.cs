@@ -17,5 +17,7 @@ namespace HiveServices.IService
         void DeleteAlbum(int id);
         void SetAsProfilePicture(Image image);
         void DeleteImageFromAlbum(int id);
+        void AddImageToAlbum(Album album, int id);
+        void DeleteImagesInAlbum(int id);
     }
 }

@@ -87,6 +87,15 @@ namespace HiveServices.Service
                 profileDAO.AddFaveGenre(genreId, userId, context);
             }
         }
+        public void EditProfile(UserProfile userProfile)
+        {
+            using (var context = new CineHiveContext())
+            {
+
+                profileDAO.EditProfile(userProfile, context);
+                context.SaveChanges();
+            }
+        }
 
     }
 }

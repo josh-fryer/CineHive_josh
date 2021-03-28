@@ -79,44 +79,18 @@ namespace Cinehive.Controllers
         [Authorize]
         public ActionResult AddImageToAlbum(int id)
         {
-            TempData["id"] = id;
 
             return View();
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult AddImageToAlbum(Album album) //add to data and service
+        public ActionResult AddImageToAlbum(Album album, int id) //add to data and service
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    int id = Convert.ToInt32(TempData["id"]);
-
-                    string userid = User.Identity.GetUserId();
-                    string extension = Path.GetExtension(album.UploadImage.FileName);
-                    string filename = string.Empty;
-
-                    filename = userid + DateTime.Now.ToString("dd-MM-yyyy--HH-mm-ss") + extension;
-                    string imagePath = System.Web.HttpContext.Current.Server.MapPath("~/Content/Img/UserImg/" + userid);
-
-                    if (!Directory.Exists(imagePath))
-                    {
-                        Directory.CreateDirectory(imagePath);
-                    }
-                    string fullPath = "Content/Img/UserImg/" + userid + "/" + filename;
-                    album.UploadImage.SaveAs(Path.Combine(imagePath, filename));
-
-                    album = context.Albums.Find(id);
-
-                    Image image1 = new Image()
-                    {
-                        ImagePath = fullPath,
-                        Filename = filename
-                    };
-
-                    album.Images.Add(image1);
-                    context.SaveChanges();
+                    albumService.AddImageToAlbum(album, id);
 
                     
                 }
@@ -183,6 +157,8 @@ namespace Cinehive.Controllers
         {
             try
             {
+                albumService.DeleteImagesInAlbum(id);
+
                 albumService.DeleteAlbum(id);
            
                 return RedirectToAction("Index");

@@ -16,5 +16,6 @@ namespace HiveServices.IService
         UserProfile GetUserProfile(string userId);
         void ClearFaveGenres(string userId);
         void AddFaveGenre(int genreId, string userid);
+        void EditProfile(UserProfile userProfile);
     }
 }

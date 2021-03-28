@@ -50,5 +50,28 @@ namespace HiveData.DAO
 
             context.SaveChanges();
         }
+        public void EditProfile(UserProfile userProfile, CineHiveContext context)
+        {
+            string userid = HttpContext.Current.User.Identity.GetUserId();
+            int id = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
+
+            userProfile.UserId = userid;
+            userProfile.ProfileId = id;
+
+            context.Entry(userProfile).State = EntityState.Modified;
+
+            if (userProfile.ProfilePicture == null)
+            {
+                context.Entry(userProfile).Property(x => x.ImagePath).IsModified = false;
+            }
+            if (userProfile.DateOfBirth == null)
+            {
+                context.Entry(userProfile).Property(z => z.DateOfBirth).IsModified = false;
+            }
+            if (userProfile.Gender == null)
+            {
+                context.Entry(userProfile).Property(v => v.Gender).IsModified = false;
+            }
+        }
     }
 }

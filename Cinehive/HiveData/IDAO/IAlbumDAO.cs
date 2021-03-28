@@ -18,5 +18,7 @@ namespace HiveData.IDAO
         void DeleteAlbum(Album album, CineHiveContext context);
         void SetAsProfilePicture(Image image, CineHiveContext context);
         void DeleteImageFromAlbum(Image image, CineHiveContext context);
+        void AddImageToAlbum(int id, Album album, CineHiveContext context);
+        void DeleteImagesInAlbum(int id, CineHiveContext context);
     }
 }

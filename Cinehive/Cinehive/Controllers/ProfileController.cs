@@ -78,7 +78,6 @@ namespace Cinehive.Controllers
         public ActionResult Edit(UserProfile userProfile, Image image) // To-do: add to service and data layer
         {
             string userid = User.Identity.GetUserId();
-            int id = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
             
             if (ModelState.IsValid) 
             {
@@ -88,24 +87,7 @@ namespace Cinehive.Controllers
                     profileService.UploadService(userProfile, image);
                 }
 
-                userProfile.UserId = userid;
-                userProfile.ProfileId = id;
-
-                context.Entry(userProfile).State = EntityState.Modified;
-
-                if (userProfile.ProfilePicture == null)
-                {
-                    context.Entry(userProfile).Property(x => x.ImagePath).IsModified = false;
-                }
-                if (userProfile.DateOfBirth == null)
-                {
-                    context.Entry(userProfile).Property(z => z.DateOfBirth).IsModified = false;
-                }
-                if (userProfile.Gender == null)
-                {
-                    context.Entry(userProfile).Property(v => v.Gender).IsModified = false;
-                }
-
+                profileService.EditProfile(userProfile);
                 // CLEAR fave genres then add back. ensures no duplicates or more than limit.
                 // probably a better way to do this.
                 profileService.ClearFaveGenres(userid);
@@ -127,6 +109,9 @@ namespace Cinehive.Controllers
 
         public ActionResult ViewProfile(int? id)
         {
+            string userid = User.Identity.GetUserId();
+            int profileid = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -136,10 +121,13 @@ namespace Cinehive.Controllers
             {
                 return HttpNotFound();
             }
+            if (id == profileid)
+            {
+                return RedirectToAction("Index", "Profile");
+            }
 
             // ----- check if User is friends with this profile ------
             UserProfile profileUser = context.UserProfiles.Find(id);
-            string userid = User.Identity.GetUserId();
             UserProfile userProfile = context.UserProfiles.First(x=> x.UserId == userid);
             ViewBag.IsFriend = false;
             ViewBag.SentFriendReq = false;

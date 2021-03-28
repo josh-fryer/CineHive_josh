@@ -43,7 +43,14 @@
         <div class="well">
             <div class="media">
                 <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) })" )">
-                    <img src="~/@Model.GetUserPicture(postid = item.PostId)" width="140" height="140" />
+                    @if (@Model.GetUserPicture(postid = item.PostId) == null)
+                    {
+                        <img src="~/Content/Img/profile-image-placeholder.png" width="140" height="140" />
+                    }
+                    else
+                    {
+                        <img src="~/@Model.GetUserPicture(postid = item.PostId)" width="140" height="140" />
+                    }
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">@Html.ActionLink(@Model.GetFirstName(postid = item.PostId) + " " + Model.GetLastName(postid = item.PostId), "ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) }, new { })</h4>

@@ -98,7 +98,14 @@
             <div class="well">
                 <div class="media">
                     <a class="pull-left" href="">
-                        <img src="~/@Model.userProfile.ImagePath" width="140" height="140" />
+                        @if (Model.userProfile.ImagePath == null)
+                        {
+                            <img src="~/Content/Img/profile-image-placeholder.png" width="140" height="140" />
+                        }
+                        else
+                        {
+                            <img src="~/@Model.userProfile.ImagePath" width="140" height="140" />
+                        }
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">@Model.userProfile.Firstname @Model.userProfile.Lastname</h4>

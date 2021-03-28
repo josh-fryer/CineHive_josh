@@ -37,7 +37,6 @@ namespace HiveData.DAO
             };
 
             userProfile.Albums.Add(album);
-            context.SaveChanges();
         }
         public Album GetAlbum(int id, CineHiveContext context)
         {
@@ -50,12 +49,18 @@ namespace HiveData.DAO
         public void EditAlbum(Album album, CineHiveContext context)
         {
             context.Entry(album).State = EntityState.Modified;
-            context.SaveChanges();
         }
         public void DeleteAlbum(Album album, CineHiveContext context)
         {
             context.Albums.Remove(album);
-            context.SaveChanges();
+        }
+        public void DeleteImagesInAlbum(int id, CineHiveContext context)
+        {
+            var images = context.Albums.Find(id).Images.ToList();
+            foreach (var item in images)
+            {
+                context.Images.Remove(item);
+            }
         }
         public void SetAsProfilePicture(Image image, CineHiveContext context)
         {
@@ -67,7 +72,6 @@ namespace HiveData.DAO
             userProfile.ImagePath = image.ImagePath;
 
             context.Entry(userProfile).State = EntityState.Modified;
-            context.SaveChanges();
         }
         public void DeleteImageFromAlbum(Image image, CineHiveContext context)
         {
@@ -78,9 +82,33 @@ namespace HiveData.DAO
             file.Delete();
 
             context.Images.Remove(image);
-            context.SaveChanges();
         }
+        public void AddImageToAlbum(int id, Album album, CineHiveContext context)
+        {
+            string userid = HttpContext.Current.User.Identity.GetUserId();
+            string extension = Path.GetExtension(album.UploadImage.FileName);
+            string filename = string.Empty;
 
+            filename = userid + DateTime.Now.ToString("dd-MM-yyyy--HH-mm-ss") + extension;
+            string imagePath = System.Web.HttpContext.Current.Server.MapPath("~/Content/Img/UserImg/" + userid);
+
+            if (!Directory.Exists(imagePath))
+            {
+                Directory.CreateDirectory(imagePath);
+            }
+            string fullPath = "Content/Img/UserImg/" + userid + "/" + filename;
+            album.UploadImage.SaveAs(Path.Combine(imagePath, filename));
+
+            album = context.Albums.Find(id);
+
+            Image image1 = new Image()
+            {
+                ImagePath = fullPath,
+                Filename = filename
+            };
+
+            album.Images.Add(image1);
+        }
 
     }
 }

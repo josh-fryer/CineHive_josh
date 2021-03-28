@@ -33,6 +33,7 @@ namespace HiveServices.Service
             using (var context = new CineHiveContext())
             {
                 albumDAO.CreateAlbum(album, context);
+                context.SaveChanges();
             }
         }
         public Album GetAlbum(int id)
@@ -54,6 +55,7 @@ namespace HiveServices.Service
             using (var context = new CineHiveContext())
             {
                 albumDAO.EditAlbum(album, context);
+                context.SaveChanges();
             }
         }
         public void DeleteAlbum(int id)
@@ -62,6 +64,7 @@ namespace HiveServices.Service
             {
                 Album album = albumDAO.GetAlbum(id, context);
                 albumDAO.DeleteAlbum(album, context);
+                context.SaveChanges();
             }
         }
         public void SetAsProfilePicture(Image image)
@@ -69,6 +72,7 @@ namespace HiveServices.Service
             using (var context = new CineHiveContext())
             {
                 albumDAO.SetAsProfilePicture(image, context);
+                context.SaveChanges();
             }
         }
         public void DeleteImageFromAlbum(int id)
@@ -77,6 +81,23 @@ namespace HiveServices.Service
             {
                 Image image = albumDAO.GetImage(id, context);
                 albumDAO.DeleteImageFromAlbum(image, context);
+                context.SaveChanges();
+            }
+        }
+        public void AddImageToAlbum(Album album, int id)
+        {
+            using (var context = new CineHiveContext())
+            {
+                albumDAO.AddImageToAlbum(id, album, context);
+                context.SaveChanges();
+            }
+        }
+        public void DeleteImagesInAlbum(int id)
+        {
+            using (var context = new CineHiveContext())
+            {
+                albumDAO.DeleteImagesInAlbum(id, context);
+                context.SaveChanges();
             }
         }
     }
