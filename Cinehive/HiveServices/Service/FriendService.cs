@@ -29,9 +29,9 @@ namespace HiveServices.Service
             {
                 friendDAO.AddFriend(userId, friendId, context);
                 // send notification
-                var friend = context.UserProfiles.First(x => x.UserId == friendId);
-                string friendName = friend.Firstname + " " + friend.Lastname;
-                Notification n = notificationDAO.CreateNotification("addedFriend", friendName, context);
+                var user = context.UserProfiles.First(x => x.UserId == userId);
+                string userName = user.Firstname + " " + user.Lastname;
+                Notification n = notificationDAO.CreateNotification("addedFriend", userName, context);
                 notificationDAO.AddNotificationToColl(friendId, n, context);
                 context.SaveChanges();
             }
@@ -43,9 +43,9 @@ namespace HiveServices.Service
             {
                 friendDAO.SendFriendReq(userId, friendId, context);
                 // send notification
-                var friend = context.UserProfiles.First(x => x.UserId == friendId);
-                string friendName = friend.Firstname + " " + friend.Lastname;
-                Notification n = notificationDAO.CreateNotification("friendRequestRec", friendName, context);
+                var sender = context.UserProfiles.First(x => x.UserId == userId);
+                string senderName = sender.Firstname + " " + sender.Lastname;
+                Notification n = notificationDAO.CreateNotification("friendRequestRec", senderName, context);
                 notificationDAO.AddNotificationToColl(friendId, n, context);
                 context.SaveChanges();
             }

@@ -27,6 +27,7 @@ namespace HiveData.DAO
             // add current User to Friend's friends collection
             friend.Friends.Add(user);
 
+            bool breakLoop = false;
             // remove friend request from both collections
             foreach(var req in user.ReceivedFriendReq.ToList())
             {
@@ -35,9 +36,16 @@ namespace HiveData.DAO
                 {
                     if (reqID == fReq.Id)
                     {
-                        context.FriendRequests.Remove(context.FriendRequests.Find(reqID));                       
+                        context.FriendRequests.Remove(context.FriendRequests.Find(reqID));
+                        breakLoop = true;
+                        break;
                     }
-                }               
+                }
+
+                if (breakLoop)
+                {
+                    break;
+                }
             }      
         }
 
@@ -53,10 +61,9 @@ namespace HiveData.DAO
                 IsAccepted = false
             };
 
-            friend.ReceivedFriendReq.Add(request);           
-            context.SaveChanges(); // add request to db
-            // add friend req to users sent collection
-            user.SentFriendReq.Add(friend.ReceivedFriendReq.First(x => x.DateSent == date));
+            friend.ReceivedFriendReq.Add(request);
+            // add same request to users sent collection
+            user.SentFriendReq.Add(request);                          
         }
 
 

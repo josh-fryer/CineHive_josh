@@ -24,8 +24,8 @@ namespace Cinehive.Controllers
         public ActionResult AddFriend(string friendId)
         {
             friendService.AddFriend(User.Identity.GetUserId(), friendId);
-            // redirect to notifications
-            return RedirectToAction("Index", "Notification");
+            // redirect to... not sure?
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult SendFriendReq(int friendProfileId, string friendUserId)
