@@ -1,4 +1,5 @@
-﻿@model HiveData.Models.UserProfile
+﻿@using Microsoft.AspNet.Identity
+@model HiveData.Models.UserProfile
 
 @{
     ViewBag.Title = "ViewProfile";
@@ -70,8 +71,21 @@
                                      friendUserId = Model.UserId
                                       }, new { @class = "btn btn-success" })
                     }
+                    else if (!ViewBag.IsFriend && ViewBag.SentFriendReq)
+                    {
+                        <h5> Pending Friend Request</h5>
+                    }
+                    else if (ViewBag.IsFriend)
+                    {
+                        <h5>Your friend</h5>
+                        @Html.ActionLink("Remove from Friends", "Remove", "Friend",
+                 new
+                 {
+                     friendProfileId = Model.ProfileId,
+                     friendUserId = Model.UserId
+                 }, new { @class = "btn btn-success" });
 
-                    @*Something here to show user and this profile are friends*@
+                    }
                 }
             </div>
         </div>

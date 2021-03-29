@@ -1,4 +1,5 @@
-﻿using HiveServices.IService;
+﻿using HiveData.Repository;
+using HiveServices.IService;
 using HiveServices.Service;
 using Microsoft.AspNet.Identity;
 using System;
@@ -34,12 +35,25 @@ namespace Cinehive.Controllers
             return RedirectToAction("ViewProfile", "Profile", new { id = friendProfileId });
         }
 
-
-        public ActionResult RemoveFriend()
+        public ActionResult Remove(int friendProfileId, string friendUserId)
         {
-            // remove friend from current users friends collection
-            // !Not implemented yet!
-            return View();
+            RemoveFriend(User.Identity.GetUserId(), friendUserId);
+            return RedirectToAction("ViewProfile", "Profile", new { id = friendProfileId });
+        }
+
+        public void RemoveFriend(string friendId, string userId)
+        {
+            CineHiveContext context = new CineHiveContext();
+            var friend = context.UserProfiles.First(u => u.UserId == friendId);
+           
+            var user = context.UserProfiles.First(u => u.UserId == userId);
+
+            user.Friends.Remove(friend);
+            friend.Friends.Remove(user);
+            context.SaveChanges();
+           
+            //return RedirectToAction("Index", "Notification");
+
         }
 
     }

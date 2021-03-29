@@ -28,10 +28,10 @@ namespace HiveData.DAO
             friend.Friends.Add(user);
 
             // remove friend request from both collections
-            foreach(var req in user.ReceivedFriendReq)
+            foreach(var req in user.ReceivedFriendReq.ToList())
             {
                 int reqID = req.Id;
-                foreach(var fReq in friend.SentFriendReq)
+                foreach(var fReq in friend.SentFriendReq.ToList())
                 {
                     if (reqID == fReq.Id)
                     {
