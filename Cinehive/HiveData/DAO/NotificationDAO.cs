@@ -22,7 +22,7 @@ namespace HiveData.DAO
                 case "addedFriend":
                     notification.DateReceived = DateTime.Now;
                     notification.IsRead = false;
-                    notification.Message = "You are now friends with "+ msgDetail;
+                    notification.Message = msgDetail + " accepted your friend request!";
                     notification.Type = type;                    
                     break;
                 case "friendRequestRec":

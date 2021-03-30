@@ -161,6 +161,7 @@ namespace Cinehive.Controllers
                     break;
                 }
             }
+            //-----------------------------------------------------------
             
             return View(profileService.ViewProfile(id));
         }
