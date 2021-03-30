@@ -10,5 +10,7 @@ namespace HiveServices.IService
     {
         void AddFriend(string userId, string friendId);
         void SendFriendReq(string userId, string friendId);
+
+        void RemoveFriend(string friendId, string userId);
     }
 }

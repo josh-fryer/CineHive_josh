@@ -37,24 +37,11 @@ namespace Cinehive.Controllers
 
         public ActionResult Remove(int friendProfileId, string friendUserId)
         {
-            RemoveFriend(User.Identity.GetUserId(), friendUserId);
+            friendService.RemoveFriend(User.Identity.GetUserId(), friendUserId);
             return RedirectToAction("ViewProfile", "Profile", new { id = friendProfileId });
         }
 
-        public void RemoveFriend(string friendId, string userId)
-        {
-            CineHiveContext context = new CineHiveContext();
-            var friend = context.UserProfiles.First(u => u.UserId == friendId);
-           
-            var user = context.UserProfiles.First(u => u.UserId == userId);
 
-            user.Friends.Remove(friend);
-            friend.Friends.Remove(user);
-            context.SaveChanges();
-           
-            //return RedirectToAction("Index", "Notification");
-
-        }
 
     }
 }

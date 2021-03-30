@@ -11,5 +11,6 @@ namespace HiveData.IDAO
     {
         void AddFriend(string userId, string friendId, CineHiveContext context);
         void SendFriendReq(string userId, string friendId, CineHiveContext context);
+        void RemoveFriend(string friendId, string userId);
     }
 }

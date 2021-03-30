@@ -50,5 +50,16 @@ namespace HiveServices.Service
                 context.SaveChanges();
             }
         }
+        public void RemoveFriend(string friendId, string userId)
+        {
+            using (var context = new CineHiveContext())
+            {
+                friendDAO.RemoveFriend(friendId, userId);
+                context.SaveChanges();
+            }
+
+            
+
+        }
     }
 }

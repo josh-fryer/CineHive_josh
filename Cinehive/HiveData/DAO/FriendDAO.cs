@@ -58,6 +58,18 @@ namespace HiveData.DAO
             // add friend req to users sent collection
             user.SentFriendReq.Add(friend.ReceivedFriendReq.First(x => x.DateSent == date));
         }
+        public void RemoveFriend(string friendId, string userId)
+        {
+            CineHiveContext context = new CineHiveContext();
+            var friend = context.UserProfiles.First(u => u.UserId == friendId);
+
+            var user = context.UserProfiles.First(u => u.UserId == userId);
+
+            user.Friends.Remove(friend);
+            friend.Friends.Remove(user);
+            context.SaveChanges();
+
+        }
 
 
     }
