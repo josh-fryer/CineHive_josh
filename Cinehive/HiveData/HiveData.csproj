@@ -210,6 +210,7 @@
     <Compile Include="Models\FriendRequest.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Repository\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />

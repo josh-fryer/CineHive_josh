@@ -1,0 +1,46 @@
+﻿@model HiveData.Models.Movie
+
+@{
+    ViewBag.Title = "ViewMovie";
+}
+
+<h2>ViewMovie</h2>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    @if (Model == null)
+    {
+        <h5>Could not find movie</h5>
+    }
+        <img class="img" src="http://image.tmdb.org/t/p/w342@(Model.poster_path)" width="342" />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.overview)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.overview)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.release_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.release_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+    </dl>
+</div>
+<p> 
+    @Html.ActionLink("Back to List", "Index")
+</p>

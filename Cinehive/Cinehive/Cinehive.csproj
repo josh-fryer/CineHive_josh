@@ -204,6 +204,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\FriendController.cs" />
     <Compile Include="Controllers\Helper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -299,6 +300,7 @@
     <Content Include="Views\Comment\Edit.cshtml" />
     <Content Include="Views\Comment\Delete.cshtml" />
     <Content Include="Views\Home\Popular.cshtml" />
+    <Content Include="Views\Movie\ViewMovie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
