@@ -11,6 +11,12 @@ namespace Cinehive.Controllers
 {
     public class MovieController : Controller
     {
+        /* ################### Api links ####################
+        https://developers.themoviedb.org/3/getting-started/introduction
+        For list of poster and other image sizes:
+        https://developers.themoviedb.org/3/configuration/get-api-configuration
+        #####################################################*/
+
         string key = "f843620fb54518820f6b817e854c9ce3";
         Uri baseAddress = new Uri("https://api.themoviedb.org/3/");
         HttpClient client;
@@ -24,6 +30,10 @@ namespace Cinehive.Controllers
         // view movie details page
         public ActionResult ViewMovie(string query)
         {
+            if (query == null)
+            {
+                return View();
+            }
             string q = PrepareQuery(query);
             dynamic i = SearchMovie(q);
             if(i == null )
@@ -32,11 +42,29 @@ namespace Cinehive.Controllers
             }
             else
             {
-                return View(ConvertToMovie(i.results[0])); // returns first result from api's search results
+                // returns first result from api's search results
+                Movie movie = ConvertToMovie(i.results[0]);
+                // Get videos for movie:
+                HttpResponseMessage response =
+                client.GetAsync(client.BaseAddress + "movie/"+ movie.id + "/videos?api_key="
+                + key+ "&language=en-US").Result;
+                if (!response.IsSuccessStatusCode)
+                {
+                    return View(movie);
+                }
+                else
+                {
+                    string data = response.Content.ReadAsStringAsync().Result;
+                    dynamic item = JsonConvert.DeserializeObject<dynamic>(data);
+                    if (item.results[0].type == "Trailer" && item.results[0].site == "YouTube")
+                    {
+                        ViewBag.vidKey = item.results[0].key;
+                    }                   
+                    return View(movie);
+                }                   
             }          
         }
 
-        
         dynamic SearchMovie(string query)
         {
             // example: "https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher"
@@ -59,7 +87,6 @@ namespace Cinehive.Controllers
         private string PrepareQuery(string query)
         {
             // prepare search query for api
-            //string input = "Jack Reacher";
             string input = query.Trim();
             string newQ = "";
             foreach (char c in input)
