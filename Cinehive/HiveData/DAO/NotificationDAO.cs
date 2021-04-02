@@ -13,8 +13,9 @@ namespace HiveData.DAO
 {
     public class NotificationDAO : INotificationDAO
     {
-        // msgDetail for personalized info to message
-        public Notification CreateNotification(string type, string msgDetail, CineHiveContext context)
+        // msgDetail for personalized info inside message.
+        // UserProfile is optional.
+        public Notification CreateNotification(string type, string msgDetail, UserProfile profile, CineHiveContext context)
         {
             Notification notification = new Notification();
             switch (type)
@@ -30,8 +31,8 @@ namespace HiveData.DAO
                     notification.IsRead = false;
                     notification.Message = "You have received a friend request from " + msgDetail;
                     notification.Type = type;
+                    notification.senderProfile = profile;
                     break;
-
                 default:
                     break;
             }
@@ -61,8 +62,7 @@ namespace HiveData.DAO
 
         public void DeleteNotification(Notification notification, CineHiveContext context)
         {
-            context.Notifications.Remove(notification);
-            context.SaveChanges();
+            context.Notifications.Remove(notification);        
         }
     }
 }

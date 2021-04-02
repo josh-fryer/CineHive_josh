@@ -23,9 +23,16 @@ namespace Cinehive.Controllers
 
         public ActionResult AddFriend(string friendId)
         {
-            friendService.AddFriend(User.Identity.GetUserId(), friendId);
-            // redirect to... not sure?
+            friendService.AddFriend(User.Identity.GetUserId(), friendId);           
+            // redirect user to same page user is on. with JS?
             return RedirectToAction("Index", "Home");
+        }
+
+        // for accepting from notification
+        public ActionResult AcceptFriendReq(string friendId)
+        {
+            friendService.AddFriend(User.Identity.GetUserId(), friendId);
+            return RedirectToAction("Index", "Notification");
         }
 
         public ActionResult SendFriendReq(int friendProfileId, string friendUserId)
@@ -40,8 +47,5 @@ namespace Cinehive.Controllers
             friendService.RemoveFriend(User.Identity.GetUserId(), friendUserId);
             return RedirectToAction("ViewProfile", "Profile", new { id = friendProfileId });
         }
-
-
-
     }
 }

@@ -128,7 +128,7 @@ namespace Cinehive.Controllers
 
             // ----- check if User is friends with this profile ------
             UserProfile profileUser = context.UserProfiles.Find(id);
-            UserProfile userProfile = context.UserProfiles.First(x=> x.UserId == userid);
+            UserProfile userProfile = context.UserProfiles.Find(profileid);
             ViewBag.IsFriend = false;
             ViewBag.SentFriendReq = false;
             ViewBag.ReceivedFriendReq = false;

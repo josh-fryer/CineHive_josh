@@ -20,11 +20,11 @@ namespace HiveServices.Service
             notificationDAO = new NotificationDAO();
         }
 
-        public void CreateNotification(string type, string msgDetail)
+        public Notification CreateNotification(string type, string msgDetail, UserProfile profile)
         {
             using (var context = new CineHiveContext())
             {
-                notificationDAO.CreateNotification(type, msgDetail, context);
+                return notificationDAO.CreateNotification(type, msgDetail, profile, context);
             }
         }
 
@@ -56,6 +56,7 @@ namespace HiveServices.Service
             {
                 Notification notification = notificationDAO.GetNotification(id, context);
                 notificationDAO.DeleteNotification(notification, context);
+                context.SaveChanges();
             }
         }
     }

@@ -28,10 +28,20 @@ namespace HiveServices.Service
             using (var context = new CineHiveContext())
             {
                 friendDAO.AddFriend(userId, friendId, context);
-                // send notification
+                // get user profiles
                 var user = context.UserProfiles.First(x => x.UserId == userId);
+                var reqSender = context.UserProfiles.First(x => x.UserId == friendId);
+                
+                // delete any notification of add friend request from user
+                var reqNotification = user.Notifications.FirstOrDefault(x => x.senderProfile.ProfileId == reqSender.ProfileId);
+                if (reqNotification != null)
+                {
+                    context.Notifications.Remove(reqNotification);
+                }          
+
+                // send notification
                 string userName = user.Firstname + " " + user.Lastname;
-                Notification n = notificationDAO.CreateNotification("addedFriend", userName, context);
+                Notification n = notificationDAO.CreateNotification("addedFriend", userName, null, context);
                 notificationDAO.AddNotificationToColl(friendId, n, context);
                 context.SaveChanges();
             }
@@ -44,22 +54,21 @@ namespace HiveServices.Service
                 friendDAO.SendFriendReq(userId, friendId, context);
                 // send notification
                 var sender = context.UserProfiles.First(x => x.UserId == userId);
+                var receiver = context.UserProfiles.First(u => u.UserId == friendId);
                 string senderName = sender.Firstname + " " + sender.Lastname;
-                Notification n = notificationDAO.CreateNotification("friendRequestRec", senderName, context);
+                Notification n = notificationDAO.CreateNotification("friendRequestRec", senderName, receiver, context);
                 notificationDAO.AddNotificationToColl(friendId, n, context);
                 context.SaveChanges();
             }
         }
+
         public void RemoveFriend(string friendId, string userId)
         {
             using (var context = new CineHiveContext())
             {
-                friendDAO.RemoveFriend(friendId, userId);
+                friendDAO.RemoveFriend(friendId, userId, context);
                 context.SaveChanges();
             }
-
-            
-
         }
     }
 }

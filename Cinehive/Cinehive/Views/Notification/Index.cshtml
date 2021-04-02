@@ -25,7 +25,14 @@
                         </ul>
                         <ul class="list-inline list-unstyled">
                             <li>@Html.ActionLink("Delete", "DeleteNotification", new { Id = item.Id })</li>
-                           
+                            @if(item.Type == "friendRequestRec")
+                            {
+                                <li>
+                                    @Html.ActionLink("Accept Friend Request", "AcceptFriendReq", "Friend",
+                                    new { friendId = item.senderProfile.UserId }, new { @class = "btn btn-success" })
+                                </li>
+                            }
+                            
                         </ul>
                     </div>
                 </div>

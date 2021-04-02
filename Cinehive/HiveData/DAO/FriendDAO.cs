@@ -15,7 +15,6 @@ namespace HiveData.DAO
     {
         public void AddFriend(string userId, string friendId, CineHiveContext context)
         {
-            //string userid = HttpContext.Current.User.Identity.GetUserId();
             // find friend UserProfile
             var friend = context.UserProfiles.First(u => u.UserId == friendId);
             // find User's Userprofile
@@ -36,7 +35,8 @@ namespace HiveData.DAO
                 {
                     if (reqID == fReq.Id)
                     {
-                        context.FriendRequests.Remove(context.FriendRequests.Find(reqID));
+                        FriendRequest fRequest = context.FriendRequests.Find(reqID);
+                        context.FriendRequests.Remove(fRequest);
                         breakLoop = true;
                         break;
                     }
@@ -65,17 +65,14 @@ namespace HiveData.DAO
             // add same request to users sent collection
             user.SentFriendReq.Add(request);                          
         }
-        public void RemoveFriend(string friendId, string userId)
-        {
-            CineHiveContext context = new CineHiveContext();
-            var friend = context.UserProfiles.First(u => u.UserId == friendId);
 
+        public void RemoveFriend(string friendId, string userId, CineHiveContext context)
+        {
+            var friend = context.UserProfiles.First(u => u.UserId == friendId);
             var user = context.UserProfiles.First(u => u.UserId == userId);
 
             user.Friends.Remove(friend);
-            friend.Friends.Remove(user);
-            context.SaveChanges();
-
+            friend.Friends.Remove(user);           
         }
 
 
