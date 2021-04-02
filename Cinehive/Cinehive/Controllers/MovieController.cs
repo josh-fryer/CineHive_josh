@@ -36,7 +36,7 @@ namespace Cinehive.Controllers
             }
             string q = PrepareQuery(query);
             dynamic i = SearchMovie(q);
-            if(i == null )
+            if(i == null || i.total_results == 0 ) // if null
             {
                 return View(); // display empty
             }
@@ -46,7 +46,7 @@ namespace Cinehive.Controllers
                 Movie movie = ConvertToMovie(i.results[0]);
                 // Get videos for movie:
                 HttpResponseMessage response =
-                client.GetAsync(client.BaseAddress + "movie/"+ movie.id + "/videos?api_key="
+                client.GetAsync(client.BaseAddress + "movie/"+ movie.ID + "/videos?api_key="
                 + key+ "&language=en-US").Result;
                 if (!response.IsSuccessStatusCode)
                 {
@@ -56,12 +56,19 @@ namespace Cinehive.Controllers
                 {
                     string data = response.Content.ReadAsStringAsync().Result;
                     dynamic item = JsonConvert.DeserializeObject<dynamic>(data);
-                    if (item.results[0].type == "Trailer" && item.results[0].site == "YouTube")
+                    if(item.results.Count > 0) // if theres results 
                     {
-                        ViewBag.vidKey = item.results[0].key;
-                    }                   
-                    return View(movie);
-                }                   
+                        for (int j = 0; j < item.results.Count; j++) // loop through all returned videos to find type i want.
+                        {
+                            if (item.results[j].type == "Trailer" && item.results[j].site == "YouTube")
+                            {
+                                ViewBag.vidKey = item.results[0].key;
+                                break;
+                            }
+                        }                        
+                    }                                                      
+                }
+                return View(movie);
             }          
         }
 
@@ -107,11 +114,11 @@ namespace Cinehive.Controllers
         {
             Movie movie = new Movie()
             {
-                id = item.id,
-                poster_path = item.poster_path,
-                overview = item.overview,
-                title = item.title,
-                release_date = item.release_date              
+                ID = item.id,
+                PosterPath = item.poster_path,
+                Overview = item.overview,
+                Title = item.title,
+                ReleaseDate = item.release_date              
             };
             return movie;
         }

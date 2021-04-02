@@ -10,30 +10,32 @@
     <hr />
     @if (Model == null)
     {
-        <h5>Could not find movie</h5>      }
+        <h5>Could not find movie</h5>      
+    }
     else
     {
-        <h2>@Model.title</h2>
+        <h2>@Model.Title</h2>
 <div class="row">
     <div class="col-md-6">
-        <img class="img" src="http://image.tmdb.org/t/p/w342@(Model.poster_path)" width="320" />
+        <img class="img" src="http://image.tmdb.org/t/p/w342@(Model.PosterPath)" width="320" />
     </div>
     <div class="col-md-6">
         @if (ViewBag.vidKey != null)
         {
             <iframe width="560" height="315" src="https://www.youtube.com/embed/@(ViewBag.vidKey)" title="YouTube video player"
-                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
                 gyroscope; picture-in-picture" allowfullscreen></iframe>
         }
     </div>
 </div>
+    <br/>
     <dl class="dl-horizontal">
         <dt>
             <b>Overview</b>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.overview)
+            @Html.DisplayFor(model => model.Overview)
         </dd>
 
         <dt>
@@ -41,20 +43,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.release_date)
+            @Html.DisplayFor(model => model.ReleaseDate)
         </dd>
-        @*
-            <dt>
-                <b>Title</b>
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.title)
-            </dd>
-        *@
     </dl>
     }
 </div>
-    <p>
-        @Html.ActionLink("Back to List", "Index")
-    </p>

@@ -7,6 +7,8 @@
     string userid = User.Identity.GetUserId();
     int postid = 0;
     int id = 0;
+    if(ViewBag.IsAdmin == null)
+    { ViewBag.IsAdmin = false; }
 }
 
 @if (User.Identity.IsAuthenticated)
@@ -89,7 +91,7 @@
                         <li>|</li>
                         <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
 
-                        @if (Model.IsUserPost(id = item.PostId) == true)
+                        @if (Model.IsUserPost(id = item.PostId) == true || ViewBag.IsAdmin)
                         {
                             <li>|</li>
                             <li> @Html.ActionLink("Remove", "DeletePost", "Post", new { id = item.PostId }, null) </li>

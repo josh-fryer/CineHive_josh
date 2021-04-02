@@ -26,34 +26,29 @@
             </a>
         </div>
     }
-    <div class="col-md-6">
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Firstname)
-            </dt>
+    <br/>
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>
+                    Name
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Firstname)
-            </dd>
+                <dd>
+                    @Model.Firstname @Model.Lastname
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Lastname)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AboutMe)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Lastname)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.AboutMe)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.AboutMe)
-            </dd>
-        </dl>
-        <div class="row">
-            <div class="pull-left">
+                <dd>
+                    @Html.DisplayFor(model => model.AboutMe)
+                </dd>
+            </dl>
+        </div>   
+        <div class="col-md-6">
+            <div>
                 @if (User.Identity.IsAuthenticated)
                 {
 
@@ -73,11 +68,10 @@
                     }
                     else if (ViewBag.SentFriendReq)
                     {
-                        <h5> Pending Friend Request</h5>
+                        <h5>Waiting for @Model.Firstname to accept your Friend Request</h5>
                     }
                     else if (ViewBag.IsFriend)
                     {
-                        <h5>Your friend</h5>
                         @Html.ActionLink("Remove Friend", "Remove", "Friend",
                         new
                         {

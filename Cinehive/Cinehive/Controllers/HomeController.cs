@@ -32,6 +32,12 @@ namespace Cinehive.Controllers
             {
                 // check if user session variables are filled or fill them for returning user
                 helper.CheckSession();
+                // check if user is in admin role:
+                var list = (List<string>)Session["Roles"];
+                if(list.Contains("AdminUser"))
+                {
+                    ViewBag.IsAdmin = true;
+                }
 
                 var Posts = context.Posts.Select(c => c); 
                 Posts = context.Posts.OrderByDescending(c => c.DatePosted);
