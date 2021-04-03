@@ -1,0 +1,365 @@
+﻿html {
+    font-family: 'SF Pro Display';
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 9%, rgba(71,25,25,1) 44%, rgba(168,58,58,1) 63%, rgba(154,48,48,1) 100%);
+}
+@font-face {
+    font-family: 'SFProDisplay';
+    src: url('/Content/SF-Pro-Display.otf') format('opentype');
+}
+@font-face {
+    font-family: 'SFProDisplayRegular';
+    src: url('/Content/SF-Pro-Display Regular.ttf') format('truetype');
+}
+
+
+
+/*_layout css*/
+navbar-header {
+    background-color: #4cff00;
+}
+.navbar-brand {
+    text-decoration-color: #ffffff;
+}
+.navbar-inverse .navbar-brand {
+    color: #ffffff;
+    font-family: 'SFProDisplay';
+    font-size: 22px;
+    position: relative;
+    right: 330px;
+}
+.navbar-inverse .navbar-brand:hover {
+    color: #808080;
+}
+.navbar-inverse {
+    background-color: #000000;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff;
+    font-family: 'SFProDisplay';
+    position:relative; left:330px;
+}
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #808080;
+}
+/*Welcome page css*/
+.Welcome-Title {
+    font-family: 'SFProDisplay';
+    font-size: 200px;
+    text-align: left;
+    position: relative;
+    right: 330px;
+    top: 40px;
+    color: #ffffff
+}
+.Welcome-Tagline {
+    font-family: 'SFProDisplay';
+    font-size: 50px;
+    text-align: left;
+    position: relative;
+    right: 280px;
+    top: 20px;
+    color: #ffffff
+}
+.Welcome-button {
+    font-family: 'SFProDisplay';
+    background-color: #ffffff;
+    border-radius: 15px;
+    cursor: pointer;
+    color: rgb(0,0,0);
+    font-size: 28px;
+    padding: 14px 67px;
+    text-align: left;
+    padding-left: 10px;
+    position: relative;
+    right: 280px;
+    top: 50px;
+    padding: 12px 30px;
+    text-decoration: none;
+}
+.Welcome-button:hover {
+    font-family: 'SFProDisplay';
+    background-color: #808080;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 28px;
+    padding: 14px 67px;
+    text-align: left;
+    padding-left: 10px;
+    position: relative;
+    right: 280px;
+    top: 50px;
+    padding: 12px 30px;
+    text-decoration: none;
+}
+.Already-account {
+    font-family: 'SFProDisplay';
+    color: #ffffff;
+    font-size: 28px;
+    position: relative;
+    top: 200px;
+    right: 280px;
+}
+.Signin {
+    font-family: 'SFProDisplay';
+    color: #ffffff;
+    text-decoration: underline;
+}
+.Signin:hover {
+    font-family: 'SFProDisplay';
+    color: #808080;
+}
+.footer-front {
+    font-family: 'SFProDisplay';
+    color: #ffffff;
+    text-align: right;
+    left: 1700px;
+    position: absolute;
+    top: 900px;
+}
+.filmreel {
+    max-width: 100%;
+    max-height: 100vh;
+    margin: auto;
+}
+.filmreel-container {
+    display:grid;
+    height:100%;
+    position: relative;
+    top:285px;
+    overflow:hidden;
+
+}
+
+
+/*Login page*/
+/*page background*/
+.LoginText {
+    font-family: 'SFProDisplay';
+}
+.WhiteText {
+    color:#ffffff
+}
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+    background-image: url('/Content/Img/SiteImg/MovieSelection.jpg');
+    background-size: contain;
+}
+
+.right {
+    right: 0;
+    background-color: #000000;
+}
+.top-text {
+    position:relative;
+    top: 15px;
+    left: 12px;
+    font-size: 30px;
+}
+
+/*Login box*/
+.Login-container {
+    position: relative;
+    top: 40%;
+    left: 87%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+}
+.signin-text {
+    font-size:30px;
+    position:relative;
+    bottom: 20px;
+    right: 10px;
+
+}
+.login-button {
+    background-color: #9c0e06;
+    padding: 15px 120px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+    border-color: #9c0e06;
+    position: relative;
+    right: 165px;
+}
+.login-button:hover {
+    background-color: #c93126
+}
+.login-checkbox-text {
+    position:relative;
+    right: 180px;
+}
+.login-checkbox {
+    position:relative;
+    right:20px;
+}
+.login-forgotpassword {
+    position: relative;
+    right: 13px;
+}
+.form-control-login {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 20px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+}
+.col-md-10-login {
+    width: 83.33333333%
+}
+.no-account {
+    text-align:left;
+    position:absolute;
+    top:920px;
+    left:20px;
+    font-family:'SFProDisplay';
+    font-size: 20px;
+    color:#ffff
+}
+
+/*Register page*/
+
+.block-white {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 80%; 
+    border-radius:6px;
+}
+.register-text {
+    color: #000000;
+    text-align: center;
+}
+.form-inline {
+    display: inline-block;
+    align-items: center;
+    padding: 20px;
+}
+
+.box-left {
+    max-width: 320px;
+    width: 320px;
+    height: 34px;
+    padding: 20px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+    border-color: gray;
+}
+.box-right {
+    max-width: 320px;
+    width: 320px;
+    height: 34px;
+    padding: 20px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+    border-color: gray;
+}
+.centered-form {
+    margin-top: 60px;
+}
+
+.centered-form .panel {
+    background: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+.Paneltitle-edit {
+    text-align: center;
+    font-family: 'SFProDisplay';
+    font-size: 23px;
+    color: #000000;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.Panel-register-button {
+    background-color: #9c0e06;
+    font-family: 'SFProDisplay';
+    border-color: #9c0e06;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 5px;
+    max-width: 1200px;
+    width: 420px;
+    height: 40px;
+    margin-left: 15%;
+    margin-right: 25%;
+}
+.Panel-register-button:hover {
+    background-color: #c93126;
+    border-color: #c93126;
+}
+.panel-heading {
+
+}
+.panel-default .panel-heading {
+    color: #333333;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+.col-md-offset-4 {
+    margin-left: 18%;
+}
+.col-md-4 {
+    width: 60%;
+}
+.input-sm {
+    height: 30px;
+    padding: 17px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 6px;
+    max-width: 400px;
+    width: 300px;
+    margin-left: 15px;
+}
+.reg-box-hr {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+}
+.date-of-birth-label {
+    padding-left: 19px;
+    font-size: 12px;
+    font-family: SF Pro Display;
+    color: black;
+}
+.gender-checkbox {
+    padding-top: 8px;
+    padding-left: 20px;
+    font-family: SF Pro Display;
+}
+.gender-checkbox-label {
+
+}
