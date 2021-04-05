@@ -1,14 +1,7 @@
 ﻿@{
-    ViewBag.Title = "Welcome.";
+    ViewBag.Title = "Welcome";
 }
-<h2 class="Welcome-Title">@ViewBag.Title</h2>
-
-<p class="Welcome-Tagline">Movie lovers.. You're home</p>
-
-@Html.ActionLink("Get Started", "Register", "Account",new { }, new { @class = "Welcome-button" })
-
-<p class="Already-account"> Already with us? @Html.ActionLink("Sign in here","Login","Account",new { },new {@class = "Signin" })</p>
+<h2>@ViewBag.Title</h2>
 
 
-
-
+<p>@Html.ActionLink("Sign Up", "Register", "Account") now or @Html.ActionLink("Login", "Login", "Account")</p>

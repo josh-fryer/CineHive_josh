@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/CustomCinehive.css")
 
 </head>
 <body>
@@ -18,14 +17,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Cinehive.", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Cinehive", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (HttpContext.Current.User.IsInRole("AdminUser"))
+                    @if (HttpContext.Current.User.IsInRole("BasicUser"))
                     {
+                        <li>@Html.ActionLink("Search", "Search", "Search")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                    }
+                    else if (HttpContext.Current.User.IsInRole("AdminUser"))
+                    {
+                        <li>@Html.ActionLink("Search", "Search", "Search")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         <li>@Html.ActionLink("Admin Panel", "Admin", "Admin")</li>
 
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Search", "Search", "Search")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     }
                  
                 </ul>
@@ -35,8 +47,9 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <footer class="footer-front">
-            <p>&copy; @DateTime.Now.Year - Cinehive.</p>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Cinehive</p>
         </footer>
     </div>
 
