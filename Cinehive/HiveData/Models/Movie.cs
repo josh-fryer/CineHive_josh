@@ -16,6 +16,7 @@ namespace HiveData.Models
         public DateTime ReleaseDate { get; set; }
         public int[] GenreIds { get; set; }
         public string Title { get; set; }
+        public string VideoKey { get; set; }
 
     }
 }

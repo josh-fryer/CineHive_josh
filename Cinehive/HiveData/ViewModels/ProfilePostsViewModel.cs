@@ -12,9 +12,5 @@ namespace HiveData.ViewModels
         public UserProfile userProfile { get; set; }
         public IList<Post> Posts { get; set; }
         public IList<PostComment> PostComments { get; set; }
-
     }
-
-
-
 }

@@ -135,6 +135,7 @@
     <Compile Include="DAO\NotificationDAO.cs" />
     <Compile Include="DAO\PostDAO.cs" />
     <Compile Include="DAO\ProfileDAO.cs" />
+    <Compile Include="DAO\SearchDAO.cs" />
     <Compile Include="IDAO\IAdminDAO.cs" />
     <Compile Include="IDAO\IAlbumDAO.cs" />
     <Compile Include="IDAO\ICommentDAO.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="IDAO\INotificationDAO.cs" />
     <Compile Include="IDAO\IPostDAO.cs" />
     <Compile Include="IDAO\IProfileDAO.cs" />
+    <Compile Include="IDAO\ISearchDAO.cs" />
     <Compile Include="Migrations\202103031708562_initial.cs" />
     <Compile Include="Migrations\202103031708562_initial.Designer.cs">
       <DependentUpon>202103031708562_initial.cs</DependentUpon>
@@ -227,6 +229,7 @@
     <Compile Include="ViewModels\PostCommentUserViewModel.cs" />
     <Compile Include="ViewModels\PostFeedViewModel.cs" />
     <Compile Include="ViewModels\ProfilePostsViewModel.cs" />
+    <Compile Include="ViewModels\SearchResultsVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

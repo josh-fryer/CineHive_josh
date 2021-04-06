@@ -20,9 +20,9 @@
         <img class="img" src="http://image.tmdb.org/t/p/w342@(Model.PosterPath)" width="320" />
     </div>
     <div class="col-md-6">
-        @if (ViewBag.vidKey != null)
+        @if (Model.VideoKey != null)
         {
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/@(ViewBag.vidKey)" title="YouTube video player"
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/@(Model.VideoKey)" title="YouTube video player"
                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
                 gyroscope; picture-in-picture" allowfullscreen></iframe>
         }

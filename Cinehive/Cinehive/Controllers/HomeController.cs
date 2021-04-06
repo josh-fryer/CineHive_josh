@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity;
 using PagedList;
 using HiveServices.IService;
 using HiveServices.Service;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Cinehive.Controllers
 {
@@ -24,8 +26,7 @@ namespace Cinehive.Controllers
             profileService = new ProfileService();
             helper = new Helper();
         }
-
-        
+      
         public ActionResult Index(int? page = 1)
         {
             if (User.Identity.IsAuthenticated)
@@ -74,7 +75,7 @@ namespace Cinehive.Controllers
             };
 
             return View(postFeedViewModel);
-        }
+        }            
 
         public ActionResult Welcome()
         {

@@ -119,9 +119,13 @@
     <Compile Include="Service\AlbumService.cs" />
     <Compile Include="Service\CommentService.cs" />
     <Compile Include="Service\FriendService.cs" />
+    <Compile Include="IService\ISearchService.cs" />
+    <Compile Include="IService\IMovieService.cs" />
+    <Compile Include="Service\MovieService.cs" />
     <Compile Include="Service\NotificationService.cs" />
     <Compile Include="Service\PostService.cs" />
     <Compile Include="Service\ProfileService.cs" />
+    <Compile Include="Service\SearchService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

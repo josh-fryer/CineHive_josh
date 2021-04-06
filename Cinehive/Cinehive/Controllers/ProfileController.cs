@@ -50,7 +50,6 @@ namespace Cinehive.Controllers
             ViewBag.GenreNames = genreNames;
 
             return View(profilePostsViewModel);
-
         }
 
         [Authorize]
