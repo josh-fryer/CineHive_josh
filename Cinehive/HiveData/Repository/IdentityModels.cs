@@ -37,6 +37,7 @@ namespace HiveData.Repository
         public CineHiveContext() 
             : base("CineHiveContext", throwIfV1Schema: false)
         {
+            
         }
 
         public static CineHiveContext Create()

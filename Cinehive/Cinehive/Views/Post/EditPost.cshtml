@@ -18,12 +18,12 @@
     @Html.HiddenFor(model => model.PostId)
     @Html.HiddenFor(model => model.DatePosted)
     @Html.HiddenFor(model => model.Awards)
-    <div>
+    @*<div>
         @Html.HiddenFor(model => model.UserId)
         <input type="hidden" id="UserId" name="UserId" value="@Model.UserId" />
         @Html.HiddenFor(model => model.ProfileId)
         <input type="hidden" id="ProfileId" name="ProfileId" value="@Model.ProfileId" />
-    </div>
+    </div>*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.PostContent, htmlAttributes: new { @class = "control-label col-md-2" })

@@ -5,138 +5,59 @@
     var userid = User.Identity.GetUserId();
 }
 
-<h2>@Model.userProfile.Firstname's profile</h2>
-<div>
-    <h4>Your Cinehive Profile</h4>
-    <hr />
-    @if (Model.userProfile.ImagePath == null)
-    {
-        <div class="row">
-            <div class="col-md-4">
-                <img src="~/Content/Img/profile-image-placeholder.png" alt="Placeholder image" class="img-thumbnail">
+<div class="container">
+    <div class="row profile">
 
+        @Html.Partial("ProfilePartial")
 
-            </div>
-        </div>
-
-    }
-    else
-    {
-        <div class="row">
-            <div class="col-md-4">
-                <a class="pull-left" href="#">
-                    <img src="~/@Model.userProfile.ImagePath" width="340" height="340" />
-                </a>
-            </div>
-        </div>
-
-    }
-
-    <dl class="dl-horizontal">
-
-        <dt>
-            @Html.DisplayNameFor(model => model.userProfile.Firstname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.userProfile.Firstname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.userProfile.Lastname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.userProfile.Lastname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.userProfile.Gender)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.userProfile.Gender)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.userProfile.DateOfBirth)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.userProfile.DateOfBirth)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.userProfile.AboutMe)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.userProfile.AboutMe)
-        </dd>
-
-    </dl>
-    <p>
-        <b>Favourite Genres:</b>
-        <ul>
-            @foreach (string genre in ViewBag.GenreNames)
-            {
-                <li>@genre</li>
-            }
-        </ul>
-    </p>
-</div>
-
-
-<p>
-    @Html.ActionLink("Edit Profile", "Edit") |
-    @Html.ActionLink("My Image Albums", "Index", "Album")
-</p>
-
-@foreach (var item in Model.Posts)
-    {
-        <div class="container">
-            <div class="well">
-                <div class="media">
-                    <a class="pull-left" href="">
-                        @if (Model.userProfile.ImagePath == null)
-                        {
-                            <img src="~/Content/Img/profile-image-placeholder.png" width="140" height="140" />
-                        }
-                        else
-                        {
-                            <img src="~/@Model.userProfile.ImagePath" width="140" height="140" />
-                        }
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">@Model.userProfile.Firstname @Model.userProfile.Lastname</h4>
-                        <p>
-                            @item.PostContent
-                        </p>
-                        <ul class="list-inline list-unstyled">
-                            <li> @item.DatePosted </li>
-                            <li>|</li>
-                            @if (item.Awards < 2)
+        <div class="col-md-9">
+            <div class="profile-content">
+                @foreach (var item in Model.Posts)
+                {
+                    <div class="media">
+                        <a class="pull-left" href="">
+                            @if (Model.userProfile.ImagePath == null)
                             {
-                                <li> @item.Awards Award</li>
+                                <img src="~/Content/Img/profile-image-placeholder.png" width="140" height="140" />
                             }
                             else
                             {
-                                <li> @item.Awards Awards</li>
+                                <img src="~/@Model.userProfile.ImagePath" width="140" height="140" />
                             }
-                        </ul>
-                        <ul class="list-inline list-unstyled">
-                            <li>@Html.ActionLink("Award", "")</li>
-                            <li>|</li>
-                            <li>@Html.ActionLink("Comment", "")
-                            <li>|</li>
-                            <li>@Html.ActionLink("Share", "")</li>
-                            <li>|</li>
-                            <li>
-                            <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
-                        </ul>
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">@Model.userProfile.Firstname @Model.userProfile.Lastname</h4>
+                            <p>
+                                @item.PostContent
+                            </p>
+                            <ul class="list-inline list-unstyled">
+                                <li> @item.DatePosted </li>
+                                <li>|</li>
+                                @if (item.Awards < 2)
+                                {
+                                    <li> @item.Awards Award</li>
+                                }
+                                else
+                                {
+                                    <li> @item.Awards Awards</li>
+                                }
+                            </ul>
+                            <ul class="list-inline list-unstyled">
+                                <li>@Html.ActionLink("Award", "")</li>
+                                <li>|</li>
+                                <li>@Html.ActionLink("Comment", "")
+                                <li>|</li>
+                                <li>@Html.ActionLink("Share", "")</li>
+                                <li>|</li>
+                                <li>
+                                <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
+                            </ul>
+                            <hr />
+                        </div>
+                    </div>
+                }
 
-                </div>
             </div>
         </div>
     </div>
-    }
+</div>

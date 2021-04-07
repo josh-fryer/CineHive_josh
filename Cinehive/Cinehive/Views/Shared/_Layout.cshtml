@@ -6,42 +6,48 @@
     <title>@ViewBag.Title - CineHive</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/CustomCinehive.css")
 
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                </button>
                 @Html.ActionLink("Cinehive", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <ul class="nav navbar-nav">
-                @if (HttpContext.Current.User.IsInRole("AdminUser"))
-                {
-                    <li>@Html.ActionLink("Admin Panel", "Admin", "Admin")</li>
-                }
-            </ul>
-            @Html.Partial("_LoginPartial")          
-            <div style="width:50%; margin: 0 auto">
-                @using (Html.BeginForm("Search", "Search", FormMethod.Get, new { @class = "navbar-form" }))
-                {
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="query">
-                    <button class="btn btn-primary" type="submit">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                }
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (HttpContext.Current.User.IsInRole("AdminUser"))
+                    {
+                        <li>@Html.ActionLink("Admin Panel", "Admin", "Admin")</li>
+                        
+
+                    }
+                    <li>
+                    @using (Html.BeginForm("Search", "Search", FormMethod.Get, new { @class = "navbar-form" }))
+                    {
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="query">
+                            <button class="btn btn-primary" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                    }
+                    </li>
+                 
+                </ul>
+                @Html.Partial("_LoginPartial")
             </div>
-       </div>       
+        </div>
     </nav>
-    <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Cinehive</p>
-            <ul class="list-unstyled">
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            </ul>
+        <footer class="footer-control">
+            <p>&copy; @DateTime.Now.Year - Cinehive.</p>
         </footer>
-    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
