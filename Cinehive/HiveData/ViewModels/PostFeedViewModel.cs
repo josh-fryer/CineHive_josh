@@ -59,6 +59,7 @@ namespace HiveData.ViewModels
                 return false;
             }
         }
+
         public bool AwardGiven(int id)
         {
             var award = context.UserProfiles.Where(c => c.Awards.Contains(context.Awards.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.UserId).FirstOrDefault();

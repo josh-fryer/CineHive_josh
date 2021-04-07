@@ -16,23 +16,27 @@ namespace HiveData.DAO
             List<Post> postResults = new List<Post>();
             // search posts for query by latest first
             var orderedPosts = context.Posts.OrderByDescending(p => p.DatePosted).ToList();
-            for (int i = 0; i < orderedPosts.Count; i++)
+            await Task.Run(() =>
             {
-                Post p = orderedPosts[i];
-                if (!String.IsNullOrEmpty(p.PostContent))
+                for (int i = 0; i < orderedPosts.Count; i++)
                 {
-                    if (p.PostContent.Contains(q)) // case sensitive
+                    Post p = orderedPosts[i];
+                    if (!String.IsNullOrEmpty(p.PostContent))
                     {
-                        postResults.Add(p);
+                        if (p.PostContent.Contains(q)) // case sensitive
+                        {
+                            postResults.Add(p);
+                        }
                     }
                 }
-            }
+            });
+            
             return postResults;
         }
 
         public async Task<List<UserProfile>> SearchUsersAsync(string q, CineHiveContext context)
         {
-            return context.UserProfiles.Where(x => x.Firstname.Contains(q) || x.Firstname.ToLower().Contains(q) ||
+            return  context.UserProfiles.Where(x => x.Firstname.Contains(q) || x.Firstname.ToLower().Contains(q) ||
                         x.Firstname.ToUpper().Contains(q) || x.Lastname.Contains(q) || x.Lastname.ToLower().Contains(q)
                         || x.Lastname.ToUpper().Contains(q)).ToList();
         }

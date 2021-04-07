@@ -2,12 +2,11 @@
 
 @{
     ViewBag.Title = "Search Results";
+    ViewBag.PostResults = Model.PostResults;
 }
 
 
-<p>
-
-</p>
+<hr/>
 @if (Model.UserResults != null && Model.UserResults.Count > 0)
 {
 <h2>People</h2>
@@ -38,10 +37,15 @@
             </div>
         </div>
     }
-    @if (Model.UserResults.Count > 5)
-    {
-        @Html.ActionLink("View More...", "ExpandResults", Model.UserResults)
-    }
+    <ul class="list-group- list-inline">
+        @if (Model.UserResults.Count > 5)
+        {
+            <li class="list-group-item">
+                @Html.ActionLink("View More...", "FilteredSearch", "Search", new { query = ViewBag.query, type = "user" }, new { })
+            </li>
+        }
+        <li class="list-group-item">Total Results: @Model.UserResults.Count</li>
+    </ul>
 </div>
 }
 <hr />
@@ -71,7 +75,7 @@
                     <div class="media-body">
                         <h4 class="media-heading">
                             @Html.ActionLink(user.Firstname + " " + user.Lastname, "ViewProfile", "Profile",
-          new { id = user.ProfileId }, new { })
+                                new { id = user.ProfileId }, new { })
                         </h4>
                         <p>
                             @post.PostContent
@@ -106,7 +110,7 @@
                             <li>|</li>
                             <li>@Html.ActionLink("Share", "")</li>
                             <li>|</li>
-                            <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = post.PostId }, new { }) (@post.PostComments.Count)</li>
+                            <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = post.PostId }, new { })</li>
 
                             @if (Model.IsUserPost(post.PostId) == true || HttpContext.Current.User.IsInRole("AdminUser"))
                             {
@@ -123,10 +127,13 @@
             </div>
         </div>
     }
+<ul class="list-group- list-inline" >
     @if (Model.PostResults.Count > 5)
     {
-        @Html.ActionLink("View More...", "ExpandResults", Model.PostResults)
+        <li class="list-group-item">@Html.ActionLink("View More...", "FilteredSearch", "Search", new { query = ViewBag.query, type = "post" }, new { })</li>
     }
+    <li class="list-group-item">Total Results: @Model.PostResults.Count</li>
+</ul>
 </div>
 <hr/>
 }
@@ -160,10 +167,15 @@
             </div>
         </div>
     }
-    @if (Model.MovieResults.Count > 5)
-    {
-        @Html.ActionLink("View More...", "ExpandResults", "Search", Model.MovieResults, new { })
-    }
+    <ul class="list-group list-group- list-inline">
+        @if (Model.MovieResults.Count > 5)
+        {
+            <li class="list-group-item">
+                @Html.ActionLink("View More...", "FilteredSearch", "Search", new { query = ViewBag.query, type = "movie" }, new { })
+            </li>
+        }
+        <li class="list-group-item">Total Results: @Model.totalMovieResults</li>
+    </ul>
 </div>
 }
 

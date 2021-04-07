@@ -337,6 +337,8 @@
     <Content Include="Views\Home\Popular.cshtml" />
     <Content Include="Views\Movie\SearchViewMovie.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Search\ExpandResults.cshtml" />
+    <Content Include="Views\Search\FilteredSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

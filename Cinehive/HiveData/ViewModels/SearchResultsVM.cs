@@ -15,6 +15,7 @@ namespace HiveData.ViewModels
        public IList<Post> PostResults { get; set; }
        public IList<UserProfile> UserResults { get; set; }
        public IList<Movie> MovieResults { get; set; }
+       public int totalMovieResults { get; set; } 
 
 
         private CineHiveContext context = new CineHiveContext();

@@ -15,8 +15,6 @@
                 @Html.ActionLink("Cinehive", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-
                 @if (HttpContext.Current.User.IsInRole("AdminUser"))
                 {
                     <li>@Html.ActionLink("Admin Panel", "Admin", "Admin")</li>
@@ -39,6 +37,9 @@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Cinehive</p>
+            <ul class="list-unstyled">
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            </ul>
         </footer>
     </div>
 

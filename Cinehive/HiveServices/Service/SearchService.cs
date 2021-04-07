@@ -1,5 +1,6 @@
 ﻿using HiveData.DAO;
 using HiveData.IDAO;
+using HiveData.Models;
 using HiveData.Repository;
 using HiveData.ViewModels;
 using System;
@@ -27,13 +28,16 @@ namespace HiveServices.Service
             {
                 var postResults = searchDAO.SearchPostsAsync(q, context);
                 var userResults = searchDAO.SearchUsersAsync(q, context);
-                var movieResults = await movieService.SearchMoviesAsync(q);             
+                var movieArr = await movieService.SearchMoviesAsync(q);
+                // return max 6 to show "view more" link
+                var movieResults = movieService.ToMoviesListAsync(movieArr, 6);                            
 
                 SearchResultsVM searchResults = new SearchResultsVM()
                 {
                     PostResults = await postResults,
                     UserResults = await userResults,
-                    MovieResults = movieResults
+                    MovieResults = await movieResults,
+                    totalMovieResults = movieArr.total_results
                 };
                 return searchResults;
             }

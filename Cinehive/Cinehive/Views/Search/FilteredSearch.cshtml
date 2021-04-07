@@ -1,0 +1,178 @@
+﻿@model HiveData.ViewModels.FilteredSearchVM
+@using PagedList.Mvc;
+@using HiveData.Repository;
+
+@{
+    ViewBag.Title = "FilteredSearch";
+    int startPg = 1;
+    if ((ViewBag.moviePageNum - 5) != null && (ViewBag.moviePageNum - 5) > 0)
+    {
+        startPg = (ViewBag.moviePageNum - 5);
+    }
+}
+
+<h2>Search Results</h2>
+
+<hr />
+@if (ViewBag.type == "post")
+{
+    foreach (var item in Model.PostList)
+    {
+        <div class="container">
+            <div class="well">
+                <div class="media">
+                    <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(item.PostId) })" )">
+                        @if (@Model.GetUserPicture(item.PostId) == null)
+                        {
+                            <img src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
+                        }
+                        else
+                        {
+                            <img src="~/@Model.GetUserPicture(item.PostId)" width="64" height="64" />
+                        }
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">@Html.ActionLink(@Model.GetFirstName(item.PostId) + " " + Model.GetLastName(item.PostId), "ViewProfile", "Profile", new { id = Model.GetProfileId(item.PostId) }, new { })</h4>
+                        <p>
+                            @item.PostContent
+                        </p>
+                        <ul class="list-inline list-unstyled">
+                            <li> @item.DatePosted </li>
+                            <li>|</li>
+                            @if (item.Awards < 2)
+                            {
+                                <li> @item.Awards Award</li>
+                            }
+                            else
+                            {
+                                <li> @item.Awards Awards</li>
+                            }
+                            @if (item.Popular == true)
+                            {
+                                <li><strong>Popular</strong></li>
+                            }
+                        </ul>
+                        <ul class="list-inline list-unstyled">
+                            @if (Model.AwardGiven(item.PostId) == true)
+                            {
+                                <li><strong>@Html.ActionLink("Revoke", "RevokeAward", "Post", new { id = item.PostId }, new { })</strong></li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Award", "GiveAward", "Post", new { id = item.PostId }, new { })</li>
+                            }
+                            <li>|</li>
+                            <li>@Html.ActionLink("Comment", "Create", "Comment", new { id = item.PostId }, new { })</li>
+                            <li>|</li>
+                            <li>@Html.ActionLink("Share", "")</li>
+                            <li>|</li>
+                            <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
+
+                            @if (Model.IsUserPost(item.PostId) == true || HttpContext.Current.User.IsInRole("AdminUser"))
+                            {
+                                <li>|</li>
+                                <li> @Html.ActionLink("Remove", "DeletePost", "Post", new { id = item.PostId }, null) </li>
+                                <li>|</li>
+                                <li> @Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId }, null) </li>
+                            }
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+        Page @(@Model.PostList.PageCount < @Model.PostList.PageNumber ? 0 : @Model.PostList.PageNumber) of @Model.PostList.PageCount
+        @Html.PagedListPager(Model.PostList, page => Url.Action("FilteredSearch", new { query = ViewBag.query, type = ViewBag.type, page = page }))
+    </div>
+}
+
+@if (ViewBag.type == "movie")
+{
+    foreach (var item in Model.MovieList)
+    {
+        <div class="container">
+            <div class="well">
+                <div class="media">
+                    <a class="media-left" href="@Url.Action("ViewMovieByID", "Movie", new { id = item.ID })">
+                        @if (item.PosterPath == null)
+                        {
+                            <img src="" width="92" height="52" />
+                        }
+                        else
+                        {
+                            <img class="img" src="http://image.tmdb.org/t/p/w92@(item.PosterPath)" width="92" />
+                        }
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            @Html.ActionLink(item.Title, "ViewMovieByID", "Movie",
+                                new { id = item.ID }, new { })
+                        </h4>
+                        @item.Overview
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+
+        Page @((int)ViewBag.totalPages < ViewBag.moviePageNum ? 0 : ViewBag.moviePageNum) of @ViewBag.totalPages
+        @*@Html.PagedListPager(Model.MovieList, page => Url.Action("FilteredSearch", new { query = ViewBag.query, type = ViewBag.type, page = page }))*@
+    </div>
+    <div>
+        @*Movie pager*@
+        <ul class="pagination">
+            <li>@Html.ActionLink("First", "FilteredSearch", "Search", new { query = ViewBag.query, type = ViewBag.type, page = 1 }, new { })</li>
+            @for (int i = startPg; i < ViewBag.moviePageNum; i++)
+            {
+                <li>@Html.ActionLink(i.ToString(), "FilteredSearch", "Search", new { query = ViewBag.query, type = ViewBag.type, page = i }, new { })</li>
+            }
+            <li class="active"><a href="#">@ViewBag.moviePageNum</a></li>
+            @for (int i = (ViewBag.moviePageNum + 1); i < (ViewBag.moviePageNum + 5) && i <= (int)ViewBag.totalPages; i++)
+            {
+                <li>@Html.ActionLink(i.ToString(), "FilteredSearch", "Search", new { query = ViewBag.query, type = ViewBag.type, page = i }, new { })</li>
+            }
+            <li>@Html.ActionLink("Last", "FilteredSearch", "Search", new { query = ViewBag.query, type = ViewBag.type, page = (int)ViewBag.totalPages }, new { })</li>
+        </ul>
+    </div>
+}
+
+@if (ViewBag.type == "user")
+{
+    <h2>People</h2>
+    <div class="container">
+        @for (int i = 0; i < 10 && i < Model.UserList.Count; i++)
+        {
+            var item = Model.UserList[i];
+            <div class="container">
+                <div class="well">
+                    <div class="media">
+                        <a class="media-left" href="@Url.Action("ViewProfile", "Profile", new { id = item.ProfileId })">
+                            @if (item.ImagePath == null)
+                            {
+                                <img src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
+                            }
+                            else
+                            {
+                                <img src="~/@item.ImagePath" width="64" height="64" />
+                            }
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                @Html.ActionLink(item.Firstname + " " + item.Lastname, "ViewProfile", "Profile",
+                                    new { id = item.ProfileId }, new { })
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div>
+        Page @(@Model.UserList.PageCount < @Model.UserList.PageNumber ? 0 : @Model.UserList.PageNumber) of @Model.UserList.PageCount
+        @Html.PagedListPager(Model.UserList, page => Url.Action("FilteredSearch", new { query = ViewBag.query, type = ViewBag.type, page = page }))
+    </div>
+}
