@@ -187,5 +187,12 @@ namespace Cinehive.Controllers
             }
             return RedirectToAction("Index", "Profile");
         }
+        public ActionResult ViewImage(int id)
+        {
+
+           var result = context.Images.Find(id);
+
+            return View(result);
+        }
     }
 }

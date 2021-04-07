@@ -1,5 +1,5 @@
 ﻿html {
-    font-family: 'SF Pro Display';
+    font-family: 'SFProDisplay';
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
@@ -10,7 +10,7 @@ body {
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 9%, rgba(71,25,25,1) 44%, rgba(168,58,58,1) 63%, rgba(154,48,48,1) 100%);
     overflow: visible;
     background-repeat: initial;
-    font-family: 'SF Pro Display';
+    font-family: 'SFProDisplay';
 }
 @font-face {
     font-family: 'SFProDisplay';
@@ -604,6 +604,11 @@ body {
 .album-text-dec:hover {
     color:grey;
     text-decoration: none;
+}
+.img-responsive-alt {
+    margin-left: 50px;
+    margin-top: 30px;
+    border-radius: 20px;
 }
 
 /*Main Feed index*/
