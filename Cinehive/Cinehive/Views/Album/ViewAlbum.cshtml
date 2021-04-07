@@ -3,54 +3,67 @@
     ViewBag.Title = "ViewAlbum";
 }
 
-<h2>@Model.Album.AlbumName</h2>
-<h3>@Model.Album.AlbumDesc</h3>
-<h4>Images in album: @Model.Images.Count()</h4>
-@Html.ActionLink("Delete Album", "DeleteAlbum", "Album", new { id = Model.Album.AlbumId }, new { })
-<hr />
+<div class="container">
+    <div class="row profile">
+        <div class="col-md-3">
+            <div class="album-sidebar">
 
-@if (Model.Images.Any(i => i != null))
-{
-    <div>
-        <ul class="list-inline">
-            <li>
-                @Html.ActionLink("Add an Image", "AddImageToAlbum", new { id = Model.Album.AlbumId })
-            </li>
-            <li>
-                @Html.ActionLink("Edit Album", "Edit", new { id = Model.Album.AlbumId })
-            </li>
-        </ul>
-    </div>
-    <br />
-    foreach (var item in Model.Images)
-    {
-        <div class="col-md-4">
-            <div class="image">
-                <a asp-action="Details" asp-controller="Album" asp-route-id="">
-                    <img src="~/@item.ImagePath" width="340" height="340" />
-                </a>
-                <ul class="list-inline">
-                    <li>
-                        @Html.ActionLink("Delete Image", "DeleteImageFromAlbum", new { id = item.ImageId })
-                    </li>
-                    <li>
-                        @Html.ActionLink("Set as Profile Picture", "SetAsProfilePicture", new {Imagepath = item.ImagePath })
-                    </li>
-                </ul>
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li class="active">
+                            <a href="@Url.Action("Index","Album")">
+                                <i class="glyphicon glyphicon-arrow-left"></i>
+                                Go back
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("AddImageToAlbum","Album", new { id = Model.Album.AlbumId })">
+                                <i class="glyphicon glyphicon-picture"></i>
+                                Add Image
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("DeleteAlbum","Album", new { id = Model.Album.AlbumId })">
+                                <i class="glyphicon glyphicon-remove"></i>
+                                Delete Album
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-9">
+            <div class="profile-content">
+
+                @if (Model.Images.Any(i => i != null))
+                {
+
+                    foreach (var item in Model.Images)
+                    {
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <img class="img-responsive" src="~/@item.ImagePath" />
+                    @Html.ActionLink("Set as PP", "SetAsProfilePicture", new { Imagepath = item.ImagePath })
+                </div>
+
+
+                    }
+                }
+                else
+                {
+                    <div>
+                        <p>This album is empty</p>
+
+                        @Html.ActionLink("Add an Image", "AddImageToAlbum", new { id = Model.Album.AlbumId })
+
+                    </div>
+
+                }
             </div>
         </div>
-    }
-    <hr />
-}
-else
-{
-    <div>
-        <p>You have no images in this album</p>
-
-        @Html.ActionLink("Add an Image", "AddImageToAlbum", new { id = Model.Album.AlbumId })
-
     </div>
-}
+</div>
 
 
 

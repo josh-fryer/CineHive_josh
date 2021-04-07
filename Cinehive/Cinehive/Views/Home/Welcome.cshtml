@@ -1,7 +1,19 @@
 ﻿@{
-    ViewBag.Title = "Welcome";
+    ViewBag.Title = "Welcome.";
 }
-<h2>@ViewBag.Title</h2>
+<div class="jumbotron Welcome-Jumbo">
+    <h1>@ViewBag.Title</h1>
+    <p>Movie lovers... You're home</p>
+
+    <p>
+        @Html.ActionLink("Get Started", "Register", "Account", new { }, new { @class = "btn btn-primary btn-lg flex-parent btn-extension" })
+    </p>
 
 
-<p>@Html.ActionLink("Sign Up", "Register", "Account") now or @Html.ActionLink("Login", "Login", "Account")</p>
+</div>
+
+<p class="already-account"> Already with us? @Html.ActionLink("Sign in here", "Login", "Account", new { }, new { @class = "Signin" })</p>
+
+
+
+

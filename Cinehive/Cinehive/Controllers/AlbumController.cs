@@ -64,8 +64,12 @@ namespace Cinehive.Controllers
             }
         }
         [Authorize]
-        public ActionResult ViewAlbum(int id)
+        public ActionResult ViewAlbum(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
 
             AlbumImageViewModel albumImageViewModel = new AlbumImageViewModel
             {

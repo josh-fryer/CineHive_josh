@@ -11,7 +11,6 @@ using PagedList;
 using HiveServices.IService;
 using HiveServices.Service;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Cinehive.Controllers
 {
@@ -45,7 +44,7 @@ namespace Cinehive.Controllers
                 string userid = User.Identity.GetUserId();
 
 
-                int pageSize = 5;
+                int pageSize = 8;
                 int pageNumber = (page ?? 1);
                 var NewPosts = Posts.ToPagedList(pageNumber, pageSize);
                 PostFeedViewModel postFeedViewModel = new PostFeedViewModel()
