@@ -90,6 +90,9 @@ body {
 .navbar-inverse .navbar-nav > li > a:hover {
     color: #808080;
 }
+.Search-container {
+
+}
 /*/////////////////////////////Welcome page css////////////////////////////////*/
 .Welcome-Jumbo {
     font-family: 'SFProDisplay';

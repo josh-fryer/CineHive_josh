@@ -4,100 +4,142 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="container">
+    <div class="row profile">
+        <div class="col-md-3">
+            <div class="album-sidebar">
 
-@using (Html.BeginForm("Edit", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-
-<div class="form-horizontal">
-    <h4>UserProfile</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.ProfileId)
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Firstname, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Lastname, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="radio" name="Gender" value="Male"> Male<br>
-            <input type="radio" name="Gender" value="Female"> Female<br>
-            <input type="radio" name="Gender" value="Other"> Other
-            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
-            <div class="form-inline">
-                Current Gender: @Html.DisplayFor(model => model.Gender)
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li class="active">
+                            <a href="@Url.Action("Index","Profile")">
+                                <i class="glyphicon glyphicon-arrow-left"></i>
+                                Go back
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Edit","Profile")">
+                                <i class="glyphicon glyphicon-globe"></i>
+                                Edit Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Manage")">
+                                <i class="glyphicon glyphicon-cog"></i>
+                                Manage Account
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="glyphicon glyphicon-remove"></i>
+                                Delete Account
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="date" id="DateOfBirth" name="DateOfBirth">
-            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
-        <div class="form-inline">
-            Current Date of Birth:@Html.DisplayFor(model => model.DateOfBirth)
-        </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.AboutMe, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.AboutMe, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.AboutMe, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ProfilePicture, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.ActionLink("Change your profile picture in your album","Index","Album")
-        </div>
-    </div>
-
-    @*Checkbox genres form:*@   
-        <div class="form-group">
-            <table>
-            @for (int i = 0; i < Model.Genres.Count; i++)
-            {
-                <tr>
-                    <td>
-                        @Html.CheckBoxFor(m => m.Genres[i].Selected)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(m => m.Genres[i].Text)
-                        @Html.HiddenFor(m => m.Genres[i].Value)
-                        @Html.HiddenFor(m => m.Genres[i].Text)
-                    </td>
-                </tr>
-            }
-            </table>
         </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
-    </div>
+        <div class="col-md-9">
+            <div class="profile-content">
+
+                @using (Html.BeginForm("Edit", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>Edit Profile</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.ProfileId)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Firstname, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Lastname, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <input type="radio" name="Gender" value="Male"> Male<br>
+                                <input type="radio" name="Gender" value="Female"> Female<br>
+                                <input type="radio" name="Gender" value="Other"> Other
+                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                <div class="form-inline">
+                                    Current Gender: @Html.DisplayFor(model => model.Gender)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <input type="date" id="DateOfBirth" name="DateOfBirth">
+                                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                                <div class="form-inline">
+                                    Current Date of Birth:@Html.DisplayFor(model => model.DateOfBirth)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.AboutMe, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.AboutMe, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.AboutMe, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ProfilePicture, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.ActionLink("Change your profile picture in your album", "Index", "Album")
+                            </div>
+                        </div>
+
+                        @*Checkbox genres form:*@
+                        <div class="form-group">
+                            <table>
+                                @for (int i = 0; i < Model.Genres.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.CheckBoxFor(m => m.Genres[i].Selected)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(m => m.Genres[i].Text)
+                                            @Html.HiddenFor(m => m.Genres[i].Value)
+                                            @Html.HiddenFor(m => m.Genres[i].Text)
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div>
+                    @Html.ActionLink("Back to Profile", "MyProfile")
+                </div>
 </div>
-}
-
-<div>
-    @Html.ActionLink("Back to Profile", "MyProfile")
+</div>
+</div>
 </div>
