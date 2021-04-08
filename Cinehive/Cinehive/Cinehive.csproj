@@ -342,10 +342,10 @@
     <Content Include="Views\Home\Popular.cshtml" />
     <Content Include="Views\Movie\SearchViewMovie.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
-    <Content Include="Views\Search\ExpandResults.cshtml" />
     <Content Include="Views\Search\FilteredSearch.cshtml" />
     <Content Include="Views\Profile\ProfilePartial.cshtml" />
     <Content Include="Views\Album\ViewImage.cshtml" />
+    <Content Include="Views\Movie\ViewMovie.cshtml" />
     <Content Include="Views\Profile\ViewFriends.cshtml" />
   </ItemGroup>
   <ItemGroup>

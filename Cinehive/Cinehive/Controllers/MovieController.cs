@@ -38,12 +38,18 @@ namespace Cinehive.Controllers
             {
                 return View();
             }
-            return View(movie);        
+            return RedirectToAction("ViewMovie", movie);        
         }
 
-        public ActionResult ViewMovieByID(int id)
+        public ActionResult GetMovieByID(int id)
         {
-            return View();
+            Movie movie = movieService.GetMovieByID(id);
+            return RedirectToAction("ViewMovie", movie);
+        }
+
+        public ActionResult ViewMovie(Movie movie)
+        {
+            return View(movie);
         }
 
     }

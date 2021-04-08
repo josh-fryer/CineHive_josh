@@ -1,0 +1,53 @@
+﻿@model HiveData.Models.Movie
+
+@{
+    ViewBag.Title = "ViewMovie";
+}
+
+
+
+<div class="container">
+    <br/>
+    <div class="panel">
+        @if (Model == null)
+        {
+            <h5>Could not find movie</h5>
+        }
+        else
+        {
+            <h2>@Model.Title</h2>
+            <div class="media">
+                <div class="media-left"></div>
+                <div class="media-left">
+                    <img class="img" src="http://image.tmdb.org/t/p/w342@(Model.PosterPath)" width="320" />
+                </div>
+                <div class="media-right">
+                    @if (Model.VideoKey != null)
+                    {
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/@(Model.VideoKey)" title="YouTube video player"
+                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+                    gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    }
+                </div>
+            </div>
+            <br />
+            <dl class="dl-horizontal">
+                <dt>
+                    Overview:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Overview)
+                </dd>
+
+                <dt>
+                    Release Date:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ReleaseDate)
+                </dd>
+            </dl>
+        }
+    </div>
+</div>

@@ -10,9 +10,8 @@
         startPg = (ViewBag.moviePageNum - 5);
     }
 }
-
-<h2>Search Results</h2>
-
+<div class="container ">
+        <h2 id="txt-white">Search Results</h2>
 <hr />
 @if (ViewBag.type == "post")
 {
@@ -96,10 +95,11 @@
         <div class="container">
             <div class="well">
                 <div class="media">
-                    <a class="media-left" href="@Url.Action("ViewMovieByID", "Movie", new { id = item.ID })">
+                    <a class="media-left" href="@Url.Action("GetMovieByID", "Movie", new { id = item.ID })">
                         @if (item.PosterPath == null)
                         {
-                            <img src="" width="92" height="52" />
+                            @*<img src="" width="92" height="52" />*@
+                            <span class="glyphicon glyphicon-film"></span>
                         }
                         else
                         {
@@ -108,10 +108,10 @@
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">
-                            @Html.ActionLink(item.Title, "ViewMovieByID", "Movie",
+                            @Html.ActionLink(item.Title, "GetMovieByID", "Movie",
                                 new { id = item.ID }, new { })
                         </h4>
-                        @item.Overview
+                        <p>@item.Overview</p>
                     </div>
                 </div>
             </div>
@@ -176,3 +176,4 @@
         @Html.PagedListPager(Model.UserList, page => Url.Action("FilteredSearch", new { query = ViewBag.query, type = ViewBag.type, page = page }))
     </div>
 }
+</div>

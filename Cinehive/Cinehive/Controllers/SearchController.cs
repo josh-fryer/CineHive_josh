@@ -33,7 +33,7 @@ namespace Cinehive.Controllers
                 return View(await searchService.Search(q));
             }
             
-            return View();
+            return View(new SearchResultsVM());
         }
 
 
