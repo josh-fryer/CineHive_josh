@@ -11,7 +11,7 @@ namespace HiveData.IDAO
 {
     public interface IPostDAO
     {
-        void CreatePost(Post post, CineHiveContext context);
+        void CreatePost(string input, Post post, CineHiveContext context);
         void DeletePost(Post post, CineHiveContext context);
         Post GetPost(int id, CineHiveContext context);
         IList<Post> GetCurrUserPosts(CineHiveContext context);

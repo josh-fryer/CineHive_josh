@@ -16,8 +16,9 @@ namespace HiveData.DAO
 {
     public class PostDAO : IPostDAO
     {
-        public void CreatePost(Post post, CineHiveContext context)
+        public void CreatePost(string input, Post post, CineHiveContext context)
         {
+            post.PostContent = input;
             post.DatePosted = DateTime.Now;
             post.Popular = false;
             string userId = HttpContext.Current.User.Identity.GetUserId();

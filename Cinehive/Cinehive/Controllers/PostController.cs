@@ -23,17 +23,13 @@ namespace Cinehive.Controllers
         }
 
         // GET: Posts/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+
 
         // POST: Posts/Create
         [Authorize]
-        [HttpPost]
-        public ActionResult Create(Post post)
+        public ActionResult Create(string input, Post post)
         {
-            postService.CreatePost(post);
+            postService.CreatePost(input, post);
             return RedirectToAction("Index", "Home"); 
         }
 

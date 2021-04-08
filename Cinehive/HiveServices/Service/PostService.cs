@@ -24,11 +24,11 @@ namespace HiveServices.Service
             postDAO = new PostDAO();
         }
 
-        public void CreatePost(Post post)
+        public void CreatePost(string input, Post post)
         {
             using (var context = new CineHiveContext())
             {               
-                postDAO.CreatePost(post, context);
+                postDAO.CreatePost(input, post, context);
             }
         }
 
