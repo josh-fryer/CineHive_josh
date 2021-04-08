@@ -220,6 +220,10 @@
     <Compile Include="Migrations\202104081709091_PostModelUpdate.Designer.cs">
       <DependentUpon>202104081709091_PostModelUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104082208432_HasFilmLinkBoolFix.cs" />
+    <Compile Include="Migrations\202104082208432_HasFilmLinkBoolFix.Designer.cs">
+      <DependentUpon>202104082208432_HasFilmLinkBoolFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -306,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104081709091_PostModelUpdate.resx">
       <DependentUpon>202104081709091_PostModelUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104082208432_HasFilmLinkBoolFix.resx">
+      <DependentUpon>202104082208432_HasFilmLinkBoolFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
