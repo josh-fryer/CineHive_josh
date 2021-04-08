@@ -23,17 +23,17 @@ namespace HiveServices.Service
         }
 
         // when user clicks on accept on request do this
-        public void AddFriend(string userId, string friendId)
+        public void AddFriend(string userId, int friendProfileId)
         {
             using (var context = new CineHiveContext())
-            {
-                friendDAO.AddFriend(userId, friendId, context);
+            {         
                 // get user profiles
                 var user = context.UserProfiles.First(x => x.UserId == userId);
-                var reqSender = context.UserProfiles.First(x => x.UserId == friendId);
-                
+                var reqSender = context.UserProfiles.Find(friendProfileId);
+                friendDAO.AddFriend(userId, reqSender.UserId, context);
+
                 // delete any notification of add friend request from user
-                var reqNotification = user.Notifications.FirstOrDefault(x => x.senderProfile.ProfileId == reqSender.ProfileId);
+                var reqNotification = user.Notifications.FirstOrDefault(x => x.senderProfileID == friendProfileId);
                 if (reqNotification != null)
                 {
                     context.Notifications.Remove(reqNotification);
@@ -42,7 +42,7 @@ namespace HiveServices.Service
                 // send notification
                 string userName = user.Firstname + " " + user.Lastname;
                 Notification n = notificationDAO.CreateNotification("addedFriend", userName, null, context);
-                notificationDAO.AddNotificationToColl(friendId, n, context);
+                notificationDAO.AddNotificationToColl(reqSender.UserId, n, context);
                 context.SaveChanges();
             }
         }
@@ -56,7 +56,7 @@ namespace HiveServices.Service
                 var sender = context.UserProfiles.First(x => x.UserId == userId);
                 var receiver = context.UserProfiles.First(u => u.UserId == friendId);
                 string senderName = sender.Firstname + " " + sender.Lastname;
-                Notification n = notificationDAO.CreateNotification("friendRequestRec", senderName, receiver, context);
+                Notification n = notificationDAO.CreateNotification("friendRequestRec", senderName, sender, context);
                 notificationDAO.AddNotificationToColl(friendId, n, context);
                 context.SaveChanges();
             }

@@ -31,7 +31,7 @@ namespace HiveData.DAO
                     notification.IsRead = false;
                     notification.Message = "You have received a friend request from " + msgDetail;
                     notification.Type = type;
-                    notification.senderProfile = profile;
+                    notification.senderProfileID = profile.ProfileId;
                     break;
                 default:
                     break;

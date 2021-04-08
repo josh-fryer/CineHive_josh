@@ -16,7 +16,7 @@ namespace HiveData.Models
         public bool IsRead { get; set; }
         public string Message { get; set; }
         public string Type { get; set; }
-        public UserProfile senderProfile { get; set; }
+        public int? senderProfileID { get; set; }
         
         // types: "addedFriend" "friendRequestRec"
     }

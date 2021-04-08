@@ -21,7 +21,7 @@ namespace Cinehive.Controllers
             notificationService = new NotificationService();
         }
 
-        public ActionResult AddFriend(string friendId)
+        public ActionResult AddFriend(int friendId)
         {
             friendService.AddFriend(User.Identity.GetUserId(), friendId);           
             // redirect user to same page user is on. with JS?
@@ -29,7 +29,7 @@ namespace Cinehive.Controllers
         }
 
         // for accepting from notification
-        public ActionResult AcceptFriendReq(string friendId)
+        public ActionResult AcceptFriendReq(int friendId)
         {
             friendService.AddFriend(User.Identity.GetUserId(), friendId);
             return RedirectToAction("Index", "Notification");

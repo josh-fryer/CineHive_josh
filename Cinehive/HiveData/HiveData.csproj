@@ -208,6 +208,14 @@
     <Compile Include="Migrations\202104021946414_notificationModelUpdate.Designer.cs">
       <DependentUpon>202104021946414_notificationModelUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104081616067_notificationModelV2.cs" />
+    <Compile Include="Migrations\202104081616067_notificationModelV2.Designer.cs">
+      <DependentUpon>202104081616067_notificationModelV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104081619093_notificationModelChange.cs" />
+    <Compile Include="Migrations\202104081619093_notificationModelChange.Designer.cs">
+      <DependentUpon>202104081619093_notificationModelChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -285,6 +293,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104021946414_notificationModelUpdate.resx">
       <DependentUpon>202104021946414_notificationModelUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104081616067_notificationModelV2.resx">
+      <DependentUpon>202104081616067_notificationModelV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104081619093_notificationModelChange.resx">
+      <DependentUpon>202104081619093_notificationModelChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

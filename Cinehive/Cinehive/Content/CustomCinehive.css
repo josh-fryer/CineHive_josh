@@ -11,6 +11,7 @@ body {
     overflow: visible;
     background-repeat: initial;
     font-family: 'SFProDisplay';
+    font-size: 16px;
 }
 @font-face {
     font-family: 'SFProDisplay';
@@ -30,7 +31,7 @@ body {
     font-family:SFProDisplayRegular;
     text-align: right;
 }
-/*Text style and colour by ID*/
+/*////////Text style and colour by ID/////////*/
 #txt-white {
     color: white;
 }
