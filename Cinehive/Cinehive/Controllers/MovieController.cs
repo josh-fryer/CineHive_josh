@@ -25,19 +25,18 @@ namespace Cinehive.Controllers
             movieService = new MovieService();
         }
 
-        // view movie details page
-        public ActionResult SearchViewMovie(string query)
+        // search for movie title then return view of movie details
+        public ActionResult GetPostMovie(string query)
         {
-            if (query == null)
+            if (String.IsNullOrEmpty(query))
             {
                 return View();
             }
-            var movies = movieService.SearchMovie(query);
+
+            string prepQuery = movieService.PreparePostQuery(query);
+            var movies = movieService.SearchMovie(prepQuery);
             var movie = movieService.ViewMovie(movies);
-            if(movie == null)
-            {
-                return View();
-            }
+
             return RedirectToAction("ViewMovie", movie);        
         }
 

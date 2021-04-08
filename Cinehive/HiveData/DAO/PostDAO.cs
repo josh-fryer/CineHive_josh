@@ -24,8 +24,7 @@ namespace HiveData.DAO
             string userId = HttpContext.Current.User.Identity.GetUserId();
             // find userprofile by userId then Add post to their posts collection
             UserProfile profile = context.UserProfiles.First(x => x.UserId == userId);
-            profile.Posts.Add(post);
-            context.SaveChanges();
+            profile.Posts.Add(post);           
         }
 
         public void DeletePost(Post post, CineHiveContext context)

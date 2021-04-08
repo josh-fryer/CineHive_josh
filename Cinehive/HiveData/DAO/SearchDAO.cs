@@ -11,6 +11,7 @@ namespace HiveData.DAO
 {
     public class SearchDAO : ISearchDAO
     {
+
         public async Task<List<Post>> SearchPostsAsync(string q, CineHiveContext context)
         {
             List<Post> postResults = new List<Post>();
