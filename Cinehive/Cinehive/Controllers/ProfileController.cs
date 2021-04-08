@@ -164,7 +164,20 @@ namespace Cinehive.Controllers
             
             return View(profileService.ViewProfile(id));
         }
+        [Authorize]
+        public ActionResult ViewFriends()
+        {
+            string userid = User.Identity.GetUserId();
+            int profileid = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
 
-       
+            UserProfile userProfile = context.UserProfiles.Find(profileid);
+
+            var result = userProfile.Friends.ToList();
+
+
+            return View(result);
+        }
+
+
     }
 }

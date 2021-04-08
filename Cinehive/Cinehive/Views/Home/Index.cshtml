@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="col-md-10">
+        <div class="col-md-8">
             <div class="profile-content">
                 @foreach (var item in Model.PostList)
                 {
@@ -57,11 +57,11 @@
                         <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) })" )">
                             @if (@Model.GetUserPicture(postid = item.PostId) == null)
                             {
-                                <img class="post-profile-img" src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
+                                <img class="post-profile-img circular-image" src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
                             }
                             else
                             {
-                                <img class="post-profile-img" src="~/@Model.GetUserPicture(postid = item.PostId)" width="64" height="64" />
+                                <img class="post-profile-img circular-image" src="~/@Model.GetUserPicture(postid = item.PostId)" width="64" height="64" />
                             }
                         </a>
                         <div class="media-body">

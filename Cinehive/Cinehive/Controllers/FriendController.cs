@@ -47,5 +47,6 @@ namespace Cinehive.Controllers
             friendService.RemoveFriend(User.Identity.GetUserId(), friendUserId);
             return RedirectToAction("ViewProfile", "Profile", new { id = friendProfileId });
         }
+
     }
 }

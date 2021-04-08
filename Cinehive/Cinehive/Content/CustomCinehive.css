@@ -581,6 +581,14 @@ body {
   min-height: 460px;
   border-radius: 8px;
 }
+.Friend-text {
+    text-align:center;
+    font-size:20px;
+}
+.bio-box {
+    margin-left:20px;
+}
+
 
 /*Album index*/
 .album-sidebar {
@@ -609,6 +617,9 @@ body {
     margin-left: 50px;
     margin-top: 30px;
     border-radius: 20px;
+}
+.circular-image {
+    border-radius:20px;
 }
 
 /*Main Feed index*/

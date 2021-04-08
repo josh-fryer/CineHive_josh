@@ -346,6 +346,7 @@
     <Content Include="Views\Search\FilteredSearch.cshtml" />
     <Content Include="Views\Profile\ProfilePartial.cshtml" />
     <Content Include="Views\Album\ViewImage.cshtml" />
+    <Content Include="Views\Profile\ViewFriends.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
