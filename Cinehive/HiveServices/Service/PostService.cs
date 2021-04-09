@@ -30,73 +30,87 @@ namespace HiveServices.Service
             {
                 string newInput = PostContentToFilmLink(input, post);
 
-                if (newInput == null)
-                {
-                    newInput = input;
-                }
-
                 postDAO.CreatePost(newInput, post, context);
                 context.SaveChanges();
             }
         }
 
-        private static string PostContentToFilmLink(string input, Post post)
+        public string PostContentToFilmLink(string input, Post post)
         {
-            string newInput = input;
+            if (String.IsNullOrEmpty(input))
+            {
+                return input;
+            }
+
+            string newInput = input.Trim();
             string query = "";
             int startC = 1; // first character of query
             int endC = 1; // last char of query
                           //check for film link if it contains '#'
-            if (!String.IsNullOrEmpty(input))
+            
+            // loop input to find film link
+            for (int i = 0; i < newInput.Length; i++)
             {
-                for (int i = 0; i < input.Length; i++)
+                if (newInput[i] == '#')
                 {
-                    if (input[i] == '#')
+                    post.hasFilmLink = true;
+
+                    if ((i + 1) == newInput.Length) // check if # followed by characters
                     {
-                        post.hasFilmLink = true;
-                        startC = i + 1;
-                    }
-                    else if (post.hasFilmLink == true && input[i] == ' ')
+                        post.hasFilmLink = false;
+                        startC = i;
+                        break;
+                    } 
+                    else if (newInput[i+1] == ' ') // check if there is a query part of #
                     {
-                        endC = i - 1;
+                        post.hasFilmLink = false;
                         break;
                     }
-                    else if (post.hasFilmLink == true && i == (input.Length - 1))
+                    else
                     {
-                        endC = i;
-                        break;
-                    }
+                        startC = i + 1; // first char of query is after #
+                    }                  
+                }
+                else if (post.hasFilmLink == true && newInput[i] == ' ')
+                {
+                    endC = i - 1;
+                    break;
+                }
+                else if (post.hasFilmLink == true && i == (newInput.Length - 1))
+                {
+                    endC = i;
+                    break;
                 }
             }
-            else { return input; }
-
+       
             if(!(bool)post.hasFilmLink)
             {
-                return null;
+                return newInput;
             }
 
             // extract query after '#'
             for (int i = startC; i <= endC; i++)
             {
-                query += input[i];
+                query += newInput[i];
             }
 
+            string finalOutput = newInput;
             if ((bool)post.hasFilmLink)
             {
-
                 // if endC is also final char of string
-                if (endC == (input.Length - 1))
+                if (endC == (newInput.Length - 1))
                 {
-                    newInput += "</a>";
+                    finalOutput += "</a>";
                 }
                 else
                 {
-                    newInput = input.Insert((endC + 1), "</a>"); // insert end of <a> tag
+                    finalOutput = newInput.Insert((endC + 1), "</a>"); // insert end of <a> tag
                 }
-                newInput = newInput.Insert(startC, "<a href='/Movie/GetPostMovie?query=" + query + "'>"); // insert start tag
+                // insert start to contain #
+                finalOutput = finalOutput.Insert((startC-1), "<a href='/Movie/GetPostMovie?query=" + query + "'>"); // insert start tag
             }
 
-            return newInput;
+            return finalOutput;
         }
 
         public void DeletePost(int id)

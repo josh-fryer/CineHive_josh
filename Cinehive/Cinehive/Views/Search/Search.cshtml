@@ -87,7 +87,11 @@
                                         new { id = user.ProfileId }, new { })
                                 </h4>
                                 <p>
-                                    @post.PostContent
+                                    @*Display posts containg film links with Html.Raw*@
+                                    @if ((bool)post.hasFilmLink)
+                                    { @Html.Raw(post.PostContent) }
+                                    else
+                                    { @post.PostContent }
                                 </p>
                                 <ul class="list-inline list-unstyled">
                                     <li> @post.DatePosted </li>

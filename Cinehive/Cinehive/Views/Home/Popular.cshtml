@@ -44,7 +44,11 @@
                 <div class="media-body">
                     <h4 class="media-heading">@Html.ActionLink(@Model.GetFirstName(postid = item.PostId) + " " + Model.GetLastName(postid = item.PostId), "ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) }, new { })</h4>
                     <p>
-                        @item.PostContent
+                        @*Display posts containg film links with Html.Raw*@
+                        @if ((bool)item.hasFilmLink)
+                        {@Html.Raw(@item.PostContent) }
+                    else
+                    { @item.PostContent}
                     </p>
                     <ul class="list-inline list-unstyled">
                         <li> @item.DatePosted </li>

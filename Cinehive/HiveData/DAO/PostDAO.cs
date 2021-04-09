@@ -29,7 +29,6 @@ namespace HiveData.DAO
 
         public void DeletePost(Post post, CineHiveContext context)
         {
-
             context.Posts.Remove(post);
             context.SaveChanges();
         }
