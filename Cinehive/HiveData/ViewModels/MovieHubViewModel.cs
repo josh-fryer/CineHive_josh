@@ -12,7 +12,8 @@ namespace HiveData.ViewModels
         public Movie LatestMovie { get; set; }
         public IList<Movie> Movies { get; set; }
         public IList<Movie> UpcomingMovie { get; set; }
-        public IList<Movie> PopAmongCritic { get; set; }
+        public IList<Movie> CritAcclaim { get; set; }
+        public IList<Movie> InTheatres { get; set; }
 
     }
 }

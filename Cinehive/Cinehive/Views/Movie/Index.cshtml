@@ -5,60 +5,79 @@
 }
 
 <div class="container">
-   <div class="row">
-    <div class="col-lg-2">
-        <h3>Latest Release</h3>
-        
-        <div class="Poster-container">
-            <a href="@Url.Action("GetMovieByID","Movie",new {id = Model.LatestMovie.ID })">
-                @if (Model.LatestMovie.PosterPath == null)
-                {
-                    <img class="img-responsive" src="~/Content/Img/poster-placeholder.jpg" />
-                }
-                else
-                {
-                    <img class="img-responsive" src="http://image.tmdb.org/t/p/w342@(Model.LatestMovie.PosterPath)" />
-                }
-            </a>
-            <p>@Model.LatestMovie.Title</p>
+    <div class="row">
+        <div class="col-lg-2">
+            <h3>Latest Release</h3>
+
+            <div class="Poster-container">
+                <a href="@Url.Action("GetMovieByID","Movie",new {id = Model.LatestMovie.ID })">
+                    @if (Model.LatestMovie.PosterPath == null)
+                    {
+                        <img class="img-responsive" src="~/Content/Img/poster-placeholder.jpg" />
+                    }
+                    else
+                    {
+                        <img class="img-responsive" src="http://image.tmdb.org/t/p/w342@(Model.LatestMovie.PosterPath)" />
+                    }
+                </a>
+                <p>@Model.LatestMovie.Title</p>
+            </div>
         </div>
+        <div class="col-lg-10">
+            <h3>Top Upcoming</h3>
+            @foreach (var item in Model.UpcomingMovie.Take(5))
+            {
+                <div class="col-sm-2">
+
+                    <div class="Poster-container">
+                        <a href="@Url.Action("GetMovieByID","Movie",new {id = item.ID })">
+                            <img class="img-responsive" src="http://image.tmdb.org/t/p/w342@(item.PosterPath)" />
+                        </a>
+                    </div>
+                    <p>@item.Title</p>
+                </div>
+            }
+
+        </div>
+
+
     </div>
-       <div class="col-lg-10">
-           <h3>Top Upcoming</h3>
-           @foreach (var item in Model.UpcomingMovie.Take(5))
-           {
-           <div class="col-sm-2">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-2">
+            <h3>Critically Acclaimed</h3>
+            @foreach (var item in Model.CritAcclaim.Take(5))
+            {
+                <div class="col-sm-2">
 
-               <div class="Poster-container">
-                   <a href="@Url.Action("GetMovieByID","Movie",new {id = item.ID })">
-                       <img class="img-responsive" src="http://image.tmdb.org/t/p/w342@(item.PosterPath)" />
-                   </a>
-               </div>
-               <p>@item.Title</p>
-           </div>
-           }
+                    <div class="Poster-container">
+                        <a href="@Url.Action("GetMovieByID","Movie",new {id = item.ID })">
+                            <img class="img-responsive" src="http://image.tmdb.org/t/p/w342@(item.PosterPath)" />
+                        </a>
+                    </div>
+                    <p>@item.Title</p>
+                </div>
+            }
+        </div>
 
-       </div>
-
-  </div>
-   <div class="row">
-       <div class="col-lg-10 col-lg-offset-2">
-           <h3>Popular Amongst Critics</h3>
-           @foreach (var item in Model.PopAmongCritic.Take(5))
-           {
-               <div class="col-sm-2">
-
-                   <div class="Poster-container">
-                       <a href="@Url.Action("GetMovieByID","Movie",new {id = item.ID })">
-                           <img class="img-responsive" src="http://image.tmdb.org/t/p/w342@(item.PosterPath)" />
-                       </a>
-                   </div>
-                   <p>@item.Title</p>
-               </div>
-           }
-       </div>
-
-   </div>
     </div>
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-2">
+            <h3>In Theatres</h3>
+            @foreach (var item in Model.InTheatres.Take(5))
+            {
+                <div class="col-sm-2">
+
+                    <div class="Poster-container">
+                        <a href="@Url.Action("GetMovieByID","Movie",new {id = item.ID })">
+                            <img class="img-responsive" src="http://image.tmdb.org/t/p/w342@(item.PosterPath)" />
+                        </a>
+                    </div>
+                    <p>@item.Title</p>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
 
 

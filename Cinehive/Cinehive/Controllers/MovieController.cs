@@ -25,15 +25,17 @@ namespace Cinehive.Controllers
         {
             movieService = new MovieService();
         }
-        public ActionResult Index(Movie movie, dynamic item, dynamic item2)
+        public ActionResult Index(Movie movie, dynamic item)
         {
             var upcoming = movieService.PrepUpcomingMovies(item);
-            var popcritic = movieService.PrepPopAmongCritics(item2);
+            var popcritic = movieService.PrepCriticallyAcclaimed(item);
+            var intheatres = movieService.PrepInTheatres(item);
             MovieHubViewModel movieHubViewModel = new MovieHubViewModel
             {
                 LatestMovie = movieService.LatestMovie(movie),
                 UpcomingMovie = movieService.GetUpcomingMovies(upcoming), 
-                PopAmongCritic = movieService.GetPopAmongCritics(popcritic)
+                CritAcclaim = movieService.GetCriticallyAcclaimed(popcritic),
+                InTheatres = movieService.GetInTheatres(intheatres)
             };      
 
             return View(movieHubViewModel);
