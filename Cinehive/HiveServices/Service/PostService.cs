@@ -35,6 +35,7 @@ namespace HiveServices.Service
             }
         }
 
+        // convert #filmlinks to link with inserted html
         public string PostContentToFilmLink(string input, Post post)
         {
             if (String.IsNullOrEmpty(input))
@@ -44,9 +45,11 @@ namespace HiveServices.Service
 
             string newInput = input.Trim();
             string query = "";
+            string year = "";
+            bool hasYear = false;
+
             int startC = 1; // first character of query
-            int endC = 1; // last char of query
-                          //check for film link if it contains '#'
+            int endC = 1; // last char of query                        
             
             // loop input to find film link
             for (int i = 0; i < newInput.Length; i++)
@@ -58,10 +61,9 @@ namespace HiveServices.Service
                     if ((i + 1) == newInput.Length) // check if # followed by characters
                     {
                         post.hasFilmLink = false;
-                        startC = i;
                         break;
                     } 
-                    else if (newInput[i+1] == ' ') // check if there is a query part of #
+                    else if (newInput[i+1] == ' ') // check if there is a char after #
                     {
                         post.hasFilmLink = false;
                         break;
@@ -71,32 +73,72 @@ namespace HiveServices.Service
                         startC = i + 1; // first char of query is after #
                     }                  
                 }
-                else if (post.hasFilmLink == true && newInput[i] == ' ')
+                else if (post.hasFilmLink == true && newInput[i] == ' ') // check if reached end of film title link
                 {
                     endC = i - 1;
                     break;
+                }               
+                else if (newInput[i] == '/' && post.hasFilmLink == true) // found start of year filter
+                {
+                    endC = i - 1;
+                    if (i+4 < newInput.Length) // if there are 4 chars following '/'
+                    {
+                        hasYear = true; // confirmed with loop below
+                        // loop to add char to year
+                        for (int j = (i+1); j < (i+5); j++)
+                        {
+                            if (Char.IsDigit(newInput[j]))
+                            {
+                                year += newInput[j];
+                            }
+                            else
+                            {
+                                hasYear = false;
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                    else { hasYear = false; break; }
                 }
-                else if (post.hasFilmLink == true && i == (newInput.Length - 1))
+                else if (post.hasFilmLink == true && i == (newInput.Length - 1)) // if at end of post content
                 {
                     endC = i;
                     break;
                 }
             }
        
-            if(!(bool)post.hasFilmLink)
+            if(!post.hasFilmLink)
             {
                 return newInput;
             }
 
-            // extract query after '#'
+            // extract film title query after '#'
             for (int i = startC; i <= endC; i++)
             {
-                query += newInput[i];
+                char c = input[i];
+                if ((i + 1) <= endC) // if next character is not outside index
+                {
+                    if (Char.IsUpper(input[i+1])) // find new separate word if its Caps
+                    {
+                        query += c;
+                        query += '+';
+                    }
+                    else
+                    {
+                        query += c;
+                    }
+                }
+                else
+                {
+                    query += c;
+                }
             }
 
             string finalOutput = newInput;
-            if ((bool)post.hasFilmLink)
+            if (post.hasFilmLink)
             {
+                //---- 1. Insert end of link tag -----
                 // if endC is also final char of string
                 if (endC == (newInput.Length - 1))
                 {
@@ -104,10 +146,23 @@ namespace HiveServices.Service
                 }
                 else
                 {
+                    if (hasYear)
+                    {
+                        // remove year
+                        newInput = newInput.Remove(endC+1, 5);
+                    }
                     finalOutput = newInput.Insert((endC + 1), "</a>"); // insert end of <a> tag
                 }
-                // insert start to contain #
-                finalOutput = finalOutput.Insert((startC-1), "<a href='/Movie/GetPostMovie?query=" + query + "'>"); // insert start tag
+
+                //---- 2. Insert start of link tag -----
+                if (hasYear)
+                {
+                    finalOutput = finalOutput.Insert((startC - 1), "<a href='/Movie/GetPostMovie?query=" + query + "&year=" + year + "'>"); // insert start tag
+                }
+                else
+                {
+                    finalOutput = finalOutput.Insert((startC - 1), "<a href='/Movie/GetPostMovie?query=" + query + "'>"); // insert start tag
+                }          
             }
 
             return finalOutput;

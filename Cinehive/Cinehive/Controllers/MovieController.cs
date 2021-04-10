@@ -26,18 +26,18 @@ namespace Cinehive.Controllers
         }
 
         // search for movie title then return view of movie details
-        public ActionResult GetPostMovie(string query)
+        public ActionResult GetPostMovie(string query, int year = 0)
         {
             if (String.IsNullOrEmpty(query))
             {
                 return View();
             }
 
-            string prepQuery = movieService.PreparePostQuery(query);
-            var movies = movieService.SearchMovie(prepQuery);
-            var movie = movieService.ViewMovie(movies);
+            //string prepQuery = movieService.PreparePostQuery(query);
+            var movies = movieService.SearchMovie(query, 1, year);
+            Movie movie = movieService.ViewMovie(movies);
 
-            return RedirectToAction("ViewMovie", movie);        
+            return RedirectToAction("ViewMovie", movie);
         }
 
         public ActionResult GetMovieByID(int id)

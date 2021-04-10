@@ -77,8 +77,8 @@ namespace Cinehive.Controllers
                     filteredSearch.UserList = pagedResults;
                     break;
                 case "movie":
-                    string prepQuery = movieService.PrepareQuery(query);
-                    var movies = movieService.SearchMovie(prepQuery, pageNumber);
+                    //string prepQuery = movieService.PrepareQuery(query);
+                    var movies = movieService.SearchMovie(query, pageNumber);
                    
                     // convert 10 results to Movie obj. + to List
                     List<Movie> moviePageResults = new List<Movie>();                  

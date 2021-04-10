@@ -7,12 +7,10 @@ namespace HiveServices.Service
     public interface IMovieService
     {
         Movie ViewMovie(dynamic i);
-        dynamic SearchMovie(string query, int? page);
+        dynamic SearchMovie(string query, int? page = 1, int? year = 0);
         Task<dynamic> SearchMoviesAsync(string q);
         Task<List<Movie>> ToMoviesListAsync(dynamic item, int? x);
         Movie ConvertToMovie(dynamic item);
-        string PrepareQuery(string query);
-        string PreparePostQuery(string query);
         Movie GetMovieByID(int id);
     }
 }

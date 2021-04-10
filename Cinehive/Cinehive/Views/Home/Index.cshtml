@@ -16,7 +16,7 @@
         <div class="Post-content">
             @using (Html.BeginForm("Create", "Post", FormMethod.Post, new { }))
             {
-                <input class="form-control" type="text" name="input" placeholder="Say something.." />
+                <input class="form-control" type="text" name="input" maxlength="280" placeholder="Say something.." />
                 <button class="btn btn-primary" type="submit">
                     <span class="glyphicon glyphicon-arrow-right"></span>
                 </button>
