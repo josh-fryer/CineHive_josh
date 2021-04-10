@@ -680,3 +680,27 @@ body {
 }
 /*Movie index*/
 
+.poster-img {
+    border-radius:15px;
+}
+.movie-explorer {
+    padding: 1px 0 10px 0;
+    background: #fff;
+    border-radius: 8px;
+    margin-top: 30px;
+    width: 180px;
+}
+.movie-text {
+    color:white;
+}
+.img-sidebar-poster {
+    width: 100px;
+    margin-left: 20px;
+}
+.latest-movie-text {
+    margin-left:30px;
+    text-align:center;
+}
+.latest-movie-box {
+    text-align:center;
+}
