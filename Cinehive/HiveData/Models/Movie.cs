@@ -13,7 +13,7 @@ namespace HiveData.Models
         public string PosterPath { get; set; }
         public string Overview { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime ReleaseDate { get; set; }
+        public DateTime? ReleaseDate { get; set; }
         public int[] GenreIds { get; set; }
         public string Title { get; set; }
         public string VideoKey { get; set; }

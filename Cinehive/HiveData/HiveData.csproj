@@ -224,6 +224,18 @@
     <Compile Include="Migrations\202104082208432_HasFilmLinkBoolFix.Designer.cs">
       <DependentUpon>202104082208432_HasFilmLinkBoolFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104101237458_movielatesttest.cs" />
+    <Compile Include="Migrations\202104101237458_movielatesttest.Designer.cs">
+      <DependentUpon>202104101237458_movielatesttest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104101244166_changedatetimetonull.cs" />
+    <Compile Include="Migrations\202104101244166_changedatetimetonull.Designer.cs">
+      <DependentUpon>202104101244166_changedatetimetonull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104101309352_removemovie.cs" />
+    <Compile Include="Migrations\202104101309352_removemovie.Designer.cs">
+      <DependentUpon>202104101309352_removemovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -244,6 +256,7 @@
     <Compile Include="ViewModels\AlbumImageViewModel.cs" />
     <Compile Include="ViewModels\ExpandResultsVM.cs" />
     <Compile Include="ViewModels\FilteredSearchVM.cs" />
+    <Compile Include="ViewModels\MovieHubViewModel.cs" />
     <Compile Include="ViewModels\PostCommentUserViewModel.cs" />
     <Compile Include="ViewModels\PostFeedViewModel.cs" />
     <Compile Include="ViewModels\ProfilePostsViewModel.cs" />
@@ -313,6 +326,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104082208432_HasFilmLinkBoolFix.resx">
       <DependentUpon>202104082208432_HasFilmLinkBoolFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104101237458_movielatesttest.resx">
+      <DependentUpon>202104101237458_movielatesttest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104101244166_changedatetimetonull.resx">
+      <DependentUpon>202104101244166_changedatetimetonull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104101309352_removemovie.resx">
+      <DependentUpon>202104101309352_removemovie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using HiveData.ViewModels;
 
 namespace Cinehive.Controllers
 {
@@ -23,6 +24,19 @@ namespace Cinehive.Controllers
         public MovieController()
         {
             movieService = new MovieService();
+        }
+        public ActionResult Index(Movie movie, dynamic item, dynamic item2)
+        {
+            var upcoming = movieService.PrepUpcomingMovies(item);
+            var popcritic = movieService.PrepPopAmongCritics(item2);
+            MovieHubViewModel movieHubViewModel = new MovieHubViewModel
+            {
+                LatestMovie = movieService.LatestMovie(movie),
+                UpcomingMovie = movieService.GetUpcomingMovies(upcoming), 
+                PopAmongCritic = movieService.GetPopAmongCritics(popcritic)
+            };      
+
+            return View(movieHubViewModel);
         }
 
         // search for movie title then return view of movie details

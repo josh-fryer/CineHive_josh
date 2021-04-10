@@ -261,6 +261,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CustomCinehive.css" />
     <Content Include="Content\Img\album-placeholder.jpg" />
+    <Content Include="Content\Img\poster-placeholder.jpg" />
     <Content Include="Content\Img\profile-image-placeholder.png" />
     <Content Include="Content\Img\SiteImg\Filmreel.jpg" />
     <Content Include="Content\Img\SiteImg\MovieSelection.jpg" />
@@ -347,6 +348,7 @@
     <Content Include="Views\Album\ViewImage.cshtml" />
     <Content Include="Views\Movie\ViewMovie.cshtml" />
     <Content Include="Views\Profile\ViewFriends.cshtml" />
+    <Content Include="Views\Movie\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

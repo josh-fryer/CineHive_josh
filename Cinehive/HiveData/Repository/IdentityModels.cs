@@ -34,6 +34,7 @@ namespace HiveData.Repository
         public DbSet<Album> Albums { get; set; }
         
 
+
         public CineHiveContext() 
             : base("CineHiveContext", throwIfV1Schema: false)
         {
@@ -44,5 +45,7 @@ namespace HiveData.Repository
         {
             return new CineHiveContext();
         }
+
+        
     }
 }

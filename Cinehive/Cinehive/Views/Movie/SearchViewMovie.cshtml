@@ -17,7 +17,14 @@
         <h2>@Model.Title</h2>
 <div class="row">
     <div class="col-md-6">
-        <img class="img" src="http://image.tmdb.org/t/p/w342@(Model.PosterPath)" width="320" />
+        @if (Model.PosterPath == null)
+        {
+            <img class="img" src="~/Content/Img/poster-placeholder.jpg" width="320" />
+        }
+        else
+        {
+            <img class="img" src="http://image.tmdb.org/t/p/w342@(Model.PosterPath)" width="320" />
+        }
     </div>
     <div class="col-md-6">
         @if (Model.VideoKey != null)
