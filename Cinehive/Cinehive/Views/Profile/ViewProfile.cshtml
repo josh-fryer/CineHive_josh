@@ -1,85 +1,144 @@
-﻿@using Microsoft.AspNet.Identity
-@model HiveData.Models.UserProfile
+﻿@model HiveData.Models.UserProfile
+@using Microsoft.AspNet.Identity;
 
 @{
-    ViewBag.Title = "ViewProfile";
+    ViewBag.Title = @Model.Firstname + "'s Profile";
 }
 
-<h2>@Model.Firstname's profile</h2>
+<div class="container">
+    <div class="row profile">
 
-<div>
-    <h4>Cinehive Profile</h4>
-    <hr />
-    @if (Model.ImagePath == null)
-    {
-        <div class="row">
-            <a class="pull-left" href="">
-                <img src="~/Content/Img/profile-image-placeholder.png" width="340" height="340" />
-            </a>
-        </div>
-    }
-    else
-    {
-        <div class="row">
-            <a class="pull-left" href="">
-                <img src="~/@Model.ImagePath" width="340" height="340" />
-            </a>
-        </div>
-    }
-    <br/>
-    <div class="row">
-        <div class="col-md-6">
-            <dl class="dl-horizontal">
-                <dt>
-                    Name
-                </dt>
+        @Html.Partial("ViewProfilePartial")
 
-                <dd>
-                    @Model.Firstname @Model.Lastname
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.AboutMe)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.AboutMe)
-                </dd>
-            </dl>
-        </div>   
-        <div class="col-md-6">
-            <div>
-                @if (User.Identity.IsAuthenticated)
+        <div class="col-md-9">
+            <div class="profile-content">
+                @foreach (var item in Model.Posts.OrderByDescending(x => x.DatePosted))
                 {
-                    if (ViewBag.ReceivedFriendReq)
-                    {
-                        @Html.ActionLink("Accept Friend Request", "AddFriend", "Friend",
-                                 new { friendId = Model.UserId }, new { @class = "btn btn-success" })
-                    }
-                    else if (!ViewBag.IsFriend && !ViewBag.SentFriendReq)
-                    {
-                        @Html.ActionLink("Send Friend Request", "SendFriendReq", "Friend",
-                                 new
-                                      {
-                                          friendProfileId = Model.ProfileId,
-                                     friendUserId = Model.UserId
-                                      }, new { @class = "btn btn-success" })
-                    }
-                    else if (ViewBag.SentFriendReq)
-                    {
-                        <h5>Waiting for @Model.Firstname to accept your Friend Request</h5>
-                    }
-                    else if (ViewBag.IsFriend)
-                    {
-                        @Html.ActionLink("Remove Friend", "Remove", "Friend",
-                        new
-                        {
-                             friendProfileId = Model.ProfileId,
-                             friendUserId = Model.UserId
-                         }, new { @class = "btn btn-danger" });
-                    }
+                    <div class="media">
+                        <a class="pull-left" href="">
+                            @if (Model.ImagePath == null)
+                            {
+                                <img src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" class="circular-image" />
+                            }
+                            else
+                            {
+                                <img src="~/@Model.ImagePath" width="64" height="64" class="circular-image" />
+                            }
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">@Model.Firstname @Model.Lastname</h4>
+                            <p>
+                                @*Display posts containg film links with Html.Raw*@
+                                @if ((bool)item.hasFilmLink)
+                                { @Html.Raw(@item.PostContent) }
+                                else
+                                { @item.PostContent}
+                            </p>
+                            <ul class="list-inline list-unstyled">
+                                <li> @item.DatePosted </li>
+                                <li>|</li>
+                                @if (item.Awards < 2)
+                                {
+                                    <li> @item.Awards Award</li>
+                                }
+                                else
+                                {
+                                    <li> @item.Awards Awards</li>
+                                }
+                            </ul>
+                            <ul class="list-inline list-unstyled">
+                                <li>@Html.ActionLink("Award", "")</li>
+                                <li>|</li>
+                                <li>@Html.ActionLink("Comment", "")
+                                <li>|</li>
+                                <li>@Html.ActionLink("Share", "")</li>
+                                <li>|</li>
+                                <li>
+                                <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
+                            </ul>
+                            <hr />
+                        </div>
+                    </div>
                 }
             </div>
         </div>
     </div>
- </div>
+</div>
+
+
+@*<div>
+       <h4>Cinehive Profile</h4>
+       <hr />
+       @if (Model.ImagePath == null)
+       {
+           <div class="row">
+               <a class="pull-left" href="">
+                   <img src="~/Content/Img/profile-image-placeholder.png" width="340" height="340" />
+               </a>
+           </div>
+       }
+       else
+       {
+           <div class="row">
+               <a class="pull-left" href="">
+                   <img src="~/@Model.ImagePath" width="340" height="340" />
+               </a>
+           </div>
+       }
+       <br/>
+       <div class="row">
+           <div class="col-md-6">
+               <dl class="dl-horizontal">
+                   <dt>
+                       Name
+                   </dt>
+
+                   <dd>
+                       @Model.Firstname @Model.Lastname
+                   </dd>
+
+                   <dt>
+                       @Html.DisplayNameFor(model => model.AboutMe)
+                   </dt>
+
+                   <dd>
+                       @Html.DisplayFor(model => model.AboutMe)
+                   </dd>
+               </dl>
+           </div>
+           <div class="col-md-6">
+               <div>
+                   @if (User.Identity.IsAuthenticated)
+                   {
+                       if (ViewBag.ReceivedFriendReq)
+                       {
+                           @Html.ActionLink("Accept Friend Request", "AddFriend", "Friend",
+                                    new { friendId = Model.UserId }, new { @class = "btn btn-success" })
+                       }
+                       else if (!ViewBag.IsFriend && !ViewBag.SentFriendReq)
+                       {
+                           @Html.ActionLink("Send Friend Request", "SendFriendReq", "Friend",
+                                    new
+                                         {
+                                             friendProfileId = Model.ProfileId,
+                                        friendUserId = Model.UserId
+                                         }, new { @class = "btn btn-success" })
+                       }
+                       else if (ViewBag.SentFriendReq)
+                       {
+                           <h5>Waiting for @Model.Firstname to accept your Friend Request</h5>
+                       }
+                       else if (ViewBag.IsFriend)
+                       {
+                           @Html.ActionLink("Remove Friend", "Remove", "Friend",
+                           new
+                           {
+                                friendProfileId = Model.ProfileId,
+                                friendUserId = Model.UserId
+                            }, new { @class = "btn btn-danger" });
+                       }
+                   }
+               </div>
+           </div>
+       </div>
+    </div>*@

@@ -24,11 +24,13 @@ namespace Cinehive.Controllers
         {
             albumService = new AlbumService();
         }
+
         [Authorize]
         public ActionResult Index()
         {
             return View(albumService.GetAlbums().ToList());
         }
+
         [Authorize]
         public ActionResult Create()
         {
@@ -63,6 +65,7 @@ namespace Cinehive.Controllers
                 return View();
             }
         }
+
         [Authorize]
         public ActionResult ViewAlbum(int? id)
         {
@@ -80,12 +83,14 @@ namespace Cinehive.Controllers
 
             return View(albumImageViewModel);
         }
+
         [Authorize]
         public ActionResult AddImageToAlbum(int id)
         {
 
             return View();
         }
+
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult AddImageToAlbum(Album album, int id) //add to data and service
@@ -106,11 +111,13 @@ namespace Cinehive.Controllers
                 return View();
             }
         }
+
         [Authorize]
         public ActionResult DeleteImageFromAlbum(int id)
         {
             return View(albumService.GetImage(id));
         }
+
         [HttpPost]
         public ActionResult DeleteImageFromAlbum(int id, Image image) //add to data and service
         {
@@ -126,6 +133,7 @@ namespace Cinehive.Controllers
 
             return RedirectToAction("ViewAlbum",new {id = TempData["Page"] });
         }
+
         [Authorize]
         public ActionResult Edit(int id)
         {
@@ -150,6 +158,7 @@ namespace Cinehive.Controllers
                 return View();
             }
         }
+
         [Authorize]
         public ActionResult DeleteAlbum(int id)
         {
@@ -187,6 +196,7 @@ namespace Cinehive.Controllers
             }
             return RedirectToAction("Index", "Profile");
         }
+
         public ActionResult ViewImage(int id)
         {
 

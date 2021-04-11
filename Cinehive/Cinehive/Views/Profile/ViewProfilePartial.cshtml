@@ -1,0 +1,90 @@
+﻿<div class="col-md-3">
+    <div class="profile-sidebar">
+
+        <div class="profile-userpic">
+            @if (Model.ImagePath == null)
+            {
+                <img src="~/Content/Img/profile-image-placeholder.png" class="img-responsive" alt="">
+            }
+            else
+            {
+                <img src="~/@Model.ImagePath" class="img-responsive" alt="">
+            }
+        </div>
+
+        <div class="profile-usertitle">
+            <div class="profile-usertitle-name">
+                @Model.Firstname @Model.Lastname
+            </div>
+        </div>
+
+        @*<div class="profile-userbuttons">
+                <button type="button" class="btn btn-success btn-sm">follow</button>
+                <button type="button" class="btn btn-danger btn-sm">message</button>
+            </div>*@
+
+        <div class="profile-usermenu">
+            <ul class="nav">
+                <li class="active">
+                    <a href="@Url.Action("ViewProfile","Profile", new { id = Model.ProfileId })">
+                        <i class="glyphicon glyphicon-th-list"></i>
+                        Feed
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="glyphicon glyphicon-picture"></i>
+                        Photos
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="glyphicon glyphicon-film"></i>
+                        Movies
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ViewFriends","Profile")">
+                        <i class="glyphicon glyphicon-user"></i>
+                        Friends
+                    </a>
+                </li>
+                <li>
+                    <div>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (ViewBag.ReceivedFriendReq)
+                            {
+                                @Html.ActionLink("Accept Friend Request", "AddFriend", "Friend",
+                                         new { friendId = Model.UserId }, new { @class = "btn btn-success" })
+                            }
+                            else if (!ViewBag.IsFriend && !ViewBag.SentFriendReq)
+                            {
+                                @Html.ActionLink("Send Friend Request", "SendFriendReq", "Friend", new {
+                                    friendProfileId = Model.ProfileId, friendUserId = Model.UserId
+                                    }, new { @class = "btn btn-success" })
+                            }
+                            else if (ViewBag.SentFriendReq)
+                            {
+                                <h5>Waiting for @Model.Firstname to accept your Friend Request</h5>
+                            }
+                            else if (ViewBag.IsFriend)
+                            {
+                                @Html.ActionLink("Remove Friend", "Remove", "Friend",
+                                new {
+                                     friendProfileId = Model.ProfileId,
+                                     friendUserId = Model.UserId
+                                 }, new { @class = "btn btn-danger" });
+                            }
+                        }
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="bio-box">
+            <hr />
+            <h4>About me</h4>
+            <p>@Model.AboutMe</p>
+        </div>
+    </div>
+</div>

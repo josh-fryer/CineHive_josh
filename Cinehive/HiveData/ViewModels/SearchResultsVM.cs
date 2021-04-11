@@ -58,8 +58,5 @@ namespace HiveData.ViewModels
             return context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id)
                 .FirstOrDefault())).FirstOrDefault();
         }
-
     }
-
-
 }

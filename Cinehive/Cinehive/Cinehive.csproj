@@ -350,6 +350,7 @@
     <Content Include="Views\Movie\ViewMovie.cshtml" />
     <Content Include="Views\Profile\ViewFriends.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
+    <Content Include="Views\Profile\ViewProfilePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
