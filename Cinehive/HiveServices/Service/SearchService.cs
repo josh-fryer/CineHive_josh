@@ -26,18 +26,24 @@ namespace HiveServices.Service
         {
             using (var context = new CineHiveContext())
             {
+                int totalMResults = 0;
+
                 var postResults = searchDAO.SearchPostsAsync(q, context);
                 var userResults = searchDAO.SearchUsersAsync(q, context);
                 var movieArr = await movieService.SearchMoviesAsync(q);
                 // return max 6 to show "view more" link
-                var movieResults = movieService.ToMoviesListAsync(movieArr, 6);                            
+                var movieResults = movieService.ToMoviesListAsync(movieArr, 6);
 
-                SearchResultsVM searchResults = new SearchResultsVM()
+                if (movieArr != null)
                 {
+                    totalMResults = movieArr.total_results;
+                }
+
+                SearchResultsVM searchResults = new SearchResultsVM() {
                     PostResults = await postResults,
                     UserResults = await userResults,
                     MovieResults = await movieResults,
-                    totalMovieResults = movieArr.total_results
+                    totalMovieResults = totalMResults
                 };
                 return searchResults;
             }

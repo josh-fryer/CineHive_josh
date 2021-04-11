@@ -37,9 +37,37 @@ namespace HiveData.DAO
 
         public async Task<List<UserProfile>> SearchUsersAsync(string q, CineHiveContext context)
         {
-            return  context.UserProfiles.Where(x => x.Firstname.Contains(q) || x.Firstname.ToLower().Contains(q) ||
+            List<UserProfile> results = new List<UserProfile>();
+            string[] subStrings;
+            string query = q.Trim();
+            if (query.Contains(' '))
+            {
+                subStrings = query.Split(' ');
+                await Task.Run(() =>
+                {
+                    foreach (var str in subStrings)
+                    {
+                        var users = context.UserProfiles.Where(x => x.Firstname.Contains(str) || x.Firstname.ToLower().Contains(str) ||
+                             x.Firstname.ToUpper().Contains(str) || x.Lastname.Contains(str) || x.Lastname.ToLower().Contains(str)
+                             || x.Lastname.ToUpper().Contains(str)).ToList();
+
+                        if (users != null)
+                        {
+                            results.AddRange(users);
+                        }
+                    }
+                });
+                results = results.Distinct().ToList(); // remove duplicates
+                return results;
+            }
+            else
+            {
+                return  context.UserProfiles.Where(x => x.Firstname.Contains(q) || x.Firstname.ToLower().Contains(q) ||
                         x.Firstname.ToUpper().Contains(q) || x.Lastname.Contains(q) || x.Lastname.ToLower().Contains(q)
                         || x.Lastname.ToUpper().Contains(q)).ToList();
+            }
+
+            
         }
     }
 }
