@@ -17,3 +17,18 @@ textArea.addEventListener("input", () => {
     remainngCharsText.textContent = `${remaining} characters remaining`;
 });
 // ###########################################################
+
+// ################ Show/hide div ############################
+
+//function showHide(id) {
+//    var x = document.getElementById(id);
+
+//    if (x.style.display
+//        === "block") {
+//        x.style.display = "none";
+//    } else {
+//        x.style.display =
+//            "block";
+//    }
+//};
+//###############################################################
