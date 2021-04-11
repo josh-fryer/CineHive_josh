@@ -25,6 +25,7 @@ namespace Cinehive.Controllers
         {
             movieService = new MovieService();
         }
+
         public ActionResult Index(Movie movie, dynamic item)
         {
             var upcoming = movieService.PrepUpcomingMovies(item);
@@ -49,7 +50,6 @@ namespace Cinehive.Controllers
                 return View();
             }
 
-            //string prepQuery = movieService.PreparePostQuery(query);
             var movies = movieService.SearchMovie(query, 1, year);
             Movie movie = movieService.ViewMovie(movies);
 

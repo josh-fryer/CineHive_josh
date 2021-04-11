@@ -31,9 +31,34 @@ body {
     font-family:SFProDisplayRegular;
     text-align: right;
 }
-/*////////Text style and colour by ID/////////*/
+/*//////// Text colour /////////*/
 #txt-white {
     color: white;
+}
+
+.txt-white {
+    color: white;
+}
+
+.text-colour-gray{
+    color: gray;
+}
+
+/* ///////// glyphicon sizes /////////// */
+.gi-2x {
+    font-size: 2em;
+}
+
+.gi-3x {
+    font-size: 3em;
+}
+
+.gi-4x {
+    font-size: 4em;
+}
+
+.gi-5x {
+    font-size: 5em;
 }
 
 

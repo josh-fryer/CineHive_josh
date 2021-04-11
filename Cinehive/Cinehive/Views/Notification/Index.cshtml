@@ -5,47 +5,67 @@
     ViewBag.Title = "Index";
     var userid = User.Identity.GetUserId();
 }
-
-<h2>Notifications</h2>
-<hr />
-@if (Model.Any(i => i != null))
-{
-    foreach (var item in Model)
+<div class="container"><br />
+    <div class="well well-sm text-colour-gray notification-title">        
+        <h2>Notifications.</h2>
+    </div>    
+    @if (Model.Any(i => i != null))
     {
-        <div class="container">
+        foreach (var item in Model)
+        {
+        
             <div class="well">
                 <div class="media">
+                    <div class="media-left">
+                        <span class="glyphicon glyphicon-bell gi-2x"></span>
+                    </div>
                     <div class="media-body">
-                        <h4 class="media-heading">Notification</h4>
+                        @switch (item.Type)
+                        {
+                            case "friendRequestRec":
+                                <h4 class="media-heading">Friend Request <small><i>@item.DateReceived</i></small></h4>
+                                break;
+                            case "addedFriend":
+                                <h4 class="media-heading">Friend Request Accepted</h4>
+                                break;
+                            default:
+                                <h4 class="media-heading">Notification</h4>
+                                break;
+                        }
                         <p>
                             @item.Message
                         </p>
                         <ul class="list-inline list-unstyled">
-                            <li> @item.DateReceived </li>
-                        </ul>
-                        <ul class="list-inline list-unstyled">
-                            <li>@Html.ActionLink("Delete", "DeleteNotification", new { Id = item.Id })</li>
-                            @if(item.Type == "friendRequestRec")
+                            @if (item.Type == "friendRequestRec")
                             {
-                                <li>
-                                    @Html.ActionLink("Accept Friend Request", "AcceptFriendReq", "Friend",
-                                    new { friendId = item.senderProfileID }, new { @class = "btn btn-success" })
-                                </li>
+                            <li>
+                                @*@Html.ActionLink("Accept", "AcceptFriendReq", "Friend", new { friendId = item.senderProfileID }, new { @class = "btn btn-success" })*@
+                                <a href="@Url.Action("AcceptFriendReq", "Friend", new { friendId = item.senderProfileID })" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </a>
+                            </li>
                             }
-                            
+                            <li>@*@Html.ActionLink("Delete", "DeleteNotification", new { Id = item.Id })*@
+                                <a href="@Url.Action("DeleteNotification", "Notification", new { Id = item.Id })" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </li>
+
+
+
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
+        
+
+        }
 
     }
+    else
+                            {
+        <p>No new notifications</p>
 
-}
-else
-{
-    <p>No new notifications</p>
-
-}
-         
+    }
+</div>
 
