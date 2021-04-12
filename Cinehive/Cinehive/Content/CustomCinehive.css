@@ -658,6 +658,12 @@ body {
 .Post-content {
 
 }
+.profile-content-edit {
+    padding: 50px;
+    background: #fff;
+    min-height: 460px;
+    border-radius: 8px;
+}
 /*Album index*/
 .album-sidebar {
     padding: 20px 0 10px 0;

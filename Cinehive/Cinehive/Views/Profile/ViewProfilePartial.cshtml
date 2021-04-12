@@ -31,12 +31,15 @@
                         Feed
                     </a>
                 </li>
-                <li>
-                    <a href="@Url.Action("GetAlbums","Album", new { userId = Model.UserId })">
-                        <i class="glyphicon glyphicon-picture"></i>
-                        Photos
-                    </a>
-                </li>
+                @if (Model.Privacy == 1 || Model.Privacy == 2)
+                {
+                    <li>
+                        <a href="@Url.Action("GetAlbums","Album", new { userId = Model.UserId })">
+                            <i class="glyphicon glyphicon-picture"></i>
+                            Photos
+                        </a>
+                    </li>
+                }
                 <li>
                     <a href="#">
                         <i class="glyphicon glyphicon-film"></i>
@@ -49,7 +52,7 @@
                         Friends
                     </a>
                 </li>
-                <li>                 
+                <li>
                     @if (User.Identity.IsAuthenticated)
                     {
                         if (ViewBag.ReceivedFriendReq)
@@ -59,8 +62,10 @@
                         }
                         else if (!ViewBag.IsFriend && !ViewBag.SentFriendReq)
                         {
-                            @Html.ActionLink("Send Friend Request", "SendFriendReq", "Friend", new {
-                                friendProfileId = Model.ProfileId, friendUserId = Model.UserId
+                            @Html.ActionLink("Send Friend Request", "SendFriendReq", "Friend", new
+                            {
+                                friendProfileId = Model.ProfileId,
+                                friendUserId = Model.UserId
                                 }, new { @class = "btn btn-success" })
                         }
                         else if (ViewBag.SentFriendReq)
@@ -70,12 +75,13 @@
                         else if (ViewBag.IsFriend)
                         {
                             @Html.ActionLink("Remove Friend", "Remove", "Friend",
-                            new {
+                            new
+                                 {
                                     friendProfileId = Model.ProfileId,
                                     friendUserId = Model.UserId
                                 }, new { @class = "btn btn-danger" });
                         }
-                    }                    
+                    }
                 </li>
             </ul>
         </div>

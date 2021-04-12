@@ -16,7 +16,7 @@ namespace Cinehive.Controllers
 {
     public class ProfileController : Controller
     {
-        private IProfileService profileService;
+        private readonly IProfileService profileService;
         private readonly CineHiveContext context;
 
         public ProfileController()
@@ -26,7 +26,7 @@ namespace Cinehive.Controllers
         }
 
         [Authorize]
-        public ActionResult Index(int? id)
+        public ActionResult Index()
         {
             var userid = User.Identity.GetUserId();
             var userpost = context.UserProfiles.Where(c => c.UserId == userid).FirstOrDefault();
@@ -55,7 +55,7 @@ namespace Cinehive.Controllers
         }
 
         [Authorize]
-        public ActionResult Edit(int? id)
+        public ActionResult Edit()
         {
             var userid = User.Identity.GetUserId();
             UserProfile userProfile = profileService.GetUserProfile(userid);

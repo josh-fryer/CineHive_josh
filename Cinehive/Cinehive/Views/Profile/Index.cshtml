@@ -1,9 +1,7 @@
 ﻿@model HiveData.ViewModels.ProfilePostsViewModel
 @using Microsoft.AspNet.Identity;
-@{
-    ViewBag.Title = "Your Profile";
-    var userid = User.Identity.GetUserId();
-}
+@{ ViewBag.Title = "Your Profile";
+                var userid = User.Identity.GetUserId(); }
 
 <div class="container">
     <div class="row profile">
@@ -11,23 +9,21 @@
         @Html.Partial("ProfilePartial")
 
         <div class="col-md-9">
-        <div class="profile-content-input">
-            <h3>Create a Post.</h3>
-            
-            @using (Html.BeginForm("Create", "Post", FormMethod.Post, new {name = "createPost", onsubmit = "return validateForm()" }))
-            {
-                <input id="postInput" class="post-submit" type="text" name="input" maxlength="280" placeholder="Say something.." />
-                @*<div class="form-group">
-                    <textarea id="postInput" class="post-submit" name="input" maxlength="280" placeholder="Say something.."></textarea>
-                </div>*@
+            <div class="profile-content-input">
+                <h3>Create a Post.</h3>
+
+                @using (Html.BeginForm("Create", "Post", FormMethod.Post, new { name = "createPost", onsubmit = "return validateForm()" }))
+                {
+        <input id="postInput" class="post-submit" type="text" name="input" maxlength="280" placeholder="Say something.." /> @*<div class="form-group">
+                            <textarea id="postInput" class="post-submit" name="input" maxlength="280" placeholder="Say something.."></textarea>
+                        </div>*@
                     <button class="btn btn-primary post-button" type="submit">
-                            <span>Post &nbsp;</span>
-                            <i class="glyphicon glyphicon-pencil"></i>
-                        </button>            
-            }
-        <div id="remaining-chars" class="text-right counter-margin">text here</div>
+                        <span>Post &nbsp;</span>
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </button>            }
+                <div id="remaining-chars" class="text-right counter-margin">text here</div>
+            </div>
         </div>
-    </div>
 
 
         <div class="col-md-9">
@@ -36,74 +32,73 @@
             {
 
 
-                <div class="profile-content-pane">
-                    <div class="media">
-                        <a class="pull-left" href="">
-                            @if (Model.userProfile.ImagePath == null)
-                            {
-                                <img src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" class="circular-image" />
-                            }
-                            else
-                            {
-                                <img src="~/@Model.userProfile.ImagePath" width="64" height="64" class="circular-image" />
-                            }
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">@Model.userProfile.Firstname @Model.userProfile.Lastname</h4>
-                            <p>
-                                @*Display posts containg film links with Html.Raw*@
-                                @if ((bool)item.hasFilmLink)
-                                {@Html.Raw(@item.PostContent) }
-                            else
-                            { @item.PostContent}
-                            </p>
-                            <ul class="list-inline list-unstyled">
-                                <li> @item.DatePosted </li>
-                                <li>|</li>
-                                @if (item.Awards < 2)
-                                {
-                                    <li> @item.Awards Award</li>
-                                }
-                                else
-                                {
+              <div class="profile-content-pane">
+                 <div class="media">
+                     <a class="pull-left" href="">
+                        @if (Model.userProfile.ImagePath == null)
+                        {
+                          <img src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" class="circular-image" />
+                        }
+                        else
+                        {
+                           <img src="~/@Model.userProfile.ImagePath" width="64" height="64" class="circular-image" />
+                        }
+                     </a>
+                      <div class="media-body">
+                          <h4 class="media-heading">@Model.userProfile.Firstname @Model.userProfile.Lastname</h4>
+                              <p>
+                                 @*Display posts containg film links with Html.Raw*@
+                                   @if ((bool)item.hasFilmLink)
+                                    {@Html.Raw(@item.PostContent) }
+                                   else
+                                   { @item.PostContent}
+                              </p>
+                               <ul class="list-inline list-unstyled">
+                                 <li> @item.DatePosted </li>
+                                 <li>|</li>
+                                  @if (item.Awards < 2)
+                                  {
+                                  <li> @item.Awards Award</li> 
+                                  }
+                                  else
+                                  {
                                     <li> @item.Awards Awards</li>
-                                }
-                            </ul>
-                            <ul class="list-inline list-unstyled">
-                                <li>@Html.ActionLink("Award", "")</li>
-                                <li>|</li>
-                                <li>@Html.ActionLink("Comment", "")
-                                <li>|</li>
-                                <li>@Html.ActionLink("Share", "")</li>
-                                <li>|</li>
-                                <li><button onclick="showHide('@item.PostId')">comments @item.PostComments.Count</button></li>
-                                @*<li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new {onclick = "showHide()"}) (@item.PostComments.Count)</li>*@
-                            </ul>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        function showHide(id) {
-                            var x = document.getElementById(id);
-
-                            if (x.style.display
-                                === "block") {
-                                x.style.display = "none";
-                            } else {
-                                x.style.display =
-                                    "block";
-                            }
-                        };
-                    </script>
+                                  }
+                                 </ul>
+                                  <ul class="list-inline list-unstyled">
+                                      <li>@Html.ActionLink("Award", "")</li>
+                                      <li>|</li>
+                                      <li>@Html.ActionLink("Comment", "")
+                                      <li>|</li>
+                                      <li>@Html.ActionLink("Share", "")</li>
+                                      <li>|</li>
+                                      <li><button onclick="showHide('@item.PostId')">comments @item.PostComments.Count</button></li>
+                
+                                  </ul>
+                     </div>
                 </div>
+
+              </div>
                 <div class="profile-content-comment" id="@item.PostId" style="display:none">
                     <p>test</p>
-                </div>
-
-
-
-
+                </div>            
             }
 
         </div>
-            </div>
     </div>
+</div>
+
+
+<script type="text/javascript">
+        function showHide(id) {
+            var x = document.getElementById(id);
+
+            if (x.style.display
+                === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display =
+                    "block";
+            }
+        };
+</script>

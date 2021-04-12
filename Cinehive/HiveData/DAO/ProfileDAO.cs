@@ -72,6 +72,10 @@ namespace HiveData.DAO
             {
                 context.Entry(userProfile).Property(v => v.Gender).IsModified = false;
             }
+            if (userProfile.Privacy == 0)
+            {
+                context.Entry(userProfile).Property(v => v.Privacy).IsModified = false;
+            }
         }
     }
 }

@@ -24,7 +24,8 @@ namespace HiveData.Models
         public DateTime? DateOfBirth { get; set; }
         [Display(Name ="About me")]
         public string AboutMe { get; set; }
-
+        [Display(Name = "Privacy Level")]
+        public int Privacy { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
         public virtual ICollection<UserProfile> Friends { get; set; }
         public virtual ICollection<PostComment> Comments { get; set; }
