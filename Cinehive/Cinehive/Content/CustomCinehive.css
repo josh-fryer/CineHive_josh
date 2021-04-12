@@ -519,6 +519,7 @@ body {
   padding: 20px 0 10px 0;
   background: #fff;
   border-radius: 8px;
+  margin-top:30px;
 }
 
 .profile-userpic img {
@@ -629,6 +630,24 @@ body {
     margin-bottom: 10px;
     margin-top: 30px;
 }
+.profile-content-title {
+    padding: 20px;
+    background: #fff;
+    min-height: 0px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    height: 60px;
+    text-align:center;
+}
+.profile-content-title h3 {
+    padding: 20px;
+    background: transparent;
+    min-height: 0px;
+    border-radius: 8px;
+    margin-left: -20px;
+    margin-top: -20px;
+}
 .Friend-text {
     text-align:center;
     font-size:20px;
@@ -703,6 +722,18 @@ body {
     margin-bottom: -20px;
     color: gray;
 }
+.profile-content-comment {
+    padding: 20px;
+    background: #fff;
+    min-height: 50px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    width: 700px;
+    margin-left: 123px;
+}
+.counter-margin {
+    margin-top:20px;
+}
 /*Movie index*/
 
 .poster-img {
@@ -728,4 +759,7 @@ body {
 }
 .latest-movie-box {
     text-align:center;
+}
+.movie-title {
+    color:white;
 }

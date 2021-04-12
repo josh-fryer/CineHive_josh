@@ -19,7 +19,7 @@ namespace Cinehive.Controllers
         https://developers.themoviedb.org/3/configuration/get-api-configuration
         #####################################################*/
 
-        private MovieService movieService;
+        private readonly MovieService movieService;
 
         public MovieController()
         {

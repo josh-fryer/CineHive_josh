@@ -29,14 +29,16 @@ namespace Cinehive.Controllers
         public ActionResult Index(int? id)
         {
             var userid = User.Identity.GetUserId();
-
             var userpost = context.UserProfiles.Where(c => c.UserId == userid).FirstOrDefault();
+            
+            
 
 
             ProfilePostsViewModel profilePostsViewModel = new ProfilePostsViewModel
             {
                 userProfile = profileService.GetUserProfile(userid),
-                Posts = userpost.Posts.ToList()
+                Posts = userpost.Posts.OrderByDescending(c => c.DatePosted).ToList(),
+                
             };
 
             List<string> genreNames = new List<string>();
