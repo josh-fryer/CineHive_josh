@@ -1,13 +1,14 @@
 ﻿@model HiveData.Models.Image
+@using Microsoft.AspNet.Identity;
 
 @{
-    ViewBag.Title = "ViewImage";
+    ViewBag.Title = "View Image";
 }
+
 <div class="container">
     <div class="row profile">
         <div class="col-md-3">
             <div class="album-sidebar">
-
                 <div class="profile-usermenu">
                     <ul class="nav">
                         <li class="active">
@@ -16,19 +17,21 @@
                                 Go back
                             </a>
                         </li>
-                        <li>
-                            <a href="@Url.Action("")">
-                                <i class="glyphicon glyphicon-picture"></i>
-                                Set Profile Picture
-                            </a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("")">
-                                <i class="glyphicon glyphicon-remove"></i>
-                                Delete Image
-                            </a>
-                        </li>
-
+                        @if (ViewBag.IsUser)
+                        {
+                            <li>
+                                <a href="@Url.Action("")">
+                                    <i class="glyphicon glyphicon-picture"></i>
+                                    Set Profile Picture
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("")">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                    Delete Image
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -41,5 +44,5 @@
                 </div>
             </div>
         </div>
-        </div>
     </div>
+</div>

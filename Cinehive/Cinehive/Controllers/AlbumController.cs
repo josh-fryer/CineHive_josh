@@ -28,7 +28,16 @@ namespace Cinehive.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View(albumService.GetAlbums().ToList());
+            var userId = User.Identity.GetUserId();
+            //return View(albumService.GetAlbums(userId).ToList());
+            return RedirectToAction("GetAlbums", new { userId = userId });
+        }
+
+        [Authorize]
+        public ActionResult GetAlbums(string userId)
+        {
+            ViewBag.AlbumUserId = userId;
+            return View(albumService.GetAlbums(userId));
         }
 
         [Authorize]
@@ -74,13 +83,26 @@ namespace Cinehive.Controllers
                 return RedirectToAction("Index");
             }
 
+            var userId = User.Identity.GetUserId();
+            Album album = context.Albums.Find(id);
+
             AlbumImageViewModel albumImageViewModel = new AlbumImageViewModel
             {
                 Images = context.Albums.Find(id).Images.ToList(),
-                Album = context.Albums.Find(id)
+                Album = album
             };
             TempData["Page"] = id;
-
+            
+            UserProfile userProfile = context.UserProfiles.First(c => c.UserId == userId);
+            if (userProfile.Albums.ToList().Contains(album))
+            {
+                ViewBag.IsUser = true;
+            }
+            else
+            {
+                ViewBag.IsUser = false;
+            }
+            
             return View(albumImageViewModel);
         }
 
@@ -197,11 +219,12 @@ namespace Cinehive.Controllers
             return RedirectToAction("Index", "Profile");
         }
 
-        public ActionResult ViewImage(int id)
+        public ActionResult ViewImage(int id, bool isUser)
         {
-
-           var result = context.Images.Find(id);
-
+            var result = context.Images.Find(id);
+            
+            ViewBag.IsUser = isUser;
+              
             return View(result);
         }
     }

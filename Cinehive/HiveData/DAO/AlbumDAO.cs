@@ -15,15 +15,13 @@ namespace HiveData.DAO
 {
     public class AlbumDAO : IAlbumDAO
     {
-        public IList<Album> GetAlbums(CineHiveContext context)
+        public IList<Album> GetAlbums(string userId, CineHiveContext context)
         {
-            string userid = HttpContext.Current.User.Identity.GetUserId();
-
-            var user = context.UserProfiles.Where(c => c.UserId == userid).FirstOrDefault();
+            var user = context.UserProfiles.Where(c => c.UserId == userId).FirstOrDefault();
             var result = user.Albums.ToList();
-
             return result;
         }
+
         public void CreateAlbum(Album album, CineHiveContext context)
         {
             string userid = HttpContext.Current.User.Identity.GetUserId();
@@ -38,22 +36,27 @@ namespace HiveData.DAO
 
             userProfile.Albums.Add(album);
         }
+
         public Album GetAlbum(int id, CineHiveContext context)
         {
             return context.Albums.Find(id);
         }
+
         public Image GetImage(int id, CineHiveContext context)
         {
             return context.Images.Find(id);
         }
+
         public void EditAlbum(Album album, CineHiveContext context)
         {
             context.Entry(album).State = EntityState.Modified;
         }
+
         public void DeleteAlbum(Album album, CineHiveContext context)
         {
             context.Albums.Remove(album);
         }
+
         public void DeleteImagesInAlbum(int id, CineHiveContext context)
         {
             var images = context.Albums.Find(id).Images.ToList();
@@ -62,6 +65,7 @@ namespace HiveData.DAO
                 context.Images.Remove(item);
             }
         }
+
         public void SetAsProfilePicture(Image image, CineHiveContext context)
         {
             string userid = HttpContext.Current.User.Identity.GetUserId();
@@ -73,6 +77,7 @@ namespace HiveData.DAO
 
             context.Entry(userProfile).State = EntityState.Modified;
         }
+
         public void DeleteImageFromAlbum(Image image, CineHiveContext context)
         {
             string userid = HttpContext.Current.User.Identity.GetUserId();
@@ -83,6 +88,7 @@ namespace HiveData.DAO
 
             context.Images.Remove(image);
         }
+
         public void AddImageToAlbum(int id, Album album, CineHiveContext context)
         {
             string userid = HttpContext.Current.User.Identity.GetUserId();

@@ -21,11 +21,11 @@ namespace HiveServices.Service
         {
             albumDAO = new AlbumDAO();
         }
-        public IList<Album> GetAlbums()
+        public IList<Album> GetAlbums(string userId)
         {
             using (var context = new CineHiveContext())
             {
-                return albumDAO.GetAlbums(context);
+                return albumDAO.GetAlbums(userId, context);
             }
         }
         public void CreateAlbum(Album album)
