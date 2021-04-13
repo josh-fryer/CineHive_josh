@@ -332,6 +332,8 @@
     <Content Include="Views\Movie\Index.cshtml" />
     <Content Include="Views\Profile\ViewProfilePartial.cshtml" />
     <Content Include="Views\Album\GetAlbums.cshtml" />
+    <Content Include="Views\Home\FriendFeed.cshtml" />
+    <Content Include="Views\Home\HomeSidebarPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

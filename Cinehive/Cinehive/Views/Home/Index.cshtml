@@ -12,75 +12,23 @@
 }
 
 <div class="container">
-    <div class="col-md-2">
-        <div class="index-sidebar">
-            <div class="profile-usertitle">
-                <div class="profile-usertitle-name">
-                    Explore CineHive
-                </div>
-            </div>
-            <div class="profile-usermenu">
-                <ul class="nav">
-                    <li class="active">
-                        <a href="@Url.Action("Index", "Movie")">
-                            <i class="glyphicon glyphicon-film"></i>
-                            Movies
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index", "Album")">
-                            <i class="glyphicon glyphicon-picture"></i>
-                            Photos
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("ViewFriends", "Profile")">
-                            <i class="glyphicon glyphicon-user"></i>
-                            Friends
-                        </a>
-                    </li>
-                    <li>
-                        <hr />
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index", "Home")">
-                            <i class="glyphicon glyphicon-star"></i>
-                            New
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Popular", "Home")">
-                            <i class="glyphicon glyphicon-fire"></i>
-                            What's Popular
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("")">
-                            <i class="glyphicon glyphicon-stats"></i>
-                            Trending
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
+    @Html.Partial("HomeSidebarPartial")
     <div class="col-md-9">
         <div class="profile-content-input">
             <h3>Create a Post.</h3>
-            
-            @using (Html.BeginForm("Create", "Post", FormMethod.Post, new {name = "createPost", onsubmit = "return validateForm()" }))
+
+            @using (Html.BeginForm("Create", "Post", FormMethod.Post, new { name = "createPost", onsubmit = "return validateForm()" }))
             {
                 <input id="postInput" class="post-submit" type="text" name="input" maxlength="280" placeholder="Say something.." />
                 @*<div class="form-group">
-                    <textarea id="postInput" class="post-submit" name="input" maxlength="280" placeholder="Say something.."></textarea>
-                </div>*@
-                    <button class="btn btn-primary post-button" type="submit">
-                            <span>Post &nbsp;</span>
-                            <i class="glyphicon glyphicon-pencil"></i>
-                        </button>            
+                        <textarea id="postInput" class="post-submit" name="input" maxlength="280" placeholder="Say something.."></textarea>
+                    </div>*@
+                <button class="btn btn-primary post-button" type="submit">
+                    <span>Post &nbsp;</span>
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </button>
             }
-        <div id="remaining-chars" class="text-right counter-margin">text here</div>
+            <div id="remaining-chars" class="text-right counter-margin">text here</div>
         </div>
     </div>
 

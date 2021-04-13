@@ -31,7 +31,7 @@
                         Feed
                     </a>
                 </li>
-                @if (Model.Privacy == 1 || Model.Privacy == 2)
+                @if (Model.Privacy == 1 || Model.Privacy == 2 && ViewBag.IsFriend)
                 {
                     <li>
                         <a href="@Url.Action("GetAlbums","Album", new { userId = Model.UserId })">
