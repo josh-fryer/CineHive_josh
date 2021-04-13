@@ -12,5 +12,6 @@ namespace HiveServices.Service
         Task<List<Movie>> ToMoviesListAsync(dynamic item, int? x);
         Movie ConvertToMovie(dynamic item);
         Movie GetMovieByID(int id);
+        void RateMovie(int movieApiID, int stars, string userId);
     }
 }

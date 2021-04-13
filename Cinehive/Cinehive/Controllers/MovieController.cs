@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using HiveData.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace Cinehive.Controllers
 {
@@ -62,12 +63,40 @@ namespace Cinehive.Controllers
             return RedirectToAction("ViewMovie", movie);
         }
 
-        public ActionResult ViewMovie(Movie movie)
+        //[Route("Movie/ViewMovie/{movie:Movie}")]       
+        public ActionResult ViewMovie(Movie movie, bool addView = true)
         {
-            // check if movie needs adding to db and add view          
-            movieService.AddToMoviesOrAddView(movie);
-           
+            if (addView)
+            {
+                // check if movie needs adding to db and add view to counter
+                movieService.AddToMoviesOrAddView(movie);
+            }
+                                 
             return View(movie);
+        }
+
+        // overload version by movie's Api ID
+        //[Route("Movie/ViewMovie/{movieApiID:int}")]
+        [ActionName("ViewMovieByID")]
+        public ActionResult ViewMovie(int movieApiID, bool addView = true)
+        {
+            Movie movie = movieService.GetMovieByID(movieApiID);
+            if (addView)
+            {
+                // check if movie needs adding to db and add view to counter
+                movieService.AddToMoviesOrAddView(movie);
+            }
+
+            return View("ViewMovie", movie);
+        }
+
+        public ActionResult RateMovie(int movieApiID, int stars)
+        {
+            var userId = User.Identity.GetUserId();
+                       
+            movieService.RateMovie(movieApiID, stars, userId);
+            
+            return RedirectToAction("ViewMovieByID", new { movieApiId = movieApiID, addView = false} );
         }
 
     }

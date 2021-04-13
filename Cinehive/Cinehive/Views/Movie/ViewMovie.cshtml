@@ -4,8 +4,6 @@
     ViewBag.Title = "ViewMovie";
 }
 
-
-
 <div class="container">
     <br/>
     <div class="panel">
@@ -17,7 +15,6 @@
         {
             <h2>@Model.Title</h2>
             <div class="media">
-                <div class="media-left"></div>
                 <div class="media-left">
                     @if (Model.PosterPath == null)
                     {
@@ -36,8 +33,25 @@
                     gyroscope; picture-in-picture" allowfullscreen></iframe>
                     }
                 </div>
+                <div class="media"></div>
             </div>
             <br />
+            if(User.Identity.IsAuthenticated)
+            {
+                <ul class="list-unstyled">
+                    <li><a href="@Url.Action("RateMovie","Movie", 
+                                new { movieApiID = Model.MovieApi_ID, stars = 1})">1 star</a>
+                    </li>
+                    <li><a href="@Url.Action("RateMovie","Movie", 
+                                new { movieApiID = Model.MovieApi_ID, stars = 2})">2 star</a></li>
+                    <li><a href="@Url.Action("RateMovie","Movie", 
+                                new { movieApiID = Model.MovieApi_ID, stars = 3})">3 star</a></li>
+                    <li><a href="@Url.Action("RateMovie","Movie", 
+                                new { movieApiID = Model.MovieApi_ID, stars = 4})">4 star</a></li>
+                    <li><a href="@Url.Action("RateMovie","Movie", 
+                                new { movieApiID = Model.MovieApi_ID, stars = 5})">5 star</a></li>
+                </ul>
+            }
             <dl class="dl-horizontal">
                 <dt>
                     Overview:
