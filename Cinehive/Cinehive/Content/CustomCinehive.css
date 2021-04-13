@@ -632,6 +632,16 @@ body {
     border-radius: 8px;
     margin-bottom: 10px;
 }
+.profile-content-pane-share {
+    padding: 20px;
+    background: #fff;
+    min-height: 100px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    border: solid;
+    height:100px;
+}
 .profile-content-input {
     padding: 20px;
     background: #fff;

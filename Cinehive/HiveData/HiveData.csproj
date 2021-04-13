@@ -236,6 +236,14 @@
     <Compile Include="Migrations\202104131826064_moviesModeltweak.Designer.cs">
       <DependentUpon>202104131826064_moviesModeltweak.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104132219212_sharepost.cs" />
+    <Compile Include="Migrations\202104132219212_sharepost.Designer.cs">
+      <DependentUpon>202104132219212_sharepost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104132233213_authortopost.cs" />
+    <Compile Include="Migrations\202104132233213_authortopost.Designer.cs">
+      <DependentUpon>202104132233213_authortopost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -336,6 +344,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104131826064_moviesModeltweak.resx">
       <DependentUpon>202104131826064_moviesModeltweak.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104132219212_sharepost.resx">
+      <DependentUpon>202104132219212_sharepost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104132233213_authortopost.resx">
+      <DependentUpon>202104132233213_authortopost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

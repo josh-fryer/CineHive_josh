@@ -104,5 +104,27 @@ namespace Cinehive.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult SharePost(int id)
+        {
+            Post post = postService.GetPost(id);
+            
+
+            Post post1 = new Post
+            {
+                PostContent = post.PostContent,
+                DatePosted = DateTime.Now,
+                Author = post.Author,
+                Shared = true
+                
+            };
+
+            string userid = User.Identity.GetUserId();
+            UserProfile profile = context.UserProfiles.First(x => x.UserId == userid);
+            profile.Posts.Add(post1);
+            context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
