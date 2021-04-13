@@ -10,59 +10,7 @@
 }
 
 <div class="container">
-    <div class="col-md-2">
-        <div class="index-sidebar">
-            <div class="profile-usertitle">
-                <div class="profile-usertitle-name">
-                    Explore CineHive
-                </div>
-            </div>
-            <div class="profile-usermenu">
-                <ul class="nav">
-                    <li class="active">
-                        <a href="@Url.Action("Index", "Movie")">
-                            <i class="glyphicon glyphicon-film"></i>
-                            Movies
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index", "Album")">
-                            <i class="glyphicon glyphicon-picture"></i>
-                            Photos
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("ViewFriends", "Profile")">
-                            <i class="glyphicon glyphicon-user"></i>
-                            Friends
-                        </a>
-                    </li>
-                    <li>
-                        <hr />
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index", "Home")">
-                            <i class="glyphicon glyphicon-star"></i>
-                            New
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Popular", "Home")">
-                            <i class="glyphicon glyphicon-fire"></i>
-                            What's Popular
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("")">
-                            <i class="glyphicon glyphicon-stats"></i>
-                            Trending
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
+    @Html.Partial("HomeSidebarPartial")
     <div class="col-md-9">
         <div class="profile-content-input">
             <h3>Create a Post.</h3>
@@ -84,89 +32,87 @@
 
     <div class="col-md-9">
         <div class="profile-content-title">
-            <h3>Whats Popular.</h3>
-            </div>
+            <h3>What's Popular</h3>
         </div>
+    </div>
 
+    <div class="row profile">
+        <div class="col-md-9">
 
+            @foreach (var item in Model.PostList)
+            {
+                <div class="profile-content-pane">
+                    <div class="media">
+                        <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) })" )">
+                            @if (@Model.GetUserPicture(postid = item.PostId) == null)
+                            {
+                                <img class="post-profile-img circular-image" src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
+                            }
+                            else
+                            {
+                                <img class="post-profile-img circular-image" src="~/@Model.GetUserPicture(postid = item.PostId)" width="64" height="64" />
+                            }
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">@Html.ActionLink(@Model.GetFirstName(postid = item.PostId) + " " + Model.GetLastName(postid = item.PostId), "ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) }, new { })</h4>
+                            <p>
+                                @*Display posts containg film links with Html.Raw*@
+                                @if ((bool)item.hasFilmLink)
+                                {@Html.Raw(@item.PostContent) }
+                            else
+                            { @item.PostContent}
+                            </p>
+                            <ul class="list-inline list-unstyled">
+                                <li> @item.DatePosted </li>
+                                <li>|</li>
+                                @if (item.Awards < 2)
+                                {
+                                    <li> @item.Awards Award</li>
+                                }
+                                else
+                                {
+                                    <li> @item.Awards Awards</li>
+                                }
+                                @if (item.Popular == true)
+                                {
+                                    <li><strong>Popular</strong></li>
+                                }
+                            </ul>
+                            <ul class="list-inline list-unstyled">
+                                @if (Model.AwardGiven(postid = item.PostId) == true)
+                                {
+                                    <li><strong>@Html.ActionLink("Revoke", "RevokeAward", "Post", new { id = item.PostId }, new { })</strong></li>
+                                }
+                                else
+                                {
+                                    <li>@Html.ActionLink("Award", "GiveAward", "Post", new { id = item.PostId }, new { })</li>
+                                }
+                                <li>|</li>
+                                <li>@Html.ActionLink("Comment", "Create", "Comment", new { id = item.PostId }, new { })</li>
+                                <li>|</li>
+                                <li>@Html.ActionLink("Share", "")</li>
+                                <li>|</li>
+                                <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
 
-            <div class="row profile">
-                <div class="col-md-9">
+                                @if (Model.IsUserPost(id = item.PostId) == true || ViewBag.IsAdmin)
+                                {
+                                    <li>|</li>
+                                    <li> @Html.ActionLink("Remove", "DeletePost", "Post", new { id = item.PostId }, null) </li>
+                                    <li>|</li>
+                                    <li> @Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId }, null) </li>
+                                }
 
-                    @foreach (var item in Model.PostList)
-                    {
-                        <div class="profile-content-pane">
-                            <div class="media">
-                                <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) })" )">
-                                    @if (@Model.GetUserPicture(postid = item.PostId) == null)
-                                    {
-                                        <img class="post-profile-img circular-image" src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
-                                    }
-                                    else
-                                    {
-                                        <img class="post-profile-img circular-image" src="~/@Model.GetUserPicture(postid = item.PostId)" width="64" height="64" />
-                                    }
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading">@Html.ActionLink(@Model.GetFirstName(postid = item.PostId) + " " + Model.GetLastName(postid = item.PostId), "ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) }, new { })</h4>
-                                    <p>
-                                        @*Display posts containg film links with Html.Raw*@
-                                        @if ((bool)item.hasFilmLink)
-                                        {@Html.Raw(@item.PostContent) }
-                                    else
-                                    { @item.PostContent}
-                                    </p>
-                                    <ul class="list-inline list-unstyled">
-                                        <li> @item.DatePosted </li>
-                                        <li>|</li>
-                                        @if (item.Awards < 2)
-                                        {
-                                            <li> @item.Awards Award</li>
-                                        }
-                                        else
-                                        {
-                                            <li> @item.Awards Awards</li>
-                                        }
-                                        @if (item.Popular == true)
-                                        {
-                                            <li><strong>Popular</strong></li>
-                                        }
-                                    </ul>
-                                    <ul class="list-inline list-unstyled">
-                                        @if (Model.AwardGiven(postid = item.PostId) == true)
-                                        {
-                                            <li><strong>@Html.ActionLink("Revoke", "RevokeAward", "Post", new { id = item.PostId }, new { })</strong></li>
-                                        }
-                                        else
-                                        {
-                                            <li>@Html.ActionLink("Award", "GiveAward", "Post", new { id = item.PostId }, new { })</li>
-                                        }
-                                        <li>|</li>
-                                        <li>@Html.ActionLink("Comment", "Create", "Comment", new { id = item.PostId }, new { })</li>
-                                        <li>|</li>
-                                        <li>@Html.ActionLink("Share", "")</li>
-                                        <li>|</li>
-                                        <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
+                            </ul>
 
-                                        @if (Model.IsUserPost(id = item.PostId) == true || ViewBag.IsAdmin)
-                                        {
-                                            <li>|</li>
-                                            <li> @Html.ActionLink("Remove", "DeletePost", "Post", new { id = item.PostId }, null) </li>
-                                            <li>|</li>
-                                            <li> @Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId }, null) </li>
-                                        }
-
-                                    </ul>
-
-                                </div>
-                            </div>
                         </div>
-                    }
-
+                    </div>
                 </div>
+            }
 
-            </div>
         </div>
+
+    </div>
+</div>
 
         Page @(Model.PostList.PageCount < Model.PostList.PageNumber ? 0 : Model.PostList.PageNumber) of @Model.PostList.PageCount
         @Html.PagedListPager(Model.PostList, page => Url.Action("Index", new { page }))

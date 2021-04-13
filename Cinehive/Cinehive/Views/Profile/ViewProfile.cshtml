@@ -12,7 +12,7 @@
 
         <div class="col-md-9">
             <div class="profile-content">
-                @if (Model.Privacy == 1 || Model.Privacy == 2)
+                @if (Model.Privacy == 1 || Model.Privacy == 2 && ViewBag.IsFriend)
                 {
                     foreach (var item in Model.Posts.OrderByDescending(x => x.DatePosted))
                     {

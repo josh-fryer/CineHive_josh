@@ -74,7 +74,26 @@ namespace Cinehive.Controllers
             };
 
             return View(postFeedViewModel);
-        }            
+        }
+
+        public ActionResult FriendFeed(int? page = 1)
+        {
+            var userid = User.Identity.GetUserId();
+            var userpost = context.UserProfiles.Where(c => c.UserId == userid).FirstOrDefault();
+            var friendpost = userpost.Friends.SelectMany(c => c.Posts).ToList();
+
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            var NewPosts = friendpost.ToPagedList(pageNumber, pageSize);
+            PostFeedViewModel postFeedViewModel = new PostFeedViewModel()
+            {
+                UserProfile = profileService.GetUserProfile(userid),
+                PostList = NewPosts
+
+            };
+
+            return View(postFeedViewModel);
+        }
 
         public ActionResult Welcome()
         {
