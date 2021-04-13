@@ -32,7 +32,8 @@ namespace HiveData.Repository
         public DbSet<FaveGenre> FaveGenres { get; set; }
         public DbSet<Award> Awards { get; set; }
         public DbSet<Album> Albums { get; set; }
-        
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
 
 
         public CineHiveContext() 

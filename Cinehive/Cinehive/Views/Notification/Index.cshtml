@@ -6,9 +6,13 @@
     var userid = User.Identity.GetUserId();
 }
 <div class="container"><br />
-    <div class="well well-sm text-colour-gray notification-title">        
-        <h2>Notifications.</h2>
-    </div>    
+    <div class="row">    
+        <div class="col-md-12">
+            <div class="well well-sm notification-title">
+                <h2>Notifications.</h2>
+            </div>    
+        </div>
+    </div>
     @if (Model.Any(i => i != null))
     {
         foreach (var item in Model)
@@ -63,9 +67,10 @@
 
     }
     else
-                            {
-        <p>No new notifications</p>
-
+    {
+        <div class="well notification text-center">
+            <p>No notifications</p>
+        </div>
     }
 </div>
 

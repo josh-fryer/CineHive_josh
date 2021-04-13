@@ -20,7 +20,7 @@ namespace Cinehive.Controllers
         #####################################################*/
 
         private readonly MovieService movieService;
-
+      
         public MovieController()
         {
             movieService = new MovieService();
@@ -64,6 +64,9 @@ namespace Cinehive.Controllers
 
         public ActionResult ViewMovie(Movie movie)
         {
+            // check if movie needs adding to db and add view          
+            movieService.AddToMoviesOrAddView(movie);
+           
             return View(movie);
         }
 

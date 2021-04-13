@@ -163,7 +163,7 @@
                 <div class="container">
                     <div class="well">
                         <div class="media">
-                            <a class="media-left" href="@Url.Action("GetMovieByID", "Movie", new { id = item.ID })">
+                            <a class="media-left" href="@Url.Action("GetMovieByID", "Movie", new { id = item.MovieApi_ID })">
                                 @if (item.PosterPath == null)
                                 {
                                     <span class="glyphicon glyphicon-film"></span>
@@ -175,7 +175,7 @@
                             </a>
                             <div class="media-body">
                                 <h4 class="media-heading">
-                                    @Html.ActionLink(item.Title, "GetMovieByID", "Movie", new { id = item.ID }, new { })
+                                    @Html.ActionLink(item.Title, "GetMovieByID", "Movie", new { id = item.MovieApi_ID }, new { })
                                 </h4>
                                 <p>@item.Overview</p>
                             </div>

@@ -228,6 +228,14 @@
     <Compile Include="Migrations\202104121624002_privacyint.Designer.cs">
       <DependentUpon>202104121624002_privacyint.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104131409350_moviesAndRatings.cs" />
+    <Compile Include="Migrations\202104131409350_moviesAndRatings.Designer.cs">
+      <DependentUpon>202104131409350_moviesAndRatings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104131826064_moviesModeltweak.cs" />
+    <Compile Include="Migrations\202104131826064_moviesModeltweak.Designer.cs">
+      <DependentUpon>202104131826064_moviesModeltweak.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -237,6 +245,7 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Rating.cs" />
     <Compile Include="Repository\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
@@ -321,6 +330,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104121624002_privacyint.resx">
       <DependentUpon>202104121624002_privacyint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104131409350_moviesAndRatings.resx">
+      <DependentUpon>202104131409350_moviesAndRatings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104131826064_moviesModeltweak.resx">
+      <DependentUpon>202104131826064_moviesModeltweak.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

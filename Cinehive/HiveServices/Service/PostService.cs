@@ -119,7 +119,7 @@ namespace HiveServices.Service
                 char c = input[i];
                 if ((i + 1) <= endC) // if next character is not outside index
                 {
-                    if (Char.IsUpper(input[i+1])) // find new separate word if its Caps
+                    if (Char.IsUpper(input[i+1]) || Char.IsDigit(input[i + 1])) // find new separate word if its Caps or a number
                     {
                         query += c;
                         query += '+';

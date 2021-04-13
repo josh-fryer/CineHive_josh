@@ -61,6 +61,16 @@ body {
     font-size: 5em;
 }
 
+/* /////////////////////// Notification ////////////////////// */
+.notification {
+    background-color: white;
+}
+
+.notification-title {
+    color: gray;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
 
 
 /*//////////////////////_layout css//////////////////////////////////*/
