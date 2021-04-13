@@ -6,9 +6,7 @@
     <title>@ViewBag.Title - CineHive</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/CustomCinehive.css")
-    @Scripts.Render("~/Scripts/vue.js")
-    
+    @Styles.Render("~/Content/CustomCinehive.css") 
 
 </head>
 <body>
@@ -55,10 +53,16 @@
     <footer class="footer-control">
         <p>&copy; @DateTime.Now.Year - Cinehive.</p>
     </footer>
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- Load our React Demo component. -->
+    <script src="Content/Scripts/like_button.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Content/CinehiveScript.js")
+    @Scripts.Render("~/Content/Scripts/CinehiveScript.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>
