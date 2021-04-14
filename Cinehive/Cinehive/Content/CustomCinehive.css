@@ -642,6 +642,19 @@ body {
     border: solid;
     height:100px;
 }
+.profile-content-pane-img {
+    text-align:center;
+
+}
+.profile-content-img{
+    border-radius:20px;
+    margin-top:10px;
+    max-height:200px;
+}
+.content-pane-items {
+    margin-top: 30px;
+    margin-left: -80px;
+}
 .profile-content-input {
     padding: 20px;
     background: #fff;

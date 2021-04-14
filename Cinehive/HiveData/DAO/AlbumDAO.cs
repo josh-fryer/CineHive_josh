@@ -70,10 +70,27 @@ namespace HiveData.DAO
         {
             string userid = HttpContext.Current.User.Identity.GetUserId();
             int id = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
+            var profile = context.UserProfiles.Where(x => x.UserId == userid).First();
 
             UserProfile userProfile = context.UserProfiles.Find(id);
 
             userProfile.ImagePath = image.ImagePath;
+
+            if (userProfile.Privacy == 1 || userProfile.Privacy == 2)
+            {
+                Post post = new Post
+                {
+                    Author = userProfile.Firstname + " " + userProfile.Lastname,
+                    AuthorPP = userProfile.ImagePath,
+                    DatePosted = DateTime.Now,
+                    PostContent = userProfile.Firstname + " " + "Has updated their profile picture",
+                    PictureChange = true,
+
+                };
+
+                profile.Posts.Add(post);
+            }
+
 
             context.Entry(userProfile).State = EntityState.Modified;
         }

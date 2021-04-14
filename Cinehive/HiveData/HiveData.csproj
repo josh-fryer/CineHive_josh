@@ -252,6 +252,10 @@
     <Compile Include="Migrations\202104141905325_RemoveImg.Designer.cs">
       <DependentUpon>202104141905325_RemoveImg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104142030029_postforprofilepicchange.cs" />
+    <Compile Include="Migrations\202104142030029_postforprofilepicchange.Designer.cs">
+      <DependentUpon>202104142030029_postforprofilepicchange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -364,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104141905325_RemoveImg.resx">
       <DependentUpon>202104141905325_RemoveImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104142030029_postforprofilepicchange.resx">
+      <DependentUpon>202104142030029_postforprofilepicchange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
