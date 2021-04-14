@@ -244,6 +244,10 @@
     <Compile Include="Migrations\202104132233213_authortopost.Designer.cs">
       <DependentUpon>202104132233213_authortopost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104141313592_AddImg.cs" />
+    <Compile Include="Migrations\202104141313592_AddImg.Designer.cs">
+      <DependentUpon>202104141313592_AddImg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -350,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104132233213_authortopost.resx">
       <DependentUpon>202104132233213_authortopost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104141313592_AddImg.resx">
+      <DependentUpon>202104141313592_AddImg.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

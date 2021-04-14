@@ -13,6 +13,8 @@ using HiveData.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using HiveData.Repository;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Net;
 
 namespace Cinehive.Controllers
 {
@@ -460,7 +462,145 @@ namespace Cinehive.Controllers
         {
             return View();
         }
+        //DELETE ACCOUNT: To be Moved 
+        public async Task<ActionResult> DeleteAccount(string userId)
+        {
+            CineHiveContext context = new CineHiveContext();
+            string userid = User.Identity.GetUserId();
+            //turning eager loading on
+            context.UserProfiles.Include(u => u.Albums).ToList();
+            context.UserProfiles.Include(u => u.Posts).ToList();
+            //context.UserProfiles.Include(u => u.Images).ToList();
+            context.Albums.Include(u => u.Images).ToList();
+            context.Posts.Include(u => u.PostComments).ToList();
+            UserProfile user = context.UserProfiles.First(x => x.UserId == userid);
+            //REMOVE NOTIFICATIONS 
+            var listNotif = user.Notifications.ToList();
+            if (listNotif.Count != 0)
+            {
+                foreach (var Notification in listNotif)
+                {
+                    context.Notifications.Remove(Notification);
+                }
+            }
+            context.SaveChanges();
+            //REMOVE FRIEND REQ RECEIVED
+            var listReq = user.ReceivedFriendReq.ToList();
+            if (listReq.Count != 0)
+            {
+                foreach (var ReceivedFriendReq in listReq)
+                {
+                    context.FriendRequests.Remove(ReceivedFriendReq);
+                }
+            }
+            context.SaveChanges();
+            //REMOVE FREQ SENT 
+            var listReqSent = user.SentFriendReq.ToList();
+            if (listReqSent.Count != 0)
+            {
+                foreach (var SentFriendReq in listReqSent)
+                {
+                    context.FriendRequests.Remove(SentFriendReq);
+                }
+            }
+            context.SaveChanges();
+            //REMOVE COMMENTS 
+            var comm = user.Comments.ToList();
+            if (comm.Count != 0)
+            {
+                foreach (var Comment in comm)
+                {
+                    context.PostComments.Remove(Comment);
+                }
+            }
+            context.SaveChanges();
+            //REMOVE POSTS
+            var listPosts = user.Posts.ToList();
+            if (listPosts.Count != 0)
+            {
+                foreach (var Post in listPosts)
+                {
+                    context.Posts.Remove(Post);
+                }
+            }
+            context.SaveChanges();
+            //REMOVE AWARDS 
+            var award = user.Awards.ToList();
+            if (award.Count != 0)
+            {
+                foreach (var Award in award)
+                {
+                    context.Awards.Remove(Award);
+                }
+            }
+            context.SaveChanges();
+            //REMOVE RATINGS 
+            var ratings = user.Ratings.ToList();
+            if (ratings.Count != 0)
+            {
+                foreach (var Rating in ratings)
+                {
+                    context.Ratings.Remove(Rating);
+                }
+            }
+            context.SaveChanges();
+            //REMOVE IMAGES 
+            var imgAlb = user.Albums.FirstOrDefault();
+            var img = user.Images.ToList();
+            if (img.Count != 0)
+            {
+                foreach (var Image in img)
+                {
+                    context.Images.Remove(Image);
+                }
+            }
+            context.SaveChanges();
+            //REMOVE ALBUM 
+            var listAlbums = user.Albums.ToList();
+            if (listAlbums.Count != 0)
+            {
+                foreach (var Album in listAlbums)
+                {
+                    context.Albums.Remove(Album);
+                }
+            }
+            context.SaveChanges();
+            //REMOVE USER 
+            var Oneuser = context.UserProfiles.FirstOrDefault(u => u.UserId == userId);
+            context.UserProfiles.Remove(Oneuser);
+            context.SaveChanges();
 
+            if (userId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user1 = await UserManager.FindByIdAsync(userId);
+            var logins = user1.Logins;
+            using (var transaction = context.Database.BeginTransaction())
+            {
+                foreach (var login in logins.ToList())
+                {
+                    await UserManager.RemoveLoginAsync(login.UserId, new UserLoginInfo(login.LoginProvider, login.ProviderKey));
+                }
+
+                //Delete User
+                await UserManager.DeleteAsync(user1);
+
+                TempData["Message"] = "User Deleted Successfully. ";
+                TempData["MessageValue"] = "1";
+                transaction.Commit();
+            }
+            AuthManager.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+        public IAuthenticationManager AuthManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
