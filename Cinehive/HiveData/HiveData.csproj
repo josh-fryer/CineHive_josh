@@ -248,6 +248,10 @@
     <Compile Include="Migrations\202104141313592_AddImg.Designer.cs">
       <DependentUpon>202104141313592_AddImg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104141905325_RemoveImg.cs" />
+    <Compile Include="Migrations\202104141905325_RemoveImg.Designer.cs">
+      <DependentUpon>202104141905325_RemoveImg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -357,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104141313592_AddImg.resx">
       <DependentUpon>202104141313592_AddImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104141905325_RemoveImg.resx">
+      <DependentUpon>202104141905325_RemoveImg.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

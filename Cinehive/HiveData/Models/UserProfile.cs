@@ -45,7 +45,6 @@ namespace HiveData.Models
         public virtual ICollection<Award> Awards  { get; set; }
         public virtual ICollection<Album> Albums { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
-        public virtual ICollection<Image> Images { get; set; }
         public virtual ApplicationUser User { get; set; }       
         [NotMapped]
         public HttpPostedFileBase ProfilePicture { get; set; }

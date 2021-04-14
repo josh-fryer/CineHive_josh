@@ -543,10 +543,9 @@ namespace Cinehive.Controllers
                     context.Ratings.Remove(Rating);
                 }
             }
+            //REMOVE IMAGES
             context.SaveChanges();
-            //REMOVE IMAGES 
-            var imgAlb = user.Albums.FirstOrDefault();
-            var img = user.Images.ToList();
+            var img = context.Images.ToList();
             if (img.Count != 0)
             {
                 foreach (var Image in img)
@@ -569,7 +568,6 @@ namespace Cinehive.Controllers
             var Oneuser = context.UserProfiles.FirstOrDefault(u => u.UserId == userId);
             context.UserProfiles.Remove(Oneuser);
             context.SaveChanges();
-
             if (userId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
