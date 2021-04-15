@@ -71,7 +71,9 @@ namespace Cinehive.Controllers
                 // check if movie needs adding to db and add view to counter
                 movieService.AddToMoviesOrAddView(movie);
             }
-                                 
+
+            ViewBag.avgRating = movieService.GetAvgRating(movie.MovieApi_ID);
+
             return View(movie);
         }
 
@@ -85,7 +87,7 @@ namespace Cinehive.Controllers
                 // check if movie needs adding to db and add view to counter
                 movieService.AddToMoviesOrAddView(movie);
             }
-
+            ViewBag.avgRating = movieService.GetAvgRating(movie.MovieApi_ID);
             return View("ViewMovie", movie);
         }
 

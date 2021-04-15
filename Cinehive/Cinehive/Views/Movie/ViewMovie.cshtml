@@ -1,21 +1,30 @@
 ﻿@model HiveData.Models.Movie
 
-@{
-    ViewBag.Title = "ViewMovie";
+@{      
+    if (Model.Title != null)
+    {
+        ViewBag.Title = @Model.Title;
+    }
+    else
+    {
+        ViewBag.Title = "Could not find movie";
+    }
 }
 
 <div class="container">
     <br/>
-    <div class="panel">
+    <div class="well bg-white">
         @if (Model == null || Model.MovieApi_ID == 0)
         {
-            <h5 class="text-center">Could not find movie</h5>
+            <div class="panel">
+                <h5 class="text-center">Could not find movie</h5>
+            </div>
         }
         else
         {
             <h2>@Model.Title</h2>
-            <div class="media">
-                <div class="media-left">
+            <div class="row">    
+                <div class="col-md-6">                    
                     @if (Model.PosterPath == null)
                     {
                         <img class="img" src="~/Content/Img/poster-placeholder.jpg" width="320" />
@@ -25,70 +34,121 @@
                         <img class="img" src="http://image.tmdb.org/t/p/w342@(Model.PosterPath)" width="320" />
                     }
                 </div>
-                <div class="media-right">
+                <div class="col-md-6">                   
                     @if (Model.VideoKey != null)
-                    {
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/@(Model.VideoKey)" title="YouTube video player"
-                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-                    gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    {   <div class="videoContainer">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/@(Model.VideoKey)" title="YouTube video player"
+                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+                                    gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
                     }
-                </div>
-                <div class="media"></div>
+                    else 
+                    {
+                        <h5>No trailers available</h5>
+                    }
+                </div>              
             </div>
             <br />
-            if(User.Identity.IsAuthenticated)
-            {
-    <ul class="list-unstyled">
-        @*<li>
-            <a href="@Url.Action("RateMovie","Movie",
-                    new { movieApiID = Model.MovieApi_ID, stars = 1})" onclick="StarFilled()">
-                <i id="star1" class="glyphicon glyphicon-star-empty"></i>1 star
-            </a>
-        </li>*@
-        <li>
-            <button type="button" onclick="FillStar(1)">
-                <i id="star1" class="glyphicon glyphicon-star-empty"></i>1 star
-            </button>
-        </li>
-        <li>
-            <button type="button" onclick="FillStar(2)">
-                <i id="star2" class="glyphicon glyphicon-star-empty"></i>2 star
-            </button>
-        </li>
-        <li>
-            <button type="button" onclick="FillStar(3)">
-                <i id="star3" class="glyphicon glyphicon-star-empty"></i>3 star
-            </button>
-        </li>
-        <li>
-            <button type="button" onclick="FillStar(4)">
-                <i id="star4" class="glyphicon glyphicon-star-empty"></i>4 star
-            </button>
-        </li>
-        <li>
-            <button type="button" onclick="FillStar(5)">
-                <i id="star5" class="glyphicon glyphicon-star-empty"></i>5 star
-            </button>
-        </li>
-    </ul>
-            }
-            <dl class="dl-horizontal">
-                <dt>
-                    Overview:
-                </dt>
+            <div class="row">                
+                <div class="col-md-9">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Overview:
+                        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Overview)
-                </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Overview)
+                        </dd>
 
-                <dt>
-                    Release Date:
-                </dt>
+                        <dt>
+                            Release Date:
+                        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.ReleaseDate)
-                </dd>
-            </dl>
+                        <dd>
+                            @Html.DisplayFor(model => model.ReleaseDate)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-md-3 viewMovie-right-col">
+                    <div>
+                        <b>Cinehive users rate this:</b>
+                        <div class="cine-rating-list">
+                            <ul>
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    if (i < ViewBag.avgRating)
+                                    {
+                                        <li>
+                                            <span id="cineStar@(i+1)" class="glyphicon glyphicon-star cine-rating-star"></span>
+                                        </li>
+                                    }
+                                    else 
+                                    { 
+                                        <li>
+                                            <span id="cineStar@(i+1)" class="glyphicon glyphicon-star-empty cine-rating-star"></span>
+                                        </li>
+                                    }
+                                }
+                                @*<li>
+                                    <span id="cineStar1" class="glyphicon glyphicon-star-empty cine-rating-star"></span>
+                                </li>
+                                <li>
+                                    <span id="cineStar2" class="glyphicon glyphicon-star-empty cine-rating-star"></span>
+                                </li>
+                                <li>
+                                    <span id="cineStar3" class="glyphicon glyphicon-star-empty cine-rating-star"></span>
+                                </li>
+                                <li>
+                                    <span id="cineStar4" class="glyphicon glyphicon-star-empty cine-rating-star"></span>
+                                </li>
+                                <li>
+                                    <span id="cineStar5" class="glyphicon glyphicon-star-empty cine-rating-star"></span>
+                                </li>*@
+                            </ul>
+                        </div>
+                    </div>
+
+                    @if(User.Identity.IsAuthenticated)
+                    {      
+                        @*<li>
+                            <a href="@Url.Action("RateMovie","Movie",
+                                    new { movieApiID = Model.MovieApi_ID, stars = 1})" onclick="StarFilled()">
+                                <i id="star1" class="glyphicon glyphicon-star-empty"></i>1 star
+                            </a>
+                        </li>*@             
+                        <b>Rate this:</b>
+                        <div class="rating-list">
+                            <ul>
+                                <li>
+                                    <button class="" type="button" onclick="FillStar(1)">
+                                        <i id="star1" class="glyphicon glyphicon-star-empty"></i>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="" type="button" onclick="FillStar(2)">
+                                        <i id="star2" class="glyphicon glyphicon-star-empty"></i>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="" type="button" onclick="FillStar(3)">
+                                        <i id="star3" class="glyphicon glyphicon-star-empty"></i>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="" type="button" onclick="FillStar(4)">
+                                        <i id="star4" class="glyphicon glyphicon-star-empty"></i>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="" type="button" onclick="FillStar(5)">
+                                        <i id="star5" class="glyphicon glyphicon-star-empty"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>                 
+                    }
+                </div>
+            </div>
         }
     </div>
 </div>
@@ -107,3 +167,4 @@
         xhttp.send();        
     }
 </script>
+<script></script>

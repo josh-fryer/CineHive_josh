@@ -44,7 +44,17 @@ body {
     color: gray;
 }
 
+
+/*/////////// Background Colour /////////////////*/
+.bg-white{
+    background-color:white;
+}
+
 /* ///////// glyphicon sizes /////////// */
+.gi-1-5x {
+    font-size: 1.5em;
+}
+
 .gi-2x {
     font-size: 2em;
 }
@@ -774,7 +784,6 @@ body {
     margin-top:20px;
 }
 /*Movie index*/
-
 .poster-img {
     border-radius:15px;
 }
@@ -801,4 +810,85 @@ body {
 }
 .movie-title {
     color:white;
+}
+
+/*########### ViewMovie ################*/
+.cine-rating-list {
+    margin: 0;
+    padding: 0;
+    background-color: #cfcfcf;
+    /*padding: 10px 5px 10px 5px;*/
+    height: 50px;
+    width: 220px;
+    border-radius: 20px;
+    font-size: 1.8em;
+}
+
+.cine-rating-list ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    margin-right:40px;
+}
+
+.cine-rating-list li {
+    display:inline-block   
+}
+
+.cine-rating-star {
+    margin: 4px;   
+}
+
+/*.cine-rating-list-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;*/
+    /*border: 3px solid green;*/
+/*}*/
+
+.rating-list {
+    /*list-style-type: none;*/
+    margin: 0;
+    padding: 0;
+    background-color: #cfcfcf;
+    height: 50px;
+    width: 220px;
+    border-radius: 20px;
+    font-size: 1.8em;
+}
+
+.rating-list ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    margin-right:40px;
+}
+
+.rating-list button {
+    border:none;
+    color:none;
+    background-color: transparent;
+    margin:4px;
+    padding:0;
+}
+
+.rating-list li {
+    display: inline-block;
+    /*font-size:1.8em;*/
+}
+
+.videoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+}
+
+.viewMovie-right-col {
+    border-left: 2px solid #e8e8e8;
 }
