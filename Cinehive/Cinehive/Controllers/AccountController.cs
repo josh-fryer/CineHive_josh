@@ -591,6 +591,7 @@ namespace Cinehive.Controllers
             AuthManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
+
         public IAuthenticationManager AuthManager
         {
             get

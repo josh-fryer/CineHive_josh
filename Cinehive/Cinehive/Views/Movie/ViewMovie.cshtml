@@ -38,19 +38,39 @@
             <br />
             if(User.Identity.IsAuthenticated)
             {
-                <ul class="list-unstyled">
-                    <li><a href="@Url.Action("RateMovie","Movie", 
-                                new { movieApiID = Model.MovieApi_ID, stars = 1})">1 star</a>
-                    </li>
-                    <li><a href="@Url.Action("RateMovie","Movie", 
-                                new { movieApiID = Model.MovieApi_ID, stars = 2})">2 star</a></li>
-                    <li><a href="@Url.Action("RateMovie","Movie", 
-                                new { movieApiID = Model.MovieApi_ID, stars = 3})">3 star</a></li>
-                    <li><a href="@Url.Action("RateMovie","Movie", 
-                                new { movieApiID = Model.MovieApi_ID, stars = 4})">4 star</a></li>
-                    <li><a href="@Url.Action("RateMovie","Movie", 
-                                new { movieApiID = Model.MovieApi_ID, stars = 5})">5 star</a></li>
-                </ul>
+    <ul class="list-unstyled">
+        @*<li>
+            <a href="@Url.Action("RateMovie","Movie",
+                    new { movieApiID = Model.MovieApi_ID, stars = 1})" onclick="StarFilled()">
+                <i id="star1" class="glyphicon glyphicon-star-empty"></i>1 star
+            </a>
+        </li>*@
+        <li>
+            <button type="button" onclick="FillStar(1)">
+                <i id="star1" class="glyphicon glyphicon-star-empty"></i>1 star
+            </button>
+        </li>
+        <li>
+            <button type="button" onclick="FillStar(2)">
+                <i id="star2" class="glyphicon glyphicon-star-empty"></i>2 star
+            </button>
+        </li>
+        <li>
+            <button type="button" onclick="FillStar(3)">
+                <i id="star3" class="glyphicon glyphicon-star-empty"></i>3 star
+            </button>
+        </li>
+        <li>
+            <button type="button" onclick="FillStar(4)">
+                <i id="star4" class="glyphicon glyphicon-star-empty"></i>4 star
+            </button>
+        </li>
+        <li>
+            <button type="button" onclick="FillStar(5)">
+                <i id="star5" class="glyphicon glyphicon-star-empty"></i>5 star
+            </button>
+        </li>
+    </ul>
             }
             <dl class="dl-horizontal">
                 <dt>
@@ -72,3 +92,18 @@
         }
     </div>
 </div>
+
+<script>
+    function FillStar(star) {
+        console.log("button clicked")
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("star" + star).className = "glyphicon glyphicon-star";
+            }
+        };
+        xhttp.open("GET", "https://localhost:44383/Movie/RateMovie?movieApiID=" + @Model.MovieApi_ID.ToString() + "&stars="+star, true);
+        console.log(xhttp);
+        xhttp.send();        
+    }
+</script>

@@ -30,10 +30,7 @@ namespace Cinehive.Controllers
         {
             var userid = User.Identity.GetUserId();
             var userpost = context.UserProfiles.Where(c => c.UserId == userid).FirstOrDefault();
-            
-            
-
-
+                      
             ProfilePostsViewModel profilePostsViewModel = new ProfilePostsViewModel
             {
                 userProfile = profileService.GetUserProfile(userid),

@@ -75,10 +75,9 @@ namespace Cinehive.Controllers
             return View(movie);
         }
 
-        // overload version by movie's Api ID
-        //[Route("Movie/ViewMovie/{movieApiID:int}")]
-        [ActionName("ViewMovieByID")]
-        public ActionResult ViewMovie(int movieApiID, bool addView = true)
+
+        //[ActionName("ViewMovieByID")]
+        public ActionResult ViewMovieByID(int movieApiID, bool addView = true)
         {
             Movie movie = movieService.GetMovieByID(movieApiID);
             if (addView)
@@ -90,13 +89,15 @@ namespace Cinehive.Controllers
             return View("ViewMovie", movie);
         }
 
-        public ActionResult RateMovie(int movieApiID, int stars)
+
+        public void RateMovie(int movieApiID, int stars)
         {
             var userId = User.Identity.GetUserId();
                        
             movieService.RateMovie(movieApiID, stars, userId);
-            
-            return RedirectToAction("ViewMovieByID", new { movieApiId = movieApiID, addView = false} );
+
+            //return RedirectToAction("ViewMovieByID", new { movieApiId = movieApiID, addView = false} );
+            //return new EmptyResult();
         }
 
     }
