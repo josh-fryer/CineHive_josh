@@ -836,6 +836,20 @@ a.remove-friend-link:active {
     width: 700px;
     margin-left: 123px;
 }
+.viewmore {
+    text-align:center;
+}
+.comment-shift{
+    margin-right:10px;
+}
+.comment-button {
+    border: none;
+    background: none;
+    color: #337ab7;
+}
+.comment-button:hover {
+    text-decoration:underline;
+}
 .counter-margin {
     margin-top:20px;
 }

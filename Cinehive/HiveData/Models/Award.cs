@@ -12,5 +12,6 @@ namespace HiveData.Models
         [Key]
         public int AwardId { get; set; }
         public int PostId { get; set; }
+
     }
 }

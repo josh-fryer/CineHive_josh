@@ -37,5 +37,18 @@ namespace HiveData.ViewModels
             string userpicture = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.ImagePath).FirstOrDefault();
             return (userpicture);
         }
+        public bool AwardGiven(int id)
+        {
+            var award = context.UserProfiles.Where(c => c.Awards.Contains(context.Awards.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.UserId).FirstOrDefault();
+
+            if (award == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

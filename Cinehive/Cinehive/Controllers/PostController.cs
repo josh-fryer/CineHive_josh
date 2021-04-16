@@ -126,5 +126,21 @@ namespace Cinehive.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        [HttpGet]
+        public ActionResult PostCommentsPartial(int i_d)
+        {
+            var comments = context.Posts.Find(i_d).PostComments.ToList();
+            string OriginalPost = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(x => x.PostId == i_d).FirstOrDefault())).Select(c => c.UserId).FirstOrDefault();
+
+
+            ProfilePostsViewModel postCommentUserViewModel = new ProfilePostsViewModel
+            {
+                userProfile = context.UserProfiles.Where(c => c.UserId == OriginalPost).FirstOrDefault(),
+                PostComments = comments,
+                Post = context.Posts.Find(i_d)
+            };
+
+            return PartialView(postCommentUserViewModel);
+        }
     }
 }
