@@ -1,0 +1,48 @@
+﻿@model IEnumerable<HiveData.Models.UserProfile>
+@{
+    ViewBag.Title = "Your Friends";
+}
+
+<div class="container">
+    <div class="row profile">
+        <div class="col-md-2">
+            <div class="album-sidebar">
+
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li class="active">
+                            <a href='javascript:history.go(-1)'>
+                                <i class="glyphicon glyphicon-arrow-left"></i>
+                                Go back
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-10">
+            <div class="profile-content">
+                <h2>@ViewBag.Title</h2>
+                <hr />
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <a href="@Url.Action("ViewProfile","Profile", new {id = item.ProfileId })">
+                            @if (item.ImagePath == null)
+                            {
+                                <img class="img-responsive circular-image" src="~/Content/Img/profile-image-placeholder.png" />
+                            }
+                            else
+                            {
+                                <img class="img-responsive circular-image" src="~/@item.ImagePath" />
+                            }
+                        </a>
+                        <p class="Friend-text">@item.Firstname @item.Lastname</p>
+                    </div>
+                }
+            </div>
+        </div>
+        </div>
+    </div>
+

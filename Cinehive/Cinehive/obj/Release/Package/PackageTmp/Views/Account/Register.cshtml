@@ -1,0 +1,103 @@
+﻿@model Cinehive.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register with CineHive";
+}
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="container">
+        <div class="row centered-form">
+            <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                <div class="panel panel-default panel-edit">
+                    <div class="panel-heading">
+                        <h3 class="panel-title Paneltitle-edit">@ViewBag.Title.</h3>
+
+                    </div>
+                    <hr class="reg-box-hr" />
+                    <div class="panel-body">
+                        <form role="form">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(m => m.Firstname, new { @class = "form-control input-sm", placeholder = "First name" })
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control input-sm", placeholder = "Last name" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-sm", placeholder = "Email" })
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(m => m.ConfirmEmail, new { @class = "form-control input-sm", placeholder = "Confirm Email" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control input-sm", placeholder = "Password" })
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control input-sm", placeholder = "Confirm Password" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="date-of-birth-label">Date of Birth</label>
+                                        <input type="date" class="form-control input-sm" id="DateOfBirth" name="DateOfBirth" placeholder="Date of Birth">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="date-of-birth-label">Gender</label>
+                                        <div class="gender-checkbox">
+                                            <input type="radio" class="gender-checkbox-label" name="Gender" value="Male"> Male
+                                            <input type="radio" class="gender-checkbox-label" name="Gender" value="Female"> Female
+                                            <input type="radio" class="gender-checkbox-label" name="Gender" value="Other"> Other
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <p>
+                                By registering with 'CineHive.' You agree to our @Html.ActionLink("Terms and Conditions", "", "").
+                                To learn how we use and share your data view our @Html.ActionLink("Data Policy", "", ""). To see how
+                                use cookies and similar technology view our @Html.ActionLink("Cookie Policy", "", "").
+                            </p>
+
+
+                            <input type="submit" value="Register" class="Panel-register-button">
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

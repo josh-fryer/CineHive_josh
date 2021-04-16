@@ -1,0 +1,65 @@
+﻿@model IEnumerable<HiveData.Models.Album>
+
+@{
+    ViewBag.Title = "Albums";
+}
+<div class="container">
+    <div class="row profile">
+        <div class="col-md-3">
+            <div class="album-sidebar">
+
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li class="active">
+                            <a href='javascript:history.go(-1)'>
+                                <i class="glyphicon glyphicon-arrow-left"></i>
+                                Go back
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Create","Album")">
+                                <i class="glyphicon glyphicon-picture"></i>
+                                Create Album
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+            <div class="col-md-9">
+                <div class="profile-content">
+
+                    @if (Model.Any(i => i != null))
+                    {
+
+                        foreach (var item in Model)
+                        {
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a asp-action="Details" asp-controller="Album" asp-route-id="" href="@Url.Action("ViewAlbum", "Album", new {id = item.AlbumId })"/>
+                            <img class="img-responsive" src="~/Content/Img/album-placeholder.jpg" />
+                            <div class="album-text">
+                                @Html.ActionLink(item.AlbumName, "ViewAlbum", "Album", new { id = item.AlbumId }, new {@class = "album-text-dec" })
+                            </div>
+                    </div>
+
+
+                        }
+                    }
+                    else
+                    {
+                        <div>
+                            <p>You dont have any albums</p>
+
+                            @Html.ActionLink("Create a new album", "Create")
+
+                        </div>
+
+                    }
+                </div>
+           </div>
+    </div>
+</div>
+
+

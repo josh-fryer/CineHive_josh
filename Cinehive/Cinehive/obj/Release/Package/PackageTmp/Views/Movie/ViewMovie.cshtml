@@ -1,0 +1,145 @@
+﻿@model HiveData.Models.Movie
+
+@{      
+    if (Model.Title != null)
+    {
+        ViewBag.Title = @Model.Title;
+    }
+    else
+    {
+        ViewBag.Title = "Could not find movie";
+    }
+}
+
+<div class="container">
+    <br/>
+    <div class="well bg-white">
+        @if (Model == null || Model.MovieApi_ID == 0)
+        {
+            <div class="panel">
+                <h5 class="text-center">Could not find movie</h5>
+            </div>
+        }
+        else
+        {
+            <h2>@Model.Title</h2>
+            <div class="row">    
+                <div class="col-md-6">                    
+                    @if (Model.PosterPath == null)
+                    {
+                        <img class="img" src="~/Content/Img/poster-placeholder.jpg" width="320" />
+                    }
+                    else
+                    {
+                        <img class="img" src="http://image.tmdb.org/t/p/w342@(Model.PosterPath)" width="320" />
+                    }
+                </div>
+                <div class="col-md-6">                   
+                    @if (Model.VideoKey != null)
+                    {   <div class="videoContainer">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/@(Model.VideoKey)" title="YouTube video player"
+                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+                                    gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    }
+                    else 
+                    {
+                        <h5>No trailers available</h5>
+                    }
+                </div>              
+            </div>
+            <br />
+            <div class="row">                
+                <div class="col-md-9">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Overview:
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Overview)
+                        </dd>
+
+                        <dt>
+                            Release Date:
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ReleaseDate)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-md-3 viewMovie-right-col">
+                    <div>
+                        <b>Cinehive users rate this:</b>
+                        <div class="cine-rating-list">
+                            <ul>
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    if (i < ViewBag.avgRating)
+                                    {
+                                        <li>
+                                            <span id="cineStar@(i+1)" class="glyphicon glyphicon-star cine-rating-star"></span>
+                                        </li>
+                                    }
+                                    else 
+                                    { 
+                                        <li>
+                                            <span id="cineStar@(i+1)" class="glyphicon glyphicon-star-empty cine-rating-star"></span>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+                    @if(User.Identity.IsAuthenticated)
+                    {                 
+                        <b>Rate this:</b>
+                        <div class="rating-list">
+                            <ul>
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    if (i < ViewBag.userRating)
+                                    {
+                                        <li>
+                                            <button class="" type="button" onclick="FillStar(@(i+1))">
+                                                <i id="star@(i+1)" class="glyphicon glyphicon-star"></i>
+                                            </button>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <button class="" type="button" onclick="FillStar(@(i+1))">
+                                                <i id="star@(i+1)" class="glyphicon glyphicon-star-empty"></i>
+                                            </button>
+                                        </li>
+                                    }
+                                }  
+                            </ul>
+                        </div>                 
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    function FillStar(star) {
+        console.log("button clicked")
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("star" + star).className = "glyphicon glyphicon-star";
+                //for (var i = 0; i < star; i++) {
+
+                //}
+            }
+        };
+        xhttp.open("GET", "https://localhost:44383/Movie/RateMovie?movieApiID=" + @Model.MovieApi_ID.ToString() + "&stars="+star, true);
+        console.log(xhttp);
+        xhttp.send();        
+    }
+</script>

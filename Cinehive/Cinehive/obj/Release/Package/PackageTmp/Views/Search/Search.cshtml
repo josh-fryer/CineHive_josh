@@ -1,0 +1,207 @@
+﻿@model HiveData.ViewModels.SearchResultsVM
+
+@{
+    ViewBag.Title = "Search Results";
+    if(Model.PostResults != null)
+    {
+        ViewBag.PostResults = Model.PostResults;
+    }
+    bool hasPosts = false;
+    bool hasUsers = false;
+    bool hasMovies = false;
+}
+
+<div class="container">
+    <br />
+
+    @if (Model.UserResults != null && Model.UserResults.Count > 0)
+    {
+        hasUsers = true;
+        <h2 id="txt-white">People</h2>
+        <div class="container">
+            @for (int i = 0; i < 5 && i < Model.UserResults.Count; i++)
+            {
+                var item = Model.UserResults[i];
+                <div class="container">
+                    <div class="well">
+                        <div class="media">
+                            <a class="media-left" href="@Url.Action("ViewProfile", "Profile", new { id = item.ProfileId })">
+                                @if (item.ImagePath == null)
+                                {
+                                    <img src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
+                                }
+                                else
+                                {
+                                    <img src="~/@item.ImagePath" width="64" height="64" />
+                                }
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    @Html.ActionLink(item.Firstname + " " + item.Lastname, "ViewProfile", "Profile",
+                                        new { id = item.ProfileId }, new { })
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <ul class="list-group- list-inline">
+                @if (Model.UserResults.Count > 5)
+                {
+                    <li class="list-group-item">
+                        @Html.ActionLink("View More...", "FilteredSearch", "Search", new { query = ViewBag.query, type = "user" }, new { })
+                    </li>
+                }
+                <li class="list-group-item">Total Results: @Model.UserResults.Count</li>
+            </ul>
+        </div>
+        <hr />
+    }
+
+    @if (Model.PostResults != null && Model.PostResults.Count > 0)
+    {
+        hasPosts = true;
+        <h2 id="txt-white">Posts</h2>
+        <div class="container">
+            @for (int i = 0; i < 5 && i < Model.PostResults.Count; i++)
+            {
+                var post = Model.PostResults[i];
+                var user = Model.FindUserProfile(post.PostId);
+
+                <div class="container">
+                    <div class="well">
+                        <div class="media">
+                            <a class="media-left" href="@Url.Action("ViewProfile", "Profile", new { id = user.ProfileId })">
+                                @if (user.ImagePath == null)
+                                {
+                                    <img src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
+                                }
+                                else
+                                {
+                                    <img src="~/@user.ImagePath" width="64" height="64" />
+                                }
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    @Html.ActionLink(user.Firstname + " " + user.Lastname, "ViewProfile", "Profile",
+                                        new { id = user.ProfileId }, new { })
+                                </h4>
+                                <p>
+                                    @*Display posts containg film links with Html.Raw*@
+                                    @if ((bool)post.hasFilmLink)
+                                    { @Html.Raw(post.PostContent) }
+                                    else
+                                    { @post.PostContent }
+                                </p>
+                                <ul class="list-inline list-unstyled">
+                                    <li> @post.DatePosted </li>
+                                    <li>|</li>
+                                    @if (post.Awards < 2)
+                                    {
+                                        <li> @post.Awards Award</li>
+                                    }
+                                    else
+                                    {
+                                        <li> @post.Awards Awards</li>
+                                    }
+                                    @if (post.Popular == true)
+                                    {
+                                        <li><strong>Popular</strong></li>
+                                    }
+                                </ul>
+                                <ul class="list-inline list-unstyled">
+                                    @if (Model.AwardGiven(post.PostId) == true)
+                                    {
+                                        <li><strong>@Html.ActionLink("Revoke", "RevokeAward", "Post", new { id = post.PostId }, new { })</strong></li>
+                                    }
+                                    else
+                                    {
+                                        <li>@Html.ActionLink("Award", "GiveAward", "Post", new { id = post.PostId }, new { })</li>
+                                    }
+                                    <li>|</li>
+                                    <li>@Html.ActionLink("Comment", "Create", "Comment", new { id = post.PostId }, new { })</li>
+                                    <li>|</li>
+                                    <li>@Html.ActionLink("Share", "")</li>
+                                    <li>|</li>
+                                    <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = post.PostId }, new { })</li>
+
+                                    @if (Model.IsUserPost(post.PostId) == true || HttpContext.Current.User.IsInRole("AdminUser"))
+                                    {
+                                        <li>|</li>
+                                        <li> @Html.ActionLink("Remove", "DeletePost", "Post", new { id = post.PostId }, null) </li>
+                                        <li>|</li>
+                                        <li> @Html.ActionLink("Edit", "EditPost", "Post", new { id = post.PostId }, null) </li>
+                                    }
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <ul class="list-group- list-inline">
+                @if (Model.PostResults.Count > 5)
+                {
+                    <li class="list-group-item">@Html.ActionLink("View More...", "FilteredSearch", "Search", new { query = ViewBag.query, type = "post" }, new { })</li>
+                }
+                <li class="list-group-item">Total Results: @Model.PostResults.Count</li>
+            </ul>
+        </div>
+        <hr />
+    }
+
+    @if (Model.MovieResults != null && Model.MovieResults.Count > 0)
+    {
+        hasMovies = true;
+        
+        <div class="container">
+            <h2 id="txt-white">Movies</h2>
+            @for (int i = 0; i < 5 && i < Model.MovieResults.Count; i++)
+            {
+                var item = Model.MovieResults[i];
+                <div class="container">
+                    <div class="well">
+                        <div class="media">
+                            <a class="media-left" href="@Url.Action("GetMovieByID", "Movie", new { id = item.MovieApi_ID })">
+                                @if (item.PosterPath == null)
+                                {
+                                    <span class="glyphicon glyphicon-film"></span>
+                                }
+                                else
+                                {
+                                    <img class="img" src="http://image.tmdb.org/t/p/w92@(item.PosterPath)" width="92" />
+                                }
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    @Html.ActionLink(item.Title, "GetMovieByID", "Movie", new { id = item.MovieApi_ID }, new { })
+                                </h4>
+                                <p>@item.Overview</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <ul class="list-group list-group- list-inline">
+                @if (Model.MovieResults.Count > 5)
+                {
+                    <li class="list-group-item">
+                        @Html.ActionLink("View More...", "FilteredSearch", "Search", new { query = ViewBag.query, type = "movie" }, new { })
+                    </li>
+                }
+                <li class="list-group-item">Total Results: @Model.totalMovieResults</li>
+            </ul>
+        </div>
+    }
+
+    @if (!hasMovies && !hasPosts && !hasUsers)
+    {
+        <div class="well">
+            <p>Returned 0 results.</p>
+        </div>
+        
+    }
+</div>
+
+

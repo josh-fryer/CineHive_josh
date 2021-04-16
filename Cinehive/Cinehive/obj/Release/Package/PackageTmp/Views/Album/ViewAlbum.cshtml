@@ -1,0 +1,77 @@
+﻿@model HiveData.ViewModels.AlbumImageViewModel
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "ViewAlbum";    
+}
+
+<div class="container">
+    <div class="row profile">
+        <div class="col-md-3">
+            <div class="album-sidebar">
+
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li class="active">
+                            <a href="@Url.Action("Index","Album")">
+                                <i class="glyphicon glyphicon-arrow-left"></i>
+                                Go back
+                            </a>
+                        </li>
+                        @if (ViewBag.IsUser)
+                        {
+                            <li>
+                                <a href="@Url.Action("AddImageToAlbum", "Album", new { id = Model.Album.AlbumId })">
+                                    <i class="glyphicon glyphicon-picture"></i>
+                                    Add Image
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("DeleteAlbum", "Album", new { id = Model.Album.AlbumId })">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                    Delete Album
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-9">
+            <div class="profile-content">
+
+                @if (Model.Images.Any(i => i != null))
+                {
+
+                    foreach (var item in Model.Images)
+                    {
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="@Url.Action("ViewImage", "Album", new { id = item.ImageId, isUser = ViewBag.IsUser })">
+                            <img class="img-responsive" src="~/@item.ImagePath" />
+                            </a>
+                        @if (ViewBag.IsUser) {
+                        @Html.ActionLink("Set as Profile Pic", "SetAsProfilePicture", new { Imagepath = item.ImagePath }) }
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div>
+                        <p>This album is empty</p>
+                        @if (ViewBag.IsUser)
+                        {
+                            @Html.ActionLink("Add an Image", "AddImageToAlbum", new { id = Model.Album.AlbumId }) 
+                        }
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

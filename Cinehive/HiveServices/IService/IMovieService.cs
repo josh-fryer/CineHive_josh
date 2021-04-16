@@ -13,6 +13,6 @@ namespace HiveServices.Service
         Movie ConvertToMovie(dynamic item);
         Movie GetMovieByID(int id);
         void RateMovie(int movieApiID, int stars, string userId);
-        int GetAvgRating(int movieApiID);
+        int GetUserRating(string userID, int movieApiID);
     }
 }

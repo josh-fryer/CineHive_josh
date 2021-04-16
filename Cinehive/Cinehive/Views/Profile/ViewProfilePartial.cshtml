@@ -22,11 +22,10 @@
                 <button type="button" class="btn btn-success btn-sm">follow</button>
                 <button type="button" class="btn btn-danger btn-sm">message</button>
             </div>*@
-
         <div class="profile-usermenu">
             <ul class="nav">
                 <li class="active">
-                    <a href="@Url.Action("ViewProfile","Profile", new { id = Model.ProfileId })">
+                    <a href="@Url.Action("ViewProfile","Profile", new { id = Model.ProfileId } )">
                         <i class="glyphicon glyphicon-th-list"></i>
                         Feed
                     </a>
@@ -52,38 +51,38 @@
                         Friends
                     </a>
                 </li>
-                <li>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        if (ViewBag.ReceivedFriendReq)
-                        {
-                            @Html.ActionLink("Accept Friend Request", "AddFriend", "Friend",
-                                        new { friendId = Model.UserId }, new { @class = "btn btn-success" })
-                        }
-                        else if (!ViewBag.IsFriend && !ViewBag.SentFriendReq)
-                        {
-                            @Html.ActionLink("Send Friend Request", "SendFriendReq", "Friend", new
-                            {
-                                friendProfileId = Model.ProfileId,
-                                friendUserId = Model.UserId
-                                }, new { @class = "btn btn-success" })
-                        }
-                        else if (ViewBag.SentFriendReq)
-                        {
-                            <h5>Waiting for @Model.Firstname to accept your Friend Request</h5>
-                        }
-                        else if (ViewBag.IsFriend)
-                        {
-                            @Html.ActionLink("Remove Friend", "Remove", "Friend",
-                            new
-                                 {
-                                    friendProfileId = Model.ProfileId,
-                                    friendUserId = Model.UserId
-                                }, new { @class = "btn btn-danger" });
-                        }
-                    }
-                </li>
             </ul>
+        </div>
+        <div class="friend-links">
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (ViewBag.ReceivedFriendReq)
+                {
+                @Html.ActionLink("Accept Friend Request", "AddFriend", "Friend",
+                                     new { friendId = Model.ProfileId}, new { @class = "friend-link" })
+                }
+                else if (!ViewBag.IsFriend && !ViewBag.SentFriendReq)
+                {
+                    @Html.ActionLink("Send Friend Request", "SendFriendReq", "Friend", new {
+                   friendProfileId = Model.ProfileId,
+                   friendUserId = Model.UserId
+                        }, new { @class = "friend-link" })
+                }
+                else if (ViewBag.SentFriendReq)
+                {
+                    <h5>Waiting for @Model.Firstname to accept your Friend Request</h5>
+                }
+                else if (ViewBag.IsFriend)
+                {
+                    @Html.ActionLink("Remove Friend", "Remove", "Friend",
+                         new
+                         {
+                             friendProfileId = Model.ProfileId,
+                             friendUserId = Model.UserId
+                         }, new { @class = "remove-friend-link" });
+
+                }
+            }
         </div>
         <div class="bio-box">
             <hr />

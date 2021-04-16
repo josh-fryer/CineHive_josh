@@ -1,0 +1,58 @@
+﻿@using Cinehive.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login to CineHive.";
+}
+
+
+<div class="split right">
+    <h3 class="LoginText WhiteText top-text">Login to CineHive.</h3>
+    <div class="Login-container LoginText WhiteText">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4 class="signin-text">Sign In.</h4>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email.." })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password.." })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="submit" value="Login" class="btn btn-primary btn-lg btn-block login-button" />
+                    </div>
+                </div>
+                @* Enable this once you have account confirmation enabled for password reset functionality *@
+                <p class="login-forgotpassword">
+                    @Html.ActionLink("Forgot password?", "ForgotPassword")
+                </p>
+            }
+        </section>
+    </div>
+    <p class="no-account">Don't have an account yet? @Html.ActionLink("Sign up now!", "Register")</p>
+</div>
+<div class="split left">
+    <p>Movies</p>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

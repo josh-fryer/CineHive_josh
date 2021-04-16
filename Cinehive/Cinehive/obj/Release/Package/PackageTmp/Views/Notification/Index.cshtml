@@ -1,0 +1,76 @@
+﻿@model IEnumerable<HiveData.Models.Notification>
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Notifications";
+    var userid = User.Identity.GetUserId();
+}
+<div class="container"><br />
+    <div class="row">    
+        <div class="col-md-12">
+            <div class="well well-sm notification-title">
+                <h2>Notifications.</h2>
+            </div>    
+        </div>
+    </div>
+    @if (Model.Any(i => i != null))
+    {
+        foreach (var item in Model)
+        {
+        
+            <div class="well">
+                <div class="media">
+                    <div class="media-left">
+                        <span class="glyphicon glyphicon-bell gi-2x"></span>
+                    </div>
+                    <div class="media-body">
+                        @switch (item.Type)
+                        {
+                            case "friendRequestRec":
+                                <h4 class="media-heading">Friend Request <small><i>@item.DateReceived</i></small></h4>
+                                break;
+                            case "addedFriend":
+                                <h4 class="media-heading">Friend Request Accepted</h4>
+                                break;
+                            default:
+                                <h4 class="media-heading">Notification</h4>
+                                break;
+                        }
+                        <p>
+                            @item.Message
+                        </p>
+                        <ul class="list-inline list-unstyled">
+                            @if (item.Type == "friendRequestRec")
+                            {
+                            <li>
+                                @*@Html.ActionLink("Accept", "AcceptFriendReq", "Friend", new { friendId = item.senderProfileID }, new { @class = "btn btn-success" })*@
+                                <a href="@Url.Action("AcceptFriendReq", "Friend", new { friendId = item.senderProfileID })" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </a>
+                            </li>
+                            }
+                            <li>@*@Html.ActionLink("Delete", "DeleteNotification", new { Id = item.Id })*@
+                                <a href="@Url.Action("DeleteNotification", "Notification", new { Id = item.Id })" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </li>
+
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+
+        }
+
+    }
+    else
+    {
+        <div class="well notification text-center">
+            <p>No notifications</p>
+        </div>
+    }
+</div>
+

@@ -89,61 +89,34 @@
                                         </li>
                                     }
                                 }
-                                @*<li>
-                                    <span id="cineStar1" class="glyphicon glyphicon-star-empty cine-rating-star"></span>
-                                </li>
-                                <li>
-                                    <span id="cineStar2" class="glyphicon glyphicon-star-empty cine-rating-star"></span>
-                                </li>
-                                <li>
-                                    <span id="cineStar3" class="glyphicon glyphicon-star-empty cine-rating-star"></span>
-                                </li>
-                                <li>
-                                    <span id="cineStar4" class="glyphicon glyphicon-star-empty cine-rating-star"></span>
-                                </li>
-                                <li>
-                                    <span id="cineStar5" class="glyphicon glyphicon-star-empty cine-rating-star"></span>
-                                </li>*@
                             </ul>
                         </div>
                     </div>
 
                     @if(User.Identity.IsAuthenticated)
-                    {      
-                        @*<li>
-                            <a href="@Url.Action("RateMovie","Movie",
-                                    new { movieApiID = Model.MovieApi_ID, stars = 1})" onclick="StarFilled()">
-                                <i id="star1" class="glyphicon glyphicon-star-empty"></i>1 star
-                            </a>
-                        </li>*@             
+                    {                 
                         <b>Rate this:</b>
                         <div class="rating-list">
                             <ul>
-                                <li>
-                                    <button class="" type="button" onclick="FillStar(1)">
-                                        <i id="star1" class="glyphicon glyphicon-star-empty"></i>
-                                    </button>
-                                </li>
-                                <li>
-                                    <button class="" type="button" onclick="FillStar(2)">
-                                        <i id="star2" class="glyphicon glyphicon-star-empty"></i>
-                                    </button>
-                                </li>
-                                <li>
-                                    <button class="" type="button" onclick="FillStar(3)">
-                                        <i id="star3" class="glyphicon glyphicon-star-empty"></i>
-                                    </button>
-                                </li>
-                                <li>
-                                    <button class="" type="button" onclick="FillStar(4)">
-                                        <i id="star4" class="glyphicon glyphicon-star-empty"></i>
-                                    </button>
-                                </li>
-                                <li>
-                                    <button class="" type="button" onclick="FillStar(5)">
-                                        <i id="star5" class="glyphicon glyphicon-star-empty"></i>
-                                    </button>
-                                </li>
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    if (i < ViewBag.userRating)
+                                    {
+                                        <li>
+                                            <button class="" type="button" onclick="FillStar(@(i+1))">
+                                                <i id="star@(i+1)" class="glyphicon glyphicon-star"></i>
+                                            </button>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <button class="" type="button" onclick="FillStar(@(i+1))">
+                                                <i id="star@(i+1)" class="glyphicon glyphicon-star-empty"></i>
+                                            </button>
+                                        </li>
+                                    }
+                                }  
                             </ul>
                         </div>                 
                     }
@@ -159,7 +132,19 @@
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("star" + star).className = "glyphicon glyphicon-star";
+                //document.getElementById("star" + star).className = "glyphicon glyphicon-star";
+                for (var i = 1; i <= 5; i++) {
+                    console.log("Looping")
+                    if (i <= star) {
+                        document.getElementById("star" + i).className = "glyphicon glyphicon-star";
+                    } else {
+                        document.getElementById("star" + i).className = "glyphicon glyphicon-star-empty"
+                    }
+                }
+                for (var i = star; i <= star; i++) {
+                    console.log("Looping")
+                    document.getElementById("star" + i).className = "glyphicon glyphicon-star";
+                }
             }
         };
         xhttp.open("GET", "https://localhost:44383/Movie/RateMovie?movieApiID=" + @Model.MovieApi_ID.ToString() + "&stars="+star, true);
@@ -167,4 +152,3 @@
         xhttp.send();        
     }
 </script>
-<script></script>

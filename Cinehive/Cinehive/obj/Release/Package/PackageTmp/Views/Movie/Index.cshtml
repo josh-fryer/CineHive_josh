@@ -1,0 +1,130 @@
+﻿@model HiveData.ViewModels.MovieHubViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="movie-explorer">
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        Find Your Film.
+                    </div>
+                </div>
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li class="active">
+                            <a href="@Url.Action("")">
+                                <i class="glyphicon glyphicon-film"></i>
+                                Genres
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("")">
+                                <i class="glyphicon glyphicon-pawn"></i>
+                                Most Viewed
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("")">
+                                <i class="glyphicon glyphicon-star"></i>
+                                Highly Rated
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("")">
+                                <i class="glyphicon glyphicon-stats"></i>
+                                Trending
+                            </a>
+                        </li>
+                        <li>
+                            <hr />
+                        </li>
+                        <li>
+                            <i class="latest-movie-text">Latest Movie</i>
+
+                            <a href="@Url.Action("GetMovieByID","Movie",new {id = Model.LatestMovie.ID })">
+                                @if (Model.LatestMovie.PosterPath == null)
+                                {
+                                    <img class="img-sidebar-poster" src="~/Content/Img/poster-placeholder.jpg" />
+                                }
+                                else
+                                {
+                                    <img class="img-sidebar-poster" src="http://image.tmdb.org/t/p/w342@(Model.LatestMovie.PosterPath)" />
+                                }
+                                <i class="latest-movie-text">@Model.LatestMovie.Title</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Popular", "Home")">
+                                <i class="glyphicon glyphicon-question-sign"></i>
+                                Random Movie
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-10">
+            <h3 class="movie-text">Top Upcoming</h3>
+            <hr />
+            @foreach (var item in Model.UpcomingMovie.Take(6))
+            {
+                <div class="col-sm-2">
+
+                    <div class="Poster-container">
+                        <a href="@Url.Action("GetMovieByID","Movie",new {id = item.MovieApi_ID })">
+                            <img class="img-responsive poster-img" src="http://image.tmdb.org/t/p/w342@(item.PosterPath)" />
+                        </a>
+                    </div>
+                    <p class="movie-title">@item.Title</p>
+                </div>
+            }
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-10 col-md-offset-2">
+            <h3 class="movie-text">Critically Acclaimed</h3>
+            <hr />
+            @foreach (var item in Model.CritAcclaim.Take(6))
+            {
+                <div class="col-sm-2">
+
+                    <div class="Poster-container">
+                        <a href="@Url.Action("GetMovieByID","Movie",new {id = item.MovieApi_ID })">
+                            <img class="img-responsive poster-img" src="http://image.tmdb.org/t/p/w342@(item.PosterPath)" />
+                        </a>
+                    </div>
+                    <p class="movie-title">@item.Title</p>
+                </div>
+            }
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-10 col-md-offset-2">
+            <h3 class="movie-text">In Theatres</h3>
+            <hr />
+            @foreach (var item in Model.InTheatres.Take(6))
+            {
+                <div class="col-sm-2">
+
+                    <div class="Poster-container poster-img">
+                        <a href="@Url.Action("GetMovieByID","Movie",new {id = item.MovieApi_ID })">
+                            <img class="img-responsive poster-img" src="http://image.tmdb.org/t/p/w342@(item.PosterPath)" />
+                        </a>
+                    </div>
+                    <p class="movie-title">@item.Title</p>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+

@@ -238,6 +238,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Scripts\CharCounter.js" />
     <Content Include="Content\Scripts\CinehiveScript.js" />
     <Content Include="Content\CustomCinehive.css" />
     <Content Include="Content\Img\album-placeholder.jpg" />
@@ -247,7 +248,6 @@
     <Content Include="Content\Img\SiteImg\MovieSelection.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Scripts\like_button.js" />
-    <Content Include="Content\Scripts\RateButton.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -335,13 +335,14 @@
     <Content Include="Views\Album\GetAlbums.cshtml" />
     <Content Include="Views\Home\FriendFeed.cshtml" />
     <Content Include="Views\Home\HomeSidebarPartial.cshtml" />
+    <Content Include="Views\Admin\BanUser.cshtml" />
+    <Content Include="Views\Account\BannedView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Img\ProfileImages\" />
     <Folder Include="Content\Img\UserImg\6b81bbd3-a079-4cce-9c9b-477269f4e1e3\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Admin\" />
     <Folder Include="Views\Friend\" />
   </ItemGroup>
   <ItemGroup>

@@ -117,3 +117,4 @@
         Page @(Model.PostList.PageCount < Model.PostList.PageNumber ? 0 : Model.PostList.PageNumber) of @Model.PostList.PageCount
         @Html.PagedListPager(Model.PostList, page => Url.Action("Index", new { page }))
 
+@Scripts.Render("~/Content/Scripts/CharCounter.js");

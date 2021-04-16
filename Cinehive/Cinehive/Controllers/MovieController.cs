@@ -73,7 +73,7 @@ namespace Cinehive.Controllers
             }
 
             ViewBag.avgRating = movieService.GetAvgRating(movie.MovieApi_ID);
-
+            ViewBag.userRating = movieService.GetUserRating(User.Identity.GetUserId(), movie.MovieApi_ID);
             return View(movie);
         }
 
@@ -88,6 +88,7 @@ namespace Cinehive.Controllers
                 movieService.AddToMoviesOrAddView(movie);
             }
             ViewBag.avgRating = movieService.GetAvgRating(movie.MovieApi_ID);
+            ViewBag.userRating = movieService.GetUserRating(User.Identity.GetUserId(), movieApiID);
             return View("ViewMovie", movie);
         }
 

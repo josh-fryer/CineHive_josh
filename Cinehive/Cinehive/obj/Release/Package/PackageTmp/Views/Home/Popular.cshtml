@@ -1,0 +1,119 @@
+﻿@model HiveData.ViewModels.PostFeedViewModel
+@using Microsoft.AspNet.Identity;
+@using PagedList.Mvc;
+@using HiveData.Repository;
+@{
+    ViewBag.Title = "What's Popular";
+    string userid = User.Identity.GetUserId();
+    int postid = 0;
+    int id = 0;
+}
+
+<div class="container">
+    @Html.Partial("HomeSidebarPartial")
+    <div class="col-md-9">
+        <div class="profile-content-input">
+            <h3>Create a Post.</h3>
+
+            @using (Html.BeginForm("Create", "Post", FormMethod.Post, new { name = "createPost", onsubmit = "return validateForm()" }))
+            {
+                <input id="postInput" class="post-submit" type="text" name="input" maxlength="280" placeholder="Say something.." />
+                @*<div class="form-group">
+                        <textarea id="postInput" class="post-submit" name="input" maxlength="280" placeholder="Say something.."></textarea>
+                    </div>*@
+                <button class="btn btn-primary post-button" type="submit">
+                    <span>Post &nbsp;</span>
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </button>
+            }
+            <div id="remaining-chars" class="text-right counter-margin">text here</div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="profile-content-title">
+            <h3>What's Popular</h3>
+        </div>
+    </div>
+
+    <div class="row profile">
+        <div class="col-md-9">
+
+            @foreach (var item in Model.PostList)
+            {
+                <div class="profile-content-pane">
+                    <div class="media">
+                        <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) })" )">
+                            @if (@Model.GetUserPicture(postid = item.PostId) == null)
+                            {
+                                <img class="post-profile-img circular-image" src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
+                            }
+                            else
+                            {
+                                <img class="post-profile-img circular-image" src="~/@Model.GetUserPicture(postid = item.PostId)" width="64" height="64" />
+                            }
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">@Html.ActionLink(@Model.GetFirstName(postid = item.PostId) + " " + Model.GetLastName(postid = item.PostId), "ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) }, new { })</h4>
+                            <p>
+                                @*Display posts containg film links with Html.Raw*@
+                                @if ((bool)item.hasFilmLink)
+                                {@Html.Raw(@item.PostContent) }
+                            else
+                            { @item.PostContent}
+                            </p>
+                            <ul class="list-inline list-unstyled">
+                                <li> @item.DatePosted </li>
+                                <li>|</li>
+                                @if (item.Awards < 2)
+                                {
+                                    <li> @item.Awards Award</li>
+                                }
+                                else
+                                {
+                                    <li> @item.Awards Awards</li>
+                                }
+                                @if (item.Popular == true)
+                                {
+                                    <li><strong>Popular</strong></li>
+                                }
+                            </ul>
+                            <ul class="list-inline list-unstyled">
+                                @if (Model.AwardGiven(postid = item.PostId) == true)
+                                {
+                                    <li><strong>@Html.ActionLink("Revoke", "RevokeAward", "Post", new { id = item.PostId }, new { })</strong></li>
+                                }
+                                else
+                                {
+                                    <li>@Html.ActionLink("Award", "GiveAward", "Post", new { id = item.PostId }, new { })</li>
+                                }
+                                <li>|</li>
+                                <li>@Html.ActionLink("Comment", "Create", "Comment", new { id = item.PostId }, new { })</li>
+                                <li>|</li>
+                                <li>@Html.ActionLink("Share", "")</li>
+                                <li>|</li>
+                                <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
+
+                                @if (Model.IsUserPost(id = item.PostId) == true || ViewBag.IsAdmin)
+                                {
+                                    <li>|</li>
+                                    <li> @Html.ActionLink("Remove", "DeletePost", "Post", new { id = item.PostId }, null) </li>
+                                    <li>|</li>
+                                    <li> @Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId }, null) </li>
+                                }
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+</div>
+
+        Page @(Model.PostList.PageCount < Model.PostList.PageNumber ? 0 : Model.PostList.PageNumber) of @Model.PostList.PageCount
+        @Html.PagedListPager(Model.PostList, page => Url.Action("Index", new { page }))
+
