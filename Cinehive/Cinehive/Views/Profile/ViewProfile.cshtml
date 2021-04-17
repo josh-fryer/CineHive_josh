@@ -11,11 +11,11 @@
         @Html.Partial("ViewProfilePartial")
 
         <div class="col-md-9">
-            <div class="profile-content">
-                @if (Model.Privacy == 1 || Model.Privacy == 2 && ViewBag.IsFriend)
+            @if (Model.Privacy == 1 || Model.Privacy == 2 && ViewBag.IsFriend)
+            {
+                foreach (var item in Model.Posts.OrderByDescending(x => x.DatePosted))
                 {
-                    foreach (var item in Model.Posts.OrderByDescending(x => x.DatePosted))
-                    {
+                    <div class="profile-content-pane">
                         <div class="media">
                             <a class="pull-left" href="">
                                 @if (Model.ImagePath == null)
@@ -42,6 +42,7 @@
                                     @if (item.Awards < 2)
                                     {
                                         <li> @item.Awards Award</li>
+
                                     }
                                     else
                                     {
@@ -55,20 +56,54 @@
                                     <li>|</li>
                                     <li>@Html.ActionLink("Share", "")</li>
                                     <li>|</li>
-                                    <li>
-                                    <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
-                                </ul>
-                                <hr />
-                            </div>
-                        </div>
-                    }
-                }
-                else
-                {
-                    <p> Sorry, This user doesnt want to share their posts</p>
-                }
+                                    <li><input type="button" class="comment-button" id="post-@item.PostId" name="Comment" value=" Comments(@item.PostComments.Count)" /></li>
 
-            </div>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div id="Comments-@item.PostId">
+
+                    </div>
+                    @Scripts.Render("~/bundles/jquery")
+                    <script>
+                        var rendered = false;
+                        $("#post-@item.PostId").click(function () {
+
+                            if (!rendered) {
+
+                                $.ajax({
+                                    url: '@Url.Action("ProfilePostCommentsPartial", "Post")',
+                                    type: "GET",
+                                    data: {i_d: @item.PostId},
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (result) {
+                                    //alert("success");
+                                    $("#Comments-@item.PostId").html(result);
+                                    rendered = true;
+                                    },
+                                    error: function (xhr) {
+                                    alert("error");
+                                    }
+
+                                    });
+                            } else {
+                                $('#Comments-@item.PostId').html("");
+                                rendered = false;
+                            }
+
+                        });
+                    </script>
+
+                }
+            }
+            else
+            {
+                <p> Sorry, This user doesnt want to share their posts</p>
+            }
+
+        </div>
         </div>
     </div>
-</div>
