@@ -1,0 +1,46 @@
+﻿@model HiveData.ViewModels.PostFeedViewModel
+
+@{
+    ViewBag.Title = "Post Comments";
+    int id = 0;
+    int CommentId = 0;
+}
+
+
+@if (Model.CommentList.Any(i => i != null))
+{
+    foreach (var item in Model.CommentList.Take(3))
+    {
+        <div class="profile-content-comment">
+            <a class="pull-left" href="@Url.Action("Index", "Profile", new { id = item.CommentId })" )">
+                @if (@Model.CommentPicture(CommentId = item.CommentId) == null)
+                {
+                    <img class="post-profile-img circular-image comment-shift" src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
+                }
+                else
+                {
+                    <img class="post-profile-img circular-image comment-shift" src="~/@Model.CommentPicture(id = item.CommentId)" width="64" height="64" />
+                }
+            </a>
+            <h4 class="media-heading">@Html.ActionLink(@Model.CommentFirstName(CommentId = item.CommentId) + " " + Model.CommentLastName(CommentId = item.CommentId), "ViewProfile", "Profile", new { id = item.CommentId }, new { })</h4>
+            <p>@item.CommentContent</p>
+            @{
+                id = item.CommentId;
+            }
+
+        </div>
+
+    }
+    if (Model.CommentList.Count > 3)
+    {
+        <div class="profile-content-comment viewmore">
+            <p>@Html.ActionLink("View more..", "ViewPostComments", "Post", new { id = Model.GetPostId(id) }, new { })</p>
+        </div>
+    }
+}
+else
+{
+    <div class="profile-content-comment">
+        <p>No Comments yet.</p>
+    </div>
+}

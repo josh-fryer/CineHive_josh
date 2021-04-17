@@ -84,7 +84,7 @@
                                     <li>|</li>
                                     <li>@Html.ActionLink("Comment", "Create", "Comment", new { id = item.PostId }, new { })</li>
                                     <li>|</li>
-                                    <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
+                                    <li><input type="button" class="comment-button" id="post-@item.PostId" name="Comment" value=" Comments(@item.PostComments.Count)" /></li>
 
                                     @if (Model.IsUserPost(id = item.PostId) == true || ViewBag.IsAdmin)
                                     {
@@ -139,6 +139,7 @@
                                     {
                                         <li><strong>Popular</strong></li>
                                     }
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -161,7 +162,7 @@
                                     <li>|</li>
                                     <li>@Html.ActionLink("Share", "SharePost", "Post", new { id = item.PostId }, new { })</li>
                                     <li>|</li>
-                                    <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
+                                    <li><input type="button" class="comment-button" id="post-@item.PostId" name="Comment" value=" Comments(@item.PostComments.Count)" /></li>
 
                                     @if (Model.IsUserPost(id = item.PostId) == true || ViewBag.IsAdmin)
                                     {
@@ -229,7 +230,7 @@
                                     <li>|</li>
                                     <li>@Html.ActionLink("Share", "SharePost", "Post", new { id = item.PostId }, new { })</li>
                                     <li>|</li>
-                                    <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
+                                    <li><input type="button" class="comment-button" id="post-@item.PostId" name="Comment" value=" Comments(@item.PostComments.Count)" /></li>
 
                                     @if (Model.IsUserPost(id = item.PostId) == true || ViewBag.IsAdmin)
                                     {
@@ -246,6 +247,39 @@
                         </div>
                     </div>
                 }
+
+                <div id="Comments-@item.PostId">
+
+                </div>
+                @Scripts.Render("~/bundles/jquery")
+                <script>
+                        var rendered = false;
+                        $("#post-@item.PostId").click(function () {
+
+                            if (!rendered) {
+
+                                $.ajax({
+                                    url: '@Url.Action("IndexPostCommentsPartial", "Post")',
+                                    type: "GET",
+                                    data: {i_d: @item.PostId},
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (result) {
+                                    //alert("success");
+                                    $("#Comments-@item.PostId").html(result);
+                                    rendered = true;
+                                    },
+                                    error: function (xhr) {
+                                    alert("error");
+                                    }
+
+                                    });
+                            } else {
+                                $('#Comments-@item.PostId').html("");
+                                rendered = false;
+                            }
+
+                        });
+                </script>
 
             }
 

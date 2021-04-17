@@ -73,6 +73,29 @@ namespace HiveData.ViewModels
                 return true;
             }
         }
-     
+        public int GetPostId(int id)
+        {
+            var post = context.Posts.Where(c => c.PostComments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.PostId).FirstOrDefault();
+
+            return post;
+        }
+        //for comments
+        public string CommentFirstName(int id)
+        {
+
+            string Firstname = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.Firstname).FirstOrDefault();
+
+            return (Firstname);
+        }
+        public string CommentLastName(int id)
+        {
+            string Lastname = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.Lastname).FirstOrDefault();
+            return (Lastname);
+        }
+        public string CommentPicture(int id)
+        {
+            string userpicture = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.ImagePath).FirstOrDefault();
+            return (userpicture);
+        }
     }
 }

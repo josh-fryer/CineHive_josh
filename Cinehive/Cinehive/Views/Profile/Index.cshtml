@@ -92,7 +92,7 @@
                             if (!rendered) {
 
                                 $.ajax({
-                                    url: '@Url.Action("PostCommentsPartial", "Post")',
+                                    url: '@Url.Action("ProfilePostCommentsPartial", "Post")',
                                     type: "GET",
                                     data: {i_d: @item.PostId},
                                     contentType: "application/json; charset=utf-8",

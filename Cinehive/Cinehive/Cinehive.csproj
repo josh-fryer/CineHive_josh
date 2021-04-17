@@ -340,7 +340,8 @@
     <Content Include="Views\Home\HomeSidebarPartial.cshtml" />
     <Content Include="Views\Admin\BanUser.cshtml" />
     <Content Include="Views\Account\BannedView.cshtml" />
-    <Content Include="Views\Post\PostCommentsPartial.cshtml" />
+    <Content Include="Views\Post\ProfilePostCommentsPartial.cshtml" />
+    <Content Include="Views\Post\IndexPostCommentsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
