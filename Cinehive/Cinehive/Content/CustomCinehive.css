@@ -22,14 +22,15 @@ body {
     src: url('/Content/SF-Pro-Display Regular.ttf') format('truetype');
 }
 .footer-control {
-    position: fixed;
+    color: white;
+    font-family: SFProDisplayRegular;
+    text-align: center;
+    /*min-height: 50px;*/
+    position: sticky;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: transparent;
-    color: white;
-    font-family:SFProDisplayRegular;
-    text-align: right;
+
 }
 /*//////// Text colour /////////*/
 #txt-white {
@@ -71,6 +72,28 @@ body {
     font-size: 5em;
 }
 
+/*###### Scroll Bar ##########*/
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #ebebeb;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius:15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background:#6e6e6e;
+}
+
 /* /////////////////////// Notification ////////////////////// */
 .notification {
     background-color: white;
@@ -102,19 +125,40 @@ body {
 .navbar-inverse .navbar-brand:hover {
     color: #808080;
 }
-/*Varying navbar sizes depending on page size*/
+
+.search-bar {
+    margin-left: 165px;
+}
+
+.navbar-myfooter {
+    margin-bottom: 0;
+    border-width: 1px 0 0;
+    /*position: fixed;*/
+    bottom: 0;
+    /*right: 0;
+    left: 0;*/
+    z-index: 1030;
+}
+
+.footer-content {
+    text-align: center;
+    color: #9a9a9a;
+}
+
+
+/*############# Varying navbar sizes depending on page size ###############*/
 @media (min-width: 1500px) {
-    .navbar > .container .navbar-brand,
-    .navbar > .container-fluid .navbar-brand {
+    .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
         margin-left: -100px;
     }
 }
-@media (min-width: 1500px){
+@media (min-width: 1500px) {
     .navbar-right {
         float: right !important;
         margin-right: -100px;
-    } 
+    }
 }
+
 @media (max-width: 1000px) {
     .navbar > .container .navbar-brand,
     .navbar > .container-fluid .navbar-brand {
@@ -128,6 +172,34 @@ body {
         margin-right: 0px;
     }
 }
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .search-bar {
+        margin-left: 0px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .search-bar {
+        margin-left: 0px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .search-bar {
+        margin-left: 80px;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .search-bar {
+        margin-left: 165px;
+    }
+}
+
 .navbar-inverse .navbar-nav > li > a {
     color: #ffffff;
     font-family:SFProDisplay;
@@ -135,9 +207,7 @@ body {
 .navbar-inverse .navbar-nav > li > a:hover {
     color: #808080;
 }
-.Search-container {
 
-}
 /*/////////////////////////////Welcome page css////////////////////////////////*/
 .Welcome-Jumbo {
     font-family: 'SFProDisplay';

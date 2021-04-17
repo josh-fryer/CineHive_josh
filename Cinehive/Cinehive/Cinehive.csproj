@@ -238,6 +238,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Img\SiteImg\blue_square_2-TMDb logo.svg" />
+    <Content Include="Content\Img\SiteImg\blue_short-TMDb logo.svg" />
     <Content Include="Content\Scripts\CharCounter.js" />
     <Content Include="Content\Scripts\CinehiveScript.js" />
     <Content Include="Content\CustomCinehive.css" />
@@ -248,6 +250,7 @@
     <Content Include="Content\Img\SiteImg\MovieSelection.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Scripts\like_button.js" />
+    <Content Include="Content\Scripts\Post.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

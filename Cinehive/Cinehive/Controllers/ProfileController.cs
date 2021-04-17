@@ -17,11 +17,13 @@ namespace Cinehive.Controllers
     public class ProfileController : Controller
     {
         private readonly IProfileService profileService;
+        private IMovieService movieService;
         private readonly CineHiveContext context;
 
         public ProfileController()
         {
             profileService = new ProfileService();
+            movieService = new MovieService();
             context = new CineHiveContext();
         }
 
@@ -60,6 +62,9 @@ namespace Cinehive.Controllers
             {
                 return HttpNotFound();
             }
+
+            //movieService.GetGenresToDb(); // download genres
+
             //#### Genres to checkbox list: ######           
             var genreList = context.Genres.Select(x => new SelectListItem()
             {

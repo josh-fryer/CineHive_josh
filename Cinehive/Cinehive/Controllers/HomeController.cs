@@ -42,14 +42,14 @@ namespace Cinehive.Controllers
                 var Posts = context.Posts.Select(c => c); 
                 Posts = context.Posts.OrderByDescending(c => c.DatePosted);
                 string userid = User.Identity.GetUserId();
-
-
+                var user = profileService.GetUserProfile(userid);
+                Session["fName"] = user.Firstname;
                 int pageSize = 8;
                 int pageNumber = (page ?? 1);
                 var NewPosts = Posts.ToPagedList(pageNumber, pageSize);
                 PostFeedViewModel postFeedViewModel = new PostFeedViewModel()
                 {
-                    UserProfile = profileService.GetUserProfile(userid),
+                    UserProfile = user,
                     PostList = NewPosts
                     
                 };

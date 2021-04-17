@@ -144,7 +144,6 @@
                         </div>
 
 
-
                         <div class="profile-content-pane-img">
                             <img src="~/@item.AuthorPP" class="profile-content-img" />
                             <div class="content-pane-items">
@@ -255,9 +254,10 @@
     </div>
 </div>
 
-<div id="like_button_container"></div>
-
+@*<div id="like_button_container"></div>*@
+<div id="txt-white">
     Page @(Model.PostList.PageCount < Model.PostList.PageNumber ? 0 : Model.PostList.PageNumber) of @Model.PostList.PageCount
+</div>
     @Html.PagedListPager(Model.PostList, page => Url.Action("Index", new { page }))
-
-@Scripts.Render("~/Content/Scripts/CharCounter.js");
+    
+@Scripts.Render("~/Content/Scripts/CharCounter.js")

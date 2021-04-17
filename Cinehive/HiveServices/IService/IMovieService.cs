@@ -14,5 +14,6 @@ namespace HiveServices.Service
         Movie GetMovieByID(int id);
         void RateMovie(int movieApiID, int stars, string userId);
         int GetUserRating(string userID, int movieApiID);
+        //void GetGenresToDb();
     }
 }
