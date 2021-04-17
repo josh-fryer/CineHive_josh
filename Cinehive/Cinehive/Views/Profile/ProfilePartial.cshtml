@@ -62,5 +62,17 @@
             <h4>About me</h4>
             <p>@Model.userProfile.AboutMe</p>
         </div>
+
+        <div class="bio-box">
+            <hr/>
+            <h4>Favourite Genres</h4>
+            <ul class="list-unstyled">
+            @for (int i = 0; i < ViewBag.GenreNames.Count; i++)
+            {
+                <li class="fave-genre-list"><span class="fave-genre-item">@ViewBag.GenreNames[i]</span></li>
+            }
+            </ul>
+        </div>
+
     </div>
 </div>

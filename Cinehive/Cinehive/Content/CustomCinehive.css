@@ -835,6 +835,18 @@ a.remove-friend-link:active {
     min-height: 460px;
     border-radius: 8px;
 }
+
+.fave-genre-list{
+    margin-bottom:10px;
+}
+
+.fave-genre-item {
+    border: 2px solid #c6c9cc;
+    border-radius: 15px;
+    margin:5px;
+    padding:2px;
+}
+
 /*########################### Album index ####################*/
 .album-sidebar {
     padding: 20px 0 10px 0;
@@ -1033,4 +1045,23 @@ a.remove-friend-link:active {
 
 .viewMovie-right-col {
     border-left: 2px solid #e8e8e8;
+}
+
+/*########## Edit Profile ################*/
+/*.genres-checkbox {
+    margin-right:10px;
+}*/
+
+.genres-label{
+    margin-left:8px;
+    margin-right: 2px;
+}
+
+.profile-pic-label{
+   padding:0;
+   margin:0;
+}
+
+.change-profile-pic{
+    padding-top:7px;
 }

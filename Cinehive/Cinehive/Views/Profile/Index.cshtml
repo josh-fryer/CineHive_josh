@@ -30,8 +30,6 @@
 
             @foreach (var item in Model.Posts)
             {
-
-
                 <div class="profile-content-pane">
                     <div class="media">
                         <a class="pull-left" href="">
@@ -84,13 +82,12 @@
                 <div id="Comments-@item.PostId">
 
                 </div>
-                @Scripts.Render("~/bundles/jquery")
+
                 <script>
                         var rendered = false;
                         $("#post-@item.PostId").click(function () {
 
                             if (!rendered) {
-
                                 $.ajax({
                                     url: '@Url.Action("ProfilePostCommentsPartial", "Post")',
                                     type: "GET",
@@ -110,10 +107,8 @@
                                 $('#Comments-@item.PostId').html("");
                                 rendered = false;
                             }
-
                         });
                 </script>
-
             }
             </div>
         </div>

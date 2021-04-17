@@ -21,14 +21,9 @@ namespace HiveData.ViewModels
         public PostComment PostComment { get; set; }
 
 
-
-
-
         public string GetFirstName(int id)
         {
-
             string Firstname = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.Firstname).FirstOrDefault();
-
             return (Firstname);
         }
         public string GetLastName(int id)

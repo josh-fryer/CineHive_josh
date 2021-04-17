@@ -31,18 +31,18 @@ namespace Cinehive.Controllers
         public ActionResult Index()
         {
             var userid = User.Identity.GetUserId();
-            var userpost = context.UserProfiles.Where(c => c.UserId == userid).FirstOrDefault();
+            var userProfile = context.UserProfiles.Where(c => c.UserId == userid).FirstOrDefault();
                       
             ProfilePostsViewModel profilePostsViewModel = new ProfilePostsViewModel
             {
                 userProfile = profileService.GetUserProfile(userid),
-                Posts = userpost.Posts.OrderByDescending(c => c.DatePosted).ToList(),
+                Posts = userProfile.Posts.OrderByDescending(c => c.DatePosted).ToList(),
                 
             };
 
             List<string> genreNames = new List<string>();
             // match favegenre genreId with Genres ID to get name
-            foreach (var f in userpost.FavouriteGenres.ToList())
+            foreach (var f in userProfile.FavouriteGenres.ToList())
             {
                string name = context.Genres.Find(f.GenreId).Name;
                genreNames.Add(name);
