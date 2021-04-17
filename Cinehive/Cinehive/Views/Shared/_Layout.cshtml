@@ -6,7 +6,8 @@
     <title>@ViewBag.Title - CineHive</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/CustomCinehive.css") 
+    @Styles.Render("~/Content/CustomCinehive.css")
+    @Scripts.Render("~/bundles/jquery")
 
 </head>
 <body>
@@ -73,7 +74,7 @@
         <!-- Load our React Demo component. -->
         @*<script src="Content/Scripts/like_button.js"></script>*@
 
-        @Scripts.Render("~/bundles/jquery")
+        
         @Scripts.Render("~/bundles/bootstrap")
         @Scripts.Render("~/Content/Scripts/CinehiveScript.js")
         @RenderSection("scripts", required: false)

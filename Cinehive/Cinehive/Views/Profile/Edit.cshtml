@@ -12,25 +12,25 @@
                 <div class="profile-usermenu">
                     <ul class="nav">
                         <li class="active">
-                            <a href="@Url.Action("Index","Profile")">
+                            <a href="@Url.Action("Index", "Profile")">
                                 <i class="glyphicon glyphicon-arrow-left"></i>
                                 Go back
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Edit","Profile")">
+                            <a href="@Url.Action("Edit", "Profile")">
                                 <i class="glyphicon glyphicon-globe"></i>
                                 Edit Profile
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Index","Manage")">
+                            <a href="@Url.Action("Index", "Manage")">
                                 <i class="glyphicon glyphicon-cog"></i>
                                 Manage Account
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("DeleteAccount","Account", new { userId = User.Identity.GetUserId() })" onclick="return confirm('Are you sure you want to leave Cinehive?')">
+                            <a href="@Url.Action("DeleteAccount", "Account", new { userId = User.Identity.GetUserId() })" onclick="return confirm('Are you sure you want to leave Cinehive?')">
                                 <i class="glyphicon glyphicon-remove"></i>
                                 Delete Account
                             </a>
@@ -124,7 +124,10 @@
 
                         @for (int i = 0; i < Model.Genres.Count; i++)
                         {
-                            <label><input name="@Model.Genres[i].Text" value="@Model.Genres[i].Value"  type="checkbox">@Model.Genres[i].Text</label>
+                            @Html.HiddenFor(m => m.Genres[i].Value)
+                            @Html.CheckBoxFor(m => m.Genres[i].Selected, new {@class="genre-checkbox"})
+                            @Html.LabelFor(m => m.Genres[i].Selected, Model.Genres[i].Text)
+                            
 
                             if (i % 5 == 0 && i>1)
                             {
@@ -147,3 +150,12 @@
 </div>
 </div>
 </div>
+<script>
+    var limit = 5;
+    $('input.genre-checkbox').on('change', function (evt) {
+        if ($(this).siblings(':checked').length >= limit) {
+            this.checked = false;
+        }
+    });
+
+</script>
