@@ -111,5 +111,36 @@ namespace Cinehive.Controllers
                 return View();
             }
         }
+        public ActionResult CreateDirect(string input, int id)
+        {
+            var userid = User.Identity.GetUserId();
+            try
+            {
+                UserProfile userProfile = context.UserProfiles.First(c => c.UserId == userid);
+                Post post = context.Posts.First(c => c.PostId == id);
+
+                PostComment comment = new PostComment
+                {
+                    CommentContent = input,
+                    DateCommented = DateTime.Now,
+                    Awards = 0
+
+                };
+
+                userProfile.Comments.Add(comment);
+                post.PostComments.Add(comment);
+                if (post.PostComments.Count >= 8)
+                {
+                    post.Popular = true;
+                }
+                context.SaveChanges();
+
+                return RedirectToAction("ViewPostComments", "Post", new { id = id });
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

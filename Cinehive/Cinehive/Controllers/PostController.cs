@@ -115,6 +115,7 @@ namespace Cinehive.Controllers
                 PostContent = post.PostContent,
                 DatePosted = DateTime.Now,
                 Author = post.Author,
+                AuthorPP = post.AuthorPP,
                 Shared = true
                 
             };
@@ -129,7 +130,7 @@ namespace Cinehive.Controllers
         [HttpGet]
         public ActionResult ProfilePostCommentsPartial(int i_d)
         {
-            var comments = context.Posts.Find(i_d).PostComments.ToList();
+            var comments = context.Posts.Find(i_d).PostComments.OrderByDescending(c => c.DateCommented).ToList();
             string OriginalPost = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(x => x.PostId == i_d).FirstOrDefault())).Select(c => c.UserId).FirstOrDefault();
 
 
@@ -144,7 +145,7 @@ namespace Cinehive.Controllers
         }
         public ActionResult IndexPostCommentsPartial(int i_d)
         {
-            var comments = context.Posts.Find(i_d).PostComments.ToList();
+            var comments = context.Posts.Find(i_d).PostComments.OrderByDescending(c => c.DateCommented).ToList();
             string OriginalPost = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(x => x.PostId == i_d).FirstOrDefault())).Select(c => c.UserId).FirstOrDefault();
 
 

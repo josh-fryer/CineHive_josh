@@ -763,6 +763,16 @@ a.remove-friend-link:active {
   min-height: 460px;
   border-radius: 8px;
 }
+.profile-content-main-post { /*lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll*/
+    padding: 20px;
+    background: #fff;
+    min-height: 100px;
+    border-radius: 8px;
+    width: 900px;
+    margin-left: 110px;
+    margin-top: 20px;
+    height: 150px;
+}
 .profile-content-pane {
     padding: 20px;
     background: #fff;
@@ -937,9 +947,13 @@ a.remove-friend-link:active {
 .counter-margin {
     margin-top:20px;
 }
+.post-share-img {
+    margin-right: 20px;
+    margin-top: -5px;
+}
 /*###################### Movie index ###################*/
 .poster-img {
-    border-radius:15px;
+    border-radius: 15px;
 }
 .movie-explorer {
     padding: 1px 0 10px 0;
@@ -1064,4 +1078,39 @@ a.remove-friend-link:active {
 
 .change-profile-pic{
     padding-top:7px;
+}
+
+/*############View Comments#################*/
+
+.view-comments-image {
+    width: 110px;
+    height: 110px;
+    border-radius: 20px;
+    margin-right:20px;
+}
+.comment-post-body {
+    margin-top: 4px;
+}
+.comment-pane {
+    padding: 20px;
+    background: #fff;
+    min-height: 50px;
+    border-radius: 8px;
+    width: 900px;
+    margin-left: 110px;
+    margin-top: 20px;
+    height: 50px;
+    text-align: center;
+}
+.media-heading-comment {
+    margin-top: -8px;
+    font-size: 25px;
+}
+.comment-submit {
+    max-width: 380px;
+    width: 50%;
+    margin-top: 10px;
+    margin-left: 200px;
+    border-radius: 8px;
+    padding: 6px 10px;
 }
