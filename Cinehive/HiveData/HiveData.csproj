@@ -264,6 +264,10 @@
     <Compile Include="Migrations\202104191119424_undoOfOriginalPost.Designer.cs">
       <DependentUpon>202104191119424_undoOfOriginalPost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104191629510_AuthorPost2.cs" />
+    <Compile Include="Migrations\202104191629510_AuthorPost2.Designer.cs">
+      <DependentUpon>202104191629510_AuthorPost2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -385,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104191119424_undoOfOriginalPost.resx">
       <DependentUpon>202104191119424_undoOfOriginalPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104191629510_AuthorPost2.resx">
+      <DependentUpon>202104191629510_AuthorPost2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

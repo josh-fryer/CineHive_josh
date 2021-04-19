@@ -44,43 +44,34 @@
                 var divId = "post" + i;
                 if (item.Shared == true)
                 {
+                    string authorName = Model.GetFirstName(item.AuthorPost.PostId) + " " + Model.GetLastName(item.AuthorPost.PostId);
+                    int authorPostID = item.AuthorPost.PostId;
                     <div class="profile-content-pane">
                         <div id="@(divId + "_1")" class="media">
                             <div id="@(divId + "_2")" class="media-body">
-                                <p>Shared a post from @item.Author</p>
+                                <p>Shared a post from @authorName</p>
                                 <div id="@(divId+"_3")" class="profile-content-pane-share">
-                                    <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = 0 })">
-                                        @if (item.AuthorPP == null)
+                                    <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(authorPostID) })">
+                                        @if (Model.GetUserPicture(authorPostID) == null)
                                         {
                                             <img class="post-share-img circular-image" src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
                                         }
                                         else
                                         {
-                                            <img class="post-share-img circular-image" src="~/@item.AuthorPP" width="64" height="64" />
+                                            <img class="post-share-img circular-image" src="~/@Model.GetUserPicture(authorPostID)" width="64" height="64" />
                                         }
                                     </a>
-                                    <h4 class="media-heading">@item.Author</h4>
-                                    <p>@item.PostContent</p>
+                                    <h4 class="media-heading">@authorName</h4>
+                                    <p>
+                                        @if ((bool)item.AuthorPost.hasFilmLink)
+                                        {@Html.Raw(item.AuthorPost.PostContent) }
+                                    else
+                                    { @item.AuthorPost.PostContent}
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                        @* <div class="profile-content-pane-share">
-                            <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) })">
-                                @if (item.AuthorPP == null)
-                                {
-                                    <img class="post-share-img circular-image" src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
-                                }
-                                else
-                                {
-                                    <img class="post-share-img circular-image" src="~/@item.AuthorPP" width="64" height="64" />
-                                }
-                            </a>
-                            <h4 class="media-heading">@item.Author</h4>
-                            <p>@item.PostContent</p>
-                        </div>
-                    </div> *@
-            
                 }
                 else if (item.PictureChange == true)
                 {
@@ -89,7 +80,7 @@
                             <div id="@(divId + "_2")" class="media-body">
                                 <p>@item.PostContent</p>
                                 <div id="@(divId+"_3")" class="profile-content-pane-img">
-                                    <img src="~/@item.AuthorPP" class="profile-content-img" />
+                                    <img src="@Model.GetUserPicture(item.PostId)" class="profile-content-img" />
                                 </div>
                                 @* JS inserts buttons here *@
                             </div>
@@ -101,39 +92,36 @@
                     <div class="profile-content-pane">
                         <div id="@(divId + "_1")" class="media">
                             <div id="@(divId + "_2")" class="media-body post-body">
-                                
+
                                 <p id="@(divId+"_3")">
                                     @if ((bool)item.hasFilmLink)
                                     {@Html.Raw(item.PostContent) }
-                                    else
-                                    { @item.PostContent}
+                                else
+                                { @item.PostContent}
                                 </p>
                             </div>
-                            
+
                         </div>
                     </div>
                 }
-              
+
                 bool isUserPostOrAdmin = false;
                 if (Model.IsUserPost(id = item.PostId) == true || ViewBag.IsAdmin)
                 {
                     isUserPostOrAdmin = true;
                 }
 
-        <script type="text/javascript">
-                    returnPost( "@divId",
-                    @Model.GetProfileId(postid = item.PostId), @item.PostId, "@Model.GetFirstName(postid = item.PostId)",
-                    "@Model.GetLastName(postid = item.PostId)", "@Model.GetUserPicture(postid = item.PostId)", "@item.DatePosted", @Json.Encode(item.Popular), @item.Awards,
-                    @Json.Encode(Model.AwardGiven(postid = item.PostId)), @Json.Encode(isUserPostOrAdmin), @item.PostComments.Count
-                    );
-        </script>
-                
+                <script type="text/javascript">
+                    returnPost("@divId", @Model.GetProfileId(postid = item.PostId), @item.PostId, "@Model.GetFirstName(postid = item.PostId)",
+                        "@Model.GetLastName(postid = item.PostId)", "@Model.GetUserPicture(postid = item.PostId)", "@item.DatePosted",
+                        @Json.Encode(item.Popular), @item.Awards, @Json.Encode(Model.AwardGiven(postid = item.PostId)), @Json.Encode(isUserPostOrAdmin), @item.PostComments.Count);
+                </script>
+
                 <div id="Comments-@item.PostId"></div>
 
                 <script>
                         var rendered = false;
                         $("#post-@item.PostId").click(function () {
-
                             if (!rendered) {
 
                                 $.ajax({
@@ -155,19 +143,19 @@
                                 $('#Comments-@item.PostId').html("");
                                 rendered = false;
                             }
-
                         });
                 </script>
             }
 
         </div>
     </div>
+    
 </div>
 
-@*<div id="like_button_container"></div>*@
 <div id="txt-white">
     Page @(Model.PostList.PageCount < Model.PostList.PageNumber ? 0 : Model.PostList.PageNumber) of @Model.PostList.PageCount
 </div>
 @Html.PagedListPager(Model.PostList, page => Url.Action("Index", new { page }))
+
 
 @Scripts.Render("~/Content/Scripts/CharCounter.js")

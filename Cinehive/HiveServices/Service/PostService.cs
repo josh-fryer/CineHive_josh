@@ -50,7 +50,7 @@ namespace HiveServices.Service
 
             int startC = 1; // first character of query
             int endC = 1; // last char of query                        
-            
+
             // loop input to find film link
             for (int i = 0; i < newInput.Length; i++)
             {
@@ -62,8 +62,8 @@ namespace HiveServices.Service
                     {
                         post.hasFilmLink = false;
                         break;
-                    } 
-                    else if (newInput[i+1] == ' ') // check if there is a char after #
+                    }
+                    else if (newInput[i + 1] == ' ') // check if there is a char after #
                     {
                         post.hasFilmLink = false;
                         break;
@@ -71,21 +71,21 @@ namespace HiveServices.Service
                     else
                     {
                         startC = i + 1; // first char of query is after #
-                    }                  
+                    }
                 }
                 else if (post.hasFilmLink == true && newInput[i] == ' ') // check if reached end of film title link
                 {
                     endC = i - 1;
                     break;
-                }               
+                }
                 else if (newInput[i] == '/' && post.hasFilmLink == true) // found start of year filter
                 {
                     endC = i - 1;
-                    if (i+4 < newInput.Length) // if there are 4 chars following '/'
+                    if (i + 4 < newInput.Length) // if there are 4 chars following '/'
                     {
                         hasYear = true; // confirmed with loop below
                         // loop to add char to year
-                        for (int j = (i+1); j < (i+5); j++)
+                        for (int j = (i + 1); j < (i + 5); j++)
                         {
                             if (Char.IsDigit(newInput[j]))
                             {
@@ -107,8 +107,8 @@ namespace HiveServices.Service
                     break;
                 }
             }
-       
-            if(!post.hasFilmLink)
+
+            if (!post.hasFilmLink)
             {
                 return newInput;
             }
@@ -119,7 +119,7 @@ namespace HiveServices.Service
                 char c = input[i];
                 if ((i + 1) <= endC) // if next character is not outside index
                 {
-                    if (Char.IsUpper(input[i+1]) || Char.IsDigit(input[i + 1])) // find new separate word if its Caps or a number
+                    if (Char.IsUpper(input[i + 1]) || Char.IsDigit(input[i + 1])) // find new separate word if its Caps or a number
                     {
                         query += c;
                         query += '+';
@@ -149,7 +149,7 @@ namespace HiveServices.Service
                     if (hasYear)
                     {
                         // remove year
-                        newInput = newInput.Remove(endC+1, 5);
+                        newInput = newInput.Remove(endC + 1, 5);
                     }
                     finalOutput = newInput.Insert((endC + 1), "</a>"); // insert end of <a> tag
                 }
@@ -162,7 +162,7 @@ namespace HiveServices.Service
                 else
                 {
                     finalOutput = finalOutput.Insert((startC - 1), "<a href='/Movie/GetPostMovie?query=" + query + "'>"); // insert start tag
-                }          
+                }
             }
 
             return finalOutput;
@@ -200,6 +200,7 @@ namespace HiveServices.Service
                 postDAO.EditPost(post, context);
             }
         }
+
         public void GiveAward(int id)
         {
             using (var context = new CineHiveContext())
@@ -207,19 +208,43 @@ namespace HiveServices.Service
                 postDAO.GiveAward(id, context);
             }
         }
+
         public Award FindAward(int id)
         {
             using (var context = new CineHiveContext())
             {
-               return postDAO.FindAward(id, context);
+                return postDAO.FindAward(id, context);
             }
         }
+
         public void DeleteAssociatedComments(int id)
         {
             using (var context = new CineHiveContext())
             {
                 postDAO.DeleteAssociatedComments(id, context);
 
+            }
+        }
+
+        public void SharePost(int id, string userID)
+        {
+            using (var context = new CineHiveContext())
+            {
+                Post post = postDAO.GetPost(id, context); // the post to share
+                // get post profile
+                //var authorProfile = context.UserProfiles.First(i => i.Posts.Contains(post));
+
+                Post post1 = new Post()
+                {             
+                    DatePosted = DateTime.Now,
+                    AuthorPost = post,
+                    Shared = true
+                };
+
+                
+                UserProfile profile = context.UserProfiles.First(x => x.UserId == userID);
+                profile.Posts.Add(post1);
+                context.SaveChanges();
             }
         }
     }

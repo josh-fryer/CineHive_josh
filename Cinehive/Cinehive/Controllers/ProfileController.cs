@@ -28,7 +28,7 @@ namespace Cinehive.Controllers
         }
 
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index() //view your profile
         {
             var userid = User.Identity.GetUserId();
             var userProfile = context.UserProfiles.Where(c => c.UserId == userid).FirstOrDefault();

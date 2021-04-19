@@ -23,24 +23,65 @@ namespace HiveData.ViewModels
 
         public string GetFirstName(int id)
         {
-            string Firstname = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.Firstname).FirstOrDefault();
-            return (Firstname);
+            string Firstname = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.Firstname).FirstOrDefault();
+            return Firstname;
         }
+
         public string GetLastName(int id)
         {
-            string Lastname = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.Lastname).FirstOrDefault();
-            return (Lastname);
+            string Lastname = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.Lastname).FirstOrDefault();
+            return Lastname;
         }
+
         public string GetUserPicture(int id)
         {
-            string userpicture = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.ImagePath).FirstOrDefault();
-            return (userpicture);
+            string userpicture = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.ImagePath).FirstOrDefault();
+            return userpicture;
         }
+
+        //public string GetFirstName(int id)
+        //{
+        //    string Firstname = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).
+        //        FirstOrDefault())).Select(v => v.Firstname).FirstOrDefault();
+        //    return Firstname;
+        //}
+        //public string GetLastName(int id)
+        //{
+        //    string Lastname = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).
+        //        FirstOrDefault())).Select(v => v.Lastname).FirstOrDefault();
+        //    return Lastname;
+        //}
+        //public string GetUserPicture(int id)
+        //{
+        //    string userpicture = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).
+        //        FirstOrDefault())).Select(v => v.ImagePath).FirstOrDefault();
+        //    return userpicture;
+        //}
         public int GetPostId(int id)
         {
-            var post = context.Posts.Where(c => c.PostComments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.PostId).FirstOrDefault();
-
+            var post = context.Posts.Where(c => c.PostComments.Contains(context.PostComments.Where(i => i.CommentId == id).
+                FirstOrDefault())).Select(v => v.PostId).FirstOrDefault();
             return post;
+        }
+
+        public int GetProfileId(int id)
+        {
+            var profileid = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.ProfileId).FirstOrDefault();
+            return profileid;
+        }
+
+        public bool AwardGiven(int id)
+        {
+            var award = context.UserProfiles.Where(c => c.Awards.Contains(context.Awards.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.UserId).FirstOrDefault();
+
+            if (award == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

@@ -49,12 +49,8 @@ namespace Cinehive.Controllers
         public ActionResult DeletePost(int id)
         {
             postService.DeleteAssociatedComments(id);
-
             postService.DeletePost(id);
-
-
             return RedirectToAction("Index", "Home");
-
         }
 
         
@@ -69,7 +65,6 @@ namespace Cinehive.Controllers
         {
             var comments = context.Posts.Find(id).PostComments.ToList();
             string OriginalPost = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(x => x.PostId == id).FirstOrDefault())).Select(c => c.UserId).FirstOrDefault();
-
 
             PostCommentUserViewModel postCommentUserViewModel = new PostCommentUserViewModel
             {
@@ -107,24 +102,27 @@ namespace Cinehive.Controllers
 
         public ActionResult SharePost(int id)
         {
-            Post post = postService.GetPost(id);
-           
-            Post post1 = new Post
-            {
-                PostContent = post.PostContent,
-                DatePosted = DateTime.Now,
-                Author = post.Author,
-                AuthorPP = post.AuthorPP,
-                Shared = true
-            };
+            
+            //Post post = postService.GetPost(id);
+            //Post post1 = new Post
+            //{
+            //    PostContent = post.PostContent,
+            //    DatePosted = DateTime.Now,
+            //    Author = post.Author,
+            //    AuthorPP = post.AuthorPP,
+            //    Shared = true
+            //};
 
-            string userid = User.Identity.GetUserId();
-            UserProfile profile = context.UserProfiles.First(x => x.UserId == userid);
-            profile.Posts.Add(post1);
-            context.SaveChanges();
+            //string userid = User.Identity.GetUserId();
+            //UserProfile profile = context.UserProfiles.First(x => x.UserId == userid);
+            //profile.Posts.Add(post1);
+            //context.SaveChanges();
+            string userID = User.Identity.GetUserId();
+            postService.SharePost(id, userID);
 
             return RedirectToAction("Index", "Home");
         }
+
         [HttpGet]
         public ActionResult ProfilePostCommentsPartial(int i_d)
         {

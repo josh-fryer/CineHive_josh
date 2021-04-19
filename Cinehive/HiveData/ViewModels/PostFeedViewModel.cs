@@ -23,27 +23,26 @@ namespace HiveData.ViewModels
 
         public string GetFirstName(int id)
         {
-            string Firstname = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.Firstname).FirstOrDefault();
-            
-            return (Firstname);
+            string Firstname = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.Firstname).FirstOrDefault();          
+            return Firstname;
         }
 
         public string GetLastName(int id)
         {
             string Lastname = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.Lastname).FirstOrDefault();
-            return (Lastname);
+            return Lastname;
         }
 
         public string GetUserPicture(int id)
         {
             string userpicture = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.ImagePath).FirstOrDefault();
-            return (userpicture);
+            return userpicture;
         }
 
         public int GetProfileId(int id)
         {
             var profileid = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.ProfileId).FirstOrDefault();
-            return (profileid);
+            return profileid;
         }
 
         public bool IsUserPost(int id)
@@ -73,12 +72,14 @@ namespace HiveData.ViewModels
                 return true;
             }
         }
+
         public int GetPostId(int id)
         {
             var post = context.Posts.Where(c => c.PostComments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.PostId).FirstOrDefault();
 
             return post;
         }
+
         //for comments
         public string CommentFirstName(int id)
         {
@@ -87,11 +88,13 @@ namespace HiveData.ViewModels
 
             return (Firstname);
         }
+
         public string CommentLastName(int id)
         {
             string Lastname = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.Lastname).FirstOrDefault();
             return (Lastname);
         }
+
         public string CommentPicture(int id)
         {
             string userpicture = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.ImagePath).FirstOrDefault();

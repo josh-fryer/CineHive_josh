@@ -24,8 +24,8 @@ namespace HiveData.DAO
             string userId = HttpContext.Current.User.Identity.GetUserId();
             // find userprofile by userId then Add post to their posts collection
             UserProfile profile = context.UserProfiles.First(x => x.UserId == userId);
-            post.Author = profile.Firstname + " " + profile.Lastname;
-            post.AuthorPP = profile.ImagePath;
+            //post.Author = profile.Firstname + " " + profile.Lastname;
+            //post.AuthorPP = profile.ImagePath;
             post.Shared = false;
             profile.Posts.Add(post);           
         }

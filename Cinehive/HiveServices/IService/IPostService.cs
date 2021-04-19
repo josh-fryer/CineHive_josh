@@ -18,5 +18,6 @@ namespace HiveServices.IService
         void GiveAward(int id);
         void DeleteAssociatedComments(int id);
         Award FindAward(int id);
+        void SharePost(int id, string userID);
     }
 }

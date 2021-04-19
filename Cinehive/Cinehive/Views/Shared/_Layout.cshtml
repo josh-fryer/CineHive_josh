@@ -24,11 +24,6 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (HttpContext.Current.User.IsInRole("AdminUser"))
-                    {
-                        <li>@Html.ActionLink("Admin Panel", "Admin", "Admin")</li>
-
-                    }
                     <li>
                         @if (HttpContext.Current.User.Identity.IsAuthenticated)
                         {
@@ -52,11 +47,7 @@
     </nav>
     @RenderBody()
 
-    @*<footer class="footer">
-        <div class="container">
-            <p>&copy; @DateTime.Now.Year - Cinehive.</p><img src="~/Content/Img/SiteImg/blue_short-TMDb logo.svg" width="80">
-        </div>
-    </footer>*@
+    @* ---------------- Footer ---------------- *@
     <div class="container">
         <div class="navbar-myfooter">
             <div class="container">
@@ -69,12 +60,9 @@
     </div>
         <!-- Load React. -->
         <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-        <!-- Load our React Demo component. -->
-        @*<script src="Content/Scripts/like_button.js"></script>*@
-
-        
+        @*<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>*@
+      
         @Scripts.Render("~/bundles/bootstrap")
         @Scripts.Render("~/Content/Scripts/CinehiveScript.js")
         @RenderSection("scripts", required: false)

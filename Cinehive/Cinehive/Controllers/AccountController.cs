@@ -484,6 +484,7 @@ namespace Cinehive.Controllers
                     context.FriendRequests.Remove(ReceivedFriendReq);
                 }
             }
+
             context.SaveChanges();
             //REMOVE FREQ SENT 
             var listReqSent = user.SentFriendReq.ToList();
@@ -494,6 +495,7 @@ namespace Cinehive.Controllers
                     context.FriendRequests.Remove(SentFriendReq);
                 }
             }
+
             context.SaveChanges();
             //REMOVE NOTIFICATIONS 
             var listNotif = user.Notifications.ToList();
@@ -514,6 +516,7 @@ namespace Cinehive.Controllers
                     context.PostComments.Remove(Comment);
                 }
             }
+
             context.SaveChanges();
             //REMOVE POSTS
             var listPosts = user.Posts.ToList();
@@ -524,6 +527,7 @@ namespace Cinehive.Controllers
                     context.Posts.Remove(Post);
                 }
             }
+
             context.SaveChanges();
             //REMOVE AWARDS 
             var award = user.Awards.ToList();
@@ -534,6 +538,7 @@ namespace Cinehive.Controllers
                     context.Awards.Remove(Award);
                 }
             }
+
             context.SaveChanges();
             //REMOVE RATINGS 
             var ratings = user.Ratings.ToList();
@@ -566,7 +571,7 @@ namespace Cinehive.Controllers
             {
                 foreach (var Album in albumUser)
                 {
-                    context.Albums.Remove(Album);
+                    context.Albums.Remove(Album);                    
                 }
             }
             //REMOVE USER 
@@ -605,6 +610,7 @@ namespace Cinehive.Controllers
             }
 
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

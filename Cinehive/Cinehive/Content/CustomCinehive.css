@@ -448,14 +448,14 @@ body {
         color: #ffff
     }
 
-    .radio label .checkbox label {
+   /* .radio label .checkbox label {
         padding-left: 20px;
     }
 
     .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
         position: absolute;
         margin-left: 0;
-    }
+    }*/
 }
 
 
@@ -1070,13 +1070,9 @@ a.remove-friend-link:active {
 }
 
 /*########## Edit Profile ################*/
-/*.genres-checkbox {
-    margin-right:10px;
-}*/
-
-.genres-label{
-    margin-left:8px;
-    margin-right: 2px;
+.genres-checkboxLabel {
+    width: 160px;
+    display: inline-block;
 }
 
 .profile-pic-label{
