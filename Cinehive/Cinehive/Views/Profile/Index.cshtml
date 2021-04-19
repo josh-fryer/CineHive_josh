@@ -1,7 +1,12 @@
 ﻿@model HiveData.ViewModels.ProfilePostsViewModel
 @using Microsoft.AspNet.Identity;
 @{ ViewBag.Title = "Your Profile";
-    var userid = User.Identity.GetUserId(); }
+    var userid = User.Identity.GetUserId();
+    if (ViewBag.IsAdmin == null)
+    { ViewBag.IsAdmin = false; }
+}
+
+@Scripts.Render("~/Content/Scripts/Post.js")
 
 <div class="container">
     <div class="row profile">
@@ -45,7 +50,7 @@
                         <div class="media-body">
                             <h4 class="media-heading">@Model.userProfile.Firstname @Model.userProfile.Lastname</h4>
                             <p>
-                                @*Display posts containg film links with Html.Raw*@
+                                @*Display posts content containing film links with Html.Raw*@
                                 @if ((bool)item.hasFilmLink)
                                 {@Html.Raw(@item.PostContent) }
                                 else

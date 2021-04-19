@@ -538,9 +538,6 @@ body {
         border-color: #c93126;
      }
 
-    .panel-heading {
-    }
-
     .panel-default .panel-heading {
         color: #333333;
         background-color: #ffffff;
@@ -791,8 +788,9 @@ a.remove-friend-link:active {
     height:100px;
 }
 .profile-content-pane-img {
-    text-align:center;
-
+    text-align: center;
+    padding-bottom:5px;
+    border-bottom: 1px solid #d4d4d4;
 }
 .profile-content-img{
     border-radius:20px;
@@ -836,9 +834,7 @@ a.remove-friend-link:active {
 .bio-box {
     margin-left:20px;
 }
-.Post-content {
 
-}
 .profile-content-edit {
     padding: 50px;
     background: #fff;
@@ -1113,4 +1109,38 @@ a.remove-friend-link:active {
     margin-left: 200px;
     border-radius: 8px;
     padding: 6px 10px;
+}
+/*################### Posts ####################*/
+.post-body p {
+    border-bottom: 1px solid #d4d4d4;
+    padding-top:10px;
+    padding-bottom:20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.post-heading a {
+    color: #f72b2c; /*red*/
+}
+
+.post-heading a:hover {
+    color: #ad3333;
+}
+
+.post-buttons li{
+    padding: 0px 30px 0px 0px;
+}
+
+.post-buttons a {
+    text-decoration: none;
+    color: black;
+    /*padding: 0px 10px 0px 0px*/;
+}
+
+.post-buttons a:hover {
+    color: #f72b2c;
+}
+
+.post-buttons a:active {
+    color: #ad3333;
 }
