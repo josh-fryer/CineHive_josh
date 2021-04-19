@@ -789,8 +789,6 @@ a.remove-friend-link:active {
 }
 .profile-content-pane-img {
     text-align: center;
-    padding-bottom:5px;
-    border-bottom: 1px solid #d4d4d4;
 }
 .profile-content-img{
     border-radius:20px;
@@ -1112,7 +1110,7 @@ a.remove-friend-link:active {
 }
 /*################### Posts ####################*/
 .post-body p {
-    border-bottom: 1px solid #d4d4d4;
+   /* border-bottom: 1px solid #d4d4d4;*/
     padding-top:10px;
     padding-bottom:20px;
     margin-bottom: 10px;
@@ -1127,6 +1125,11 @@ a.remove-friend-link:active {
     color: #ad3333;
 }
 
+.post-buttons {
+   padding-top: 4px;
+    border-top: 1px solid #d4d4d4;
+}
+
 .post-buttons li{
     padding: 0px 30px 0px 0px;
 }
@@ -1134,7 +1137,6 @@ a.remove-friend-link:active {
 .post-buttons a {
     text-decoration: none;
     color: black;
-    /*padding: 0px 10px 0px 0px*/;
 }
 
 .post-buttons a:hover {

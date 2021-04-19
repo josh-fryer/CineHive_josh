@@ -49,11 +49,22 @@
                             <div id="@(divId + "_2")" class="media-body">
                                 <p>Shared a post from @item.Author</p>
                                 <div id="@(divId+"_3")" class="profile-content-pane-share">
+                                    <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) })">
+                                        @if (item.AuthorPP == null)
+                                        {
+                                            <img class="post-share-img circular-image" src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
+                                        }
+                                        else
+                                        {
+                                            <img class="post-share-img circular-image" src="~/@item.AuthorPP" width="64" height="64" />
+                                        }
+                                    </a>
                                     <h4 class="media-heading">@item.Author</h4>
                                     <p>@item.PostContent</p>
                                 </div>
                             </div>
                         </div>
+                    </div>
                         @* <div class="profile-content-pane-share">
                             <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) })">
                                 @if (item.AuthorPP == null)
