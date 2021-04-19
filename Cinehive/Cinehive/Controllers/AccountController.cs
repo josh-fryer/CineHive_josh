@@ -471,19 +471,10 @@ namespace Cinehive.Controllers
             context.UserProfiles.Include(u => u.Albums).ToList();
             context.UserProfiles.Include(u => u.Posts).ToList();
             //context.UserProfiles.Include(u => u.Images).ToList();
-            context.Albums.Include(u => u.Images).ToList();
+            //context.Albums.Include(u => u.Images).ToList();
             context.Posts.Include(u => u.PostComments).ToList();
             UserProfile user = context.UserProfiles.First(x => x.UserId == userid);
-            //REMOVE NOTIFICATIONS 
-            var listNotif = user.Notifications.ToList();
-            if (listNotif.Count != 0)
-            {
-                foreach (var Notification in listNotif)
-                {
-                    context.Notifications.Remove(Notification);
-                }
-            }
-            context.SaveChanges();
+           
             //REMOVE FRIEND REQ RECEIVED
             var listReq = user.ReceivedFriendReq.ToList();
             if (listReq.Count != 0)
@@ -501,6 +492,16 @@ namespace Cinehive.Controllers
                 foreach (var SentFriendReq in listReqSent)
                 {
                     context.FriendRequests.Remove(SentFriendReq);
+                }
+            }
+            context.SaveChanges();
+            //REMOVE NOTIFICATIONS 
+            var listNotif = user.Notifications.ToList();
+            if (listNotif.Count != 0)
+            {
+                foreach (var Notification in listNotif)
+                {
+                    context.Notifications.Remove(Notification);
                 }
             }
             context.SaveChanges();
@@ -543,27 +544,31 @@ namespace Cinehive.Controllers
                     context.Ratings.Remove(Rating);
                 }
             }
-            //REMOVE IMAGES
-            context.SaveChanges();
-            var img = context.Images.ToList();
-            if (img.Count != 0)
+            //remove the images in an album
+            var albUser = context.UserProfiles.Where(x=>x.UserId == userid).Include(x => x.Albums).ToList();
+            if (albUser.Count != 0)
             {
-                foreach (var Image in img)
+                foreach (UserProfile d in albUser)
                 {
-                    context.Images.Remove(Image);
+                    foreach (Album c in d.Albums)
+                    {
+                        foreach (var img in c.Images.ToList())
+                        {
+                            context.Images.Remove(img);
+                        }
+                    }
                 }
             }
             context.SaveChanges();
-            //REMOVE ALBUM 
-            var listAlbums = user.Albums.ToList();
-            if (listAlbums.Count != 0)
+           //remove album
+            var albumUser = user.Albums.ToList();
+            if (albumUser.Count !=0)
             {
-                foreach (var Album in listAlbums)
+                foreach (var Album in albumUser)
                 {
                     context.Albums.Remove(Album);
                 }
             }
-            context.SaveChanges();
             //REMOVE USER 
             var Oneuser = context.UserProfiles.FirstOrDefault(u => u.UserId == userId);
             context.UserProfiles.Remove(Oneuser);
