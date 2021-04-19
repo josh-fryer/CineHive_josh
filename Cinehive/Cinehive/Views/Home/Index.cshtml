@@ -49,7 +49,7 @@
                             <div id="@(divId + "_2")" class="media-body">
                                 <p>Shared a post from @item.Author</p>
                                 <div id="@(divId+"_3")" class="profile-content-pane-share">
-                                    <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) })">
+                                    <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = 0 })">
                                         @if (item.AuthorPP == null)
                                         {
                                             <img class="post-share-img circular-image" src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
@@ -120,15 +120,13 @@
                     isUserPostOrAdmin = true;
                 }
 
-                <script type="text/javascript">
-
+        <script type="text/javascript">
                     returnPost( "@divId",
                     @Model.GetProfileId(postid = item.PostId), @item.PostId, "@Model.GetFirstName(postid = item.PostId)",
                     "@Model.GetLastName(postid = item.PostId)", "@Model.GetUserPicture(postid = item.PostId)", "@item.DatePosted", @Json.Encode(item.Popular), @item.Awards,
                     @Json.Encode(Model.AwardGiven(postid = item.PostId)), @Json.Encode(isUserPostOrAdmin), @item.PostComments.Count
                     );
-
-                </script>
+        </script>
                 
                 <div id="Comments-@item.PostId"></div>
 

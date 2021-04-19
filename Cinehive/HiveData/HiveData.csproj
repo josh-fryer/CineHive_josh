@@ -256,6 +256,14 @@
     <Compile Include="Migrations\202104142030029_postforprofilepicchange.Designer.cs">
       <DependentUpon>202104142030029_postforprofilepicchange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104191016499_Originalpost.cs" />
+    <Compile Include="Migrations\202104191016499_Originalpost.Designer.cs">
+      <DependentUpon>202104191016499_Originalpost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104191119424_undoOfOriginalPost.cs" />
+    <Compile Include="Migrations\202104191119424_undoOfOriginalPost.Designer.cs">
+      <DependentUpon>202104191119424_undoOfOriginalPost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -371,6 +379,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104142030029_postforprofilepicchange.resx">
       <DependentUpon>202104142030029_postforprofilepicchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104191016499_Originalpost.resx">
+      <DependentUpon>202104191016499_Originalpost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104191119424_undoOfOriginalPost.resx">
+      <DependentUpon>202104191119424_undoOfOriginalPost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

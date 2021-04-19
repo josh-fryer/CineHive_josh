@@ -108,8 +108,7 @@ namespace Cinehive.Controllers
         public ActionResult SharePost(int id)
         {
             Post post = postService.GetPost(id);
-            
-
+           
             Post post1 = new Post
             {
                 PostContent = post.PostContent,
@@ -117,7 +116,6 @@ namespace Cinehive.Controllers
                 Author = post.Author,
                 AuthorPP = post.AuthorPP,
                 Shared = true
-                
             };
 
             string userid = User.Identity.GetUserId();

@@ -4,7 +4,7 @@ function returnPost(divId, profileId, postId, firstName, lastName, imagePath, da
      isPopular, awards, awardGiven, isUserPostOrAdimin, commentsCount) {
     console.log("returnPost called");
     var postImage = `<div class="media-left"><a href="/Profile/ViewProfile/${profileId}">`;
-        if (imagePath == null)
+        if (imagePath == null || imagePath == "")
         {
             postImage += `<img class="post-profile-img circular-image" src="/Content/Img/profile-image-placeholder.png" width="64" height="64" />`;
         }
@@ -57,11 +57,10 @@ function returnPost(divId, profileId, postId, firstName, lastName, imagePath, da
             }
         postButtons += `</ul>`;
 
-    // return postImage + postBody + postAwards + postButtons;
     // post part 1 id = post1_1
     var part1 = document.getElementById(divId+"_1");
     var part2 = document.getElementById(divId+"_2");
-    document.getElementById(divId+"_1").insertAdjacentHTML("afterbegin", postImage);
-    document.getElementById(divId+"_2").insertAdjacentHTML("afterbegin", postHeading );
-    document.getElementById(divId+"_3").insertAdjacentHTML("afterend", (postAwards + postButtons));
+    document.getElementById(divId+"_1").insertAdjacentHTML("afterbegin", postImage); // first child of div
+    document.getElementById(divId+"_2").insertAdjacentHTML("afterbegin", postHeading ); 
+    document.getElementById(divId+"_3").insertAdjacentHTML("afterend", (postAwards + postButtons)); // insert after </div>
 }

@@ -18,7 +18,9 @@ namespace HiveData.Models
         public bool hasFilmLink { get; set; }
         public bool Edited { get; set; }
         public bool Popular { get; set; }
+        
         public bool Shared { get; set; }
+        
         public bool PictureChange { get; set; }
         public string Author { get; set; }
         public string AuthorPP { get; set; }
