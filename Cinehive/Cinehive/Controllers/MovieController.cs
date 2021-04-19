@@ -26,7 +26,7 @@ namespace Cinehive.Controllers
         {
             movieService = new MovieService();
         }
-
+        [Authorize]
         public ActionResult Index(Movie movie, dynamic item)
         {
             var upcoming = movieService.PrepUpcomingMovies(item);
@@ -41,6 +41,37 @@ namespace Cinehive.Controllers
             };      
 
             return View(movieHubViewModel);
+        }
+        [Authorize]
+        public ActionResult ViewMore(int id, dynamic item)
+        {
+            if (id == 1)
+            {
+                var upcoming = movieService.PrepUpcomingMovies(item);
+                var list = movieService.GetUpcomingMovies(upcoming);
+                ViewBag.PageTitle = "Upcoming";
+
+                return View(list);
+            }
+            else if (id == 2)
+            {
+                var popcritic = movieService.PrepCriticallyAcclaimed(item);
+                var list = movieService.GetCriticallyAcclaimed(popcritic);
+                ViewBag.PageTitle = "Critically Acclaimed";
+                return View(list);
+            }
+            else if (id == 3)
+            {
+                var intheatres = movieService.PrepInTheatres(item);
+                var list = movieService.GetInTheatres(intheatres);
+                ViewBag.PageTitle = "Now In Theatres";
+                return View(list);
+            }
+            else
+            {
+                return View();
+            }
+
         }
 
         // search for movie title then return view of movie details

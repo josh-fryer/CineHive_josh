@@ -973,7 +973,21 @@ a.remove-friend-link:active {
 .movie-title {
     color:white;
 }
-
+.viewmore-button {
+    width: 130px;
+    height: 190px;
+    border-radius: 20px;
+    background-color: white;
+}
+.viewmore-button:hover {
+    background-color:grey;
+    color:white;
+}
+.movie-list-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
 /*########### ViewMovie ################*/
 .cine-rating-list {
     margin: 0;

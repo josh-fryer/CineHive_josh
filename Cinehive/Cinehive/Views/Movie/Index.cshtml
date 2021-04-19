@@ -45,7 +45,7 @@
                         <li>
                             <i class="latest-movie-text">Latest Movie</i>
 
-                            <a href="@Url.Action("GetMovieByID","Movie",new {id = Model.LatestMovie.ID })">
+                            <a href="@Url.Action("GetMovieByID","Movie",new {id = Model.LatestMovie.MovieApi_ID })">
                                 @if (Model.LatestMovie.PosterPath == null)
                                 {
                                     <img class="img-sidebar-poster" src="~/Content/Img/poster-placeholder.jpg" />
@@ -71,7 +71,7 @@
         <div class="col-lg-10">
             <h3 class="movie-text">Top Upcoming</h3>
             <hr />
-            @foreach (var item in Model.UpcomingMovie.Take(6))
+            @foreach (var item in Model.UpcomingMovie.Take(5))
             {
                 <div class="col-sm-2">
 
@@ -83,6 +83,11 @@
                     <p class="movie-title">@item.Title</p>
                 </div>
             }
+            <div class="col-sm-2">
+                <div class="Poster-container">
+                    <button class="viewmore-button" onclick="location.href='@Url.Action("ViewMore", "Movie", new { id = 1 })'">View More..</button>
+                </div>
+            </div>
 
         </div>
 
@@ -91,7 +96,7 @@
         <div class="col-lg-10 col-md-offset-2">
             <h3 class="movie-text">Critically Acclaimed</h3>
             <hr />
-            @foreach (var item in Model.CritAcclaim.Take(6))
+            @foreach (var item in Model.CritAcclaim.Take(5))
             {
                 <div class="col-sm-2">
 
@@ -103,14 +108,20 @@
                     <p class="movie-title">@item.Title</p>
                 </div>
             }
+            <div class="col-sm-2">
+                <div class="Poster-container">
+                    <button class="viewmore-button" onclick="location.href='@Url.Action("ViewMore", "Movie", new { id = 2 })'">View More..</button>
+                </div>
+            </div>
         </div>
+
 
     </div>
     <div class="row">
         <div class="col-lg-10 col-md-offset-2">
             <h3 class="movie-text">In Theatres</h3>
             <hr />
-            @foreach (var item in Model.InTheatres.Take(6))
+            @foreach (var item in Model.InTheatres.Take(5))
             {
                 <div class="col-sm-2">
 
@@ -122,6 +133,11 @@
                     <p class="movie-title">@item.Title</p>
                 </div>
             }
+            <div class="col-sm-2">
+                <div class="Poster-container">
+                    <button class="viewmore-button" onclick="location.href='@Url.Action("ViewMore", "Movie", new { id = 3 })'">View More..</button>
+                </div>
+            </div>
         </div>
 
     </div>

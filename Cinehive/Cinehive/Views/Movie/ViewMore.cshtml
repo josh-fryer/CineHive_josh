@@ -1,0 +1,24 @@
+﻿@model IEnumerable<HiveData.Models.Movie>
+
+@{
+    ViewBag.Title = "ViewMore";
+}
+<div class="movie-list-title">
+    <h2>@ViewBag.PageTitle</h2>
+    @Html.ActionLink("View Less","Index", "Movie")
+</div>
+
+        <div class="col-lg-10 col-md-offset-1">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-2">
+
+                    <div class="Poster-container">
+                        <a href="@Url.Action("GetMovieByID","Movie",new {id = item.MovieApi_ID })">
+                            <img class="img-responsive poster-img" src="http://image.tmdb.org/t/p/w342@(item.PosterPath)" />
+                        </a>
+                    </div>
+                    <p class="movie-title">@item.Title</p>
+                </div>
+            }
+        </div>

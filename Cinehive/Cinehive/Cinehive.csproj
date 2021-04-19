@@ -342,6 +342,7 @@
     <Content Include="Views\Account\BannedView.cshtml" />
     <Content Include="Views\Post\ProfilePostCommentsPartial.cshtml" />
     <Content Include="Views\Post\IndexPostCommentsPartial.cshtml" />
+    <Content Include="Views\Movie\ViewMore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
