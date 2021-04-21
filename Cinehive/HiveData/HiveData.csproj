@@ -276,6 +276,10 @@
     <Compile Include="Migrations\202104211024066_UnmapAwardsOnPost.Designer.cs">
       <DependentUpon>202104211024066_UnmapAwardsOnPost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104211454388_trending.cs" />
+    <Compile Include="Migrations\202104211454388_trending.Designer.cs">
+      <DependentUpon>202104211454388_trending.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -406,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104211024066_UnmapAwardsOnPost.resx">
       <DependentUpon>202104211024066_UnmapAwardsOnPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104211454388_trending.resx">
+      <DependentUpon>202104211454388_trending.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

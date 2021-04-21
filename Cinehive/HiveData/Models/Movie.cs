@@ -21,6 +21,7 @@ namespace HiveData.Models
 
         // db data fields
         public int ViewCounter {get; set;}
+        public bool Trending { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
 
     }

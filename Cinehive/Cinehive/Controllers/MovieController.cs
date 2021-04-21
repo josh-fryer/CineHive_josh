@@ -127,6 +127,9 @@ namespace Cinehive.Controllers
             var userId = User.Identity.GetUserId();                      
             movieService.RateMovie(movieApiID, stars, userId);
         }
-
+        public ActionResult TrendingMovies()
+        {
+            return View(movieService.Trending().Take(10));
+        }
     }
 }

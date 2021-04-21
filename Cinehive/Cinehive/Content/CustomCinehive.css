@@ -13,14 +13,17 @@ body {
     font-family: 'SFProDisplay';
     font-size: 16px;
 }
+
 @font-face {
     font-family: 'SFProDisplay';
     src: url('/Content/SF-Pro-Display.otf') format('opentype');
 }
+
 @font-face {
     font-family: 'SFProDisplayRegular';
     src: url('/Content/SF-Pro-Display Regular.ttf') format('truetype');
 }
+
 .footer-control {
     color: white;
     font-family: SFProDisplayRegular;
@@ -30,7 +33,6 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-
 }
 /*//////// Text colour /////////*/
 #txt-white {
@@ -41,14 +43,14 @@ body {
     color: white;
 }
 
-.text-colour-gray{
+.text-colour-gray {
     color: gray;
 }
 
 
 /*/////////// Background Colour /////////////////*/
-.bg-white{
-    background-color:white;
+.bg-white {
+    background-color: white;
 }
 
 /* ///////// glyphicon sizes /////////// */
@@ -86,13 +88,13 @@ body {
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #888;
-    border-radius:15px;
+    border-radius: 15px;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background:#6e6e6e;
-}
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #6e6e6e;
+    }
 
 /* /////////////////////// Notification ////////////////////// */
 .notification {
@@ -111,17 +113,20 @@ body {
     background-color: #000;
     border-color: #080808;
 }
-.navbar-inverse .navbar-brand {
-    color: #ffffff;
-}
+
+    .navbar-inverse .navbar-brand {
+        color: #ffffff;
+    }
+
 .navbar-brand {
     float: left;
     height: 50px;
     padding: 15px 15px;
     font-size: 24px;
     line-height: 20px;
-    font-family:SFProDisplay;
+    font-family: SFProDisplay;
 }
+
 .navbar-inverse .navbar-brand:hover {
     color: #808080;
 }
@@ -131,7 +136,7 @@ body {
 }
 
 .navbar-myfooter {
-    margin-top:10%;
+    margin-top: 10%;
     margin-bottom: 0;
     border-width: 1px 0 0;
     /*position: fixed;*/
@@ -154,6 +159,7 @@ body {
         margin-left: -100px;
     }
 }
+
 @media (min-width: 1500px) {
     .navbar-right {
         float: right !important;
@@ -204,11 +210,12 @@ body {
 
 .navbar-inverse .navbar-nav > li > a {
     color: #ffffff;
-    font-family:SFProDisplay;
+    font-family: SFProDisplay;
 }
-.navbar-inverse .navbar-nav > li > a:hover {
-    color: #808080;
-}
+
+    .navbar-inverse .navbar-nav > li > a:hover {
+        color: #808080;
+    }
 
 /*/////////////////////////////Welcome page css////////////////////////////////*/
 .Welcome-Jumbo {
@@ -224,6 +231,7 @@ body {
         padding-left: 120px;
     }
 }
+
 @media screen and (min-width: 768px) {
     .jumbotron p {
         margin-bottom: 5px;
@@ -233,6 +241,7 @@ body {
         padding-bottom: 0px;
     }
 }
+
 @media screen and (min-width: 768px) {
     .already-account {
         font-size: 30px;
@@ -242,6 +251,7 @@ body {
         color: white;
     }
 }
+
 @media screen and (min-width: 768px) {
     .btn-extension {
         padding: 14px 42px;
@@ -256,41 +266,43 @@ body {
 }
 
 /*Small screen/mobile sized jumbotron*/
-@media screen and (max-width: 765px){
+@media screen and (max-width: 765px) {
     .jumbotron h1, .jumbotron .h1 {
-    font-size: 100px;
-    text-align:center;
-}
+        font-size: 100px;
+        text-align: center;
     }
-@media screen and (max-width: 765px){
+}
+
+@media screen and (max-width: 765px) {
     .jumbotron p {
-    margin-bottom: 5px;
-    font-size: 28px;
-    font-weight: 200;
-    padding-bottom: 0px;
-    text-align:center;
-}
+        margin-bottom: 5px;
+        font-size: 28px;
+        font-weight: 200;
+        padding-bottom: 0px;
+        text-align: center;
     }
-@media screen and (max-width: 765px){
+}
+
+@media screen and (max-width: 765px) {
     .already-account {
-    font-size: 15px;
-    margin-top: 120px;
-    font-family: 'SFProDisplay';
-    color: white;
-    text-align:center;
-}
+        font-size: 15px;
+        margin-top: 120px;
+        font-family: 'SFProDisplay';
+        color: white;
+        text-align: center;
     }
+}
 
 @media screen and (max-width: 765px) {
     .btn-extension {
-     padding: 7px 22px;
-     font-size: 12px;
-     line-height: 1.3333333;
-     border-radius: 6px;
-     margin-top: 10px;
-     color: black;
-     background-color: white;
-     text-align:center;
+        padding: 7px 22px;
+        font-size: 12px;
+        line-height: 1.3333333;
+        border-radius: 6px;
+        margin-top: 10px;
+        color: black;
+        background-color: white;
+        text-align: center;
     }
 }
 
@@ -301,8 +313,9 @@ body {
 .LoginText {
     font-family: 'SFProDisplay';
 }
+
 .WhiteText {
-    color:#ffffff
+    color: #ffffff
 }
 
 /*Login box*/
@@ -335,49 +348,55 @@ body {
         left: 12px;
         font-size: 30px;
     }
+
     .Login-container {
-    position: relative;
-    top: 40%;
-    left: 87%;
-    transform: translate(-50%, -50%);
-    text-align: left;
-}
-.signin-text {
-    font-size:30px;
-    position:relative;
-    bottom: 20px;
-    right: 10px;
+        position: relative;
+        top: 40%;
+        left: 87%;
+        transform: translate(-50%, -50%);
+        text-align: left;
+    }
 
-}
-.login-button {
-    background-color: #941209;
-    border-color: #941209;
-}
-.login-button:hover {
-    background-color: #c93126;
-    border-color: #941209;
-}
-.login-forgotpassword {
-    position: relative;
-    right: 13px;
-}
+    .signin-text {
+        font-size: 30px;
+        position: relative;
+        bottom: 20px;
+        right: 10px;
+    }
 
-.no-account {
-    text-align:left;
-    position:absolute;
-    top:920px;
-    left:20px;
-    font-family:'SFProDisplay';
-    font-size: 20px;
-    color:#ffff
-}
-.radio label .checkbox label {
-    padding-left: 20px;
-}
-.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
-    position: absolute;
-    margin-left: 0;
-}
+    .login-button {
+        background-color: #941209;
+        border-color: #941209;
+    }
+
+        .login-button:hover {
+            background-color: #c93126;
+            border-color: #941209;
+        }
+
+    .login-forgotpassword {
+        position: relative;
+        right: 13px;
+    }
+
+    .no-account {
+        text-align: left;
+        position: absolute;
+        top: 920px;
+        left: 20px;
+        font-family: 'SFProDisplay';
+        font-size: 20px;
+        color: #ffff
+    }
+
+    .radio label .checkbox label {
+        padding-left: 20px;
+    }
+
+    .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+        position: absolute;
+        margin-left: 0;
+    }
 }
 /*Small screen and mobile*/
 @media screen and (max-width: 765px) {
@@ -408,6 +427,7 @@ body {
         left: 12px;
         font-size: 30px;
     }
+
     .Login-container {
         position: relative;
         top: 40%;
@@ -428,10 +448,10 @@ body {
         border-color: #941209;
     }
 
-    .login-button:hover {
-        background-color: #c93126;
-        border-color: #941209;
-    }
+        .login-button:hover {
+            background-color: #c93126;
+            border-color: #941209;
+        }
 
     .login-forgotpassword {
         position: relative;
@@ -448,7 +468,7 @@ body {
         color: #ffff
     }
 
-   /* .radio label .checkbox label {
+    /* .radio label .checkbox label {
         padding-left: 20px;
     }
 
@@ -505,10 +525,10 @@ body {
         margin-top: 60px;
     }
 
-    .centered-form .panel {
-        background: #ffffff;
-        box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
-    }
+        .centered-form .panel {
+            background: #ffffff;
+            box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+        }
 
     .Paneltitle-edit {
         text-align: center;
@@ -533,10 +553,10 @@ body {
         margin-right: 25%;
     }
 
-    .Panel-register-button:hover {
-        background-color: #c93126;
-        border-color: #c93126;
-     }
+        .Panel-register-button:hover {
+            background-color: #c93126;
+            border-color: #c93126;
+        }
 
     .panel-default .panel-heading {
         color: #333333;
@@ -582,7 +602,6 @@ body {
         padding-left: 20px;
         font-family: SF Pro Display;
     }
-  
 }
 
 /*Profile page*/
@@ -590,112 +609,114 @@ body {
     width: 700px;
     float: right;
 }
+
 .Image-contain {
     background-color: #fff;
     border: 1px black;
     height: 190px;
     width: 70%;
     margin-left: 40px;
-    overflow:hidden;
-    object-fit:cover;
+    overflow: hidden;
+    object-fit: cover;
 }
+
 .profile {
-  margin: 20px 0;
+    margin: 20px 0;
 }
 
 /* ##################### Profile sidebar ####################*/
 .profile-sidebar {
-  padding: 20px 0 10px 0;
-  background: #fff;
-  border-radius: 8px;
-  margin-top:30px;
+    padding: 20px 0 10px 0;
+    background: #fff;
+    border-radius: 8px;
+    margin-top: 30px;
 }
 
 .profile-userpic img {
-  float: none;
-  margin: 0 auto;
-  width: 50%;
-  height: 50%;
-  -webkit-border-radius: 50% !important;
-  -moz-border-radius: 50% !important;
-  border-radius: 50% !important;
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
 }
 
 .profile-usertitle {
-  text-align: center;
-  margin-top: 20px;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .profile-usertitle-name {
-  color: #5a7391;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 7px;
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
 }
 
 .profile-usertitle-job {
-  text-transform: uppercase;
-  color: #5b9bd1;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 15px;
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
 .profile-userbuttons {
-  text-align: center;
-  margin-top: 10px;
+    text-align: center;
+    margin-top: 10px;
 }
 
-.profile-userbuttons .btn {
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 6px 15px;
-  margin-right: 5px;
-}
+    .profile-userbuttons .btn {
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 6px 15px;
+        margin-right: 5px;
+    }
 
-.profile-userbuttons .btn:last-child {
-  margin-right: 0px;
-}
-    
+        .profile-userbuttons .btn:last-child {
+            margin-right: 0px;
+        }
+
 .profile-usermenu {
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
-.profile-usermenu ul li {
-  border-bottom: 1px solid #f0f4f7;
-}
+    .profile-usermenu ul li {
+        border-bottom: 1px solid #f0f4f7;
+    }
 
-.profile-usermenu ul li:last-child {
-  border-bottom: none;
-}
+        .profile-usermenu ul li:last-child {
+            border-bottom: none;
+        }
 
-.profile-usermenu ul li a {
-  color: #93a3b5;
-  font-size: 14px;
-  font-weight: 400;
-}
+        .profile-usermenu ul li a {
+            color: #93a3b5;
+            font-size: 14px;
+            font-weight: 400;
+        }
 
-.profile-usermenu ul li a i {
-  margin-right: 8px;
-  font-size: 14px;
-}
+            .profile-usermenu ul li a i {
+                margin-right: 8px;
+                font-size: 14px;
+            }
 
-.profile-usermenu ul li a:hover {
-  background-color: #fafcfd;
-  color: #5b9bd1;
-}
+            .profile-usermenu ul li a:hover {
+                background-color: #fafcfd;
+                color: #5b9bd1;
+            }
 
-.profile-usermenu ul li.active {
-  border-bottom: none;
-}
+        .profile-usermenu ul li.active {
+            border-bottom: none;
+        }
 
-.profile-usermenu ul li.active a {
-  color: #5b9bd1;
-  background-color: #f6f9fb;
-  border-left: 2px solid #5b9bd1;
-  margin-left: -2px;
-}
+            .profile-usermenu ul li.active a {
+                color: #5b9bd1;
+                background-color: #f6f9fb;
+                border-left: 2px solid #5b9bd1;
+                margin-left: -2px;
+            }
 
 .friend-links {
     display: flex;
@@ -755,11 +776,12 @@ a.remove-friend-link:active {
 
 /*################### Profile Content ###################*/
 .profile-content {
-  padding: 20px;
-  background: #fff;
-  min-height: 460px;
-  border-radius: 8px;
+    padding: 20px;
+    background: #fff;
+    min-height: 460px;
+    border-radius: 8px;
 }
+
 .profile-content-main-post { /*lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll*/
     padding: 20px;
     background: #fff;
@@ -770,6 +792,7 @@ a.remove-friend-link:active {
     margin-top: 20px;
     height: 150px;
 }
+
 .profile-content-pane {
     padding: 20px;
     background: #fff;
@@ -777,6 +800,7 @@ a.remove-friend-link:active {
     border-radius: 8px;
     margin-bottom: 10px;
 }
+
 .profile-content-pane-share {
     padding: 20px;
     background: #fff;
@@ -785,20 +809,24 @@ a.remove-friend-link:active {
     margin-bottom: 10px;
     margin-top: 20px;
     border: solid;
-    height:100px;
+    height: 100px;
 }
+
 .profile-content-pane-img {
     text-align: center;
 }
-.profile-content-img{
-    border-radius:20px;
-    margin-top:10px;
-    max-height:200px;
+
+.profile-content-img {
+    border-radius: 20px;
+    margin-top: 10px;
+    max-height: 200px;
 }
+
 .content-pane-items {
     margin-top: 30px;
     margin-left: -80px;
 }
+
 .profile-content-input {
     padding: 20px;
     background: #fff;
@@ -807,6 +835,7 @@ a.remove-friend-link:active {
     margin-bottom: 10px;
     margin-top: 30px;
 }
+
 .profile-content-title {
     padding: 20px;
     background: #fff;
@@ -815,22 +844,25 @@ a.remove-friend-link:active {
     margin-bottom: 10px;
     margin-top: 0px;
     height: 60px;
-    text-align:center;
+    text-align: center;
 }
-.profile-content-title h3 {
-    padding: 20px;
-    background: transparent;
-    min-height: 0px;
-    border-radius: 8px;
-    margin-left: -20px;
-    margin-top: -20px;
-}
+
+    .profile-content-title h3 {
+        padding: 20px;
+        background: transparent;
+        min-height: 0px;
+        border-radius: 8px;
+        margin-left: -20px;
+        margin-top: -20px;
+    }
+
 .Friend-text {
-    text-align:center;
-    font-size:20px;
+    text-align: center;
+    font-size: 20px;
 }
+
 .bio-box {
-    margin-left:20px;
+    margin-left: 20px;
 }
 
 .profile-content-edit {
@@ -840,15 +872,15 @@ a.remove-friend-link:active {
     border-radius: 8px;
 }
 
-.fave-genre-list{
-    margin-bottom:10px;
+.fave-genre-list {
+    margin-bottom: 10px;
 }
 
 .fave-genre-item {
     border: 2px solid #c6c9cc;
     border-radius: 15px;
-    margin:5px;
-    padding:2px;
+    margin: 5px;
+    padding: 2px;
 }
 
 /*########################### Album index ####################*/
@@ -857,9 +889,11 @@ a.remove-friend-link:active {
     background: #fff;
     border-radius: 8px;
 }
-.album-sidebar .profile-usermenu {
-    margin-top:0;
-}
+
+    .album-sidebar .profile-usermenu {
+        margin-top: 0;
+    }
+
 .album-text {
     text-align: center;
 }
@@ -867,20 +901,22 @@ a.remove-friend-link:active {
 .album-text-dec {
     text-align: center;
     color: black;
-    font-size:18px;
-    
+    font-size: 18px;
 }
-.album-text-dec:hover {
-    color:grey;
-    text-decoration: none;
-}
+
+    .album-text-dec:hover {
+        color: grey;
+        text-decoration: none;
+    }
+
 .img-responsive-alt {
     margin-left: 50px;
     margin-top: 30px;
     border-radius: 20px;
 }
+
 .circular-image {
-    border-radius:20px;
+    border-radius: 20px;
 }
 
 /* ############# Main Feed index ############*/
@@ -889,8 +925,9 @@ a.remove-friend-link:active {
     background: #fff;
     border-radius: 8px;
     margin-top: 30px;
-    width:180px;
+    width: 180px;
 }
+
 .post-submit {
     max-width: 380px;
     width: 50%;
@@ -899,6 +936,7 @@ a.remove-friend-link:active {
     border-radius: 8px;
     padding: 6px 10px;
 }
+
 .post-button {
     width: 100px;
     height: 36px;
@@ -906,15 +944,18 @@ a.remove-friend-link:active {
     background: #000000;
     border-color: black;
 }
-.post-button:hover {
-    background-color: grey;
-    border-color: grey;
-}
+
+    .post-button:hover {
+        background-color: grey;
+        border-color: grey;
+    }
+
 .profile-content-input h3 {
     margin-top: 0px;
     margin-bottom: -20px;
     color: gray;
 }
+
 .profile-content-comment {
     padding: 20px;
     background: #fff;
@@ -924,23 +965,29 @@ a.remove-friend-link:active {
     width: 700px;
     margin-left: 123px;
 }
+
 .viewmore {
-    text-align:center;
+    text-align: center;
 }
-.comment-shift{
-    margin-right:10px;
+
+.comment-shift {
+    margin-right: 10px;
 }
+
 .comment-button {
     border: none;
     background: none;
     color: #337ab7;
 }
-.comment-button:hover {
-    text-decoration:underline;
-}
+
+    .comment-button:hover {
+        text-decoration: underline;
+    }
+
 .counter-margin {
-    margin-top:20px;
+    margin-top: 20px;
 }
+
 .post-share-img {
     margin-right: 20px;
     margin-top: -5px;
@@ -949,6 +996,7 @@ a.remove-friend-link:active {
 .poster-img {
     border-radius: 15px;
 }
+
 .movie-explorer {
     padding: 1px 0 10px 0;
     background: #fff;
@@ -956,33 +1004,41 @@ a.remove-friend-link:active {
     margin-top: 30px;
     width: 180px;
 }
+
 .movie-text {
-    color:white;
+    color: white;
 }
+
 .img-sidebar-poster {
     width: 100px;
     margin-left: 20px;
 }
+
 .latest-movie-text {
-    margin-left:30px;
-    text-align:center;
+    margin-left: 30px;
+    text-align: center;
 }
+
 .latest-movie-box {
-    text-align:center;
+    text-align: center;
 }
+
 .movie-title {
-    color:white;
+    color: white;
 }
+
 .viewmore-button {
     width: 130px;
     height: 190px;
     border-radius: 20px;
     background-color: white;
 }
-.viewmore-button:hover {
-    background-color:grey;
-    color:white;
-}
+
+    .viewmore-button:hover {
+        background-color: grey;
+        color: white;
+    }
+
 .movie-list-title {
     text-align: center;
     margin-bottom: 20px;
@@ -1000,21 +1056,21 @@ a.remove-friend-link:active {
     font-size: 1.8em;
 }
 
-.cine-rating-list ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: inherit;
-    margin-right:40px;
-}
+    .cine-rating-list ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: inherit;
+        margin-right: 40px;
+    }
 
-.cine-rating-list li {
-    display:inline-block   
-}
+    .cine-rating-list li {
+        display: inline-block
+    }
 
 .cine-rating-star {
-    margin: 4px;   
+    margin: 4px;
 }
 
 /*.cine-rating-list-items {
@@ -1022,7 +1078,7 @@ a.remove-friend-link:active {
     justify-content: center;
     align-items: center;
     height: inherit;*/
-    /*border: 3px solid green;*/
+/*border: 3px solid green;*/
 /*}*/
 
 .rating-list {
@@ -1036,27 +1092,27 @@ a.remove-friend-link:active {
     font-size: 1.8em;
 }
 
-.rating-list ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: inherit;
-    margin-right:40px;
-}
+    .rating-list ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: inherit;
+        margin-right: 40px;
+    }
 
-.rating-list button {
-    border:none;
-    color:none;
-    background-color: transparent;
-    margin:4px;
-    padding:0;
-}
+    .rating-list button {
+        border: none;
+        color: none;
+        background-color: transparent;
+        margin: 4px;
+        padding: 0;
+    }
 
-.rating-list li {
-    display: inline-block;
-    /*font-size:1.8em;*/
-}
+    .rating-list li {
+        display: inline-block;
+        /*font-size:1.8em;*/
+    }
 
 .videoContainer {
     display: flex;
@@ -1068,20 +1124,43 @@ a.remove-friend-link:active {
 .viewMovie-right-col {
     border-left: 2px solid #e8e8e8;
 }
+/*##########TrendingMovies################*/
+.Trending-divide {
+    text-align: center;
+    text-decoration: none;
+}
 
+    .Trending-divide a {
+        font-size: 35px;
+        color: darkred
+    }
+
+        .Trending-divide a:hover {
+            text-decoration: none;
+            color: black;
+        }
+
+.glyphicon-certificate {
+    color: yellow;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+.Trending-label {
+    margin-bottom: 10px;
+}
 /*########## Edit Profile ################*/
 .genres-checkboxLabel {
     width: 160px;
     display: inline-block;
 }
 
-.profile-pic-label{
-   padding:0;
-   margin:0;
+.profile-pic-label {
+    padding: 0;
+    margin: 0;
 }
 
-.change-profile-pic{
-    padding-top:7px;
+.change-profile-pic {
+    padding-top: 7px;
 }
 
 /*############View Comments#################*/
@@ -1090,11 +1169,13 @@ a.remove-friend-link:active {
     width: 110px;
     height: 110px;
     border-radius: 20px;
-    margin-right:20px;
+    margin-right: 20px;
 }
+
 .comment-post-body {
     margin-top: 4px;
 }
+
 .comment-pane {
     padding: 20px;
     background: #fff;
@@ -1106,10 +1187,12 @@ a.remove-friend-link:active {
     height: 50px;
     text-align: center;
 }
+
 .media-heading-comment {
     margin-top: -8px;
     font-size: 25px;
 }
+
 .comment-submit {
     max-width: 380px;
     width: 50%;
@@ -1120,9 +1203,9 @@ a.remove-friend-link:active {
 }
 /*################### Posts ####################*/
 .post-body p {
-   /* border-bottom: 1px solid #d4d4d4;*/
-    padding-top:10px;
-    padding-bottom:20px;
+    /* border-bottom: 1px solid #d4d4d4;*/
+    padding-top: 10px;
+    padding-bottom: 20px;
     margin-bottom: 10px;
     margin-top: 10px;
 }
@@ -1131,28 +1214,28 @@ a.remove-friend-link:active {
     color: #f72b2c; /*red*/
 }
 
-.post-heading a:hover {
-    color: #ad3333;
-}
+    .post-heading a:hover {
+        color: #ad3333;
+    }
 
 .post-buttons {
-   padding-top: 4px;
+    padding-top: 4px;
     border-top: 1px solid #d4d4d4;
 }
 
-.post-buttons li{
-    padding: 0px 30px 0px 0px;
-}
+    .post-buttons li {
+        padding: 0px 30px 0px 0px;
+    }
 
-.post-buttons a {
-    text-decoration: none;
-    color: black;
-}
+    .post-buttons a {
+        text-decoration: none;
+        color: black;
+    }
 
-.post-buttons a:hover {
-    color: #f72b2c;
-}
+        .post-buttons a:hover {
+            color: #f72b2c;
+        }
 
-.post-buttons a:active {
-    color: #ad3333;
-}
+        .post-buttons a:active {
+            color: #ad3333;
+        }
