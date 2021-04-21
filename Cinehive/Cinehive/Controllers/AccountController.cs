@@ -94,7 +94,8 @@ namespace Cinehive.Controllers
                         Firstname = user.UserName
                     };
                     Session.Add("UserId", cineUser.UserId); // place UserId in session  
-                    
+                    Session["fName"] = cineUser.Firstname;
+
                     // store user's roles in session
                     var um = new UserManager<ApplicationUser>(
                         new UserStore<ApplicationUser>
@@ -205,7 +206,11 @@ namespace Cinehive.Controllers
                     //await roleManager.CreateAsync(new IdentityRole("AdminUser"));
                     //await UserManager.AddToRoleAsync(user.Id, "AdminUser");
 
-                    var userProfile = new UserProfile { Firstname = model.Firstname, Lastname = model.Lastname, DateOfBirth = model.DateOfBirth, Gender = model.Gender, UserId = user.Id };
+                    var userProfile = new UserProfile { 
+                        Firstname = model.Firstname, Lastname = model.Lastname, DateOfBirth = model.DateOfBirth,
+                        Gender = model.Gender, UserId = user.Id 
+                    };
+                    Session["fName"] = userProfile.Firstname;
                     db.UserProfiles.Add(userProfile);
                     db.SaveChanges();
 
@@ -461,17 +466,17 @@ namespace Cinehive.Controllers
         {
             return View();
         }
+
         //DELETE ACCOUNT: To be Moved 
         public async Task<ActionResult> DeleteAccount(string userId)
         {
+            if (userId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             CineHiveContext context = new CineHiveContext();
             string userid = User.Identity.GetUserId();
-            //turning eager loading on
-            context.UserProfiles.Include(u => u.Albums).ToList();
-            context.UserProfiles.Include(u => u.Posts).ToList();
-            //context.UserProfiles.Include(u => u.Images).ToList();
-            //context.Albums.Include(u => u.Images).ToList();
-            context.Posts.Include(u => u.PostComments).ToList();
             UserProfile user = context.UserProfiles.First(x => x.UserId == userid);
            
             //REMOVE FRIEND REQ RECEIVED
@@ -484,7 +489,6 @@ namespace Cinehive.Controllers
                 }
             }
 
-            context.SaveChanges();
             //REMOVE FREQ SENT 
             var listReqSent = user.SentFriendReq.ToList();
             if (listReqSent.Count != 0)
@@ -495,7 +499,6 @@ namespace Cinehive.Controllers
                 }
             }
 
-            context.SaveChanges();
             //REMOVE NOTIFICATIONS 
             var listNotif = user.Notifications.ToList();
             if (listNotif.Count != 0)
@@ -505,7 +508,7 @@ namespace Cinehive.Controllers
                     context.Notifications.Remove(Notification);
                 }
             }
-            context.SaveChanges();
+
             //REMOVE COMMENTS 
             var comm = user.Comments.ToList();
             if (comm.Count != 0)
@@ -516,18 +519,6 @@ namespace Cinehive.Controllers
                 }
             }
 
-            context.SaveChanges();
-            //REMOVE POSTS
-            var listPosts = user.Posts.ToList();
-            if (listPosts.Count != 0)
-            {
-                foreach (var Post in listPosts)
-                {
-                    context.Posts.Remove(Post);
-                }
-            }
-
-            context.SaveChanges();
             //REMOVE AWARDS 
             var award = user.Awards.ToList();
             if (award.Count != 0)
@@ -538,7 +529,16 @@ namespace Cinehive.Controllers
                 }
             }
 
-            context.SaveChanges();
+            //REMOVE POSTS
+            var listPosts = user.Posts.ToList();
+            if (listPosts.Count != 0)
+            {
+                foreach (var Post in listPosts)
+                {
+                    context.Posts.Remove(Post);
+                }
+            }         
+
             //REMOVE RATINGS 
             var ratings = user.Ratings.ToList();
             if (ratings.Count != 0)
@@ -548,39 +548,27 @@ namespace Cinehive.Controllers
                     context.Ratings.Remove(Rating);
                 }
             }
-            //remove the images in an album
-            var albUser = context.UserProfiles.Where(x=>x.UserId == userid).Include(x => x.Albums).ToList();
-            if (albUser.Count != 0)
-            {
-                foreach (UserProfile d in albUser)
-                {
-                    foreach (Album c in d.Albums)
-                    {
-                        foreach (var img in c.Images.ToList())
-                        {
-                            context.Images.Remove(img);
-                        }
-                    }
-                }
-            }
-            context.SaveChanges();
-           //remove album
+
+            //remove the images and album
             var albumUser = user.Albums.ToList();
-            if (albumUser.Count !=0)
+
+            if (albumUser.Count != 0)
             {
-                foreach (var Album in albumUser)
+                foreach (var a in albumUser)
                 {
-                    context.Albums.Remove(Album);                    
+                    foreach (var img in a.Images)
+                    {
+                        context.Images.Remove(img);
+                    }
+                    context.Albums.Remove(a);
                 }
             }
+
             //REMOVE USER 
-            var Oneuser = context.UserProfiles.FirstOrDefault(u => u.UserId == userId);
-            context.UserProfiles.Remove(Oneuser);
+            context.UserProfiles.Remove(user);
+
             context.SaveChanges();
-            if (userId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+
             var user1 = await UserManager.FindByIdAsync(userId);
             var logins = user1.Logins;
             using (var transaction = context.Database.BeginTransaction())

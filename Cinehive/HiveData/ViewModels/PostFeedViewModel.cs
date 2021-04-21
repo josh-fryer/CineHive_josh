@@ -59,17 +59,25 @@ namespace HiveData.ViewModels
             }
         }
 
+        // check if user has given award to post
         public bool AwardGiven(int id)
         {
-            var award = context.UserProfiles.Where(c => c.Awards.Contains(context.Awards.Where(i => i.Post.PostId == id).FirstOrDefault())).Select(v => v.UserId).FirstOrDefault();
-
-            if (award == null)
+            var postAwards = context.Awards.Where(a => a.Post.PostId == id).ToList();
+            var userProfile = context.UserProfiles.Find(UserProfile.ProfileId);
+            if (postAwards.Count > 0)
             {
-                return false;
+                if(userProfile.Awards.Intersect(postAwards).Any())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }         
             }
             else
             {
-                return true;
+                return false;
             }
         }
 

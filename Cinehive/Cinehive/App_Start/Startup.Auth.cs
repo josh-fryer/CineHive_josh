@@ -68,24 +68,6 @@ namespace Cinehive
             //    ClientId = "",
             //    ClientSecret = ""
             //});
-
-            //############ My Code ######################
-            //var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
-            //var roleManager = new RoleManager<IdentityRole>(roleStore);
-            //var userStore = new UserStore<ApplicationUser>(new CineHiveContext()); 
-            //var userManager = new UserManager<ApplicationUser>(userStore);
-            
-            //roleManager.Create(new IdentityRole("Banned"));
-
-            // reset user Dummy Guy role
-            //string id = "f55521a6-fd7e-4a92-9de8-c947d49a6113";
-            //string[] roles = userManager.GetRoles(id).ToArray();
-            //userManager.RemoveFromRoles(id, roles);
-            //userManager.AddToRole(id, "Banned");
-
-
-
-
         }
     }
 }

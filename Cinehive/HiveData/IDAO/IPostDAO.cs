@@ -14,7 +14,7 @@ namespace HiveData.IDAO
         void CreatePost(string input, Post post, CineHiveContext context);
         void DeletePost(Post post, CineHiveContext context);
         Post GetPost(int id, CineHiveContext context);
-        IList<Post> GetCurrUserPosts(CineHiveContext context);
+        IList<Post> GetUserPosts(string userId, CineHiveContext context);
         void EditPost(Post post, CineHiveContext context);
         void GiveAward(int id, string userId, CineHiveContext context);
         void DeleteAssociatedComments(int id, CineHiveContext context);

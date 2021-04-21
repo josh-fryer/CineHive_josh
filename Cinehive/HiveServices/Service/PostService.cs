@@ -185,11 +185,11 @@ namespace HiveServices.Service
             }
         }
 
-        public IList<Post> GetCurrUserPosts()
+        public IList<Post> GetUserPosts(string userId)
         {
             using (var context = new CineHiveContext())
             {
-                return postDAO.GetCurrUserPosts(context);
+                return postDAO.GetUserPosts(userId ,context);
             }
         }
 

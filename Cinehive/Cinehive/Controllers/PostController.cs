@@ -49,14 +49,6 @@ namespace Cinehive.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        
-        //get posts for logged in user
-        [Authorize]
-        public ActionResult GetCurrUserPosts()
-        {
-            return View(postService.GetCurrUserPosts());
-        }
-
         public ActionResult ViewPostComments(int id, string message = "")
         {
             var comments = context.Posts.Find(id).PostComments.ToList();

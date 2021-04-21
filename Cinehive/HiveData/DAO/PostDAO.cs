@@ -41,11 +41,9 @@ namespace HiveData.DAO
             return context.Posts.Find(id);
         }
 
-        public IList<Post> GetCurrUserPosts(CineHiveContext context)
+        public IList<Post> GetUserPosts(string userId, CineHiveContext context)
         {
-            // gets current user id
-            string userid = HttpContext.Current.User.Identity.GetUserId();
-            UserProfile user = context.UserProfiles.First(x => x.UserId == userid);
+            UserProfile user = context.UserProfiles.First(x => x.UserId == userId);
             return user.Posts.ToList(); // return collection of user's posts
         }
 

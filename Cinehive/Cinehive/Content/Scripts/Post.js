@@ -14,7 +14,7 @@ function returnPost(divId, profileId, postId, firstName, lastName, imagePath, da
     postImage +=`</a></div>`;
 
     var postHeading = `<h4 class="media-heading post-heading"><a href="/Profile/ViewProfile/${profileId}">${firstName} ${lastName}</a>
-   <small class="datePosted">${datePosted}</small></h4>`;            
+   <span class="datePosted"><small>${datePosted}</small></span></h4>`;          
     // -- post content goes here in View --
 
     var postAwards = `<ul class="list-inline list-unstyled">`;                

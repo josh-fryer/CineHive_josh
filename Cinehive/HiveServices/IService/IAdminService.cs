@@ -9,6 +9,6 @@ namespace HiveServices.IService
 {
     public interface IAdminService
     {
-        
+        void RemoveUserPosts(string id);
     }
 }

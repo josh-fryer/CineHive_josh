@@ -67,7 +67,7 @@
                     <div id="Comments-@item.PostId">
 
                     </div>
-                    @Scripts.Render("~/bundles/jquery")
+                   
                     <script>
                         var rendered = false;
                         $("#post-@item.PostId").click(function () {
@@ -101,7 +101,9 @@
             }
             else
             {
-                <p> Sorry, This user doesnt want to share their posts</p>
+                <div class="well bg-white">
+                    <p> Sorry, This user doesnt want to share their posts</p>
+                </div>
             }
 
         </div>

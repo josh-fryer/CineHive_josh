@@ -725,15 +725,6 @@ body {
     margin: 5px;
 }
 
-/*.friend-links a {
-    text-decoration: none;
-    border: 5px solid;
-    border-radius: 15px;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-}*/
-
 a.friend-link:link, a.friend-link:visited {
     text-decoration: none;
     border: 5px solid #3af250;
@@ -771,6 +762,25 @@ a.remove-friend-link:hover {
 
 a.remove-friend-link:active {
     background-color: #b32727;
+    color: white;
+}
+
+.ban-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ban-btn {
+    margin:4px;
+    width:100%;
+    border-radius: 15px;
+    border: 5px solid orange;
+    color: orange;
+}
+
+.ban-btn:hover {
+    background-color: orange;
     color: white;
 }
 
@@ -1227,15 +1237,20 @@ a.remove-friend-link:active {
         padding: 0px 30px 0px 0px;
     }
 
-    .post-buttons a {
-        text-decoration: none;
-        color: black;
-    }
+.post-buttons a {
+    cursor:pointer;
+    text-decoration: none;
+    color: black;
+}
 
         .post-buttons a:hover {
             color: #f72b2c;
         }
 
-        .post-buttons a:active {
-            color: #ad3333;
-        }
+.post-buttons a:active {
+    color: #ad3333;
+}
+
+.datePosted {
+    padding-left: 55%;
+}
