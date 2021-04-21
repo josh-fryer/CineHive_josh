@@ -16,7 +16,7 @@
 <div class="container">
     @Html.Partial("HomeSidebarPartial")
     <div class="col-md-9">
-        <div class="profile-content-input">
+        <div class="trending-content-input">
             <h3>Create a Post.</h3>
 
             @using (Html.BeginForm("Create", "Post", FormMethod.Post, new { name = "createPost", onsubmit = "return validateForm()" }))

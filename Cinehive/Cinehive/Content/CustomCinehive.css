@@ -1159,10 +1159,68 @@ a.remove-friend-link:active {
     color: yellow;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
-
-.Trending-label {
-    margin-bottom: 10px;
+.trending-content-title {
+    padding: 20px;
+    background: #fff;
+    min-height: 0px;
+    border-radius: 8px;
+    margin-bottom: -20px;
+    margin-top: 31px;
+    height: 60px;
+    text-align: center;
 }
+.trending-content-title h3 {
+    padding: 20px;
+    background: transparent;
+    min-height: 0px;
+    border-radius: 8px;
+    margin-left: -20px;
+    margin-top: -20px;
+}
+.trending-content-input {
+    padding: 20px;
+    background: #fff;
+    min-height: 0px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+.trending-content-input h3 {
+    margin-top: 0px;
+    margin-bottom: -20px;
+    color: gray;
+}
+.tag-movie-button {
+    height: 30px;
+    float: right;
+    margin-top: -30px;
+    margin-right: 20px;
+    border-color: transparent;
+    background: darkred;
+    color: white;
+    border-radius: 10px;
+}
+.trending-label{
+
+}
+.trending-label p{
+    margin-top: -20px;
+}
+.Trending-divide p {
+    margin-bottom: -10px;
+    margin-top: -10px;
+}
+.trending-content-post {
+    padding: 20px;
+    background: #fff;
+    min-height: 0px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    margin-top: -38px;
+}
+
+
+
 /*########## Edit Profile ################*/
 .genres-checkboxLabel {
     width: 160px;

@@ -48,7 +48,7 @@
         </div>
 
         <div class="col-md-9">
-            <div class="profile-content-title">
+            <div class="trending-content-title">
                 <h3>Trending Movies.</h3>
             </div>
         </div>
@@ -78,17 +78,18 @@
             }
 
             <div class="col-md-9 col-md-offset-2">
-                <div class="profile-content-input">
+                <div class="trending-content-post">
                     <div class="Trending-divide">
                         <p>@Html.ActionLink(item.Title, "GetMovieByID", "Movie", new { id = item.MovieApi_ID }, new { })</p>
+                        <hr />
                         <img class="img-rounded" src="http://image.tmdb.org/t/p/w342@(item.PosterPath)" alt="Alternate Text" />
 
 
                     </div>
                     <div>
-                        <button id="result" value="#@item.Title" onclick="addtag()">Tag this movie</button>
+                        <button class="tag-movie-button" id="result" value="#@item.Title" onclick="addtag()">Tag this movie</button>
                     </div>
-                    <div class="Trending-label">
+                    <div class="trending-label">
                         @if (popularity == 2)
                         {
                             <p style="float:left">CineHive Top Trend <i class="glyphicon glyphicon-certificate"></i></p>
