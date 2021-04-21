@@ -114,7 +114,7 @@
                 <script type="text/javascript">
                     returnPost("@divId", @Model.GetProfileId(postid = item.PostId), @item.PostId, "@Model.GetFirstName(postid = item.PostId)",
                         "@Model.GetLastName(postid = item.PostId)", "@Model.GetUserPicture(postid = item.PostId)", "@item.DatePosted",
-                        @Json.Encode(item.Popular), @item.Awards, @Json.Encode(Model.AwardGiven(postid = item.PostId)), @Json.Encode(isUserPostOrAdmin), @item.PostComments.Count);
+                        @Json.Encode(item.Popular), @Model.GetAwards(id = item.PostId), @Json.Encode(Model.AwardGiven(postid = item.PostId)), @Json.Encode(isUserPostOrAdmin), @item.PostComments.Count);
                 </script>
 
                 <div id="Comments-@item.PostId"></div>

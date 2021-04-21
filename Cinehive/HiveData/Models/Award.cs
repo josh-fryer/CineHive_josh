@@ -11,7 +11,7 @@ namespace HiveData.Models
     {
         [Key]
         public int AwardId { get; set; }
-        public int PostId { get; set; }
-
+        // public int PostId { get; set; }
+        public virtual Post Post { get; set; } // post award is on
     }
 }

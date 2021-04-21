@@ -61,7 +61,7 @@ namespace HiveData.ViewModels
 
         public bool AwardGiven(int id)
         {
-            var award = context.UserProfiles.Where(c => c.Awards.Contains(context.Awards.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.UserId).FirstOrDefault();
+            var award = context.UserProfiles.Where(c => c.Awards.Contains(context.Awards.Where(i => i.Post.PostId == id).FirstOrDefault())).Select(v => v.UserId).FirstOrDefault();
 
             if (award == null)
             {
@@ -71,6 +71,12 @@ namespace HiveData.ViewModels
             {
                 return true;
             }
+        }
+
+        public int GetAwards(int id)
+        {
+            var totalAwards = context.Awards.Where(a => a.Post.PostId == id).Count();
+            return totalAwards;
         }
 
         public int GetPostId(int id)

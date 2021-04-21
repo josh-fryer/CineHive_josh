@@ -56,17 +56,15 @@ namespace HiveData.DAO
             context.Entry(post).State = EntityState.Modified;
             context.SaveChanges();
         }
-        public void GiveAward(int id, CineHiveContext context)
-        {
-            var userid = HttpContext.Current.User.Identity.GetUserId();
-            UserProfile profile = context.UserProfiles.First(x => x.UserId == userid);
-            Post post = context.Posts.Find(id);
 
-            Award award = new Award
-            {
-                PostId = id
-            };
-            post.Awards++;
+        public void GiveAward(int id, string userId, CineHiveContext context)
+        {
+            UserProfile profile = context.UserProfiles.First(x => x.UserId == userId);
+            Post post = context.Posts.Find(id);
+            Award award = new Award();
+            
+            post.Awards++; 
+            award.Post = post;        
 
             if (post.Awards >= 30)
             {
@@ -74,7 +72,18 @@ namespace HiveData.DAO
             }
 
             profile.Awards.Add(award);
-            context.SaveChanges();
+        }
+
+        public void RevokeAward(int id, string userId, CineHiveContext context)
+        {
+            UserProfile profile = context.UserProfiles.First(x => x.UserId == userId);
+            Post post = context.Posts.Find(id);
+            Award award = profile.Awards.Where(x => x.Post.PostId == id).FirstOrDefault();
+
+            post.Awards--;
+
+            profile.Awards.Remove(award);
+            context.Awards.Remove(award);
         }
 
         public Award FindAward(int id, CineHiveContext context)

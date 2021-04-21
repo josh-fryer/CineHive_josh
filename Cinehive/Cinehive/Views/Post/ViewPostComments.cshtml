@@ -6,6 +6,12 @@
 }
 
 <div class="container">
+            @if(ViewBag.AlertMessage != null)
+            {
+                <div class="well bg-white">
+                    @ViewBag.AlertMessage
+                </div>
+            }
             <div class="col-md-9">
                 <div class="profile-content-main-post">
                     <a class="pull-left" href="@Url.Action("Index", "Profile", new { id = Model.Post.PostId })" )">

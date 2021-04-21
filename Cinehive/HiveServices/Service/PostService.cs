@@ -201,11 +201,21 @@ namespace HiveServices.Service
             }
         }
 
-        public void GiveAward(int id)
+        public void GiveAward(int id, string userId)
         {
             using (var context = new CineHiveContext())
             {
-                postDAO.GiveAward(id, context);
+                postDAO.GiveAward(id, userId, context);
+                context.SaveChanges();
+            }
+        }
+
+        public void RevokeAward(int id, string userId)
+        {
+            using(var context = new CineHiveContext())
+            {               
+                postDAO.RevokeAward(id, userId, context);
+                context.SaveChanges();           
             }
         }
 

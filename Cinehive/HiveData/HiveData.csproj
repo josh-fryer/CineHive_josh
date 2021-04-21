@@ -268,6 +268,14 @@
     <Compile Include="Migrations\202104191629510_AuthorPost2.Designer.cs">
       <DependentUpon>202104191629510_AuthorPost2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104210935492_AwardPost.cs" />
+    <Compile Include="Migrations\202104210935492_AwardPost.Designer.cs">
+      <DependentUpon>202104210935492_AwardPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104211024066_UnmapAwardsOnPost.cs" />
+    <Compile Include="Migrations\202104211024066_UnmapAwardsOnPost.Designer.cs">
+      <DependentUpon>202104211024066_UnmapAwardsOnPost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -392,6 +400,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104191629510_AuthorPost2.resx">
       <DependentUpon>202104191629510_AuthorPost2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104210935492_AwardPost.resx">
+      <DependentUpon>202104210935492_AwardPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104211024066_UnmapAwardsOnPost.resx">
+      <DependentUpon>202104211024066_UnmapAwardsOnPost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

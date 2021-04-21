@@ -57,7 +57,7 @@ namespace Cinehive.Controllers
             return View(postService.GetCurrUserPosts());
         }
 
-        public ActionResult ViewPostComments(int id)
+        public ActionResult ViewPostComments(int id, string message = "")
         {
             var comments = context.Posts.Find(id).PostComments.ToList();
             string OriginalPost = context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(x => x.PostId == id).FirstOrDefault())).Select(c => c.UserId).FirstOrDefault();
@@ -69,51 +69,32 @@ namespace Cinehive.Controllers
                 Post = context.Posts.Find(id)
             };
 
+            if(!String.IsNullOrEmpty(message))
+            {
+                ViewBag.AlertMessage = message;
+            }
+
             return View(postCommentUserViewModel);
         }
 
         public void GiveAward(int id) // called by JS on Post.js
         {
-            postService.GiveAward(id);
+            var userId = User.Identity.GetUserId();
+            postService.GiveAward(id, userId);
             //return RedirectToAction("Index", "Home");
         }
 
         public void RevokeAward(int id)
         {
-            var userid = User.Identity.GetUserId();
-            UserProfile profile = context.UserProfiles.First(x => x.UserId == userid);
-            Post post = context.Posts.Find(id);
-            Award award = profile.Awards.Where(x => x.PostId == id).FirstOrDefault();
-            
-            post.Awards--;
-
-            profile.Awards.Remove(award);
-            context.Awards.Remove(award);
-            context.SaveChanges();
-            //return RedirectToAction("Index", "Home");
+            var userId = User.Identity.GetUserId();
+            postService.RevokeAward(id, userId);
         }
 
         public ActionResult SharePost(int id)
         {
-            
-            //Post post = postService.GetPost(id);
-            //Post post1 = new Post
-            //{
-            //    PostContent = post.PostContent,
-            //    DatePosted = DateTime.Now,
-            //    Author = post.Author,
-            //    AuthorPP = post.AuthorPP,
-            //    Shared = true
-            //};
-
-            //string userid = User.Identity.GetUserId();
-            //UserProfile profile = context.UserProfiles.First(x => x.UserId == userid);
-            //profile.Posts.Add(post1);
-            //context.SaveChanges();
             string userID = User.Identity.GetUserId();
             postService.SharePost(id, userID);
-
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("ViewPostComments", new { id = id, message = "Successfully shared post!"});
         }
 
         [HttpGet]

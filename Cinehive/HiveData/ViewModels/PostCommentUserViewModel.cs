@@ -12,7 +12,6 @@ namespace HiveData.ViewModels
     {
         CineHiveContext context = new CineHiveContext();
 
-
         public UserProfile UserProfile { get; set; }
         public Post Post { get; set; }
         public PostComment PostComment { get; set; }
@@ -27,19 +26,22 @@ namespace HiveData.ViewModels
 
             return (Firstname);
         }
+
         public string GetLastName(int id)
         {
             string Lastname = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.Lastname).FirstOrDefault();
             return (Lastname);
         }
+
         public string GetUserPicture(int id)
         {
             string userpicture = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.ImagePath).FirstOrDefault();
             return (userpicture);
         }
+
         public bool AwardGiven(int id)
         {
-            var award = context.UserProfiles.Where(c => c.Awards.Contains(context.Awards.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.UserId).FirstOrDefault();
+            var award = context.UserProfiles.Where(c => c.Awards.Contains(context.Awards.Where(i => i.Post.PostId == id).FirstOrDefault())).Select(v => v.UserId).FirstOrDefault();
 
             if (award == null)
             {
@@ -49,6 +51,12 @@ namespace HiveData.ViewModels
             {
                 return true;
             }
+        }
+
+        public int GetAwards(int id)
+        {
+            var totalAwards = context.Awards.Where(a => a.Post.PostId == id).Count();
+            return totalAwards;
         }
     }
 }

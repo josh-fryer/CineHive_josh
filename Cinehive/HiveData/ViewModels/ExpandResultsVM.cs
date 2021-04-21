@@ -15,7 +15,6 @@ namespace HiveData.ViewModels
     public class ExpandResultsVM
     {
         public IPagedList<Post> PostList { get; set; }
-        //public IPagedList<UserProfile> UserList { get; set; }
 
         CineHiveContext context = new CineHiveContext();
 
@@ -60,7 +59,7 @@ namespace HiveData.ViewModels
 
         public bool AwardGiven(int id)
         {
-            var award = context.UserProfiles.Where(c => c.Awards.Contains(context.Awards.Where(i => i.PostId == id).FirstOrDefault())).Select(v => v.UserId).FirstOrDefault();
+            var award = context.UserProfiles.Where(c => c.Awards.Contains(context.Awards.Where(i => i.Post.PostId == id).FirstOrDefault())).Select(v => v.UserId).FirstOrDefault();
 
             if (award == null)
             {

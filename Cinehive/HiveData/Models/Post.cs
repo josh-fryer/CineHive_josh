@@ -14,7 +14,6 @@ namespace HiveData.Models
         public int PostId { get; set; }       
         public string PostContent { get; set; }
         public DateTime DatePosted { get; set; }
-        public int Awards { get; set; }
         public bool hasFilmLink { get; set; }
         public bool Edited { get; set; }
         public bool Popular { get; set; }
@@ -23,5 +22,7 @@ namespace HiveData.Models
         public virtual Post AuthorPost { get; set; } // set on share of post
         public virtual ICollection<PostComment> PostComments { get; set; }
 
+        [NotMapped]
+        public int Awards { get; set; } // awards counter set at runtime 
     }
 }
