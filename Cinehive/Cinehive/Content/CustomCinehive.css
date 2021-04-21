@@ -775,6 +775,7 @@ a.remove-friend-link:active {
     margin:4px;
     width:100%;
     border-radius: 15px;
+    background-color:white;
     border: 5px solid orange;
     color: orange;
 }
@@ -782,6 +783,10 @@ a.remove-friend-link:active {
 .ban-btn:hover {
     background-color: orange;
     color: white;
+}
+
+.ban-btn:visited {
+    background-color:none;
 }
 
 /*################### Profile Content ###################*/

@@ -15,6 +15,7 @@ using HiveData.Repository;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Net;
+using System.Web.Security;
 
 namespace Cinehive.Controllers
 {
@@ -105,7 +106,9 @@ namespace Cinehive.Controllers
 
                     if (roles.Contains("Banned"))
                     {
-                        return RedirectToAction("BannedView");
+                        Session.Abandon();
+                        FormsAuthentication.SignOut();
+                        return RedirectToAction("Login");
                     }
                     else
                     {
@@ -470,7 +473,7 @@ namespace Cinehive.Controllers
         //DELETE ACCOUNT: To be Moved 
         public async Task<ActionResult> DeleteAccount(string userId)
         {
-            if (userId == null)
+            if (String.IsNullOrEmpty(userId))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
