@@ -107,7 +107,7 @@ namespace Cinehive.Controllers
                     if (roles.Contains("Banned"))
                     {
                         Session.Abandon();
-                        FormsAuthentication.SignOut();
+                        AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
                         return RedirectToAction("Login");
                     }
                     else
