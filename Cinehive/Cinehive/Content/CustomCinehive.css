@@ -307,6 +307,56 @@ body {
 }
 
 
+.image-reel-container{
+
+}
+.image-reel{
+
+}
+
+
+#bar {
+    height: 250px;
+    background: #000000 0px 0px url('https://i.ibb.co/jRYRnwn/colouredfilmreel.jpg') repeat-x;
+    -webkit-animation: scroll 10s linear infinite;
+    animation: scroll 10s linear infinite;
+}
+
+@-webkit-keyframes scroll {
+    from {
+        background-position: 320px 0;
+    }
+
+    to {
+        background-position: 0 0;
+    }
+}
+
+@keyframes scroll {
+    from {
+        background-position: 320px 0;
+    }
+
+    to {
+        background-position: 0 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*///////////////////////Login page////////////////////////////*/
 /*page background*/
