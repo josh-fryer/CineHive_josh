@@ -1,9 +1,9 @@
 ﻿@model HiveData.Models.Movie
 
 @{      
-    if (Model.Title != null)
+    if (!String.IsNullOrEmpty(Model.Title))
     {
-        ViewBag.Title = @Model.Title;
+        ViewBag.Title = Model.Title;
     }
     else
     {
@@ -127,6 +127,7 @@
 </div>
 
 <script>
+    // User rate movie function:
     function FillStar(star) {
         console.log("button clicked")
         var xhttp = new XMLHttpRequest();
@@ -147,7 +148,7 @@
                 }
             }
         };
-        xhttp.open("GET", "https://localhost:44383/Movie/RateMovie?movieApiID=" + @Model.MovieApi_ID.ToString() + "&stars="+star, true);
+        xhttp.open("GET", "/Movie/RateMovie?movieApiID=" + @Model.MovieApi_ID.ToString() + "&stars="+star, true);
         console.log(xhttp);
         xhttp.send();        
     }

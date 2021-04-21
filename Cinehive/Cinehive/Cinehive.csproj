@@ -249,7 +249,6 @@
     <Content Include="Content\Img\SiteImg\Filmreel.jpg" />
     <Content Include="Content\Img\SiteImg\MovieSelection.jpg" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="Content\Scripts\like_button.js" />
     <Content Include="Content\Scripts\Post.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

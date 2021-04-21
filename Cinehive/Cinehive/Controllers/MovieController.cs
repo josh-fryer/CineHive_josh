@@ -42,6 +42,7 @@ namespace Cinehive.Controllers
 
             return View(movieHubViewModel);
         }
+
         [Authorize]
         public ActionResult ViewMore(int id, dynamic item)
         {
@@ -93,8 +94,7 @@ namespace Cinehive.Controllers
             Movie movie = movieService.GetMovieByID(id);
             return RedirectToAction("ViewMovie", movie);
         }
-
-        //[Route("Movie/ViewMovie/{movie:Movie}")]       
+    
         public ActionResult ViewMovie(Movie movie, bool addView = true)
         {
             if (addView)
@@ -108,8 +108,6 @@ namespace Cinehive.Controllers
             return View(movie);
         }
 
-
-        //[ActionName("ViewMovieByID")]
         public ActionResult ViewMovieByID(int movieApiID, bool addView = true)
         {
             Movie movie = movieService.GetMovieByID(movieApiID);
@@ -123,15 +121,11 @@ namespace Cinehive.Controllers
             return View("ViewMovie", movie);
         }
 
-
+        // called by JS on movie page
         public void RateMovie(int movieApiID, int stars)
         {
-            var userId = User.Identity.GetUserId();
-                       
+            var userId = User.Identity.GetUserId();                      
             movieService.RateMovie(movieApiID, stars, userId);
-
-            //return RedirectToAction("ViewMovieByID", new { movieApiId = movieApiID, addView = false} );
-            //return new EmptyResult();
         }
 
     }

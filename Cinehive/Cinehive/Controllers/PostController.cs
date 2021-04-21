@@ -22,10 +22,6 @@ namespace Cinehive.Controllers
             postService = new PostService();
         }
 
-        // GET: Posts/Create
-
-
-        // POST: Posts/Create
         [Authorize]
         public ActionResult Create(string input, Post post)
         {
@@ -76,28 +72,25 @@ namespace Cinehive.Controllers
             return View(postCommentUserViewModel);
         }
 
-        public ActionResult GiveAward(int id)
+        public void GiveAward(int id) // called by JS on Post.js
         {
             postService.GiveAward(id);
-
-            return RedirectToAction("Index","Home");
+            //return RedirectToAction("Index", "Home");
         }
-        public ActionResult RevokeAward(int id, Award award)
-        {
 
+        public void RevokeAward(int id)
+        {
             var userid = User.Identity.GetUserId();
             UserProfile profile = context.UserProfiles.First(x => x.UserId == userid);
             Post post = context.Posts.Find(id);
-            award = profile.Awards.Where(x => x.PostId == id).FirstOrDefault();
+            Award award = profile.Awards.Where(x => x.PostId == id).FirstOrDefault();
             
-
             post.Awards--;
 
             profile.Awards.Remove(award);
             context.Awards.Remove(award);
             context.SaveChanges();
-
-            return RedirectToAction("Index", "Home");
+            //return RedirectToAction("Index", "Home");
         }
 
         public ActionResult SharePost(int id)
@@ -139,6 +132,7 @@ namespace Cinehive.Controllers
 
             return PartialView(postCommentUserViewModel);
         }
+
         public ActionResult IndexPostCommentsPartial(int i_d)
         {
             var comments = context.Posts.Find(i_d).PostComments.OrderByDescending(c => c.DateCommented).ToList();

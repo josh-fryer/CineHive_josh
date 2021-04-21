@@ -76,10 +76,12 @@ namespace HiveData.DAO
             profile.Awards.Add(award);
             context.SaveChanges();
         }
+
         public Award FindAward(int id, CineHiveContext context)
         {
             return context.Awards.Find(id);
         }
+
         public void DeleteAssociatedComments(int id, CineHiveContext context)
         {
             var comments = context.Posts.Find(id).PostComments.ToList();
