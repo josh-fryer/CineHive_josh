@@ -2,34 +2,34 @@
     <div class="profile-sidebar">
 
         <div class="profile-userpic">
-            @if (Model.ImagePath == null)
+            @if (Model.UserProfile.ImagePath == null)
             {
                 <img src="~/Content/Img/profile-image-placeholder.png" class="img-responsive" alt="">
             }
             else
             {
-                <img src="~/@Model.ImagePath" class="img-responsive" alt="">
+                <img src="~/@Model.UserProfile.ImagePath" class="img-responsive" alt="">
             }
         </div>
 
         <div class="profile-usertitle">
             <div class="profile-usertitle-name">
-                @Model.Firstname @Model.Lastname
+                @Model.UserProfile.Firstname @Model.UserProfile.Lastname
             </div>
         </div>
 
         <div class="profile-usermenu">
             <ul class="nav">
                 <li class="active">
-                    <a href="@Url.Action("ViewProfile","Profile", new { id = Model.ProfileId } )">
+                    <a href="@Url.Action("ViewProfile","Profile", new { id = Model.UserProfile.ProfileId } )">
                         <i class="glyphicon glyphicon-th-list"></i>
                         Feed
                     </a>
                 </li>
-                @if (Model.Privacy == 1 || Model.Privacy == 2 && ViewBag.IsFriend)
+                @if (Model.UserProfile.Privacy == 1 || Model.UserProfile.Privacy == 2 && ViewBag.IsFriend)
                 {
                     <li>
-                        <a href="@Url.Action("GetAlbums","Album", new { userId = Model.UserId })">
+                        <a href="@Url.Action("GetAlbums","Album", new { userId = Model.UserProfile.UserId })">
                             <i class="glyphicon glyphicon-picture"></i>
                             Photos
                         </a>
@@ -55,14 +55,14 @@
                 if (ViewBag.ReceivedFriendReq)
                 {
                     @Html.ActionLink("Accept Friend Request", "AddFriend", "Friend",
-                                         new { friendId = Model.ProfileId }, new { @class = "friend-link" })
+                                         new { friendId = Model.UserProfile.ProfileId }, new { @class = "friend-link" })
                 }
                 else if (!ViewBag.IsFriend && !ViewBag.SentFriendReq)
                 {
                     @Html.ActionLink("Send Friend Request", "SendFriendReq", "Friend", new
                     {
-                   friendProfileId = Model.ProfileId,
-                   friendUserId = Model.UserId
+                       friendProfileId = Model.UserProfile.ProfileId,
+                       friendUserId = Model.UserProfile.UserId
                         }, new { @class = "friend-link" })
                 }
                 else if (ViewBag.SentFriendReq)
@@ -74,8 +74,8 @@
                     @Html.ActionLink("Remove Friend", "Remove", "Friend",
                          new
                          {
-                             friendProfileId = Model.ProfileId,
-                             friendUserId = Model.UserId
+                             friendProfileId = Model.UserProfile.ProfileId,
+                             friendUserId = Model.UserProfile.UserId
                          }, new { @class = "remove-friend-link" });
 
                 }
@@ -94,7 +94,7 @@
         <div class="bio-box">
             <hr />
             <h4>About me</h4>
-            <p>@Model.AboutMe</p>
+            <p>@Model.UserProfile.AboutMe</p>
         </div>
     </div>
 </div>
@@ -114,7 +114,7 @@
             </div>
             <div class="modal-footer">
                 @Html.ActionLink("Ban User", "BanUser", "Admin",
-                         new { id = Model.UserId }, new { @class = "btn btn-danger" })
+                         new { id = Model.UserProfile.UserId }, new { @class = "btn btn-danger" })
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>

@@ -124,6 +124,7 @@ namespace Cinehive.Controllers
             {
                 return HttpNotFound();
             }
+
             if (id == profileid)
             {
                 return RedirectToAction("Index", "Profile");
@@ -165,9 +166,15 @@ namespace Cinehive.Controllers
                 }
             }
             //-----------------------------------------------------------
-            
-            return View(profileService.ViewProfile(id));
+
+            var feedModel = new PostFeedViewModel()
+            {
+                UserProfile = profileService.ViewProfile(id)
+            };
+
+            return View(feedModel);
         }
+
         [Authorize]
         public ActionResult ViewFriends()
         {

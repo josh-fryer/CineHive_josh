@@ -43,6 +43,10 @@ body {
     color: white;
 }
 
+.txt-grey{
+    color:gray;
+}
+
 .text-colour-gray {
     color: gray;
 }
@@ -1121,30 +1125,22 @@ a.remove-friend-link:active {
     font-size: 1.8em;
 }
 
-    .cine-rating-list ul {
-        list-style-type: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: inherit;
-        margin-right: 40px;
-    }
+.cine-rating-list ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    margin-right: 40px;
+}
 
-    .cine-rating-list li {
-        display: inline-block
-    }
+.cine-rating-list li {
+    display: inline-block
+}
 
 .cine-rating-star {
     margin: 4px;
 }
-
-/*.cine-rating-list-items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: inherit;*/
-/*border: 3px solid green;*/
-/*}*/
 
 .rating-list {
     /*list-style-type: none;*/
@@ -1268,8 +1264,6 @@ a.remove-friend-link:active {
     margin-bottom: 50px;
     margin-top: -38px;
 }
-
-
 
 /*########## Edit Profile ################*/
 .genres-checkboxLabel {
@@ -1431,4 +1425,44 @@ a.remove-friend-link:active {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
+}
+
+/* ############## Top rated movies ##################### */
+.movie-panel{
+    display: inline-block;
+    width:300px;
+    height:325px;
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.movie-panel:nth-of-type(3n+2) {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.movie-panel-heading{
+   padding-left: 15px;
+}
+
+.movie-panel-img {
+    padding-left: 25%;
+    
+}
+
+.star-list{
+    margin: auto;
+    width: 60%;
+}
+
+.star-list ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+}
+
+.star-list li {
+    font-size: 1.5em;
+    display: inline;
 }
