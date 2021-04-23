@@ -22,16 +22,16 @@ namespace HiveData.DAO
             return result;
         }
 
-        public void CreateAlbum(Album album, CineHiveContext context)
+        public void CreateAlbum(string AlbumNameInput, string AlbumDescInput, CineHiveContext context)
         {
             string userid = HttpContext.Current.User.Identity.GetUserId();
 
             UserProfile userProfile = context.UserProfiles.First(x => x.UserId == userid);
 
-            album = new Album()
+            Album album = new Album()
             {
-                AlbumName = album.AlbumName,
-                AlbumDesc = album.AlbumDesc
+                AlbumName = AlbumNameInput,
+                AlbumDesc = AlbumDescInput
             };
 
             userProfile.Albums.Add(album);

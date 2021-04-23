@@ -20,20 +20,26 @@
                         @if (ViewBag.IsUser)
                         {
                             <li>
-                                <a href="@Url.Action("AddImageToAlbum", "Album", new { id = Model.Album.AlbumId })">
-                                    <i class="glyphicon glyphicon-picture"></i>
-                                    Add Image
-                                </a>
-                            </li>
-                            <li>
                                 <a href="@Url.Action("DeleteAlbum", "Album", new { id = Model.Album.AlbumId })">
                                     <i class="glyphicon glyphicon-remove"></i>
                                     Delete Album
                                 </a>
                             </li>
+                            <li>
+                                <p class="crt-album-txt">Upload a new image.</p>
+                                @using (Html.BeginForm("AddImageToAlbum", "Album", new {id = Model.Album.AlbumId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <input type="file" name="UploadImage" id="fileToUpload" class="upload-image-input">
+                                    <input type="submit" value="Save" name="submit" class="submit-album-btn">
+
+                                }
+                            </li>
                         }
                     </ul>
                 </div>
+
             </div>
 
         </div>

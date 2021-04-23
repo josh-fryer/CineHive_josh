@@ -11,7 +11,7 @@ namespace HiveData.IDAO
     public interface IAlbumDAO
     {
         IList<Album> GetAlbums(string userId, CineHiveContext context);
-        void CreateAlbum(Album album, CineHiveContext context);
+        void CreateAlbum(string AlbumNameInput, string AlbumDescInput, CineHiveContext context);
         Album GetAlbum(int id, CineHiveContext context);
         Image GetImage(int id, CineHiveContext context);
         void EditAlbum(Album album, CineHiveContext context);

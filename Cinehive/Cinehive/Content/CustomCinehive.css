@@ -980,10 +980,29 @@ a.remove-friend-link:active {
     font-size: 18px;
 }
 
-    .album-text-dec:hover {
-        color: grey;
-        text-decoration: none;
-    }
+.album-text-dec:hover {
+    color: grey;
+    text-decoration: none;
+}
+.submit-album-btn {
+    margin-left: 90px;
+    border-radius: 8px;
+}
+.upload-image-input {
+    margin-top: 20px;
+    margin-left: 18px;
+    margin-bottom: 20px;
+}
+.crt-album-txt {
+    margin-left: 50px;
+}
+
+.Album-input {
+    margin-left: 30px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    height: 40px;
+}
 
 .img-responsive-alt {
     margin-left: 50px;

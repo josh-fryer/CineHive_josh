@@ -28,11 +28,11 @@ namespace HiveServices.Service
                 return albumDAO.GetAlbums(userId, context);
             }
         }
-        public void CreateAlbum(Album album)
+        public void CreateAlbum(string input1, string input2)
         {
             using (var context = new CineHiveContext())
             {
-                albumDAO.CreateAlbum(album, context);
+                albumDAO.CreateAlbum(input1,input2, context);
                 context.SaveChanges();
             }
         }

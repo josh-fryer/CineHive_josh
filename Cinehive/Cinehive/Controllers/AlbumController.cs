@@ -41,13 +41,8 @@ namespace Cinehive.Controllers
         }
 
         [Authorize]
-        public ActionResult Create()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        public ActionResult Create(Album album)
+        public ActionResult Create(string input1, string input2)
         {
             var userid = User.Identity.GetUserId();
             UserProfile userProfile = context.UserProfiles.First(c => c.UserId == userid);
@@ -57,13 +52,13 @@ namespace Cinehive.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (result >= 20)
+                    if (result >= 15)
                     {
-                        return RedirectToAction("Index"); //Javascript an error window here to tell the user they have max amount of albums
+                        return Content("Max amount of albums in use");
                     }
                     else
                     {
-                        albumService.CreateAlbum(album);
+                        albumService.CreateAlbum(input1, input2);
                     }
                 }
 
@@ -107,14 +102,6 @@ namespace Cinehive.Controllers
         }
 
         [Authorize]
-        public ActionResult AddImageToAlbum(int id)
-        {
-
-            return View();
-        }
-
-        [ValidateAntiForgeryToken]
-        [HttpPost]
         public ActionResult AddImageToAlbum(Album album, int id) //add to data and service
         {
             try

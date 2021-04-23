@@ -17,10 +17,15 @@
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Create","Album")">
-                                <i class="glyphicon glyphicon-picture"></i>
-                                Create Album
-                            </a>
+                            Create a new album.
+                            @using (Html.BeginForm("CreateAlbum", "Album", FormMethod.Post))
+                            {
+                                <input id="AlbumName" type="text" name="input1" maxlength="30" placeholder="Album Name" />
+                                <input id="AlbumDesc" type="text" name="input2" maxlength="80" placeholder="Album Description" />
+                                <input type="submit" value="Create" class="btn btn-default" />
+
+                            }
+
                         </li>
                     </ul>
                 </div>

@@ -10,7 +10,7 @@ namespace HiveServices.IService
     public interface IAlbumService
     {
         IList<Album> GetAlbums(string userId);
-        void CreateAlbum(Album album);
+        void CreateAlbum(string input1, string input2);
         Album GetAlbum(int id);
         Image GetImage(int id);
         void EditAlbum(Album album);
