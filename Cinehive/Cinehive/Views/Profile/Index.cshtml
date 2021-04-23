@@ -75,7 +75,7 @@
                             <div id="@(divId + "_2")" class="media-body">
                                 <p>@item.PostContent</p>
                                 <div id="@(divId+"_3")" class="profile-content-pane-img">
-                                    <img src="@Model.GetUserPicture(item.PostId)" class="profile-content-img" />
+                                    <img src="@item.AuthorPicture" alt="error" class="profile-content-img" />
                                 </div>
                                 @* JS inserts buttons here *@
                             </div>

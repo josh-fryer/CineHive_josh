@@ -19,6 +19,7 @@ namespace HiveData.Models
         public bool Popular { get; set; }
         public bool Shared { get; set; }        
         public bool PictureChange { get; set; }
+        public string AuthorPicture { get; set; }
         public virtual Post AuthorPost { get; set; } // set on share of post
         public virtual ICollection<PostComment> PostComments { get; set; }
 

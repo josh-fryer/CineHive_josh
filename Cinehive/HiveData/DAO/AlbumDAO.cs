@@ -81,7 +81,7 @@ namespace HiveData.DAO
                 Post post = new Post
                 {
                     //Author = userProfile.Firstname + " " + userProfile.Lastname,
-                    //AuthorPP = userProfile.ImagePath,
+                    AuthorPicture = userProfile.ImagePath,
                     DatePosted = DateTime.Now,
                     PostContent = userProfile.Firstname + " " + "Has updated their profile picture",
                     PictureChange = true,
