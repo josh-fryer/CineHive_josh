@@ -147,11 +147,13 @@
                 </script>
             }
 
-            <div id="txt-white">
+            @if (Model.PostList.PageCount > 1)
+            {
+                <div id="txt-white">
                 Page @(Model.PostList.PageCount < Model.PostList.PageNumber ? 0 : Model.PostList.PageNumber) of @Model.PostList.PageCount
-            </div>
-            @Html.PagedListPager(Model.PostList, page => Url.Action("Index", new { page }))
-
+                </div>
+                @Html.PagedListPager(Model.PostList, page => Url.Action("Index", new { page }))
+            }
         </div>
     </div>
     
