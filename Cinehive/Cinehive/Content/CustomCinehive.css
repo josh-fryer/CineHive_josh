@@ -107,6 +107,7 @@ body {
 
 .notification-title {
     color: gray;
+    background-color:white;
     padding-left: 20px;
     box-sizing: border-box;
 }

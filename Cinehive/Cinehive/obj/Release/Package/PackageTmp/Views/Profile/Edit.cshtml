@@ -1,7 +1,7 @@
 ﻿@model HiveData.Models.UserProfile
 @using Microsoft.AspNet.Identity
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Profile";
 }
 
 <div class="container">
@@ -12,25 +12,25 @@
                 <div class="profile-usermenu">
                     <ul class="nav">
                         <li class="active">
-                            <a href="@Url.Action("Index","Profile")">
+                            <a href="@Url.Action("Index", "Profile")">
                                 <i class="glyphicon glyphicon-arrow-left"></i>
                                 Go back
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Edit","Profile")">
+                            <a href="@Url.Action("Edit", "Profile")">
                                 <i class="glyphicon glyphicon-globe"></i>
                                 Edit Profile
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Index","Manage")">
+                            <a href="@Url.Action("Index", "Manage")">
                                 <i class="glyphicon glyphicon-cog"></i>
                                 Manage Account
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("DeleteAccount","Account", new { userId = User.Identity.GetUserId() })" onclick="return confirm('Are you sure you want to leave Cinehive?')">
+                            <a href="@Url.Action("DeleteAccount", "Account", new { userId = User.Identity.GetUserId() })" onclick="return confirm('Are you sure you want to leave Cinehive?')">
                                 <i class="glyphicon glyphicon-remove"></i>
                                 Delete Account
                             </a>
@@ -48,14 +48,14 @@
                 {
                     @Html.AntiForgeryToken()
 
-                    <div class="form-horizontal">
+                <div class="form-horizontal">
                         <h4>Edit Profile</h4>
                         <hr />
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         @Html.HiddenFor(model => model.ProfileId)
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Firstname, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.LabelFor(model => model.Firstname,"First name" ,htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
                                 @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })
@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Lastname, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.LabelFor(model => model.Lastname, "Last name",htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
                                 @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
@@ -89,7 +89,7 @@
                                 <input type="date" id="DateOfBirth" name="DateOfBirth">
                                 @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
                                 <div class="form-inline">
-                                    Current Date of Birth:@Html.DisplayFor(model => model.DateOfBirth)
+                                    Current Date of Birth: @Html.DisplayFor(model => model.DateOfBirth)
                                 </div>
                             </div>
                         </div>
@@ -103,49 +103,66 @@
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.ProfilePicture, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
+                            @Html.LabelFor(model => model.ProfilePicture, "Profile picture",htmlAttributes: new { @class = "control-label col-md-2 profile-pic-label" })
+                            <div class="col-md-10 change-profile-pic">
                                 @Html.ActionLink("Change your profile picture in your album", "Index", "Album")
                             </div>
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Privacy, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col">
-                                <input type="radio" name="Privacy" value=1> One
-                                <input type="radio" name="Privacy" value=2> Two
-                                <input type="radio" name="Privacy" value=3> Three
-                            </div>
+                        @Html.LabelFor(model => model.Privacy, "Profile privacy level",htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col">
+                            <input type="radio" name="Privacy" value=1> Everyone can see<br/>
+                            <input type="radio" name="Privacy" value=2> Friends Only<br/>
+                            <input type="radio" name="Privacy" value=3> Only me<br/>
                         </div>
                     </div>
 
-                    @*Checkbox genres form:*@
+                    @*####### Checkbox genres form: ###############*@
                     <div class="form-group">
-                        <table>
+                        <b>Pick your favourite film genres (max 5):</b><br />  
                             @for (int i = 0; i < Model.Genres.Count; i++)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.CheckBoxFor(m => m.Genres[i].Selected)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(m => m.Genres[i].Text)
-                                        @Html.HiddenFor(m => m.Genres[i].Value)
-                                        @Html.HiddenFor(m => m.Genres[i].Text)
-                                    </td>
-                                </tr>
+                                <span class="genres-checkboxLabel">
+                                @Html.LabelFor(m => m.Genres[i].Selected, Model.Genres[i].Text)
+                                @Html.HiddenFor(m => m.Genres[i].Value)
+                                @Html.CheckBoxFor(m => m.Genres[i].Selected, new { @class = "genres-checkbox" })
+                                </span>
+                                if ((i+1) % 4 == 0 && (i+1) > 1)
+                                {
+                                    <br />
+                                }                               
+                                                                
                             }
-                        </table>
                     </div>
-
+                </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input type="submit" value="Save" class="btn btn-default" />
                         </div>
                     </div>
                
-            }
+                }
             </div>
 </div>
 </div>
 </div>
+<script>
+    // Limits genre selection to max 5
+
+        var checkBoxGroup = document.querySelectorAll(".genres-checkbox");
+        var limit = 5;
+        for (var i = 0; i < checkBoxGroup.length; i++) {
+            checkBoxGroup[i].onclick = function () {
+                var checkedcount = 0;
+                for (var i = 0; i < checkBoxGroup.length; i++) {
+                    checkedcount += (checkBoxGroup[i].checked) ? 1 : 0;
+                }
+                if (checkedcount > limit) {
+                    alert("You can select maximum of " + limit + " checkboxes.");
+                    this.checked = false;
+                }
+            }
+        }
+   
+</script>

@@ -1,0 +1,123 @@
+﻿@model IEnumerable<HiveData.Models.Movie>
+
+@{
+    ViewBag.Title = "TrendingMovies";
+
+    int popularity = 0;
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="movie-explorer">
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        Find Your Film.
+                    </div>
+                </div>
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li class="active">
+                            <a href="@Url.Action("")">
+                                <i class="glyphicon glyphicon-film"></i>
+                                Genres
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("")">
+                                <i class="glyphicon glyphicon-pawn"></i>
+                                Most Viewed
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("")">
+                                <i class="glyphicon glyphicon-star"></i>
+                                Highly Rated
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("")">
+                                <i class="glyphicon glyphicon-stats"></i>
+                                Trending
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="trending-content-title">
+                <h3>Trending Movies.</h3>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="profile-content-input">
+                <h3>Go ahead chat about these movies.</h3>
+
+                @using (Html.BeginForm("Create", "Post", FormMethod.Post))
+                {
+                    <input id="postInput" class="post-submit" type="text" name="input" maxlength="280" placeholder="Say something.." />
+                    <button class="btn btn-primary post-button" type="submit">
+                        <span>Post &nbsp;</span>
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </button>
+                }
+            </div>
+        </div>
+        @foreach (var item in Model)
+        {
+            if (item.ViewCounter > 75)
+            {
+                popularity = 2;
+            }
+            else
+            {
+                popularity = 1;
+            }
+
+            <div class="col-md-9 col-md-offset-2">
+                <div class="trending-content-post">
+                    <div class="Trending-divide">
+                        <p>@Html.ActionLink(item.Title, "GetMovieByID", "Movie", new { id = item.MovieApi_ID }, new { })</p>
+                        <hr />
+                        <img class="img-rounded" src="http://image.tmdb.org/t/p/w342@(item.PosterPath)" alt="Alternate Text" />
+
+
+                    </div>
+                    <div>
+                        <button class="tag-movie-button" id="result" value="#@item.Title" onclick="addtag()">Tag this movie</button>
+                    </div>
+                    <div class="trending-label">
+                        @if (popularity == 2)
+                        {
+                            <p style="float:left">CineHive Top Trend <i class="glyphicon glyphicon-certificate"></i></p>
+
+                        }
+                    </div>
+                </div>
+            </div>
+
+
+            <script>
+                function addtag() {
+
+
+                    var txt = document.getElementById("result").value;
+                    var newtxt = txt.replace(/\s+/g, '');
+                    var input = document.getElementById("postInput");
+                    window.scrollTo(0, 0);
+
+                    if (input.value != null) {
+                        input.value = null
+                    };
+
+                    input.value = newtxt;
+
+                }
+            </script>
+
+        }
+    </div>
+</div>

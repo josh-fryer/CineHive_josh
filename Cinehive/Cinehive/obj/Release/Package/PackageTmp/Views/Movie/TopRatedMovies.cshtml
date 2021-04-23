@@ -1,0 +1,102 @@
+﻿@using HiveData.Models
+@{
+    ViewBag.Title = "Top Rated Movies";
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="movie-explorer">
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        Find Your Film.
+                    </div>
+                </div>
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li>
+                            <a href="@Url.Action("")">
+                                <i class="glyphicon glyphicon-film"></i>
+                                Genres
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("")">
+                                <i class="glyphicon glyphicon-pawn"></i>
+                                Most Viewed
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="@Url.Action("TopRatedMovies","Movie")">
+                                <i class="glyphicon glyphicon-star"></i>
+                                Top Rated
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("TrendingMovies", "Movie")">
+                                <i class="glyphicon glyphicon-stats"></i>
+                                Trending
+                            </a>
+                        </li>
+                        <li>
+                            <hr />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-10">
+            <h2 class="well bg-white txt-grey">Top Rated Movies.</h2>
+                @{ int i = 1;}
+                @foreach (var item in ViewData["top10"] as IEnumerable<KeyValuePair<Movie, int>>)
+                {
+                    <div class="movie-panel">
+                        <div class="movie-panel-heading">
+                            <h4>@i .  @Html.ActionLink(item.Key.Title, "GetMovieByID", "Movie", new { id = item.Key.MovieApi_ID }, new { })</h4>
+                        </div>
+                        <div class="movie-panel-img">
+                            @if (item.Key.PosterPath == null)
+                            {
+                                <img class="img poster-img" src="~/Content/Img/poster-placeholder.jpg" width="320" />
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("GetMovieByID","Movie",new {id = item.Key.MovieApi_ID })">
+                                    <img class="img poster-img" src="http://image.tmdb.org/t/p/w154@(item.Key.PosterPath)" width="154" />
+                                </a>
+                            
+                            }
+                        </div>
+                        
+                        <div class="star-list">
+                            <ul>
+                                @for (int j = 0; j < 5; j++)
+                                {
+                                    if (j < item.Value)
+                                    {
+                                        <li>
+                                            <span  class="glyphicon glyphicon-star cine-rating-star"></span>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <span class="glyphicon glyphicon-star-empty cine-rating-star"></span>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                        
+                    </div>
+                    i += 1;
+                }
+
+        </div>
+
+    </div>
+</div>
+
+

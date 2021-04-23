@@ -6,88 +6,126 @@
 }
 
 <div class="container">
-    <div class="well">
-        <div class="media">
-            <a class="pull-left" href="@Url.Action("Index", "Profile", new { id = Model.UserProfile.ProfileId })" )">
-                <img src="~/@Model.UserProfile.ImagePath" width="140" height="140" />
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading"> @Model.UserProfile.Firstname @Model.UserProfile.Lastname</h4>
-                <p>
-                    @Model.Post.PostContent
-                </p>
-                <ul class="list-inline list-unstyled">
-                    <li> @Model.Post.DatePosted </li>
-                    <li>|</li>
-                    @if (Model.Post.Awards < 2)
-                    {
-                        <li> @Model.Post.Awards Award</li>
-                    }
-                    else
-                    {
-                        <li> @Model.Post.Awards Awards</li>
-                    }
-                </ul>
-                <ul class="list-inline list-unstyled">
-                    <li>@Html.ActionLink("Award", "GiveAward", "Post", new { Id = Model.Post.PostId }, new { })</li>
-                    <li>|</li>
-                    <li>@Html.ActionLink("Share", "")</li>
-                    <li>|</li>
-                    <li>@Html.ActionLink("Comment", "Create", "Comment", new { id = Model.Post.PostId }, new { })</li>                        
-                    <li>@Html.ActionLink("Remove", "DeletePost", "Post", new { id = Model.Post.PostId }, null)</li>
-                    <li>|</li>
-                    <li>@Html.ActionLink("Edit", "EditPost", "Post", new { id = Model.Post.PostId }, null)</li>
-                </ul>
+            @if(ViewBag.AlertMessage != null)
+            {
+                <div class="well bg-white">
+                    @ViewBag.AlertMessage
+                </div>
+            }
+            <div class="col-md-9">
+                <div class="profile-content-main-post">
+                    <a class="pull-left" href="@Url.Action("Index", "Profile", new { id = Model.Post.PostId })" )">
+                        <img src="~/@Model.UserProfile.ImagePath" class="view-comments-image" />
+                    </a>
+                    <div class="comment-post-body">
+                        <h4 class="media-heading">@Html.ActionLink(@Model.UserProfile.Firstname + " " + @Model.UserProfile.Lastname, "Index", "Profile", new { id = Model.Post.PostId })</h4>
+                        <p>
+                            @Model.Post.PostContent
 
-            </div>
-        </div>
-    </div>
-</div>
-<hr />
+                        </p>
+                        <ul class="list-inline list-unstyled">
+                            <li> @Model.Post.DatePosted </li>
+                            <li>|</li>
+                            @if (Model.Post.Awards < 2)
+                            {
+                                <li> @Model.Post.Awards Award</li>
+                            }
+                            else
+                            {
+                                <li> @Model.Post.Awards Awards</li>
+                            }
+                        </ul>
+                        <ul class="list-inline list-unstyled">
+                            <li>@Html.ActionLink("Award", "GiveAward", "Post", new { Id = Model.Post.PostId }, new { })</li>
+                            <li>|</li>
+                            <li>@Html.ActionLink("Share", "")</li>
+                            <li>|</li>
+                            <li>@Html.ActionLink("Remove", "Delete", "Post", new { id = Model.Post.PostId }, null)</li>
+                            <li>|</li>
+                            <li>@Html.ActionLink("Edit", "Edit", "Post", new { id = Model.Post.PostId }, null)</li>
+                            @if (Model.Post.Edited == true)
+                            {
+                                <li><strong>Edited</strong></li>
+                            }
 
-@foreach (var item in Model.CommentList)
-{
-    <div class="container">
-        <div class="well">
-            <div class="media">
-                <a class="pull-left" href="@Url.Action("Index", "Profile", new { id = item.CommentId })" )">
-                    <img src="~/@Model.GetUserPicture(id = item.CommentId)" width="140" height="140" />
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">@Html.ActionLink(@Model.GetFirstName(CommentId = item.CommentId) + " " + Model.GetLastName(CommentId = item.CommentId), "ViewProfile", "Profile", new { id = item.CommentId }, new { })</h4>
-                    <p>
-                        @item.CommentContent 
-                        
-                    </p>
-                    <ul class="list-inline list-unstyled">
-                        <li> @item.DateCommented </li>
-                        <li>|</li>
-                        @if (item.Awards < 2)
-                        {
-                            <li> @item.Awards Award</li>
-                        }
-                        else
-                        {
-                            <li> @item.Awards Awards</li>
-                        }
-                    </ul>
-                    <ul class="list-inline list-unstyled">
-                        <li>@Html.ActionLink("Award", "GiveAward", "Post", new { Id = item.CommentId }, new { })</li>
-                        <li>|</li>
-                        <li>@Html.ActionLink("Share", "")</li>
-                        <li>|</li>
-                        <li>@Html.ActionLink("Remove", "Delete", "Comment", new { id = item.CommentId, postid = Model.Post.PostId }, null)</li>
-                        <li>|</li>
-                        <li>@Html.ActionLink("Edit", "Edit", "Comment", new { id = item.CommentId, postid = Model.Post.PostId }, null)</li>
-                        @if (item.Edited == true)
-                        {
-                            <li><strong>Edited</strong></li>
-                        }
+                        </ul>
 
-                    </ul>
-
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-}
+
+        <div class="container">
+            <div class="col-md-9">
+                <div class="comment-pane">
+                    <h4 class="media-heading-comment">Comments.</h4>
+                </div>
+                <div class="profile-content-main-post">
+                    <h4>Add a comment.</h4>
+                    @using (Html.BeginForm("CreateDirect", "Comment", new { id = Model.Post.PostId }, FormMethod.Post))
+                    {
+                        <input id="postInput" class="comment-submit" type="text" name="input" maxlength="280" placeholder="Say something.." />
+                        @*<div class="form-group">
+                                <textarea id="postInput" class="post-submit" name="input" maxlength="280" placeholder="Say something.."></textarea>
+                            </div>*@
+                        <button class="btn btn-primary post-button" type="submit">
+                            <span>Post &nbsp;</span>
+                            <i class="glyphicon glyphicon-pencil"></i>
+                        </button>
+                    }
+                </div>
+
+                @foreach (var item in Model.CommentList.OrderByDescending(c => c.DateCommented))
+                {
+
+                    <div class="profile-content-main-post">
+                        <a class="pull-left" href="@Url.Action("Index", "Profile", new { id = item.CommentId })" )">
+                            @if (Model.GetUserPicture(id = item.CommentId) == null)
+                            {
+                                <img src="~/Content/Img/profile-image-placeholder.png" class="view-comments-image" width="140" height="140" />
+                            }
+                            else
+                            {
+                                <img src="~/@Model.GetUserPicture(id = item.CommentId)" class="view-comments-image" width="140" height="140" />
+                            }
+
+                        </a>
+                        <div class="comment-post-body">
+                            <h4 class="media-heading">@Html.ActionLink(@Model.GetFirstName(CommentId = item.CommentId) + " " + Model.GetLastName(CommentId = item.CommentId), "ViewProfile", "Profile", new { id = item.CommentId }, new { })</h4>
+                            <p>
+                                @item.CommentContent
+
+                            </p>
+                            <ul class="list-inline list-unstyled">
+                                <li> @item.DateCommented </li>
+                                <li>|</li>
+                                @if (item.Awards < 2)
+                                {
+                                    <li> @item.Awards Award</li>
+                                }
+                                else
+                                {
+                                    <li> @item.Awards Awards</li>
+                                }
+                            </ul>
+                            <ul class="list-inline list-unstyled">
+                                <li>@Html.ActionLink("Award", "GiveAward", "Post", new { Id = item.CommentId }, new { })</li>
+                                <li>|</li>
+                                <li>@Html.ActionLink("Share", "")</li>
+                                <li>|</li>
+                                <li>@Html.ActionLink("Remove", "Delete", "Comment", new { id = item.CommentId, postid = Model.Post.PostId }, null)</li>
+                                <li>|</li>
+                                <li>@Html.ActionLink("Edit", "Edit", "Comment", new { id = item.CommentId, postid = Model.Post.PostId }, null)</li>
+                                @if (item.Edited == true)
+                                {
+                                    <li><strong>Edited</strong></li>
+                                }
+
+                            </ul>
+
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>

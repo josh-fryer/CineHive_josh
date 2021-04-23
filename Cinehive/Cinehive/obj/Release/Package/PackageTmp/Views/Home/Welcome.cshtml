@@ -5,14 +5,20 @@
     <h1>@ViewBag.Title</h1>
     <p>Movie lovers... You're home</p>
 
-    <p>
-        @Html.ActionLink("Get Started", "Register", "Account", new { }, new { @class = "btn btn-primary btn-lg flex-parent btn-extension" })
-    </p>
+    
+     <button class="glow-on-hover" onclick="location.href = '@Url.Action("Register","Account")'" type="button">Get Started</button>
+
 
 
 </div>
 
+
+
 <p class="already-account"> Already with us? @Html.ActionLink("Sign in here", "Login", "Account", new { }, new { @class = "Signin" })</p>
+
+<div id="bar">
+
+</div>
 
 
 

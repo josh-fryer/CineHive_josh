@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="CineHiveContext-Web.config Connection String" description="CineHiveContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=aspnet-Cinehive; Integrated Security=True; MultipleActiveResultSets=True; AttachDbFilename=|DataDirectory|\aspnet-Cinehive-20210212050332.mdf" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Josh\\Documents\\Education\\University\\Post\ Graduate\\Computer\ Programming\\Repos\\Cinehive\\Cinehive\\Cinehive\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='CineHiveContext']/@connectionString" />
+  </parameter>
+</parameters>

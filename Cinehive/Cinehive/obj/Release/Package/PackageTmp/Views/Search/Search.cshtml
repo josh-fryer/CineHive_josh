@@ -23,7 +23,7 @@
             {
                 var item = Model.UserResults[i];
                 <div class="container">
-                    <div class="well">
+                    <div class="well bg-white">
                         <div class="media">
                             <a class="media-left" href="@Url.Action("ViewProfile", "Profile", new { id = item.ProfileId })">
                                 @if (item.ImagePath == null)
@@ -69,7 +69,7 @@
                 var user = Model.FindUserProfile(post.PostId);
 
                 <div class="container">
-                    <div class="well">
+                    <div class="well bg-white">
                         <div class="media">
                             <a class="media-left" href="@Url.Action("ViewProfile", "Profile", new { id = user.ProfileId })">
                                 @if (user.ImagePath == null)
@@ -161,7 +161,7 @@
             {
                 var item = Model.MovieResults[i];
                 <div class="container">
-                    <div class="well">
+                    <div class="well bg-white">
                         <div class="media">
                             <a class="media-left" href="@Url.Action("GetMovieByID", "Movie", new { id = item.MovieApi_ID })">
                                 @if (item.PosterPath == null)

@@ -13,23 +13,26 @@ body {
     font-family: 'SFProDisplay';
     font-size: 16px;
 }
+
 @font-face {
     font-family: 'SFProDisplay';
     src: url('/Content/SF-Pro-Display.otf') format('opentype');
 }
+
 @font-face {
     font-family: 'SFProDisplayRegular';
     src: url('/Content/SF-Pro-Display Regular.ttf') format('truetype');
 }
+
 .footer-control {
-    position: fixed;
+    color: white;
+    font-family: SFProDisplayRegular;
+    text-align: center;
+    /*min-height: 50px;*/
+    position: sticky;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: transparent;
-    color: white;
-    font-family:SFProDisplayRegular;
-    text-align: right;
 }
 /*//////// Text colour /////////*/
 #txt-white {
@@ -40,14 +43,18 @@ body {
     color: white;
 }
 
-.text-colour-gray{
+.txt-grey{
+    color:gray;
+}
+
+.text-colour-gray {
     color: gray;
 }
 
 
 /*/////////// Background Colour /////////////////*/
-.bg-white{
-    background-color:white;
+.bg-white {
+    background-color: white;
 }
 
 /* ///////// glyphicon sizes /////////// */
@@ -71,6 +78,28 @@ body {
     font-size: 5em;
 }
 
+/*###### Scroll Bar ##########*/
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #ebebeb;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 15px;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #6e6e6e;
+    }
+
 /* /////////////////////// Notification ////////////////////// */
 .notification {
     background-color: white;
@@ -88,33 +117,60 @@ body {
     background-color: #000;
     border-color: #080808;
 }
-.navbar-inverse .navbar-brand {
-    color: #ffffff;
-}
+
+    .navbar-inverse .navbar-brand {
+        color: #ffffff;
+    }
+
 .navbar-brand {
     float: left;
     height: 50px;
     padding: 15px 15px;
     font-size: 24px;
     line-height: 20px;
-    font-family:SFProDisplay;
+    font-family: SFProDisplay;
 }
+
 .navbar-inverse .navbar-brand:hover {
     color: #808080;
 }
-/*Varying navbar sizes depending on page size*/
+
+.search-bar {
+    margin-left: 165px;
+}
+
+.navbar-myfooter {
+    margin-top: 10%;
+    margin-bottom: 0;
+    border-width: 1px 0 0;
+    /*position: fixed;*/
+    bottom: 0;
+    /*right: 0;
+    left: 0;*/
+    z-index: 1030;
+}
+
+.footer-content {
+    text-align: center;
+    color: #9a9a9a;
+    font-size: 0.9em;
+}
+
+
+/*############# Varying navbar sizes depending on page size ###############*/
 @media (min-width: 1500px) {
-    .navbar > .container .navbar-brand,
-    .navbar > .container-fluid .navbar-brand {
+    .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
         margin-left: -100px;
     }
 }
-@media (min-width: 1500px){
+
+@media (min-width: 1500px) {
     .navbar-right {
         float: right !important;
         margin-right: -100px;
-    } 
+    }
 }
+
 @media (max-width: 1000px) {
     .navbar > .container .navbar-brand,
     .navbar > .container-fluid .navbar-brand {
@@ -128,16 +184,43 @@ body {
         margin-right: 0px;
     }
 }
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .search-bar {
+        margin-left: 0px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .search-bar {
+        margin-left: 0px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .search-bar {
+        margin-left: 80px;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .search-bar {
+        margin-left: 165px;
+    }
+}
+
 .navbar-inverse .navbar-nav > li > a {
     color: #ffffff;
-    font-family:SFProDisplay;
+    font-family: SFProDisplay;
 }
-.navbar-inverse .navbar-nav > li > a:hover {
-    color: #808080;
-}
-.Search-container {
 
-}
+    .navbar-inverse .navbar-nav > li > a:hover {
+        color: #808080;
+    }
+
 /*/////////////////////////////Welcome page css////////////////////////////////*/
 .Welcome-Jumbo {
     font-family: 'SFProDisplay';
@@ -152,6 +235,7 @@ body {
         padding-left: 120px;
     }
 }
+
 @media screen and (min-width: 768px) {
     .jumbotron p {
         margin-bottom: 5px;
@@ -161,6 +245,7 @@ body {
         padding-bottom: 0px;
     }
 }
+
 @media screen and (min-width: 768px) {
     .already-account {
         font-size: 30px;
@@ -170,6 +255,7 @@ body {
         color: white;
     }
 }
+
 @media screen and (min-width: 768px) {
     .btn-extension {
         padding: 14px 42px;
@@ -184,43 +270,95 @@ body {
 }
 
 /*Small screen/mobile sized jumbotron*/
-@media screen and (max-width: 765px){
+@media screen and (max-width: 765px) {
     .jumbotron h1, .jumbotron .h1 {
-    font-size: 100px;
-    text-align:center;
-}
+        font-size: 100px;
+        text-align: center;
     }
-@media screen and (max-width: 765px){
+}
+
+@media screen and (max-width: 765px) {
     .jumbotron p {
-    margin-bottom: 5px;
-    font-size: 28px;
-    font-weight: 200;
-    padding-bottom: 0px;
-    text-align:center;
-}
+        margin-bottom: 5px;
+        font-size: 28px;
+        font-weight: 200;
+        padding-bottom: 0px;
+        text-align: center;
     }
-@media screen and (max-width: 765px){
+}
+
+@media screen and (max-width: 765px) {
     .already-account {
-    font-size: 15px;
-    margin-top: 120px;
-    font-family: 'SFProDisplay';
-    color: white;
-    text-align:center;
-}
+        font-size: 15px;
+        margin-top: 120px;
+        font-family: 'SFProDisplay';
+        color: white;
+        text-align: center;
     }
+}
 
 @media screen and (max-width: 765px) {
     .btn-extension {
-     padding: 7px 22px;
-     font-size: 12px;
-     line-height: 1.3333333;
-     border-radius: 6px;
-     margin-top: 10px;
-     color: black;
-     background-color: white;
-     text-align:center;
+        padding: 7px 22px;
+        font-size: 12px;
+        line-height: 1.3333333;
+        border-radius: 6px;
+        margin-top: 10px;
+        color: black;
+        background-color: white;
+        text-align: center;
     }
 }
+
+
+.image-reel-container{
+
+}
+.image-reel{
+
+}
+
+
+#bar {
+    height: 368px;
+    background: #000000 0px 0px url('https://i.ibb.co/jRYRnwn/colouredfilmreel.jpg') repeat-x;
+    -webkit-animation: scroll 10s linear infinite;
+    animation: scroll 100s linear infinite;
+}
+
+@-webkit-keyframes scroll {
+    from {
+        background-position: 7103px 0;
+    }
+
+    to {
+        background-position: 0 0;
+    }
+}
+
+@keyframes scroll {
+    from {
+        background-position: 7103px 0;
+    }
+
+    to {
+        background-position: 0 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -229,8 +367,9 @@ body {
 .LoginText {
     font-family: 'SFProDisplay';
 }
+
 .WhiteText {
-    color:#ffffff
+    color: #ffffff
 }
 
 /*Login box*/
@@ -263,49 +402,55 @@ body {
         left: 12px;
         font-size: 30px;
     }
+
     .Login-container {
-    position: relative;
-    top: 40%;
-    left: 87%;
-    transform: translate(-50%, -50%);
-    text-align: left;
-}
-.signin-text {
-    font-size:30px;
-    position:relative;
-    bottom: 20px;
-    right: 10px;
+        position: relative;
+        top: 40%;
+        left: 87%;
+        transform: translate(-50%, -50%);
+        text-align: left;
+    }
 
-}
-.login-button {
-    background-color: #941209;
-    border-color: #941209;
-}
-.login-button:hover {
-    background-color: #c93126;
-    border-color: #941209;
-}
-.login-forgotpassword {
-    position: relative;
-    right: 13px;
-}
+    .signin-text {
+        font-size: 30px;
+        position: relative;
+        bottom: 20px;
+        right: 10px;
+    }
 
-.no-account {
-    text-align:left;
-    position:absolute;
-    top:920px;
-    left:20px;
-    font-family:'SFProDisplay';
-    font-size: 20px;
-    color:#ffff
-}
-.radio label .checkbox label {
-    padding-left: 20px;
-}
-.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
-    position: absolute;
-    margin-left: 0;
-}
+    .login-button {
+        background-color: #941209;
+        border-color: #941209;
+    }
+
+        .login-button:hover {
+            background-color: #c93126;
+            border-color: #941209;
+        }
+
+    .login-forgotpassword {
+        position: relative;
+        right: 13px;
+    }
+
+    .no-account {
+        text-align: left;
+        position: absolute;
+        top: 920px;
+        left: 20px;
+        font-family: 'SFProDisplay';
+        font-size: 20px;
+        color: #ffff
+    }
+
+    .radio label .checkbox label {
+        padding-left: 20px;
+    }
+
+    .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+        position: absolute;
+        margin-left: 0;
+    }
 }
 /*Small screen and mobile*/
 @media screen and (max-width: 765px) {
@@ -336,6 +481,7 @@ body {
         left: 12px;
         font-size: 30px;
     }
+
     .Login-container {
         position: relative;
         top: 40%;
@@ -356,10 +502,10 @@ body {
         border-color: #941209;
     }
 
-    .login-button:hover {
-        background-color: #c93126;
-        border-color: #941209;
-    }
+        .login-button:hover {
+            background-color: #c93126;
+            border-color: #941209;
+        }
 
     .login-forgotpassword {
         position: relative;
@@ -376,14 +522,14 @@ body {
         color: #ffff
     }
 
-    .radio label .checkbox label {
+    /* .radio label .checkbox label {
         padding-left: 20px;
     }
 
     .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
         position: absolute;
         margin-left: 0;
-    }
+    }*/
 }
 
 
@@ -433,10 +579,10 @@ body {
         margin-top: 60px;
     }
 
-    .centered-form .panel {
-        background: #ffffff;
-        box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
-    }
+        .centered-form .panel {
+            background: #ffffff;
+            box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+        }
 
     .Paneltitle-edit {
         text-align: center;
@@ -461,13 +607,10 @@ body {
         margin-right: 25%;
     }
 
-    .Panel-register-button:hover {
-        background-color: #c93126;
-        border-color: #c93126;
-     }
-
-    .panel-heading {
-    }
+        .Panel-register-button:hover {
+            background-color: #c93126;
+            border-color: #c93126;
+        }
 
     .panel-default .panel-heading {
         color: #333333;
@@ -513,7 +656,6 @@ body {
         padding-left: 20px;
         font-family: SF Pro Display;
     }
-  
 }
 
 /*Profile page*/
@@ -521,120 +663,205 @@ body {
     width: 700px;
     float: right;
 }
+
 .Image-contain {
     background-color: #fff;
     border: 1px black;
     height: 190px;
     width: 70%;
     margin-left: 40px;
-    overflow:hidden;
-    object-fit:cover;
-}
-.profile {
-  margin: 20px 0;
+    overflow: hidden;
+    object-fit: cover;
 }
 
-/* Profile sidebar */
+.profile {
+    margin: 20px 0;
+}
+
+/* ##################### Profile sidebar ####################*/
 .profile-sidebar {
-  padding: 20px 0 10px 0;
-  background: #fff;
-  border-radius: 8px;
-  margin-top:30px;
+    padding: 20px 0 10px 0;
+    background: #fff;
+    border-radius: 8px;
+    margin-top: 30px;
 }
 
 .profile-userpic img {
-  float: none;
-  margin: 0 auto;
-  width: 50%;
-  height: 50%;
-  -webkit-border-radius: 50% !important;
-  -moz-border-radius: 50% !important;
-  border-radius: 50% !important;
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
 }
 
 .profile-usertitle {
-  text-align: center;
-  margin-top: 20px;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .profile-usertitle-name {
-  color: #5a7391;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 7px;
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
 }
 
 .profile-usertitle-job {
-  text-transform: uppercase;
-  color: #5b9bd1;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 15px;
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
 .profile-userbuttons {
-  text-align: center;
-  margin-top: 10px;
+    text-align: center;
+    margin-top: 10px;
 }
 
-.profile-userbuttons .btn {
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 6px 15px;
-  margin-right: 5px;
-}
+    .profile-userbuttons .btn {
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 6px 15px;
+        margin-right: 5px;
+    }
 
-.profile-userbuttons .btn:last-child {
-  margin-right: 0px;
-}
-    
+        .profile-userbuttons .btn:last-child {
+            margin-right: 0px;
+        }
+
 .profile-usermenu {
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
-.profile-usermenu ul li {
-  border-bottom: 1px solid #f0f4f7;
+    .profile-usermenu ul li {
+        border-bottom: 1px solid #f0f4f7;
+    }
+
+        .profile-usermenu ul li:last-child {
+            border-bottom: none;
+        }
+
+        .profile-usermenu ul li a {
+            color: #93a3b5;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+            .profile-usermenu ul li a i {
+                margin-right: 8px;
+                font-size: 14px;
+            }
+
+            .profile-usermenu ul li a:hover {
+                background-color: #fafcfd;
+                color: #5b9bd1;
+            }
+
+        .profile-usermenu ul li.active {
+            border-bottom: none;
+        }
+
+            .profile-usermenu ul li.active a {
+                color: #5b9bd1;
+                background-color: #f6f9fb;
+                border-left: 2px solid #5b9bd1;
+                margin-left: -2px;
+            }
+
+.friend-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
 }
 
-.profile-usermenu ul li:last-child {
-  border-bottom: none;
+a.friend-link:link, a.friend-link:visited {
+    text-decoration: none;
+    border: 5px solid #3af250;
+    border-radius: 15px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: #40db4f;
 }
 
-.profile-usermenu ul li a {
-  color: #93a3b5;
-  font-size: 14px;
-  font-weight: 400;
+a.friend-link:hover {
+    background-color: #3af250;
+    color: white;
 }
 
-.profile-usermenu ul li a i {
-  margin-right: 8px;
-  font-size: 14px;
+a.friend-link:active {
+    background-color: #2dbd3e;
+    color: white;
 }
 
-.profile-usermenu ul li a:hover {
-  background-color: #fafcfd;
-  color: #5b9bd1;
+a.remove-friend-link:link, a.remove-friend-link:visited {
+    text-decoration: none;
+    border: 5px solid #fa4646;
+    border-radius: 15px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: #d12e2e;
 }
 
-.profile-usermenu ul li.active {
-  border-bottom: none;
+a.remove-friend-link:hover {
+    background-color: #fa4646;
+    color: white;
 }
 
-.profile-usermenu ul li.active a {
-  color: #5b9bd1;
-  background-color: #f6f9fb;
-  border-left: 2px solid #5b9bd1;
-  margin-left: -2px;
+a.remove-friend-link:active {
+    background-color: #b32727;
+    color: white;
 }
 
-/* Profile Content */
+.ban-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ban-btn {
+    margin:4px;
+    width:100%;
+    border-radius: 15px;
+    background-color:white;
+    border: 5px solid orange;
+    color: orange;
+}
+
+.ban-btn:hover {
+    background-color: orange;
+    color: white;
+}
+
+.ban-btn:visited {
+    background-color:none;
+}
+
+/*################### Profile Content ###################*/
 .profile-content {
-  padding: 20px;
-  background: #fff;
-  min-height: 460px;
-  border-radius: 8px;
+    padding: 20px;
+    background: #fff;
+    min-height: 460px;
+    border-radius: 8px;
 }
+
+.profile-content-main-post { /*lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll*/
+    padding: 20px;
+    background: #fff;
+    min-height: 100px;
+    border-radius: 8px;
+    width: 900px;
+    margin-left: 110px;
+    margin-top: 20px;
+    height: 150px;
+}
+
 .profile-content-pane {
     padding: 20px;
     background: #fff;
@@ -642,6 +869,7 @@ body {
     border-radius: 8px;
     margin-bottom: 10px;
 }
+
 .profile-content-pane-share {
     padding: 20px;
     background: #fff;
@@ -650,21 +878,24 @@ body {
     margin-bottom: 10px;
     margin-top: 20px;
     border: solid;
-    height:100px;
+    height: 100px;
 }
-.profile-content-pane-img {
-    text-align:center;
 
+.profile-content-pane-img {
+    text-align: center;
 }
-.profile-content-img{
-    border-radius:20px;
-    margin-top:10px;
-    max-height:200px;
+
+.profile-content-img {
+    border-radius: 20px;
+    margin-top: 10px;
+    max-height: 200px;
 }
+
 .content-pane-items {
     margin-top: 30px;
     margin-left: -80px;
 }
+
 .profile-content-input {
     padding: 20px;
     background: #fff;
@@ -673,6 +904,7 @@ body {
     margin-bottom: 10px;
     margin-top: 30px;
 }
+
 .profile-content-title {
     padding: 20px;
     background: #fff;
@@ -681,41 +913,56 @@ body {
     margin-bottom: 10px;
     margin-top: 0px;
     height: 60px;
-    text-align:center;
+    text-align: center;
 }
-.profile-content-title h3 {
-    padding: 20px;
-    background: transparent;
-    min-height: 0px;
-    border-radius: 8px;
-    margin-left: -20px;
-    margin-top: -20px;
-}
-.Friend-text {
-    text-align:center;
-    font-size:20px;
-}
-.bio-box {
-    margin-left:20px;
-}
-.Post-content {
 
+    .profile-content-title h3 {
+        padding: 20px;
+        background: transparent;
+        min-height: 0px;
+        border-radius: 8px;
+        margin-left: -20px;
+        margin-top: -20px;
+    }
+
+.Friend-text {
+    text-align: center;
+    font-size: 20px;
 }
+
+.bio-box {
+    margin-left: 20px;
+}
+
 .profile-content-edit {
     padding: 50px;
     background: #fff;
     min-height: 460px;
     border-radius: 8px;
 }
-/*Album index*/
+
+.fave-genre-list {
+    margin-bottom: 10px;
+}
+
+.fave-genre-item {
+    border: 2px solid #c6c9cc;
+    border-radius: 15px;
+    margin: 5px;
+    padding: 2px;
+}
+
+/*########################### Album index ####################*/
 .album-sidebar {
     padding: 20px 0 10px 0;
     background: #fff;
     border-radius: 8px;
 }
-.album-sidebar .profile-usermenu {
-    margin-top:0;
-}
+
+    .album-sidebar .profile-usermenu {
+        margin-top: 0;
+    }
+
 .album-text {
     text-align: center;
 }
@@ -723,30 +970,33 @@ body {
 .album-text-dec {
     text-align: center;
     color: black;
-    font-size:18px;
-    
+    font-size: 18px;
 }
-.album-text-dec:hover {
-    color:grey;
-    text-decoration: none;
-}
+
+    .album-text-dec:hover {
+        color: grey;
+        text-decoration: none;
+    }
+
 .img-responsive-alt {
     margin-left: 50px;
     margin-top: 30px;
     border-radius: 20px;
 }
+
 .circular-image {
-    border-radius:20px;
+    border-radius: 20px;
 }
 
-/*Main Feed index*/
+/* ############# Main Feed index ############*/
 .index-sidebar {
     padding: 1px 0 10px 0;
     background: #fff;
     border-radius: 8px;
     margin-top: 30px;
-    width:180px;
+    width: 180px;
 }
+
 .post-submit {
     max-width: 380px;
     width: 50%;
@@ -755,6 +1005,7 @@ body {
     border-radius: 8px;
     padding: 6px 10px;
 }
+
 .post-button {
     width: 100px;
     height: 36px;
@@ -762,15 +1013,18 @@ body {
     background: #000000;
     border-color: black;
 }
-.post-button:hover {
-    background-color: grey;
-    border-color: grey;
-}
+
+    .post-button:hover {
+        background-color: grey;
+        border-color: grey;
+    }
+
 .profile-content-input h3 {
     margin-top: 0px;
     margin-bottom: -20px;
     color: gray;
 }
+
 .profile-content-comment {
     padding: 20px;
     background: #fff;
@@ -780,13 +1034,38 @@ body {
     width: 700px;
     margin-left: 123px;
 }
+
+.viewmore {
+    text-align: center;
+}
+
+.comment-shift {
+    margin-right: 10px;
+}
+
+.comment-button {
+    border: none;
+    background: none;
+    color: #337ab7;
+}
+
+    .comment-button:hover {
+        text-decoration: underline;
+    }
+
 .counter-margin {
-    margin-top:20px;
+    margin-top: 20px;
 }
-/*Movie index*/
+
+.post-share-img {
+    margin-right: 20px;
+    margin-top: -5px;
+}
+/*###################### Movie index ###################*/
 .poster-img {
-    border-radius:15px;
+    border-radius: 15px;
 }
+
 .movie-explorer {
     padding: 1px 0 10px 0;
     background: #fff;
@@ -794,24 +1073,46 @@ body {
     margin-top: 30px;
     width: 180px;
 }
+
 .movie-text {
-    color:white;
+    color: white;
 }
+
 .img-sidebar-poster {
     width: 100px;
     margin-left: 20px;
 }
+
 .latest-movie-text {
-    margin-left:30px;
-    text-align:center;
-}
-.latest-movie-box {
-    text-align:center;
-}
-.movie-title {
-    color:white;
+    margin-left: 30px;
+    text-align: center;
 }
 
+.latest-movie-box {
+    text-align: center;
+}
+
+.movie-title {
+    color: white;
+}
+
+.viewmore-button {
+    width: 130px;
+    height: 190px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+    .viewmore-button:hover {
+        background-color: grey;
+        color: white;
+    }
+
+.movie-list-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
 /*########### ViewMovie ################*/
 .cine-rating-list {
     margin: 0;
@@ -830,24 +1131,16 @@ body {
     justify-content: center;
     align-items: center;
     height: inherit;
-    margin-right:40px;
+    margin-right: 40px;
 }
 
 .cine-rating-list li {
-    display:inline-block   
+    display: inline-block
 }
 
 .cine-rating-star {
-    margin: 4px;   
+    margin: 4px;
 }
-
-/*.cine-rating-list-items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: inherit;*/
-    /*border: 3px solid green;*/
-/*}*/
 
 .rating-list {
     /*list-style-type: none;*/
@@ -860,27 +1153,27 @@ body {
     font-size: 1.8em;
 }
 
-.rating-list ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: inherit;
-    margin-right:40px;
-}
+    .rating-list ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: inherit;
+        margin-right: 40px;
+    }
 
-.rating-list button {
-    border:none;
-    color:none;
-    background-color: transparent;
-    margin:4px;
-    padding:0;
-}
+    .rating-list button {
+        border: none;
+        color: none;
+        background-color: transparent;
+        margin: 4px;
+        padding: 0;
+    }
 
-.rating-list li {
-    display: inline-block;
-    /*font-size:1.8em;*/
-}
+    .rating-list li {
+        display: inline-block;
+        /*font-size:1.8em;*/
+    }
 
 .videoContainer {
     display: flex;
@@ -891,4 +1184,285 @@ body {
 
 .viewMovie-right-col {
     border-left: 2px solid #e8e8e8;
+}
+/*##########TrendingMovies################*/
+.Trending-divide {
+    text-align: center;
+    text-decoration: none;
+}
+
+    .Trending-divide a {
+        font-size: 35px;
+        color: darkred
+    }
+
+        .Trending-divide a:hover {
+            text-decoration: none;
+            color: black;
+        }
+
+.glyphicon-certificate {
+    color: yellow;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+.trending-content-title {
+    padding: 20px;
+    background: #fff;
+    min-height: 0px;
+    border-radius: 8px;
+    margin-bottom: -20px;
+    margin-top: 31px;
+    height: 60px;
+    text-align: center;
+}
+.trending-content-title h3 {
+    padding: 20px;
+    background: transparent;
+    min-height: 0px;
+    border-radius: 8px;
+    margin-left: -20px;
+    margin-top: -20px;
+}
+.trending-content-input {
+    padding: 20px;
+    background: #fff;
+    min-height: 0px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+.trending-content-input h3 {
+    margin-top: 0px;
+    margin-bottom: -20px;
+    color: gray;
+}
+.tag-movie-button {
+    height: 30px;
+    float: right;
+    margin-top: -30px;
+    margin-right: 20px;
+    border-color: transparent;
+    background: darkred;
+    color: white;
+    border-radius: 10px;
+}
+.trending-label{
+
+}
+.trending-label p{
+    margin-top: -20px;
+}
+.Trending-divide p {
+    margin-bottom: -10px;
+    margin-top: -10px;
+}
+.trending-content-post {
+    padding: 20px;
+    background: #fff;
+    min-height: 0px;
+    border-radius: 8px;
+    margin-bottom: 50px;
+    margin-top: -38px;
+}
+
+/*########## Edit Profile ################*/
+.genres-checkboxLabel {
+    width: 160px;
+    display: inline-block;
+}
+
+.profile-pic-label {
+    padding: 0;
+    margin: 0;
+}
+
+.change-profile-pic {
+    padding-top: 7px;
+}
+
+/*############View Comments#################*/
+
+.view-comments-image {
+    width: 110px;
+    height: 110px;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.comment-post-body {
+    margin-top: 4px;
+}
+
+.comment-pane {
+    padding: 20px;
+    background: #fff;
+    min-height: 50px;
+    border-radius: 8px;
+    width: 900px;
+    margin-left: 110px;
+    margin-top: 20px;
+    height: 50px;
+    text-align: center;
+}
+
+.media-heading-comment {
+    margin-top: -8px;
+    font-size: 25px;
+}
+
+.comment-submit {
+    max-width: 380px;
+    width: 50%;
+    margin-top: 10px;
+    margin-left: 200px;
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+/*################### Posts ####################*/
+.post-body p {
+    /* border-bottom: 1px solid #d4d4d4;*/
+    padding-top: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.post-heading a {
+    color: #f72b2c; /*red*/
+}
+
+    .post-heading a:hover {
+        color: #ad3333;
+    }
+
+.post-buttons {
+    padding-top: 4px;
+    border-top: 1px solid #d4d4d4;
+}
+
+    .post-buttons li {
+        padding: 0px 30px 0px 0px;
+    }
+
+.post-buttons a {
+    cursor:pointer;
+    text-decoration: none;
+    color: black;
+}
+
+        .post-buttons a:hover {
+            color: #f72b2c;
+        }
+
+.post-buttons a:active {
+    color: #ad3333;
+}
+
+.datePosted {
+    padding-left: 55%;
+}
+
+/*Glow on hover button test*/
+
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    margin-left: 150px;
+    margin-top: 30px;
+    font-size:20px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+/* ############## Top rated movies ##################### */
+.movie-panel{
+    display: inline-block;
+    width:300px;
+    height:325px;
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.movie-panel:nth-of-type(3n+2) {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.movie-panel-heading{
+   padding-left: 15px;
+}
+
+.movie-panel-img {
+    padding-left: 25%;
+    
+}
+
+.star-list{
+    margin: auto;
+    width: 60%;
+}
+
+.star-list ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+}
+
+.star-list li {
+    font-size: 1.5em;
+    display: inline;
 }

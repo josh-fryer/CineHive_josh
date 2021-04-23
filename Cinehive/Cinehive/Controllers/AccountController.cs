@@ -559,7 +559,7 @@ namespace Cinehive.Controllers
             {
                 foreach (var a in albumUser)
                 {
-                    foreach (var img in a.Images)
+                    foreach (var img in a.Images.ToList())
                     {
                         context.Images.Remove(img);
                     }

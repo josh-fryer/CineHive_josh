@@ -16,9 +16,9 @@ namespace Cinehive.Controllers
 {
     public class ProfileController : Controller
     {
-        private readonly IProfileService profileService;
+        private IProfileService profileService;
         private IMovieService movieService;
-        private readonly CineHiveContext context;
+        private CineHiveContext context;
 
         public ProfileController()
         {
@@ -142,7 +142,7 @@ namespace Cinehive.Controllers
                 if (f.ProfileId == id)
                 {
                     ViewBag.IsFriend = true;
-                    return View(profileService.ViewProfile(id));
+                    break;
                 }
             }           
 
