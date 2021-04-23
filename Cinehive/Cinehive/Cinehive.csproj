@@ -241,6 +241,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Img\SiteImg\blue_square_2-TMDb logo.svg" />
     <Content Include="Content\Img\SiteImg\blue_short-TMDb logo.svg" />
+    <Content Include="Content\Img\SiteImg\Cinemacolouredfilmreel.jpg" />
     <Content Include="Content\Img\SiteImg\colouredfilmreel.jpg" />
     <Content Include="Content\Scripts\CharCounter.js" />
     <Content Include="Content\Scripts\CinehiveScript.js" />

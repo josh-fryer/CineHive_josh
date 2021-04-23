@@ -321,8 +321,8 @@ body {
 
 
 #bar {
-    height: 368px;
-    background: #000000 0px 0px url('https://i.ibb.co/jRYRnwn/colouredfilmreel.jpg') repeat-x;
+    height: 510px;
+    background: #000000 0px 0px url('../Content/Img/SiteImg/Cinemacolouredfilmreel.jpg') repeat-x;
     -webkit-animation: scroll 10s linear infinite;
     animation: scroll 100s linear infinite;
 }
