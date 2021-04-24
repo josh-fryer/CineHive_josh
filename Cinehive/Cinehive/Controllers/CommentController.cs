@@ -94,23 +94,6 @@ namespace Cinehive.Controllers
             return RedirectToAction("ViewPostComments", "Post", new { id = postid });
         }
 
-        //[HttpPost]
-        //public ActionResult Delete(int id, PostComment postComment)
-        //{
-        //    try
-        //    {
-        //        int postid = Convert.ToInt32(TempData["ThirdPostid"]);
-
-        //        commentService.DeleteComment(id);
-
-        //        return RedirectToAction("ViewPostComments", "Post", new { id = postid });
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
         public ActionResult CreateDirect(string input, int id)
         {
             var userid = User.Identity.GetUserId();

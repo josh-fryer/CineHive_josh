@@ -19,7 +19,9 @@
 
                 @using (Html.BeginForm("Create", "Post", FormMethod.Post, new { name = "createPost", onsubmit = "return validateForm()" }))
                 {
-                    <input id="postInput" class="post-submit" type="text" name="input" maxlength="280" placeholder="Say something.." /> @*<div class="form-group">
+                    <input id="postInput" class="post-submit" type="text" name="input" maxlength="280" placeholder="Say something.." /> 
+                    <input type="hidden" name="location" value="profile"/>
+                    @*<div class="form-group">
                             <textarea id="postInput" class="post-submit" name="input" maxlength="280" placeholder="Say something.."></textarea>
                         </div>*@
                     <button class="btn btn-primary post-button" type="submit">

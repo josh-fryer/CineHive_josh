@@ -23,9 +23,13 @@ namespace Cinehive.Controllers
         }
 
         [Authorize]
-        public ActionResult Create(string input, Post post)
+        public ActionResult Create(string input, Post post, string location = "home")
         {
             postService.CreatePost(input, post);
+            if(location == "profile")
+            {
+                return RedirectToAction("Index", "Profile");
+            }
             return RedirectToAction("Index", "Home"); 
         }
 
