@@ -1,6 +1,13 @@
 ﻿@model IEnumerable<HiveData.Models.UserProfile>
 @{
-    ViewBag.Title = "Your Friends";
+    if(ViewBag.IsUser == true)
+    {
+        ViewBag.Title = "Your Friends";
+    }
+    else
+    {
+        ViewBag.Title = "Friends";
+    }
 }
 
 <div class="container">
@@ -43,6 +50,6 @@
                 }
             </div>
         </div>
-        </div>
     </div>
+</div>
 

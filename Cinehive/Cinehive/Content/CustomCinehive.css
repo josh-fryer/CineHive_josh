@@ -347,22 +347,6 @@ body {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*///////////////////////Login page////////////////////////////*/
 /*page background*/
 .LoginText {
@@ -1285,9 +1269,9 @@ a.remove-friend-link:active {
     color: white;
     border-radius: 10px;
 }
-.trending-label{
+/* .trending-label{
 
-}
+} */
 .trending-label p{
     margin-top: -20px;
 }
@@ -1386,6 +1370,35 @@ a.remove-friend-link:active {
 }
 
 /*################### Posts ####################*/
+.popularTag {      
+        text-align: right;
+        margin-bottom: 5px;
+}
+
+.popularTag strong{
+    border-radius: 20px;
+    padding:4px;
+    background: linear-gradient(
+          to right,
+          hsl(32.11, 91.2%, 49.02%) 0%,
+          hsl(32.48, 91.2%, 49.03%) 8.1%,
+          hsl(33.52, 91.21%, 49.07%) 15.5%,
+          hsl(35.05, 91.22%, 49.12%) 22.5%,
+          hsl(36.94, 91.23%, 49.19%) 29%,
+          hsl(39.03, 91.25%, 49.28%) 35.3%,
+          hsl(41.21, 91.26%, 49.37%) 41.2%,
+          hsl(43.39, 91.28%, 49.46%) 47.1%,
+          hsl(45.49, 91.3%, 49.56%) 52.9%,
+          hsl(47.45, 91.31%, 49.66%) 58.8%,
+          hsl(49.22, 91.33%, 49.75%) 64.7%,
+          hsl(50.76, 91.34%, 49.83%) 71%,
+          hsl(52.03, 91.36%, 49.9%) 77.5%,
+          hsl(52.99, 91.36%, 49.95%) 84.5%,
+          hsl(53.6, 91.37%, 49.99%) 91.9%,
+          hsl(53.82, 91.37%, 50%) 100%
+        );
+}
+
 .post-body p {
     /* border-bottom: 1px solid #d4d4d4;*/
     padding-top: 10px;
@@ -1426,7 +1439,7 @@ a.remove-friend-link:active {
 }
 
 .datePosted {
-    padding-left: 250px;
+    float: right;
 }
 
 /*Glow on hover button test*/

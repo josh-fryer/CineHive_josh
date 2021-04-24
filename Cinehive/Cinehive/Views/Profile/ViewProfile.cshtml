@@ -44,9 +44,13 @@
                                         <h4 class="media-heading">@authorName</h4>
                                         <p>
                                             @if ((bool)item.AuthorPost.hasFilmLink)
-                                            {@Html.Raw(item.AuthorPost.PostContent) }
-                                        else
-                                        { @item.AuthorPost.PostContent}
+                                            {
+                                                @Html.Raw(item.AuthorPost.PostContent) 
+                                            }
+                                            else
+                                            { 
+                                                @item.AuthorPost.PostContent
+                                            }
                                         </p>
                                     </div>
                                 </div>

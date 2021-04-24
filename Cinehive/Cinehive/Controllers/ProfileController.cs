@@ -176,15 +176,21 @@ namespace Cinehive.Controllers
         }
 
         [Authorize]
-        public ActionResult ViewFriends()
+        public ActionResult ViewFriends(int profileId)
         {
             string userid = User.Identity.GetUserId();
-            int profileid = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
-
-            UserProfile userProfile = context.UserProfiles.Find(profileid);
+            //int profileid = context.UserProfiles.Where(x => x.UserId == userid).Select(c => c.ProfileId).FirstOrDefault();
+            UserProfile userProfile = context.UserProfiles.Find(profileId);
 
             var result = userProfile.Friends.ToList();
-
+            if(userProfile.UserId == userid)
+            {
+                ViewBag.IsUser = true;
+            }
+            else
+            {
+                ViewBag.IsUser = false;
+            }
 
             return View(result);
         }

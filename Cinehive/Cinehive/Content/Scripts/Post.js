@@ -22,12 +22,11 @@
     }     
     // -- post content goes here in View --
 
-    var postAwards = `<ul class="list-inline list-unstyled">`;                
+    var postAwards = ``;                
             if (isPopular == true)
             {
-                postAwards += `<li><strong>Popular</strong></li>`;
+                postAwards += `<div class="popularTag"><strong class="popularText">Popular</strong></div>`;
             }
-            postAwards += `</ul>`;
 
     var postButtons =         
         `<ul class="list-inline list-unstyled post-buttons">`;
@@ -90,12 +89,11 @@ function ViewCommentsPost(divId, profileId, postId, firstName, lastName, imagePa
    }     
    // -- post content goes here in View --
 
-   var postAwards = `<ul class="list-inline list-unstyled">`;                
+   var popular = ``;                
            if (isPopular == true)
            {
-               postAwards += `<li><strong>Popular</strong></li>`;
+               popular += `<div class="popularTag"><strong class="popularText">Popular</strong></div>`;
            }
-           postAwards += `</ul>`;
 
    var postButtons =         
        `<ul class="list-inline list-unstyled post-buttons">`;
@@ -128,7 +126,7 @@ function ViewCommentsPost(divId, profileId, postId, firstName, lastName, imagePa
 
    document.getElementById(divId+"_1").insertAdjacentHTML("afterbegin", postImage); // insert as first child of div
    document.getElementById(divId+"_2").insertAdjacentHTML("afterbegin", postHeading ); 
-   document.getElementById(divId+"_3").insertAdjacentHTML("afterend", (postAwards + postButtons)); // insert after </div>
+   document.getElementById(divId+"_3").insertAdjacentHTML("afterend", (popular + postButtons)); // insert after </div>
 }
 
 function ReturnComment(divId, profileId, commId, postId,firstName, lastName, imagePath, datePosted,

@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("ViewFriends","Profile")">
+                    <a href="@Url.Action("ViewFriends","Profile", new { profileId = Model.UserProfile.ProfileId })">
                         <i class="glyphicon glyphicon-user"></i>
                         Friends
                     </a>

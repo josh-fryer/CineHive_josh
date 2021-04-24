@@ -106,10 +106,10 @@
                 bool isUserPostOrAdmin = true;
 
         <script type="text/javascript">
-                    ReturnPost("@divId", "@Model.userProfile.ProfileId", @item.PostId, "@Model.userProfile.Firstname",
-                        "@Model.userProfile.Lastname", "@Model.userProfile.ImagePath", "@item.DatePosted", @Json.Encode(item.Popular),
-                        @Model.GetAwards(item.PostId), @Json.Encode(Model.AwardGiven(item.PostId)), @Json.Encode(isUserPostOrAdmin),
-                        @Json.Encode(item.Edited) ,@item.PostComments.Count);
+                ReturnPost("@divId", "@Model.userProfile.ProfileId", @item.PostId, "@Model.userProfile.Firstname",
+                    "@Model.userProfile.Lastname", "@Model.userProfile.ImagePath", "@item.DatePosted", @Json.Encode(item.Popular),
+                    @Model.GetAwards(item.PostId), @Json.Encode(Model.AwardGiven(item.PostId)), @Json.Encode(isUserPostOrAdmin),
+                    @Json.Encode(item.Edited) ,@item.PostComments.Count);
         </script>
 
                 <div id="Comments-@item.PostId"></div>
