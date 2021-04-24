@@ -111,12 +111,12 @@
                     isUserPostOrAdmin = true;
                 }
 
-        <script type="text/javascript">
+                <script type="text/javascript">
                     ReturnPost("@divId", @Model.GetProfileId(postid = item.PostId), @item.PostId, "@Model.GetFirstName(postid = item.PostId)",
                         "@Model.GetLastName(postid = item.PostId)", "@Model.GetUserPicture(postid = item.PostId)", "@item.DatePosted",
                         @Json.Encode(item.Popular), @Model.GetAwards(id = item.PostId), @Json.Encode(Model.AwardGiven(postid = item.PostId)),
                         @Json.Encode(isUserPostOrAdmin), @Json.Encode(item.Edited), @item.PostComments.Count);
-        </script>
+                </script>
 
                 <div id="Comments-@item.PostId"></div>
 

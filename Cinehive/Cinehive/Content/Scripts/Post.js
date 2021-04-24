@@ -1,5 +1,5 @@
 ﻿function ReturnPost(divId, profileId, postId, firstName, lastName, imagePath, datePosted,
-     isPopular, awards, awardGiven, isUserPostOrAdimin, isEdited, commentsCount) {
+    isPopular, awards, awardGiven, isUserPostOrAdimin, isEdited, commentsCount) {
     var postImage = `<div class="media-left"><a href="/Profile/ViewProfile/${profileId}">`;
         if (imagePath == null || imagePath == "")
         {
@@ -173,10 +173,10 @@ function ReturnComment(divId, profileId, commId, postId,firstName, lastName, ima
 
         if (isUserCommOrAdimin)
         {
-            commButtons += `
-            <li><a href="/Comment/Delete?id=${commId}&postid=${postId}"><span class="glyphicon glyphicon-trash"></span></a></li>
+            commButtons +=
+            `<li><a href="/Comment/Delete?id=${commId}&postid=${postId}"><span class="glyphicon glyphicon-trash"></span></a></li>
             
-            <li> <a href="/Comment/Edit/${commId}"><span class="glyphicon glyphicon-edit"></span></a> </li>`;
+            <li> <a href="/Comment/Edit?id=${commId}&postid=${postId}"><span class="glyphicon glyphicon-edit"></span></a> </li>`;
         }
     commButtons += `</ul>`;
 

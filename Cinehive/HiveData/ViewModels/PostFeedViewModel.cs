@@ -114,5 +114,12 @@ namespace HiveData.ViewModels
             string userpicture = context.UserProfiles.Where(c => c.Comments.Contains(context.PostComments.Where(i => i.CommentId == id).FirstOrDefault())).Select(v => v.ImagePath).FirstOrDefault();
             return (userpicture);
         }
+
+        public int GetCommentsCount(int id)
+        {
+            int count = 0;
+            count = context.Posts.Find(id).PostComments.Count;
+            return count;
+        }
     }
 }
