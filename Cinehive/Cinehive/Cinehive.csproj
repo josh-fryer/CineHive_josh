@@ -318,7 +318,6 @@
     <Content Include="Views\Notification\Index.cshtml" />
     <Content Include="Views\Notification\TestSendNotification.cshtml" />
     <Content Include="Views\Post\EditPost.cshtml" />
-    <Content Include="Views\Album\Index.cshtml" />
     <Content Include="Views\Album\Create.cshtml" />
     <Content Include="Views\Album\ViewAlbum.cshtml" />
     <Content Include="Views\Album\AddImageToAlbum.cshtml" />
@@ -338,7 +337,7 @@
     <Content Include="Views\Profile\ViewFriends.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
     <Content Include="Views\Profile\ViewProfilePartial.cshtml" />
-    <Content Include="Views\Album\GetAlbums.cshtml" />
+    <Content Include="Views\Album\Index.cshtml" />
     <Content Include="Views\Home\FriendFeed.cshtml" />
     <Content Include="Views\Home\HomeSidebarPartial.cshtml" />
     <Content Include="Views\Admin\BanUser.cshtml" />

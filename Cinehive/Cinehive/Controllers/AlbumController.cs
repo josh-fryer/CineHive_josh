@@ -29,13 +29,6 @@ namespace Cinehive.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            //return View(albumService.GetAlbums(userId).ToList());
-            return RedirectToAction("GetAlbums", new { userId = userId });
-        }
-
-        [Authorize]
-        public ActionResult GetAlbums(string userId)
-        {
             ViewBag.AlbumUserId = userId;
             return View(albumService.GetAlbums(userId));
         }
