@@ -1013,7 +1013,20 @@ a.remove-friend-link:active {
 .circular-image {
     border-radius: 20px;
 }
-
+.view-image-container {
+    background: white;
+    width: 800px;
+    height: 600px;
+    margin-left: 300px;
+    border-radius: 20px;
+}
+.view-image {
+    height: 70%;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 10%;
+    border-radius:10px;
+}
 /* ############# Main Feed index ############*/
 .index-sidebar {
     padding: 1px 0 10px 0;

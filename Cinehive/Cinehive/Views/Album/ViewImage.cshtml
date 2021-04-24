@@ -12,7 +12,7 @@
                 <div class="profile-usermenu">
                     <ul class="nav">
                         <li class="active">
-                            <a href="@Url.Action("Index","Album")">
+                            <a href="javascript: history.go(-1)">
                                 <i class="glyphicon glyphicon-arrow-left"></i>
                                 Go back
                             </a>
@@ -20,13 +20,13 @@
                         @if (ViewBag.IsUser)
                         {
                             <li>
-                                <a href="@Url.Action("")">
+                                <a href="@Url.Action("SetAsProfilePicture", "Album", new { Imagepath = Model.ImagePath })">
                                     <i class="glyphicon glyphicon-picture"></i>
                                     Set Profile Picture
                                 </a>
                             </li>
                             <li>
-                                <a href="@Url.Action("")">
+                                <a href="@Url.Action("DeleteImageFromAlbum", "Album", new { id = Model.ImageId })">
                                     <i class="glyphicon glyphicon-remove"></i>
                                     Delete Image
                                 </a>
@@ -36,13 +36,14 @@
                 </div>
             </div>
 
+
         </div>
-        <div class="col-md-4">
-            <div class="profile-content">
-                <div class="col-md-10 col-sm-4 col-xs-6">
-                    <img class="img-responsive img-responsive-alt" src="~/@Model.ImagePath" />
-                </div>
-            </div>
+        <div class="view-image-container">
+            <img class="view-image" src="~/@Model.ImagePath" />
         </div>
+
     </div>
-</div>
+    </div>
+
+
+

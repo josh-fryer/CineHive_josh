@@ -122,13 +122,8 @@ namespace Cinehive.Controllers
         }
 
         [Authorize]
-        public ActionResult DeleteImageFromAlbum(int id)
-        {
-            return View(albumService.GetImage(id));
-        }
 
-        [HttpPost]
-        public ActionResult DeleteImageFromAlbum(int id, Image image) //add to data and service
+        public ActionResult DeleteImageFromAlbum(int id) //add to data and service
         {
             try
             {

@@ -54,10 +54,8 @@
                     {
                         <div class="col-md-3 col-sm-4 col-xs-6">
                             <a href="@Url.Action("ViewImage", "Album", new { id = item.ImageId, isUser = ViewBag.IsUser })">
-                            <img class="img-responsive" src="~/@item.ImagePath" />
+                            <img class="img-responsive img-rounded" src="~/@item.ImagePath" />
                             </a>
-                        @if (ViewBag.IsUser) {
-                        @Html.ActionLink("Set as Profile Pic", "SetAsProfilePicture", new { Imagepath = item.ImagePath }) }
                         </div>
                     }
                 }
