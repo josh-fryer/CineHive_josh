@@ -9,6 +9,12 @@ namespace Cinehive.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        [Required] //Added firstName and LastName to model
+        [Display(Name = "Firstname")]
+        public string Firstname { get; set; }
+        [Required]
+        [Display(Name = "Lastname")]
+        public string Lastname{ get; set; }
     }
 
     public class ExternalLoginListViewModel
