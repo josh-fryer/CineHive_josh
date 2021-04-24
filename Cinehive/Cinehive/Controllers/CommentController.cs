@@ -90,27 +90,27 @@ namespace Cinehive.Controllers
 
         public ActionResult Delete(int id, int postid)
         {
-            TempData["ThirdPostid"] = postid;
-
-            return View(commentService.GetComment(id));
+            commentService.DeleteComment(id);
+            return RedirectToAction("ViewPostComments", "Post", new { id = postid });
         }
 
-        [HttpPost]
-        public ActionResult Delete(int id, PostComment postComment)
-        {
-            try
-            {
-                int postid = Convert.ToInt32(TempData["ThirdPostid"]);
+        //[HttpPost]
+        //public ActionResult Delete(int id, PostComment postComment)
+        //{
+        //    try
+        //    {
+        //        int postid = Convert.ToInt32(TempData["ThirdPostid"]);
 
-                commentService.DeleteComment(id);
+        //        commentService.DeleteComment(id);
 
-                return RedirectToAction("ViewPostComments", "Post", new { id = postid });
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //        return RedirectToAction("ViewPostComments", "Post", new { id = postid });
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
+
         public ActionResult CreateDirect(string input, int id)
         {
             var userid = User.Identity.GetUserId();
@@ -142,5 +142,18 @@ namespace Cinehive.Controllers
                 return View();
             }
         }
+
+        public void GiveAward(int id) // called by JS on Post.js
+        {
+            var userId = User.Identity.GetUserId();
+            commentService.GiveAward(id, userId);
+        }
+
+        public void RevokeAward(int id)
+        {
+            var userId = User.Identity.GetUserId();
+            commentService.RevokeAward(id, userId);
+        }
+
     }
 }

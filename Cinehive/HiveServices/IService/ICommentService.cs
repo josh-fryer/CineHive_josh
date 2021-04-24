@@ -12,5 +12,7 @@ namespace HiveServices.IService
         PostComment GetComment(int id);
         void EditComment(PostComment postComment);
         void DeleteComment(int id);
+        void RevokeAward(int id, string userId);
+        void GiveAward(int id, string userId);
     }
 }

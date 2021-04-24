@@ -1320,20 +1320,22 @@ a.remove-friend-link:active {
 }
 
 .comment-pane {
-    padding: 20px;
+    margin: auto;
+    padding-top: 20px;
     background: #fff;
-    min-height: 50px;
-    border-radius: 8px;
-    width: 900px;
-    margin-left: 110px;
-    margin-top: 20px;
+    border-radius: 20px;
+    padding: 15px;   
+    margin-left: 20%;
+    margin-bottom: 8px;
+    /*margin-top: 20px;
     height: 50px;
-    text-align: center;
+    text-align: center; */
 }
 
 .media-heading-comment {
     margin-top: -8px;
     font-size: 25px;
+    color: grey;
 }
 
 .comment-submit {
@@ -1344,6 +1346,32 @@ a.remove-friend-link:active {
     border-radius: 8px;
     padding: 6px 10px;
 }
+
+.comment-post{
+    margin: auto;
+    max-width: 80%;
+    padding-top: 20px;
+}
+
+.addComment{
+    margin: auto;
+    max-width: 80%;
+    padding-top: 20px;
+}
+
+.addComment-body{
+    background-color: white;
+    border-radius: 8px;
+    padding:15px;
+    margin-bottom: 15px;
+}
+
+.commentsList {
+    margin: auto;
+    max-width: 80%;
+    padding-top: 10px;
+}
+
 /*################### Posts ####################*/
 .post-body p {
     /* border-bottom: 1px solid #d4d4d4;*/
@@ -1385,7 +1413,7 @@ a.remove-friend-link:active {
 }
 
 .datePosted {
-    padding-left: 55%;
+    padding-left: 250px;
 }
 
 /*Glow on hover button test*/

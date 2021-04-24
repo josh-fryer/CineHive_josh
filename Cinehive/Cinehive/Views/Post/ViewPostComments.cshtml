@@ -2,130 +2,163 @@
 @{
     ViewBag.Title = "ViewPostComments";
     int id = 0;
-    int CommentId = 0;
+    if (String.IsNullOrEmpty(ViewBag.IsAdmin))
+    {
+        ViewBag.IsAdmin = false;
+    }
 }
 
+@Scripts.Render("~/Content/Scripts/Post.js")
+
 <div class="container">
-            @if(ViewBag.AlertMessage != null)
-            {
-                <div class="well bg-white">
-                    @ViewBag.AlertMessage
-                </div>
-            }
-            <div class="col-md-9">
-                <div class="profile-content-main-post">
-                    <a class="pull-left" href="@Url.Action("Index", "Profile", new { id = Model.Post.PostId })" )">
-                        <img src="~/@Model.UserProfile.ImagePath" class="view-comments-image" />
-                    </a>
-                    <div class="comment-post-body">
-                        <h4 class="media-heading">@Html.ActionLink(@Model.UserProfile.Firstname + " " + @Model.UserProfile.Lastname, "Index", "Profile", new { id = Model.Post.PostId })</h4>
-                        <p>
-                            @Model.Post.PostContent
-
-                        </p>
-                        <ul class="list-inline list-unstyled">
-                            <li> @Model.Post.DatePosted </li>
-                            <li>|</li>
-                            @if (Model.Post.Awards < 2)
-                            {
-                                <li> @Model.Post.Awards Award</li>
-                            }
-                            else
-                            {
-                                <li> @Model.Post.Awards Awards</li>
-                            }
-                        </ul>
-                        <ul class="list-inline list-unstyled">
-                            <li>@Html.ActionLink("Award", "GiveAward", "Post", new { Id = Model.Post.PostId }, new { })</li>
-                            <li>|</li>
-                            <li>@Html.ActionLink("Share", "")</li>
-                            <li>|</li>
-                            <li>@Html.ActionLink("Remove", "Delete", "Post", new { id = Model.Post.PostId }, null)</li>
-                            <li>|</li>
-                            <li>@Html.ActionLink("Edit", "Edit", "Post", new { id = Model.Post.PostId }, null)</li>
-                            @if (Model.Post.Edited == true)
-                            {
-                                <li><strong>Edited</strong></li>
-                            }
-
-                        </ul>
-
-                    </div>
-                </div>
-            </div>
+    @if (ViewBag.AlertMessage != null)
+    {
+        <div class="well bg-white">
+            @ViewBag.AlertMessage
         </div>
+    }
+<div class="row">
+    <div class="comment-post">
+        @{
+            var divId = "post" + 1;
+            var post = Model.Post;
+        }
+        @if (Model.Post.Shared == true)
+        {
+            int authorPostID = post.AuthorPost.PostId;
+            string authorName = Model.GetPostFirstName(authorPostID) + " " + Model.GetPostLastName(authorPostID);
 
-        <div class="container">
-            <div class="col-md-9">
-                <div class="comment-pane">
-                    <h4 class="media-heading-comment">Comments.</h4>
-                </div>
-                <div class="profile-content-main-post">
-                    <h4>Add a comment.</h4>
-                    @using (Html.BeginForm("CreateDirect", "Comment", new { id = Model.Post.PostId }, FormMethod.Post))
-                    {
-                        <input id="postInput" class="comment-submit" type="text" name="input" maxlength="280" placeholder="Say something.." />
-                        @*<div class="form-group">
-                                <textarea id="postInput" class="post-submit" name="input" maxlength="280" placeholder="Say something.."></textarea>
-                            </div>*@
-                        <button class="btn btn-primary post-button" type="submit">
-                            <span>Post &nbsp;</span>
-                            <i class="glyphicon glyphicon-pencil"></i>
-                        </button>
-                    }
-                </div>
+            <div class="profile-content-pane">
+                <div id="@(divId + "_1")" class="media">
+                    <div id="@(divId + "_2")" class="media-body">
+                        <p>Shared a post from @authorName</p>
+                        <div id="@(divId + "_3")" class="profile-content-pane-share">
+                            <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(authorPostID) })">
 
-                @foreach (var item in Model.CommentList.OrderByDescending(c => c.DateCommented))
-                {
-
-                    <div class="profile-content-main-post">
-                        <a class="pull-left" href="@Url.Action("Index", "Profile", new { id = item.CommentId })" )">
-                            @if (Model.GetUserPicture(id = item.CommentId) == null)
-                            {
-                                <img src="~/Content/Img/profile-image-placeholder.png" class="view-comments-image" width="140" height="140" />
-                            }
-                            else
-                            {
-                                <img src="~/@Model.GetUserPicture(id = item.CommentId)" class="view-comments-image" width="140" height="140" />
-                            }
-
-                        </a>
-                        <div class="comment-post-body">
-                            <h4 class="media-heading">@Html.ActionLink(@Model.GetFirstName(CommentId = item.CommentId) + " " + Model.GetLastName(CommentId = item.CommentId), "ViewProfile", "Profile", new { id = item.CommentId }, new { })</h4>
-                            <p>
-                                @item.CommentContent
-
-                            </p>
-                            <ul class="list-inline list-unstyled">
-                                <li> @item.DateCommented </li>
-                                <li>|</li>
-                                @if (item.Awards < 2)
+                                @if (Model.GetSharedUserPicture(authorPostID) == null)
                                 {
-                                    <li> @item.Awards Award</li>
+                                    <img class="post-share-img circular-image" src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
                                 }
                                 else
                                 {
-                                    <li> @item.Awards Awards</li>
+                                    <img class="post-share-img circular-image" src="~/@Model.GetSharedUserPicture(authorPostID)" width="64" height="64" />
                                 }
-                            </ul>
-                            <ul class="list-inline list-unstyled">
-                                <li>@Html.ActionLink("Award", "GiveAward", "Post", new { Id = item.CommentId }, new { })</li>
-                                <li>|</li>
-                                <li>@Html.ActionLink("Share", "")</li>
-                                <li>|</li>
-                                <li>@Html.ActionLink("Remove", "Delete", "Comment", new { id = item.CommentId, postid = Model.Post.PostId }, null)</li>
-                                <li>|</li>
-                                <li>@Html.ActionLink("Edit", "Edit", "Comment", new { id = item.CommentId, postid = Model.Post.PostId }, null)</li>
-                                @if (item.Edited == true)
-                                {
-                                    <li><strong>Edited</strong></li>
-                                }
-
-                            </ul>
-
+                            </a>
+                            <h4 class="media-heading">@authorName</h4>
+                            <p>
+                                @if ((bool)post.AuthorPost.hasFilmLink)
+                                {@Html.Raw(post.AuthorPost.PostContent) }
+                                else
+                                { @post.AuthorPost.PostContent}
+                            </p>
                         </div>
                     </div>
-
-                }
+                </div>
             </div>
+        }
+        else if (post.PictureChange == true)
+        {
+            <div class="profile-content-pane">
+                <div id="@(divId + "_1")" class="media">
+                    <div id="@(divId + "_2")" class="media-body">
+                        <p>@post.PostContent</p>
+                        <div id="@(divId + "_3")" class="profile-content-pane-img">
+                            <img class="profile-content-img" src="/@Url.Content(@post.AuthorPicture)"/>
+                        </div>
+                        @* JS inserts buttons here *@
+                    </div>
+                </div>
+            </div>
+        }
+        else // display standard post
+        {
+            <div class="profile-content-pane">
+                <div id="@(divId + "_1")" class="media">
+                    <div id="@(divId + "_2")" class="media-body post-body">
+
+                        <p id="@(divId + "_3")">
+                            @if ((bool)post.hasFilmLink)
+                            {@Html.Raw(post.PostContent) }
+                            else
+                            { @post.PostContent}
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+        @{
+            bool isUserPostOrAdmin = false;
+            if (Model.IsUserPost(id = post.PostId) == true || ViewBag.IsAdmin)
+            {
+                isUserPostOrAdmin = true;
+            }
+        }
+
+    <script type="text/javascript">          
+        ViewCommentsPost("@divId", @Model.UserProfile.ProfileId, @post.PostId, "@Model.UserProfile.Firstname",
+            "@Model.UserProfile.Lastname", "@Model.UserProfile.ImagePath", "@post.DatePosted",
+            @Json.Encode(post.Popular), @Model.GetAwards(post.PostId), @Json.Encode(Model.AwardGiven(post.PostId)),
+            @Json.Encode(isUserPostOrAdmin), @Json.Encode(post.Edited), @Json.Encode(false));
+    </script>
+
+    </div>
+
+</div>
+
+
+
+<div class="row">
+    <div class="addComment">
+        <div class="addComment-body">
+            <h4 class="media-heading-comment">Comments.</h4>
+            @using (Html.BeginForm("CreateDirect", "Comment", new { id = Model.Post.PostId }, FormMethod.Post))
+            {
+                <input id="postInput" class="comment-submit" type="text" name="input" maxlength="280" placeholder="Say something.." />
+
+                <button class="btn btn-primary post-button" type="submit">
+                    <span>Post &nbsp;</span>
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </button>
+            }
         </div>
+    </div>
+    <div class="commentsList">
+        @{ int i = 0; }
+        @foreach (var item in Model.CommentList.OrderByDescending(c => c.DateCommented))
+        {
+            
+            i += 1;
+            var commDivId = "comm" + i;
+            
+            <div class="comment-pane">
+                <div id="@(commDivId + "_1")" class="media">
+                    <div id="@(commDivId + "_2")" class="media-body post-body">
+
+                        <p id="@(commDivId + "_3")">
+                           @item.CommentContent
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            
+                bool isUserCommentOrAdmin = false;
+                if (Model.IsUserComment(id = item.CommentId) == true || ViewBag.IsAdmin)
+                {
+                    isUserCommentOrAdmin = true;
+                }
+           
+
+            <script type="text/javascript">
+                ReturnComment("@commDivId", @Model.GetCommProfileId(item.CommentId), @item.CommentId, @post.PostId, "@Model.GetFirstName(item.CommentId)",
+                "@Model.GetLastName(item.CommentId)", "@Model.GetUserPicture(item.CommentId)", "@item.DateCommented",
+                @item.Awards, @Json.Encode(Model.CommAwardGiven(item.CommentId)), @Json.Encode(isUserCommentOrAdmin),
+                @Json.Encode(item.Edited));
+            </script>
+
+        }
+    </div>
+    </div>
+</div>

@@ -328,7 +328,6 @@
     <Content Include="Views\Comment\Create.cshtml" />
     <Content Include="Views\Post\ViewPostComments.cshtml" />
     <Content Include="Views\Comment\Edit.cshtml" />
-    <Content Include="Views\Comment\Delete.cshtml" />
     <Content Include="Views\Home\Popular.cshtml" />
     <Content Include="Views\Movie\SearchViewMovie.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
