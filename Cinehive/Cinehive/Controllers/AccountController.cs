@@ -419,7 +419,7 @@ namespace Cinehive.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Manage");
+                return RedirectToAction("Index", "Home");
             }
 
             if (ModelState.IsValid)
@@ -433,12 +433,22 @@ namespace Cinehive.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
-                {
+                {//create basic userprofile
+                    var userProfile = new UserProfile
+                    {
+                        Firstname = model.Firstname,
+                        Lastname = model.Lastname,//get info
+                        UserId = user.Id
+                    };
+                    Session["fName"] = userProfile.Firstname;
+                    db.UserProfiles.Add(userProfile);
+                    db.SaveChanges();
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        return RedirectToLocal(returnUrl);
+                        //return RedirectToLocal(returnUrl);
+                        return RedirectToAction("Index", "Home");
                     }
                 }
                 AddErrors(result);
@@ -552,7 +562,7 @@ namespace Cinehive.Controllers
                 }
             }
 
-            //remove the images and album
+            //REMOVE THE IMAGES AND THE ALBUMS
             var albumUser = user.Albums.ToList();
 
             if (albumUser.Count != 0)
