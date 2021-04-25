@@ -90,7 +90,7 @@
 
         @{
             bool isUserPostOrAdmin = false;
-            if (Model.IsUserPost(id = post.PostId) == true || ViewBag.IsAdmin)
+            if (Model.IsUserPost(id = post.PostId) == true || User.IsInRole("AdminUser"))
             {
                 isUserPostOrAdmin = true;
             }
@@ -154,7 +154,7 @@
             <script type="text/javascript">
                 ReturnComment("@commDivId", @Model.GetCommProfileId(item.CommentId), @item.CommentId, @post.PostId, "@Model.GetFirstName(item.CommentId)",
                 "@Model.GetLastName(item.CommentId)", "@Model.GetUserPicture(item.CommentId)", "@item.DateCommented",
-                @item.Awards, @Json.Encode(Model.CommAwardGiven(item.CommentId)), @Json.Encode(isUserCommentOrAdmin),
+                @Model.GetCommentAwards(item.CommentId), @Json.Encode(Model.CommAwardGiven(item.CommentId)), @Json.Encode(isUserCommentOrAdmin),
                 @Json.Encode(item.Edited));
             </script>
 

@@ -49,15 +49,23 @@ namespace HiveData.ViewModels
 
         public bool AwardGiven(int id)
         {
-            var award = context.UserProfiles.Where(c => c.Awards.Contains(context.Awards.Where(i => i.Post.PostId == id).FirstOrDefault())).Select(v => v.UserId).FirstOrDefault();
-
-            if (award == null)
+            var postAwards = context.Awards.Where(a => a.Post.PostId == id).ToList();
+            string userId = HttpContext.Current.User.Identity.GetUserId();
+            var userProfile = context.UserProfiles.Where(u => u.UserId == userId).FirstOrDefault();
+            if (postAwards.Count > 0)
             {
-                return false;
+                if (userProfile.Awards.Intersect(postAwards).Any())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                return true;
+                return false;
             }
         }
 
@@ -122,17 +130,30 @@ namespace HiveData.ViewModels
 
         public bool CommAwardGiven(int id)
         {
-            var award = context.UserProfiles.Where(c => c.Awards.Contains(context.Awards.Where(i => i.PostComment.CommentId == id).
-                FirstOrDefault())).Select(v => v.UserId).FirstOrDefault();
-
-            if (award == null)
+            var commentAwards = context.Awards.Where(a => a.PostComment.CommentId == id).ToList();
+            string userId = HttpContext.Current.User.Identity.GetUserId();
+            var userProfile = context.UserProfiles.Where(u => u.UserId == userId).FirstOrDefault();
+            if (commentAwards.Count > 0)
             {
-                return false;
+                if (userProfile.Awards.Intersect(commentAwards).Any())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                return true;
+                return false;
             }
+        }
+
+        public int GetCommentAwards(int id)
+        {
+            var totalAwards = context.Awards.Where(a => a.PostComment.CommentId == id).Count();
+            return totalAwards;
         }
 
     }

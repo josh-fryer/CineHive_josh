@@ -70,9 +70,8 @@ namespace Cinehive.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(PostComment postComment)
-        {
-            int id = Convert.ToInt32(TempData["SecPostid"]);
+        public ActionResult Edit(PostComment postComment, int postID)
+        {          
             try
             {
                 if (ModelState.IsValid)
@@ -80,7 +79,7 @@ namespace Cinehive.Controllers
                     commentService.EditComment(postComment);
 
                 }
-                return RedirectToAction("ViewPostComments", "Post", new { id = id });
+                return RedirectToAction("ViewPostComments", "Post", new { id = postID });
             }
             catch
             {
