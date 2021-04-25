@@ -18,75 +18,10 @@
         foreach (var item in Model.PostList)
         {
             <div class="container">
-                <div class="well bg-white">
-                    <div class="media">
-                        <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(item.PostId) })" )">
-                            @if (@Model.GetUserPicture(item.PostId) == null)
-                            {
-                                <img src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
-                            }
-                            else
-                            {
-                                <img src="~/@Model.GetUserPicture(item.PostId)" width="64" height="64" />
-                            }
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">@Html.ActionLink(@Model.GetFirstName(item.PostId) + " " + Model.GetLastName(item.PostId), "ViewProfile", "Profile", new { id = Model.GetProfileId(item.PostId) }, new { })</h4>
-                            <p>
-                                @*Display posts containg film links with Html.Raw*@
-                                @if ((bool)item.hasFilmLink)
-                                {@Html.Raw(@item.PostContent) }
-                            else
-                            { @item.PostContent}
-                            </p>
-                            <ul class="list-inline list-unstyled">
-                                <li> @item.DatePosted </li>
-                                <li>|</li>
-                                @if (item.Awards < 2)
-                                {
-                                    <li> @item.Awards Award</li>
-                                }
-                                else
-                                {
-                                    <li> @item.Awards Awards</li>
-                                }
-                                @if (item.Popular == true)
-                                {
-                                    <li><strong>Popular</strong></li>
-                                }
-                            </ul>
-                            <ul class="list-inline list-unstyled">
-                                @if (Model.AwardGiven(item.PostId) == true)
-                                {
-                                    <li><strong>@Html.ActionLink("Revoke", "RevokeAward", "Post", new { id = item.PostId }, new { })</strong></li>
-                                }
-                                else
-                                {
-                                    <li>@Html.ActionLink("Award", "GiveAward", "Post", new { id = item.PostId }, new { })</li>
-                                }
-                                <li>|</li>
-                                <li>@Html.ActionLink("Comment", "Create", "Comment", new { id = item.PostId }, new { })</li>
-                                <li>|</li>
-                                <li>@Html.ActionLink("Share", "")</li>
-                                <li>|</li>
-                                <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
-
-                                @if (Model.IsUserPost(item.PostId) == true || HttpContext.Current.User.IsInRole("AdminUser"))
-                                {
-                                    <li>|</li>
-                                    <li> @Html.ActionLink("Remove", "DeletePost", "Post", new { id = item.PostId }, null) </li>
-                                    <li>|</li>
-                                    <li> @Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId }, null) </li>
-                                }
-
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         }
-        <div>
+        <div class="txt-white">
             Page @(@Model.PostList.PageCount < @Model.PostList.PageNumber ? 0 : @Model.PostList.PageNumber) of @Model.PostList.PageCount
             @Html.PagedListPager(Model.PostList, page => Url.Action("FilteredSearch", new { query = ViewBag.query, type = ViewBag.type, page = page }))
         </div>
@@ -122,7 +57,7 @@
                 </div>
             </div>
         }
-        <div>
+        <div class="txt-white">
 
             Page @((int)ViewBag.totalPages < ViewBag.moviePageNum ? 0 : ViewBag.moviePageNum) of @ViewBag.totalPages
             @*@Html.PagedListPager(Model.MovieList, page => Url.Action("FilteredSearch", new { query = ViewBag.query, type = ViewBag.type, page = page }))*@
@@ -176,7 +111,7 @@
                 </div>
             }
         </div>
-        <div>
+        <div class="txt-white">
             Page @(@Model.UserList.PageCount < @Model.UserList.PageNumber ? 0 : @Model.UserList.PageNumber) of @Model.UserList.PageCount
             @Html.PagedListPager(Model.UserList, page => Url.Action("FilteredSearch", new { query = ViewBag.query, type = ViewBag.type, page = page }))
         </div>
