@@ -2,10 +2,6 @@
 @{
     ViewBag.Title = "ViewPostComments";
     int id = 0;
-    if (String.IsNullOrEmpty(ViewBag.IsAdmin))
-    {
-        ViewBag.IsAdmin = false;
-    }
 }
 
 @Scripts.Render("~/Content/Scripts/Post.js")
@@ -20,11 +16,13 @@
 <div class="row">
     <div class="comment-post">
         @{
+            bool canShare = true;
             var divId = "post" + 1;
             var post = Model.Post;
         }
         @if (Model.Post.Shared == true)
         {
+            canShare = false;
             int authorPostID = post.AuthorPost.PostId;
             string authorName = Model.GetPostFirstName(authorPostID) + " " + Model.GetPostLastName(authorPostID);
 
@@ -100,7 +98,7 @@
         ViewCommentsPost("@divId", @Model.UserProfile.ProfileId, @post.PostId, "@Model.UserProfile.Firstname",
             "@Model.UserProfile.Lastname", "@Model.UserProfile.ImagePath", "@post.DatePosted",
             @Json.Encode(post.Popular), @Model.GetAwards(post.PostId), @Json.Encode(Model.AwardGiven(post.PostId)),
-            @Json.Encode(isUserPostOrAdmin), @Json.Encode(post.Edited), @Json.Encode(false));
+            @Json.Encode(isUserPostOrAdmin), @Json.Encode(post.Edited), @Json.Encode(canShare));
     </script>
 
     </div>
@@ -145,7 +143,7 @@
             </div>
             
                 bool isUserCommentOrAdmin = false;
-                if (Model.IsUserComment(id = item.CommentId) == true || ViewBag.IsAdmin)
+                if (Model.IsUserComment(id = item.CommentId) == true || User.IsInRole("AdminUser"))
                 {
                     isUserCommentOrAdmin = true;
                 }
