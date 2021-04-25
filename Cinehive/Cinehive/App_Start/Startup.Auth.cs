@@ -61,11 +61,11 @@ namespace Cinehive
             //   appId: "",
             //   appSecret: "");
 
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            {
-                ClientId = "144636567245-45cho076neqcof9gcmf4pf4cer59v0d5.apps.googleusercontent.com",
-                ClientSecret = "J4Bjuk-rd3hhrsxVzMyEQb-N"
-            });
+            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            //{
+            //    ClientId = "",
+            //    ClientSecret = ""
+            //});
         }
     }
 }
