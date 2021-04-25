@@ -2,8 +2,6 @@
 @using Microsoft.AspNet.Identity;
 @{ ViewBag.Title = "Your Profile";
     var userid = User.Identity.GetUserId();
-    if (ViewBag.IsAdmin == null)
-    { ViewBag.IsAdmin = false; }
 }
 
 @Scripts.Render("~/Content/Scripts/Post.js")
@@ -109,7 +107,7 @@
                 ReturnPost("@divId", "@Model.userProfile.ProfileId", @item.PostId, "@Model.userProfile.Firstname",
                     "@Model.userProfile.Lastname", "@Model.userProfile.ImagePath", "@item.DatePosted", @Json.Encode(item.Popular),
                     @Model.GetAwards(item.PostId), @Json.Encode(Model.AwardGiven(item.PostId)), @Json.Encode(isUserPostOrAdmin),
-                    @Json.Encode(item.Edited) ,@item.PostComments.Count);
+                    @Json.Encode(item.Edited), @Json.Encode(item.Shared), @item.PostComments.Count);
         </script>
 
                 <div id="Comments-@item.PostId"></div>

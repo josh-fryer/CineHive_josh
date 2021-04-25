@@ -7,8 +7,6 @@
     string userid = User.Identity.GetUserId();
     int postid = 0;
     int id = 0;
-    if (ViewBag.IsAdmin == null)
-    { ViewBag.IsAdmin = false; }
 }
 
 @Scripts.Render("~/Content/Scripts/Post.js")
@@ -106,7 +104,7 @@
                 }
 
                 bool isUserPostOrAdmin = false;
-                if (Model.IsUserPost(id = item.PostId) == true || ViewBag.IsAdmin)
+                if (Model.IsUserPost(id = item.PostId) == true || User.IsInRole("AdminUser"))
                 {
                     isUserPostOrAdmin = true;
                 }

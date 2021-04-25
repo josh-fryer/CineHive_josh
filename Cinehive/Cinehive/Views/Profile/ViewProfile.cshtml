@@ -3,8 +3,6 @@
 
 @{
     ViewBag.Title = Model.UserProfile.Firstname + "'s Profile";
-    if (ViewBag.IsAdmin == null)
-    { ViewBag.IsAdmin = false; }
 }
 
 @Scripts.Render("~/Content/Scripts/Post.js")
@@ -90,7 +88,7 @@
                     }
 
                     bool isUserPostOrAdmin = false;
-                    if (Model.IsUserPost(item.PostId) == true || ViewBag.IsAdmin)
+                    if (Model.IsUserPost(item.PostId) == true || User.IsInRole("AdminUser"))
                     {
                         isUserPostOrAdmin = true;
                     }

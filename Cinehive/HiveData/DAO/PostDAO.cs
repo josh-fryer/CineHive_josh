@@ -70,7 +70,6 @@ namespace HiveData.DAO
             }
 
             profile.Awards.Add(award);
-
         }
 
         public void RevokeAward(int id, string userId, CineHiveContext context)
