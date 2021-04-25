@@ -38,12 +38,12 @@ namespace Cinehive.Controllers
             return View(postService.GetPost(id));
         }
 
-        // POST: Posts/Edit/5
         [HttpPost]
+        [ValidateInput(false)] // if editing a post with a html film link, let it post
         public ActionResult EditPost(int id, Post post)
         {
             postService.EditPost(post);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("ViewPostComments", "Post", new { id = id });
         }
         
         public ActionResult DeletePost(int id)

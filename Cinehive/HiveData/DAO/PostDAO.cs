@@ -32,6 +32,8 @@ namespace HiveData.DAO
 
         public void DeletePost(Post post, CineHiveContext context)
         {
+            var awards = context.Awards.Where(a => a.Post.PostId == post.PostId).ToList();
+            context.Awards.RemoveRange(awards);
             context.Posts.Remove(post);
             context.SaveChanges();
         }
@@ -94,9 +96,12 @@ namespace HiveData.DAO
             var comments = context.Posts.Find(id).PostComments.ToList();
             foreach (var item in comments)
             {
+                var awards = context.Awards.Where(a => a.PostComment.CommentId == item.CommentId).ToList();
+                context.Awards.RemoveRange(awards);
                 context.PostComments.Remove(item);
-            }
-            context.SaveChanges();
+            } 
         }
+
+
     }
 }
