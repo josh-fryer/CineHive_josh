@@ -70,13 +70,14 @@ namespace HiveData.DAO
             }
 
             profile.Awards.Add(award);
+
         }
 
         public void RevokeAward(int id, string userId, CineHiveContext context)
         {
             UserProfile profile = context.UserProfiles.First(x => x.UserId == userId);
             Post post = context.Posts.Find(id);
-            Award award = profile.Awards.Where(x => x.Post.PostId == id).FirstOrDefault();
+            Award award = profile.Awards.Where(x => x.Post == post).FirstOrDefault();
 
             post.Awards--;
 

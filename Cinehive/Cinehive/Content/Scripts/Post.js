@@ -33,13 +33,13 @@
             if (awardGiven)
             {
                 postButtons += `<li>
-                <strong><a onclick="Award(${postId}, ${awardGiven})"><img id="awardImg_${postId}" src="/Content/Img/SiteImg/oscar_filled_crop.png" height="46"/></a>
+                <strong><a onclick="Award(${postId})"><img id="awardImg_${postId}" src="/Content/Img/SiteImg/oscar_filled_crop.png" height="46"/></a>
                 <span id="awardsBadge_${postId}" class="badge">${awards}</span></strong>
                 </li>`;
             }
             else
             {
-               postButtons += `<li><a onclick="Award(${postId}, ${awardGiven})">
+               postButtons += `<li><a onclick="Award(${postId})">
                <img id="awardImg_${postId}" src="/Content/Img/SiteImg/oscar_empty_crop.png" height="46"/>
                </a><span id="awardsBadge_${postId}" class="badge">${awards}</span></li>`;
             }
