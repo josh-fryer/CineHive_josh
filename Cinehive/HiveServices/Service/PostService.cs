@@ -173,6 +173,7 @@ namespace HiveServices.Service
             using (var context = new CineHiveContext())
             {
                 Post post = postDAO.GetPost(id, context);
+                postDAO.DeleteAssociatedComments(id, context);
                 postDAO.DeletePost(post, context);
             }
         }
@@ -230,9 +231,9 @@ namespace HiveServices.Service
         public void DeleteAssociatedComments(int id)
         {
             using (var context = new CineHiveContext())
-            {
+            {                
                 postDAO.DeleteAssociatedComments(id, context);
-
+                context.SaveChanges();
             }
         }
 
