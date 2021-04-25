@@ -71,6 +71,25 @@ namespace HiveData.ViewModels
                 return true;
             }
         }
+
+        public UserProfile FindUserProfile(int id)
+        {
+            return context.UserProfiles.Where(c => c.Posts.Contains(context.Posts.Where(i => i.PostId == id)
+                .FirstOrDefault())).FirstOrDefault();
+        }
+
+        public int GetAwards(int id)
+        {
+            var totalAwards = context.Awards.Where(a => a.Post.PostId == id).Count();
+            return totalAwards;
+        }
+
+        public int GetCommentsCount(int id)
+        {
+            int count = 0;
+            count = context.Posts.Find(id).PostComments.Count;
+            return count;
+        }
     }
 
 }

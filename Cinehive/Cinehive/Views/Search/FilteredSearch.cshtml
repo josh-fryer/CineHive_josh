@@ -10,17 +10,139 @@
         startPg = (ViewBag.moviePageNum - 5);
     }
 }
+
+@Scripts.Render("~/Content/Scripts/Post.js")
+
 <div class="container ">
     <h2 id="txt-white">Search Results</h2>
     <hr />
     @if (ViewBag.type == "post")
     {
-        foreach (var item in Model.PostList)
-        {
-            <div class="container">
-                
-            </div>
-        }
+        <div class="container">
+            @for (int i = 0; i < 10 && i < Model.PostList.Count; i++)
+            {
+                var post = Model.PostList[i];
+                var user = Model.FindUserProfile(post.PostId);
+
+                <div class="container">
+                    @{ var divId = "post" + i; }
+                    @if (post.Shared == true)
+                    {
+                        int authorPostID = post.AuthorPost.PostId;
+                        string authorName = Model.GetFirstName(authorPostID) + " " + Model.GetLastName(authorPostID);
+
+                        <div class="profile-content-pane">
+                            <div id="@(divId + "_1")" class="media">
+                                <div id="@(divId + "_2")" class="media-body">
+                                    <p>Shared a post from @authorName</p>
+                                    <div id="@(divId+"_3")" class="profile-content-pane-share">
+                                        <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(authorPostID) })">
+                                            @if (Model.GetUserPicture(authorPostID) == null)
+                                            {
+                                                <img class="post-share-img circular-image" src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
+                                            }
+                                            else
+                                            {
+                                                <img class="post-share-img circular-image" src="~/@Model.GetUserPicture(authorPostID)" width="64" height="64" />
+                                            }
+                                        </a>
+                                        <h4 class="media-heading">@authorName</h4>
+                                        <p>
+                                            @if ((bool)post.AuthorPost.hasFilmLink)
+                                            {
+                                                @Html.Raw(post.AuthorPost.PostContent)
+                                            }
+                                            else
+                                            {
+                                                @post.AuthorPost.PostContent
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else if (post.PictureChange == true)
+                    {
+                        <div class="profile-content-pane">
+                            <div id="@(divId + "_1")" class="media">
+                                <div id="@(divId + "_2")" class="media-body">
+                                    <p>@post.PostContent</p>
+                                    <div id="@(divId+"_3")" class="profile-content-pane-img">
+                                        <img src="/@post.AuthorPicture" class="profile-content-img" />
+                                    </div>
+                                    @* JS inserts buttons here *@
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else // display standard post
+                    {
+                        <div class="profile-content-pane">
+                            <div id="@(divId + "_1")" class="media">
+                                <div id="@(divId + "_2")" class="media-body post-body">
+
+                                    <p id="@(divId+"_3")">
+                                        @if ((bool)post.hasFilmLink)
+                                        {@Html.Raw(post.PostContent) }
+                                    else
+                                    { @post.PostContent}
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+
+                    @{
+                        bool isUserPostOrAdmin = false;
+                        if (Model.IsUserPost(post.PostId) == true || User.IsInRole("AdminUser"))
+                        {
+                            isUserPostOrAdmin = true;
+                        }
+                    }
+
+                    <script type="text/javascript">
+                        ReturnPost("@divId", @Model.GetProfileId(post.PostId), @post.PostId, "@Model.GetFirstName(post.PostId)",
+                        "@Model.GetLastName(post.PostId)", "@Model.GetUserPicture(post.PostId)", "@post.DatePosted",
+                        @Json.Encode(post.Popular), @Model.GetAwards(post.PostId), @Json.Encode(Model.AwardGiven(post.PostId)),
+                        @Json.Encode(isUserPostOrAdmin), @Json.Encode(post.Edited), @Json.Encode(post.Shared), @Model.GetCommentsCount(post.PostId));
+                    </script>
+
+                    <div id="Comments-@post.PostId"></div>
+
+                    <script>
+                        var rendered = false;
+                        $("#post-@post.PostId").click(function () {
+                            if (!rendered) {
+
+                                $.ajax({
+                                    url: '@Url.Action("IndexPostCommentsPartial", "Post")',
+                                    type: "GET",
+                                    data: {i_d: @post.PostId},
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (result) {
+                                    //alert("success");
+                                    $("#Comments-@post.PostId").html(result);
+                                    rendered = true;
+                                    },
+                                    error: function (xhr) {
+                                    alert("error");
+                                    }
+
+                                    });
+                            } else {
+                                $('#Comments-@post.PostId').html("");
+                                rendered = false;
+                            }
+                        });
+                    </script>
+                </div>
+            }
+           
+           
+        </div>
+
         <div class="txt-white">
             Page @(@Model.PostList.PageCount < @Model.PostList.PageNumber ? 0 : @Model.PostList.PageNumber) of @Model.PostList.PageCount
             @Html.PagedListPager(Model.PostList, page => Url.Action("FilteredSearch", new { query = ViewBag.query, type = ViewBag.type, page = page }))
