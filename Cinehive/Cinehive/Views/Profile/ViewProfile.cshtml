@@ -99,7 +99,7 @@
                         ReturnPost("@divId", @Model.GetProfileId(item.PostId), @item.PostId, "@Model.GetFirstName(item.PostId)",
                         "@Model.GetLastName(item.PostId)", "@Model.GetUserPicture(item.PostId)", "@item.DatePosted",
                         @Json.Encode(item.Popular), @Model.GetAwards(item.PostId), @Json.Encode(Model.AwardGiven(item.PostId)),
-                        @Json.Encode(isUserPostOrAdmin), @Json.Encode(item.Edited), @item.PostComments.Count);
+                        @Json.Encode(isUserPostOrAdmin), @Json.Encode(item.Edited), @Json.Encode(item.Shared), @item.PostComments.Count);
         </script>
 
                     <div id="Comments-@item.PostId"></div>

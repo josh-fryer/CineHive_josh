@@ -26,6 +26,7 @@ namespace Cinehive.Controllers
         {
             movieService = new MovieService();
         }
+
         [Authorize]
         public ActionResult Index(Movie movie, dynamic item)
         {

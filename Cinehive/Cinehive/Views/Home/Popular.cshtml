@@ -13,6 +13,8 @@
     }
 }
 
+@Scripts.Render("~/Content/Scripts/Post.js")
+
 <div class="container">
     @Html.Partial("HomeSidebarPartial")
     <div class="col-md-9">
@@ -42,83 +44,128 @@
 
     <div class="row profile">
         <div class="col-md-9">
-
+            @{ var i = 0; }
             @foreach (var item in Model.PostList)
             {
-                <div class="profile-content-pane">
-                    <div class="media">
-                        <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) })" )">
-                            @if (@Model.GetUserPicture(postid = item.PostId) == null)
-                            {
-                                <img class="post-profile-img circular-image" src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
-                            }
-                            else
-                            {
-                                <img class="post-profile-img circular-image" src="~/@Model.GetUserPicture(postid = item.PostId)" width="64" height="64" />
-                            }
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">@Html.ActionLink(@Model.GetFirstName(postid = item.PostId) + " " + Model.GetLastName(postid = item.PostId), "ViewProfile", "Profile", new { id = Model.GetProfileId(postid = item.PostId) }, new { })</h4>
-                            <p>
-                                @*Display posts containg film links with Html.Raw*@
-                                @if ((bool)item.hasFilmLink)
-                                {@Html.Raw(@item.PostContent) }
-                            else
-                            { @item.PostContent}
-                            </p>
-                            <ul class="list-inline list-unstyled">
-                                <li> @item.DatePosted </li>
-                                <li>|</li>
-                                @if (item.Awards < 2)
-                                {
-                                    <li> @item.Awards Award</li>
-                                }
-                                else
-                                {
-                                    <li> @item.Awards Awards</li>
-                                }
-                                @if (item.Popular == true)
-                                {
-                                    <li><strong>Popular</strong></li>
-                                }
-                            </ul>
-                            <ul class="list-inline list-unstyled">
-                                @if (Model.AwardGiven(postid = item.PostId) == true)
-                                {
-                                    <li><strong>@Html.ActionLink("Revoke", "RevokeAward", "Post", new { id = item.PostId }, new { })</strong></li>
-                                }
-                                else
-                                {
-                                    <li>@Html.ActionLink("Award", "GiveAward", "Post", new { id = item.PostId }, new { })</li>
-                                }
-                                <li>|</li>
-                                <li>@Html.ActionLink("Comment", "Create", "Comment", new { id = item.PostId }, new { })</li>
-                                <li>|</li>
-                                <li>@Html.ActionLink("Share", "")</li>
-                                <li>|</li>
-                                <li>@Html.ActionLink("View Comments", "ViewPostComments", "Post", new { id = item.PostId }, new { }) (@item.PostComments.Count)</li>
+                i += 1;
+                var divId = "post" + i;
+                if (item.Shared == true)
+                {
+                    string authorName = Model.GetFirstName(item.AuthorPost.PostId) + " " + Model.GetLastName(item.AuthorPost.PostId);
+                    int authorPostID = item.AuthorPost.PostId;
+                    <div class="profile-content-pane">
+                        <div id="@(divId + "_1")" class="media">
+                            <div id="@(divId + "_2")" class="media-body">
+                                <p>Shared a post from @authorName</p>
+                                <div id="@(divId+"_3")" class="profile-content-pane-share">
+                                    <a class="pull-left" href="@Url.Action("ViewProfile", "Profile", new { id = Model.GetProfileId(authorPostID) })">
+                                        @if (Model.GetUserPicture(authorPostID) == null)
+                                        {
+                                            <img class="post-share-img circular-image" src="~/Content/Img/profile-image-placeholder.png" width="64" height="64" />
+                                        }
+                                        else
+                                        {
+                                            <img class="post-share-img circular-image" src="~/@Model.GetUserPicture(authorPostID)" width="64" height="64" />
+                                        }
+                                    </a>
+                                    <h4 class="media-heading">@authorName</h4>
+                                    <p>
+                                        @if ((bool)item.AuthorPost.hasFilmLink)
+                                        {@Html.Raw(item.AuthorPost.PostContent) }
+                                    else
+                                    { @item.AuthorPost.PostContent}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (item.PictureChange == true)
+                {
+                    <div class="profile-content-pane">
+                        <div id="@(divId + "_1")" class="media">
+                            <div id="@(divId + "_2")" class="media-body">
+                                <p>@item.PostContent</p>
+                                <div id="@(divId+"_3")" class="profile-content-pane-img">
+                                    <img src="@item.AuthorPicture" class="profile-content-img" />
+                                </div>
+                                @* JS inserts buttons here *@
+                            </div>
+                        </div>
+                    </div>
+                }
+                else // display standard post
+                {
+                    <div class="profile-content-pane">
+                        <div id="@(divId + "_1")" class="media">
+                            <div id="@(divId + "_2")" class="media-body post-body">
 
-                                @if (Model.IsUserPost(id = item.PostId) == true || ViewBag.IsAdmin)
-                                {
-                                    <li>|</li>
-                                    <li> @Html.ActionLink("Remove", "DeletePost", "Post", new { id = item.PostId }, null) </li>
-                                    <li>|</li>
-                                    <li> @Html.ActionLink("Edit", "EditPost", "Post", new { id = item.PostId }, null) </li>
-                                }
-
-                            </ul>
+                                <p id="@(divId+"_3")">
+                                    @if ((bool)item.hasFilmLink)
+                                    {@Html.Raw(item.PostContent) }
+                                else
+                                { @item.PostContent}
+                                </p>
+                            </div>
 
                         </div>
                     </div>
-                </div>
+                }
+
+                bool isUserPostOrAdmin = false;
+                if (Model.IsUserPost(id = item.PostId) == true || ViewBag.IsAdmin)
+                {
+                    isUserPostOrAdmin = true;
+                }
+
+                <script type="text/javascript">
+                    ReturnPost("@divId", @Model.GetProfileId(postid = item.PostId), @item.PostId, "@Model.GetFirstName(postid = item.PostId)",
+                        "@Model.GetLastName(postid = item.PostId)", "@Model.GetUserPicture(postid = item.PostId)", "@item.DatePosted",
+                        @Json.Encode(item.Popular), @Model.GetAwards(id = item.PostId), @Json.Encode(Model.AwardGiven(postid = item.PostId)),
+                        @Json.Encode(isUserPostOrAdmin), @Json.Encode(item.Edited), @Json.Encode(item.Shared), @item.PostComments.Count);
+                </script>
+
+                <div id="Comments-@item.PostId"></div>
+
+                <script>
+                        var rendered = false;
+                        $("#post-@item.PostId").click(function () {
+                            if (!rendered) {
+
+                                $.ajax({
+                                    url: '@Url.Action("IndexPostCommentsPartial", "Post")',
+                                    type: "GET",
+                                    data: {i_d: @item.PostId},
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (result) {
+                                    //alert("success");
+                                    $("#Comments-@item.PostId").html(result);
+                                    rendered = true;
+                                    },
+                                    error: function (xhr) {
+                                    alert("error");
+                                    }
+
+                                    });
+                            } else {
+                                $('#Comments-@item.PostId').html("");
+                                rendered = false;
+                            }
+                        });
+                </script>
             }
 
+
+            @if (Model.PostList.PageCount > 1)
+            {
+                <div id="txt-white">
+                    Page @(Model.PostList.PageCount < Model.PostList.PageNumber ? 0 : Model.PostList.PageNumber) of @Model.PostList.PageCount
+                </div>
+                @Html.PagedListPager(Model.PostList, page => Url.Action("Index", new { page }))
+            }
         </div>
 
     </div>
 </div>
-
-        Page @(Model.PostList.PageCount < Model.PostList.PageNumber ? 0 : Model.PostList.PageNumber) of @Model.PostList.PageCount
-        @Html.PagedListPager(Model.PostList, page => Url.Action("Index", new { page }))
 
 @Scripts.Render("~/Content/Scripts/CharCounter.js");

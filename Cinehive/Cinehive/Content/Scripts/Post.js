@@ -1,5 +1,5 @@
 ﻿function ReturnPost(divId, profileId, postId, firstName, lastName, imagePath, datePosted,
-    isPopular, awards, awardGiven, isUserPostOrAdimin, isEdited, commentsCount) {
+    isPopular, awards, awardGiven, isUserPostOrAdimin, isEdited, isShared, commentsCount) {
     var postImage = `<div class="media-left"><a href="/Profile/ViewProfile/${profileId}">`;
         if (imagePath == null || imagePath == "")
         {
@@ -47,14 +47,17 @@
             `<li><a href="/Post/ViewPostComments/${postId}"><span class="glyphicon glyphicon-comment"></span> Comment</a></li>
             
             <li><button type="button" class="comment-button" id="post-${postId}" name="Comment">
-            <img src="/Content/Img/SiteImg/chat.png" width="24"/></button> <span class="badge">${commentsCount}</span> </li>
+            <img src="/Content/Img/SiteImg/chat.png" width="24"/></button> <span class="badge">${commentsCount}</span> </li>`
                  
-            <li><a href="/Post/SharePost/${postId}"><span class="glyphicon glyphicon-share-alt"></span> Share</a></li>`;
+            if(!isShared)
+            {
+                postButtons+=`<li><a href="/Post/SharePost/${postId}"><span class="glyphicon glyphicon-share-alt"></span> Share</a></li>`;
+            }
 
             if (isUserPostOrAdimin)
             {
-               postButtons += `
-                <li><a href="/Post/DeletePost/${postId}"><span class="glyphicon glyphicon-trash"></span></a></li>
+               postButtons +=
+                `<li><a href="/Post/DeletePost/${postId}"><span class="glyphicon glyphicon-trash"></span></a></li>
                 
                 <li> <a href="/Post/EditPost/${postId}"><span class="glyphicon glyphicon-edit"></span></a> </li>`;
             }
@@ -100,13 +103,13 @@ function ViewCommentsPost(divId, profileId, postId, firstName, lastName, imagePa
            if (awardGiven)
            {
                postButtons += `<li>
-               <strong><a onclick="Award(${postId}, ${awardGiven})"><img id="awardImg_${postId}" src="/Content/Img/SiteImg/oscar_filled_crop.png" height="46"/></a>
+               <strong><a onclick="Award(${postId})"><img id="awardImg_${postId}" src="/Content/Img/SiteImg/oscar_filled_crop.png" height="46"/></a>
                <span id="awardsBadge_${postId}" class="badge">${awards}</span></strong>
                </li>`;
            }
            else
            {
-              postButtons += `<li><a onclick="Award(${postId}, ${awardGiven})">
+              postButtons += `<li><a onclick="Award(${postId})">
               <img id="awardImg_${postId}" src="/Content/Img/SiteImg/oscar_empty_crop.png" height="46"/>
               </a><span id="awardsBadge_${postId}" class="badge">${awards}</span></li>`;
            }       
