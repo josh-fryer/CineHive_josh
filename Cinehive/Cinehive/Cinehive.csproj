@@ -318,12 +318,8 @@
     <Content Include="Views\Notification\Index.cshtml" />
     <Content Include="Views\Notification\TestSendNotification.cshtml" />
     <Content Include="Views\Post\EditPost.cshtml" />
-    <Content Include="Views\Album\Create.cshtml" />
     <Content Include="Views\Album\ViewAlbum.cshtml" />
-    <Content Include="Views\Album\AddImageToAlbum.cshtml" />
     <Content Include="Views\Album\Edit.cshtml" />
-    <Content Include="Views\Album\DeleteImageFromAlbum.cshtml" />
-    <Content Include="Views\Album\DeleteAlbum.cshtml" />
     <Content Include="Views\Comment\Create.cshtml" />
     <Content Include="Views\Post\ViewPostComments.cshtml" />
     <Content Include="Views\Comment\Edit.cshtml" />

@@ -63,10 +63,6 @@
                 {
                     <div>
                         <p>This album is empty</p>
-                        @if (ViewBag.IsUser)
-                        {
-                            @Html.ActionLink("Add an Image", "AddImageToAlbum", new { id = Model.Album.AlbumId }) 
-                        }
 
                     </div>
                 }

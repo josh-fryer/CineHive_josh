@@ -60,10 +60,6 @@
                 {
                     <div>
                         <p>Empty</p>
-                        @if (ViewBag.AlbumUserId != null && ViewBag.AlbumUserId == User.Identity.GetUserId())
-                        {
-                            @Html.ActionLink("Create a new album", "Create")
-                        }
                     </div>
                 }
             </div>

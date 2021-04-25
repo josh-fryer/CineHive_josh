@@ -211,7 +211,7 @@ namespace Cinehive.Controllers
 
                     var userProfile = new UserProfile { 
                         Firstname = model.Firstname, Lastname = model.Lastname, DateOfBirth = model.DateOfBirth,
-                        Gender = model.Gender, UserId = user.Id 
+                        Gender = model.Gender, UserId = user.Id, Privacy = 1
                     };
                     Session["fName"] = userProfile.Firstname;
                     db.UserProfiles.Add(userProfile);
