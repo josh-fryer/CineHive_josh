@@ -92,17 +92,26 @@
                 }
                 else if (item.PictureChange == true)
                 {
-                    <div class="profile-content-pane">
+                    <div id="picture-@item.PostId" class="profile-content-pane">
                         <div id="@(divId + "_1")" class="media">
                             <div id="@(divId + "_2")" class="media-body">
                                 <p>@item.PostContent</p>
                                 <div id="@(divId+"_3")" class="profile-content-pane-img">
-                                    <img src="@item.AuthorPicture" alt="error" class="profile-content-img" />
+                                    <img src="@item.AuthorPicture" alt="User has removed this Image" class="profile-content-img" onerror="togglediv()" />
                                 </div>
                                 @* JS inserts buttons here *@
                             </div>
                         </div>
                     </div>
+
+                    <script>
+                        function togglediv() {
+                            var x = document.getElementById("picture-@item.PostId");
+                            x.style.display = "none";
+
+                        }
+                    </script>
+
                 }
                 else // display standard post
                 {
