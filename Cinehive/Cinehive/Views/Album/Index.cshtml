@@ -26,8 +26,8 @@
                         <p class="crt-album-txt">Create a new album.</p>
                         @using (Html.BeginForm("Create", "Album", FormMethod.Post))
                         {                    
-                            <input id="AlbumName" class="Album-input" type="text" name="input1" maxlength="30" placeholder="Album Name" />
-                            <input id="AlbumDesc" class="Album-input" type="text" name="input2" maxlength="80" placeholder="Album Description" />
+                            <input id="AlbumName" class="Album-input" type="text" name="input1" maxlength="30" required placeholder="Album Name" />
+                            <input id="AlbumDesc" class="Album-input" type="text" name="input2" maxlength="80" required placeholder="Album Description" />
                             <input type="submit" value="Create" class="submit-album-btn" />
 
                         }
