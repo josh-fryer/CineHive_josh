@@ -64,9 +64,12 @@ namespace HiveData.DAO
             Award award = new Award();
             
             post.Awards++; 
-            award.Post = post;        
+            award.Post = post;
 
-            if (post.Awards >= 30)
+            int awardcount = context.Awards.Where(c => c.Post.PostId == id).Count();
+
+
+            if (awardcount >= 3)
             {
                 post.Popular = true;
             }

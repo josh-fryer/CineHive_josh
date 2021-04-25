@@ -29,8 +29,30 @@
                 </button>
             }
             <div id="remaining-chars" class="text-right counter-margin">280 characters remaining</div>
+            <button onclick="toggleHelp()">How to post</button>
+        </div>
+        <div style="display:none" id="helpme" class="trending-content-tooltip">
+            <h3>How to post the CineHive way</h3>
+            <p>To tag a movie in a post and get everyone talking about it all you have to do is add a '#' followed by the movie title with capitalised
+            letters to seperate the words. For example '#MortalKombat'. You can also specify the year of the movie to make the post more accurate, for
+            example '#PaulBlart/2009'</p>
         </div>
     </div>
+
+    <script>
+        function toggleHelp() {
+            var x = document.getElementById("helpme");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
+
+
+
 
 
     <div class="row profile">
@@ -109,12 +131,12 @@
                     isUserPostOrAdmin = true;
                 }
 
-        <script type="text/javascript">
+                <script type="text/javascript">
                     ReturnPost("@divId", @Model.GetProfileId(postid = item.PostId), @item.PostId, "@Model.GetFirstName(postid = item.PostId)",
                         "@Model.GetLastName(postid = item.PostId)", "@Model.GetUserPicture(postid = item.PostId)", "@item.DatePosted",
                         @Json.Encode(item.Popular), @Model.GetAwards(id = item.PostId), @Json.Encode(Model.AwardGiven(postid = item.PostId)),
                         @Json.Encode(isUserPostOrAdmin), @Json.Encode(item.Edited), @Json.Encode(item.Shared), @item.PostComments.Count);
-        </script>
+                </script>
 
                 <div id="Comments-@item.PostId"></div>
 
@@ -149,13 +171,13 @@
             @if (Model.PostList.PageCount > 1)
             {
                 <div id="txt-white">
-                Page @(Model.PostList.PageCount < Model.PostList.PageNumber ? 0 : Model.PostList.PageNumber) of @Model.PostList.PageCount
+                    Page @(Model.PostList.PageCount < Model.PostList.PageNumber ? 0 : Model.PostList.PageNumber) of @Model.PostList.PageCount
                 </div>
                 @Html.PagedListPager(Model.PostList, page => Url.Action("Index", new { page }))
             }
         </div>
     </div>
-    
+
 </div>
 
 

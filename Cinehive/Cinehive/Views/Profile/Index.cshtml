@@ -17,18 +17,40 @@
 
                 @using (Html.BeginForm("Create", "Post", FormMethod.Post, new { name = "createPost", onsubmit = "return validateForm()" }))
                 {
-                    <input id="postInput" class="post-submit" type="text" name="input" maxlength="280" placeholder="Say something.." /> 
-                    <input type="hidden" name="location" value="profile"/>
+                    <input id="postInput" class="post-submit" type="text" name="input" maxlength="280" placeholder="Say something.." />
+                    <input type="hidden" name="location" value="profile" />
                     @*<div class="form-group">
-                            <textarea id="postInput" class="post-submit" name="input" maxlength="280" placeholder="Say something.."></textarea>
-                        </div>*@
+                        <textarea id="postInput" class="post-submit" name="input" maxlength="280" placeholder="Say something.."></textarea>
+                    </div>*@
                     <button class="btn btn-primary post-button" type="submit">
                         <span>Post &nbsp;</span>
                         <i class="glyphicon glyphicon-pencil"></i>
                     </button>}
                 <div id="remaining-chars" class="text-right counter-margin">280 characters remaining</div>
+                <button onclick="toggleHelp()">How to post</button>
+            </div>
+            <div style="display:none" id="helpme" class="trending-content-tooltip">
+                <h3>How to post the CineHive way</h3>
+                <p>
+                    To tag a movie in a post and get everyone talking about it all you have to do is add a '#' followed by the movie title with capitalised
+                    letters to seperate the words. For example '#MortalKombat'. You can also specify the year of the movie to make the post more accurate, for
+                    example '#PaulBlart/2009'
+                </p>
             </div>
         </div>
+
+        <script>
+            function toggleHelp() {
+                var x = document.getElementById("helpme");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script>
+
+
 
 
         <div class="col-md-9">
@@ -59,9 +81,9 @@
                                     <h4 class="media-heading">@authorName</h4>
                                     <p>
                                         @if ((bool)item.AuthorPost.hasFilmLink)
-                                        {   @Html.Raw(item.AuthorPost.PostContent) }
-                                        else
-                                        {   @item.AuthorPost.PostContent }
+                                        {@Html.Raw(item.AuthorPost.PostContent) }
+                                    else
+                                    { @item.AuthorPost.PostContent}
                                     </p>
                                 </div>
                             </div>
@@ -103,12 +125,12 @@
                 // all posts here belong to User
                 bool isUserPostOrAdmin = true;
 
-        <script type="text/javascript">
+                <script type="text/javascript">
                 ReturnPost("@divId", "@Model.userProfile.ProfileId", @item.PostId, "@Model.userProfile.Firstname",
                     "@Model.userProfile.Lastname", "@Model.userProfile.ImagePath", "@item.DatePosted", @Json.Encode(item.Popular),
                     @Model.GetAwards(item.PostId), @Json.Encode(Model.AwardGiven(item.PostId)), @Json.Encode(isUserPostOrAdmin),
                     @Json.Encode(item.Edited), @Json.Encode(item.Shared), @item.PostComments.Count);
-        </script>
+                </script>
 
                 <div id="Comments-@item.PostId"></div>
 
