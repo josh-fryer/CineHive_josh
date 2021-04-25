@@ -48,7 +48,7 @@ namespace Cinehive.Controllers
 
                 userProfile.Comments.Add(comment);
                 post.PostComments.Add(comment);
-                if (post.PostComments.Count >= 8)
+                if (post.PostComments.Count >= 5)
                 {
                     post.Popular = true;
                 }
@@ -111,7 +111,7 @@ namespace Cinehive.Controllers
 
                 userProfile.Comments.Add(comment);
                 post.PostComments.Add(comment);
-                if (post.PostComments.Count >= 8)
+                if (post.PostComments.Count >= 5)
                 {
                     post.Popular = true;
                 }

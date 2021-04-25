@@ -28,6 +28,7 @@ namespace Cinehive.Controllers
         
         public AccountController()
         {
+
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -197,17 +198,17 @@ namespace Cinehive.Controllers
                 if (result.Succeeded)
                 {
                     // ----- Register as a Basic User: --------
-                    var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
-                    var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    await roleManager.CreateAsync(new IdentityRole("BasicUser"));
-                    await UserManager.AddToRoleAsync(user.Id, "BasicUser");
+                    //var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("BasicUser"));
+                    //await UserManager.AddToRoleAsync(user.Id, "BasicUser");
                     Session.Add("UserId", user.Id); // Place Userid in session
 
                     //To sign up as admin ---------------------------------------------------
-                    // var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
-                    // var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    // await roleManager.CreateAsync(new IdentityRole("AdminUser"));
-                    // await UserManager.AddToRoleAsync(user.Id, "AdminUser");
+                    var roleStore = new RoleStore<IdentityRole>(new CineHiveContext());
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    await roleManager.CreateAsync(new IdentityRole("AdminUser"));
+                    await UserManager.AddToRoleAsync(user.Id, "AdminUser");
 
                     var userProfile = new UserProfile { 
                         Firstname = model.Firstname, Lastname = model.Lastname, DateOfBirth = model.DateOfBirth,
@@ -489,8 +490,7 @@ namespace Cinehive.Controllers
             }
 
             CineHiveContext context = new CineHiveContext();
-            string userid = User.Identity.GetUserId();
-            UserProfile user = context.UserProfiles.First(x => x.UserId == userid);
+            UserProfile user = context.UserProfiles.First(x => x.UserId == userId);
            
             //REMOVE FRIEND REQ RECEIVED
             var listReq = user.ReceivedFriendReq.ToList();
@@ -512,6 +512,16 @@ namespace Cinehive.Controllers
                 }
             }
 
+            //Remove Friends and user from friends collection
+            foreach (var friend in user.Friends.ToList())
+            {
+                friend.Friends.Remove(user);
+                user.Friends.Remove(friend);
+            }
+
+            //Remove favourite genres
+            user.FavouriteGenres.Clear();
+
             //REMOVE NOTIFICATIONS 
             var listNotif = user.Notifications.ToList();
             if (listNotif.Count != 0)
@@ -519,16 +529,6 @@ namespace Cinehive.Controllers
                 foreach (var Notification in listNotif)
                 {
                     context.Notifications.Remove(Notification);
-                }
-            }
-
-            //REMOVE COMMENTS 
-            var comm = user.Comments.ToList();
-            if (comm.Count != 0)
-            {
-                foreach (var Comment in comm)
-                {
-                    context.PostComments.Remove(Comment);
                 }
             }
 
@@ -541,6 +541,16 @@ namespace Cinehive.Controllers
                     context.Awards.Remove(Award);
                 }
             }
+
+            //REMOVE COMMENTS 
+            var comm = user.Comments.ToList();
+            if (comm.Count != 0)
+            {
+                foreach (var Comment in comm)
+                {
+                    context.PostComments.Remove(Comment);
+                }
+            }          
 
             //REMOVE POSTS
             var listPosts = user.Posts.ToList();
@@ -599,7 +609,7 @@ namespace Cinehive.Controllers
                 transaction.Commit();
             }
             AuthManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Welcome", "Home");
         }
 
         public IAuthenticationManager AuthManager
