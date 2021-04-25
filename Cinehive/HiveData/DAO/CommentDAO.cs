@@ -55,7 +55,7 @@ namespace HiveData.DAO
         {
             UserProfile profile = context.UserProfiles.First(x => x.UserId == userId);
             PostComment comment = context.PostComments.Find(id);
-            Award award = profile.Awards.Where(x => x.PostComment.CommentId == id).FirstOrDefault();
+            Award award = profile.Awards.Where(x => x.PostComment == comment).FirstOrDefault();
 
             comment.Awards--;
 
