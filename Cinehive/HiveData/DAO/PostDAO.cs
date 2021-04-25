@@ -67,6 +67,7 @@ namespace HiveData.DAO
             award.Post = post;
 
             int awardcount = context.Awards.Where(c => c.Post.PostId == id).Count();
+            //int awardcount = context.Posts.Where(c => c.PostId == id).Select(v => v.Awards).Count();
 
 
             if (awardcount >= 3)
