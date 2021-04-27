@@ -13,6 +13,7 @@ namespace HiveServices.Service
     public class ProfileService : IProfileService
     {
         private IProfileDAO profileDAO;
+        
         public ProfileService()
         {
             profileDAO = new ProfileDAO();
@@ -27,8 +28,8 @@ namespace HiveServices.Service
                 Gender = userProfile.Gender,
                 DateOfBirth = userProfile.DateOfBirth,
                 AboutMe = userProfile.AboutMe
-
             };
+
             using (var context = new CineHiveContext())
             {
                 profileDAO.CreateProfile(userProfile, context);
