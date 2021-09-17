@@ -1,7 +1,8 @@
 *.suo
-applicationhost.config
 *.txt
 *.cache
 *.log
 *.dll
 *.pdb
+applicationhost.config
+Cinehive - Web Deploy.pubxml
